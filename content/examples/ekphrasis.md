@@ -1,14 +1,16 @@
 ---
 title: Ekphrasis
 order: 16
-index: Cover parts of a picture with words. What does a description reveal, and what does it hide?
-source: https://github.com/ll-26-27/cv-installation/tree/main/site/app/ekphrasis
+index: Students explored generative and AI art installations, including estampa’s Ekphrasis. This study asks what happens when a machine describes an image—and its words begin to cover what we see.
+source: https://tallerestampa.com/en/estampa/ekphrasis/
 image: /examples/ekphrasis/balloon-room-hero.svg
 ---
 
 ## What this is
 
-Inspired by **estampa’s *Ekphrasis* (2025)**, an installation that applies object recognition and generated descriptions to film fragments, exploring what happens when images become words. [Read the artists’ project text and see exhibition photographs](https://tallerestampa.com/en/estampa/ekphrasis/).
+**[Explore estampa’s original *Ekphrasis* (2025): project text and exhibition photographs ↗](https://tallerestampa.com/en/estampa/ekphrasis/)**
+
+As students explored generative and AI art installations, estampa’s work offered a way to think about the relationship between images and language. In *Ekphrasis*, object-recognition systems and image-to-text models describe film fragments. Our teaching adaptation takes up that question: what does a description reveal, and what does it hide?
 
 In our camera-based adaptation, a camera image is divided into tiles. An object detector outlines what it recognizes, while a language model describes selected fragments without seeing the rest of the frame. Colored blocks display the descriptions over the image they replace.
 
@@ -16,7 +18,7 @@ Swipe through three supplied photographs: a weathered room, a visitor looking at
 
 ## How we made it
 
-Built in November 2026 as part of *Seeing Machines*, after estampa's *Ekphrasis*. The original combines a browser-based COCO-SSD detector with a server-side language-model call. Each selected tile is sent separately, so the model's description has only a fragment's context.
+Built in November 2026 as part of *Seeing Machines*, after estampa's *Ekphrasis*. Our camera-based adaptation combines a browser-based COCO-SSD detector with a server-side language-model call. Each selected tile is sent separately, so the model's description has only a fragment's context.
 
 On November 12, 2026, we reran the original descriptive route on all three photographs using `anthropic/claude-opus-5.5`. Each image was cut into a grid of four columns and three rows. Twelve crops were sent together per photograph, with the original prompt instructing the model to describe each tile as if the rest of the frame did not exist. All 36 responses, model names, token counts, and timings are saved with the site.
 
