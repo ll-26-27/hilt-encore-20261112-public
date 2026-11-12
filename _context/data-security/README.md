@@ -1,6 +1,6 @@
 ---
 title: Harvard's data security levels, generative AI, and this kit
-status: draft, 2026-11-12, morning. The Learning Lab may revise the wording for external tools once Harvard's pages are checked in a browser (see "Two lines" below).
+status: draft, 2026-11-12, morning. The Learning Lab may revise the wording for external tools once Harvard's pages are checked in a browser (see "Where this kit draws the line" below).
 ---
 
 # Harvard's data security levels, generative AI, and this kit
@@ -65,13 +65,13 @@ Each spec's terms of use add: "All existing, University-wide policies regarding 
 This part is the Learning Lab's reading of the sources above, not Harvard's.
 
 - **`ll-utilities/huit/`** calls HUIT's gateways. HUIT says they are approved for Level 3 confidential data. They are the route in this kit for anything that is not public, **with your own HUIT key**, within your School's and your data agreements' rules, and never Level 4 or 5.
-- **`ll-utilities/external/`** calls tools outside Harvard's agreements: fal (image generation) and OpenRouter. As far as we can find, neither is on Harvard's list of approved generative AI tools. **Never send Level 3 or higher data to them**, and until the question in "Two lines" below is settled, **send them only public (Level 1) or made-up material**, as `CLAUDE.md` says.
+- **`ll-utilities/external/`** calls tools outside Harvard's agreements: fal (image generation) and OpenRouter. As far as we can find, neither is on Harvard's list of approved generative AI tools. **Send them only public (Level 1) or made-up material, never confidential data** (see "Where this kit draws the line" below).
 - **Claude Code itself** sends what it reads to whichever model provider your Claude account uses. HMS lists Claude as approved for Level 3 at HMS; whether *your* Claude account is a Harvard-approved one depends on how you got it (a Harvard-provisioned account, or Claude Code pointed at the HUIT Bedrock gateway, versus a personal account). Check https://huit.harvard.edu/ai/tools or your School's IT office before opening a folder with confidential material in it.
 - **Test with made-up material.** Every example in this kit uses synthetic audio (made with macOS `say`), invented text, and invented prompts. Do the same until you know where your data may go.
 
-## Two lines, and which one this kit follows
+## Where this kit draws the line
 
-The Learning Lab's starting line for the kit was: **nothing sent to an external tool should be Level 3 data.** HUIT's guidelines, as excerpted, draw the line lower: **"Level 2 and above confidential data must only be entered into Generative AI tools that have been assessed and approved for such use."** Read that way, an external tool that Harvard hasn't approved should get **public (Level 1) material only.** Until the guidelines are checked first-hand, this kit takes the stricter reading: `CLAUDE.md` says external tools get public or made-up material only, and the external scripts' printed warning says never Level 3 or higher. If in doubt, follow the stricter one.
+HUIT's guidelines, as excerpted, draw the line at Level 2: **"Level 2 and above confidential data must only be entered into Generative AI tools that have been assessed and approved for such use."** fal and OpenRouter are not, as far as we can find, approved tools. So this kit takes the stricter reading, pending a check of the guidelines page itself: **external tools get public (Level 1) or made-up material only, never confidential data.** `CLAUDE.md` says so, and every external script prints the same line before it sends (`ll-utilities/external/warning.mjs`). Anything sensitive goes through the HUIT gateways, within the levels they are approved for.
 
 ## Not yet checked (November 12, 2026)
 
