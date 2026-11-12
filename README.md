@@ -2,20 +2,7 @@
 
 The Learning Lab at the Derek Bok Center for Teaching and Learning, at the 2026 HILT Encore Event: Thursday, November 12, 2026, 12:00–1:00 PM ET, on Zoom.
 
-This is the talk as a website, for participants to follow along and come back to: the slides for the day, plus the repos, tools, and examples we mention.
-
-Open this repository in Claude Code. Beside the talk, it holds a kit: a context folder about the Learning Lab and this talk for your agent to read (and a model for your own), and small readable scripts that call Harvard's HUIT AI APIs (transcription and image generation, tested today). Start with CLAUDE.md, which also sets the data rule: external tools get public material only.
-
-| path | what |
-| --- | --- |
-| `nextjs/` | the site (Next.js, App Router, TypeScript) |
-| `content/` | the words and links the site shows, in Markdown; its `README.md` is the contract for how they're laid out |
-| `CLAUDE.md`, `AGENTS.md` | where your agent starts: what this repo is, and the data rule |
-| `_context/` | the context folder: the Learning Lab, this talk, the tools, how to make a skill of your own, HUIT's AI services, data security |
-| `ll-utilities/` | small readable scripts that call HUIT's AI APIs (transcription, image generation) and, kept apart in `external/`, outside services for public material only |
-| `.env.example` | the names of the keys the scripts read; put your own in a gitignored `.env` |
-
-Everything in this repo is public.
+This repository will hold the talk as a website for participants. For now it is a skeleton: a Next.js app in `nextjs/` with a home page and three placeholder sections (Ideas, Utilities, Examples).
 
 ## Run it
 
@@ -25,39 +12,4 @@ pnpm install
 pnpm dev
 ```
 
-The site is at http://localhost:3112. It reads `content/` on every request, so edited Markdown shows on reload.
-
-| address | what |
-| --- | --- |
-| `/` | the talk in brief, a QR code to the site, and the five parts |
-| `/present` | the slides |
-| `/talk/<part>` | one part as a page to read (e.g. `/talk/01-learning-lab`) |
-| `/take-home` | repos, tools, and examples |
-| `/wondering` | what we learned, what we're still wondering |
-
-## The slides
-
-`/present` draws every slide on a 1600×900 stage scaled to the window, so it reads the same over a Zoom screen share. The address keeps your place (`/present#<slide>`).
-
-| key | does |
-| --- | --- |
-| → space enter, or a clicker | next (a `shift` slide reveals one column per press) |
-| ← backspace | back |
-| 0–6 | jump to a part (0 the open, 6 the close) |
-| home / end | first / last slide |
-| f | full screen |
-| g | every slide, to jump to one |
-| q | the site's QR code, over anything |
-| b | blank the screen |
-| r | reload the words, keeping your place |
-| ? | these keys |
-
-On a phone, swipe left and right.
-
-Not every slide is shown in the talk. A slide with `present: false` in its frontmatter is left out of `/present` (and its grid and part jumps) but still appears on its part's page at `/talk/<part>`, for participants to read. `site: false` does the opposite: the slide is shown in the talk but left off the part's page.
-
-## Live parts
-
-- **The title slide** counts down to noon ET, then shows how long the talk has been running.
-- **The QR code** opens the `url` in `content/home.md`. Until there's one, it opens this repo.
-- **"How this talk was made"** (layout `made`) shows the agents that built the talk this morning, and this repo's commits, refreshed every 10 seconds. It only works on the machine the talk was made on: set `HILT_RUN_JSON` in the gitignored `nextjs/.env.local` to the orchestration run's `run.json`. Anywhere else it shows the slide's screenshot or words instead. It shows roles, models, and status only.
+The site is at http://localhost:3112.
