@@ -1,8 +1,7 @@
 ---
-title: The math department
+title: Harvard math, October 29
 layout: quote
-cite: "[source pending: CX verifying]"
-site: false
+cite: "Melanie Matchett Wood, director of graduate studies in Mathematics, in the FAS Current, October 29, 2026"
 ---
 
-[source pending: the Harvard math department on AI and dissertation-level work, around Oct 29–30; wording to come from the verified source]
+"AI can produce things that could have been acceptable Ph.D. theses a couple of years ago."

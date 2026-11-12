@@ -1,8 +1,7 @@
 ---
 title: Meanwhile, yesterday
 layout: quote
-cite: "[source pending: The Guardian, November 11, 2026; CX verifying]"
-site: false
+cite: "A university staff member, in a report by England's Office for Students and Advance HE; The Guardian, November 11, 2026"
 ---
 
-[source pending: the Guardian on AI making coursework close to impossible to assess; wording to come from the verified article]
+"…pervasive use of AI may render our assessment of students close to impossible in some areas."
