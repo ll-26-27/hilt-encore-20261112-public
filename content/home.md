@@ -10,7 +10,7 @@ people:
 url: ""
 ---
 
-This fall the Learning Lab ran an intensive for Harvard faculty: four days, from wherever they were, even with no coding or command-line experience, to building with Claude Code. It overbooked so quickly that we added two more.
+This year the Learning Lab ran an intensive for Harvard faculty: four days, from wherever they were, even with no coding or command-line experience, to building with Claude Code. It overbooked so quickly that we added two more.
 
 This is what we learned from doing it: how we designed it, how the design shifted while the tools changed under us, and what it has changed in our own work and in our class.
 

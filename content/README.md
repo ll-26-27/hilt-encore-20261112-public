@@ -48,14 +48,16 @@ Body: the part as a readable page for participants (not shown on the slides).
 | field | what |
 | --- | --- |
 | `title` | string, shown big |
-| `layout` | one of `statement` (one big line, the default), `bullets`, `quote`, `image`, `demo`, `set-piece`, `shift`, `qr` |
+| `layout` | one of `statement` (one big line, the default), `bullets`, `quote`, `image`, `demo`, `set-piece`, `shift`, `made`, `qr` |
 | `who` | optional; a small label in the corner, e.g. `Madeleine` |
 | `image` | optional; a path beside the file or a URL (layout `image`) |
 | `demo` | optional; a URL or site path the slide opens (layout `demo`; shows a big "open" button and the address) |
 | `cite` | optional; a source line under a quote |
 | `site` | optional, default `true`; `false` keeps the slide out of the readable part page |
 
-Body: the slide's words in Markdown. Keep slides short: one heading-sized line, or three to five bullets. For layout `shift`, write one `## <label>` per column (e.g. `## Sept`, `## Oct`, `## Nov`) with bullets under each; the app shows them as columns that reveal one by one.
+Body: the slide's words in Markdown. Keep slides short: one heading-sized line, or three to five bullets. For layout `shift` (meant for part 3's day-by-day plan), write one `## <label>` per column (e.g. `## Sept`, `## Oct`, `## Nov`) with bullets under each; the app shows them as columns that reveal one by one. Layout `made` is "how this talk was made": the live view of this morning's workspace (part 4); set `image:` to a screenshot as the fallback for when it isn't live, and the body's words are the fallback if there's no image. `kind` and `speaker` are accepted as aliases of `layout` and `who`. There is no `notes` field: speaker notes are never published.
+
+The app makes two slides itself: part `00`'s first slide is a title slide from `home.md` (with the QR code and a countdown), and part `06` gets a QR "take it home" slide unless it already has a `qr` slide. A missing part number shows as a placeholder.
 
 **`take-home.md`**: frontmatter `title`, `subtitle`. Body: `## <group>` headings with link lists. Every link is a full `https://` URL, so it works on a phone.
 
