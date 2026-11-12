@@ -4,7 +4,7 @@ Small scripts that call AI models, one script per call, written by the Learning 
 
 - **`huit/`**: Harvard's own AI API gateways, run by HUIT. HUIT's documentation says which data levels each gateway is approved for; [`../_context/huit/`](../_context/huit/) records what it says, gateway by gateway. You need your own HUIT key from the Harvard API Portal.
 - **`external/`**: tools outside Harvard (fal and others). **They are not Harvard-approved: send them only public (Level 1) material, never confidential data. Use the HUIT APIs for anything sensitive.** See [`external/README.md`](external/README.md).
-- **`lib/`**: a few shared helpers (finding keys, masking them).
+- **`lib/`**: shared helpers: [`env.mjs`](lib/env.mjs) finds keys and hides them in dry runs; [`gateways.mjs`](lib/gateways.mjs) holds each HUIT gateway's address, key name, and header.
 - **`test/`**: tests. `node --test ll-utilities/test/` runs the dry-run tests, which need no keys and send nothing; [`test/live.md`](test/live.md) lists the live tests.
 
 ## Keys
