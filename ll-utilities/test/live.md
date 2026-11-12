@@ -81,3 +81,11 @@ open /tmp/ll-test/teapot.png
 ```
 
 Expect a 1024×1024 PNG and a `.json` beside it with token usage.
+
+## embed.mjs
+
+```
+node ll-utilities/huit/embed.mjs "a cat sleeping on a mat" "a kitten napping on a rug" "the quarterly budget report"
+```
+
+Expect 1536 numbers per text, and the cat and kitten pair far more similar (about 0.7) than either is to the budget report (about 0.05).

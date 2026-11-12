@@ -185,3 +185,14 @@ test('gpt-image --dry-run builds an OpenAI Direct /images/generations request', 
   assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
   assert.deepEqual(req.body, { model: 'gpt-image-1-mini', prompt: 'a teapot', n: 1, size: '1536x1024', quality: 'low' })
 })
+
+// embed.mjs -----------------------------------------------------------------
+
+test('embed --dry-run sends every text, from arguments and --lines', () => {
+  const lines = join(tmp, 'lines.txt')
+  writeFileSync(lines, 'first line\n\nsecond line\n')
+  const req = dryRun('embed.mjs', ['a cat', '--lines', lines])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-openai-direct/v2/embeddings')
+  assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
+  assert.deepEqual(req.body, { model: 'text-embedding-3-small', input: ['a cat', 'first line', 'second line'] })
+})
