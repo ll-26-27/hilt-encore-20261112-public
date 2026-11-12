@@ -1,0 +1,31 @@
+# ll-utilities
+
+Small scripts that call AI models, one script per call, written by the Learning Lab for people who want to read every line. Plain Node.js 22 or later, no packages to install.
+
+- **`huit/`**: Harvard's own AI API gateways, run by HUIT. HUIT's documentation says which data levels each gateway is approved for (OpenAI Direct says Level 3 confidential data); [`../_context/huit/`](../_context/huit/) records what it says. You need your own HUIT key from the Harvard API Portal.
+- **`external/`**: tools outside Harvard (fal and others). **Never send Level 3 data to them.** See [`external/README.md`](external/README.md).
+- **`lib/`**: a few shared helpers (finding keys, masking them).
+- **`test/`**: tests. `node --test ll-utilities/test/` runs the dry-run tests, which need no keys and send nothing; [`test/live.md`](test/live.md) lists the live tests.
+
+## Keys
+
+Copy `.env.example` (at the repo root) to `.env` and fill in the keys you have. Scripts read keys from the shell environment, or from `.env` at the repo root if the shell doesn't have them, so both of these work:
+
+```
+node --env-file=.env ll-utilities/huit/transcribe.mjs clip.m4a
+node ll-utilities/huit/transcribe.mjs clip.m4a
+```
+
+Every script has `--help` and `--dry-run`. A dry run prints the request it would send, with the key hidden, and sends nothing. Start there.
+
+## HUIT scripts
+
+Each was written fresh against HUIT's documentation and run once against the live gateway with a tiny, made-up input. "Tested" says when, with what model, and what happened.
+
+| script | HUIT API · endpoint | what it does | tested |
+| --- | --- | --- | --- |
+| [`huit/transcribe.mjs`](huit/transcribe.mjs) | OpenAI Direct v2 · `POST /audio/transcriptions` | audio file (25 MB max) in; `<name>.transcript.md` and the raw `<name>.transcript.json` out beside it. Options: `--language`, `--prompt`, `--timestamps` | 2026-11-12 · `whisper-1` · a 5-second clip made with macOS `say`, transcribed correctly in 2.2 s |
+
+Gateway notes from testing:
+
+- **Transcription:** HUIT forces `response_format=verbose_json`, so every transcript comes back with segments and timings; the script keeps that JSON beside the Markdown. `whisper-1` is the model HUIT documents.
