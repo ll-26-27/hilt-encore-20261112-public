@@ -92,3 +92,20 @@ test('gemini-image needs --prompt', () => {
   assert.equal(result.status, 1)
   assert.match(result.stderr, /--prompt is required/)
 })
+
+// quota.mjs -----------------------------------------------------------------
+
+test('quota --dry-run asks every gateway, Bedrock with x-api-key', () => {
+  const reqs = dryRun('quota.mjs', [])
+  assert.deepEqual(reqs.map(r => r.gateway), ['openai', 'gemini', 'bedrock'])
+  assert.equal(reqs[0].url, 'https://apis.huit.harvard.edu/ais-openai-direct/v2/apigee/quota')
+  assert.equal(reqs[2].url, 'https://apis.huit.harvard.edu/ais-bedrock-llm/apigee/quota')
+  assert.ok(reqs[2].headers['x-api-key'])
+  assert.ok(reqs[1].headers['api-key'])
+})
+
+test('quota rejects an unknown gateway', () => {
+  const result = run('quota.mjs', ['azure', '--dry-run'])
+  assert.equal(result.status, 1)
+  assert.match(result.stderr, /unknown gateway/)
+})

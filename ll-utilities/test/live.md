@@ -27,3 +27,13 @@ open /tmp/ll-test/boat.png /tmp/ll-test/boat-night.png
 ```
 
 Expect two 1024×1024 PNGs, the second the same scene at night, each with a `.json` beside it.
+
+## quota.mjs
+
+Free to run. Checks each gateway you have a key for:
+
+```
+node ll-utilities/huit/quota.mjs
+```
+
+Expect one line per gateway: spent, limit, period, and what's left. Run it before and after another test to see what that test cost.
