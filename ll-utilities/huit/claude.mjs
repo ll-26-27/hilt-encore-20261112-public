@@ -22,6 +22,10 @@ Options:
   --model <id>          Default us.anthropic.claude-sonnet-5-5. Also on the gateway (Nov 12):
                         us.anthropic.claude-haiku-5-5 (faster, cheaper), us.anthropic.claude-opus-5-5,
                         and global.* versions of each. List them all with --list-models.
+                        Fable models: HUIT's Bedrock documentation says Fable 5 runs in
+                        "provider data share mode" (Bedrock may keep your input and share it
+                        with Anthropic). Don't send confidential data to any Fable model; see
+                        _context/data-security/. The script warns before it sends.
   --max-tokens <n>      Longest answer, in tokens. Default 1024.
   --out <path>          Also save the answer as a Markdown file.
   --list-models         List the Claude models the gateway offers (free) and exit.
@@ -98,6 +102,13 @@ content.push({ text: prompt })
 const body = { messages: [{ role: 'user', content }], inferenceConfig: { maxTokens } }
 if (opt.system) body.system = [{ text: opt.system }]
 const path = `/v2/model/${encodeURIComponent(opt.model)}/converse`
+
+if (/fable/i.test(opt.model)) {
+  console.error(`claude: WARNING: ${opt.model} is a Fable model. HUIT's Bedrock documentation says Fable 5 runs
+  in "provider data share mode": Bedrock may retain what you send and share it with the model
+  provider. Every other Claude model on the gateway runs with data sharing off. Send Fable only
+  public or made-up material, never confidential data. See _context/data-security/.`)
+}
 
 if (opt['dry-run']) {
   console.log(JSON.stringify({ method: 'POST', url: `${g.base}${path}`, headers: { ...headers, [g.header]: mask(g.key) }, body }, null, 2))

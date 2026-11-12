@@ -50,3 +50,12 @@ node ll-utilities/huit/claude.mjs --list-models
 ```
 
 Expect a greeting, a one-sentence summary of the tea committee, and a list of Claude model IDs. Each call prints its token counts to stderr.
+
+## gpt.mjs
+
+```
+node ll-utilities/huit/gpt.mjs --effort minimal "Say hello to a room of Harvard educators in one short sentence."
+node ll-utilities/huit/gpt.mjs --file /tmp/ll-test/notes.md --effort low "Summarize in one sentence."
+```
+
+Expect a greeting and a one-sentence summary of the tea committee, with token counts on stderr.

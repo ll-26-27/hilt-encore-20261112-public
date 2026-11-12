@@ -131,3 +131,26 @@ test('claude needs a prompt', () => {
   assert.equal(result.status, 1)
   assert.match(result.stderr, /give a prompt/)
 })
+
+test('claude warns before sending to a Fable model', () => {
+  const result = run('claude.mjs', ['--model', 'global.anthropic.claude-fable-5', 'hi', '--dry-run'])
+  assert.equal(result.status, 0)
+  assert.match(result.stderr, /WARNING: .*Fable.*provider data share mode/s)
+})
+
+// gpt.mjs -------------------------------------------------------------------
+
+test('gpt --dry-run builds an OpenAI Direct /responses request', () => {
+  const req = dryRun('gpt.mjs', ['--file', notes, '--system', 'Be brief.', '--effort', 'low', 'Summarize.'])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-openai-direct/v2/responses')
+  assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
+  assert.equal(req.body.model, 'gpt-5-mini')
+  assert.match(req.body.input, /^<file name="notes.md">[\s\S]*Summarize\.$/)
+  assert.equal(req.body.instructions, 'Be brief.')
+  assert.deepEqual(req.body.reasoning, { effort: 'low' })
+})
+
+test('gpt rejects an unknown effort', () => {
+  const result = run('gpt.mjs', ['--effort', 'max', 'hi', '--dry-run'])
+  assert.equal(result.status, 1)
+})
