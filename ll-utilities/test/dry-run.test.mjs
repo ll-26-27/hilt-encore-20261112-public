@@ -63,3 +63,32 @@ test('transcribe refuses files over 25 MB before sending', () => {
   assert.equal(result.status, 1)
   assert.match(result.stderr, /25 MB/)
 })
+
+// gemini-image.mjs ----------------------------------------------------------
+
+const ref = join(tmp, 'ref.png')
+writeFileSync(ref, 'not really an image')
+
+test('gemini-image --help', () => {
+  const result = run('gemini-image.mjs', ['--help'])
+  assert.equal(result.status, 0)
+  assert.match(result.stdout, /generateContent/)
+})
+
+test('gemini-image --dry-run builds the HUIT request, refs as inlineData', () => {
+  const req = dryRun('gemini-image.mjs', ['--prompt', 'a paper boat', '--ref', ref, '--aspect', '16:9', '--out', join(tmp, 'boat.png')])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-google-gemini/v1beta/models/gemini-3.1-flash-image:generateContent')
+  assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
+  const [image, text] = req.body.contents[0].parts
+  assert.equal(image.inlineData.mimeType, 'image/png')
+  assert.match(image.inlineData.data, /ref\.png/)
+  assert.equal(text.text, 'a paper boat')
+  assert.deepEqual(req.body.generationConfig.responseModalities, ['TEXT', 'IMAGE'])
+  assert.equal(req.body.generationConfig.imageConfig.aspectRatio, '16:9')
+})
+
+test('gemini-image needs --prompt', () => {
+  const result = run('gemini-image.mjs', ['--dry-run'])
+  assert.equal(result.status, 1)
+  assert.match(result.stderr, /--prompt is required/)
+})

@@ -2,8 +2,8 @@
 
 Small scripts that call AI models, one script per call, written by the Learning Lab for people who want to read every line. Plain Node.js 22 or later, no packages to install.
 
-- **`huit/`**: Harvard's own AI API gateways, run by HUIT. HUIT's documentation says which data levels each gateway is approved for (OpenAI Direct says Level 3 confidential data); [`../_context/huit/`](../_context/huit/) records what it says. You need your own HUIT key from the Harvard API Portal.
-- **`external/`**: tools outside Harvard (fal and others). **Never send Level 3 data to them.** See [`external/README.md`](external/README.md).
+- **`huit/`**: Harvard's own AI API gateways, run by HUIT. HUIT's documentation says which data levels each gateway is approved for; [`../_context/huit/`](../_context/huit/) records what it says, gateway by gateway. You need your own HUIT key from the Harvard API Portal.
+- **`external/`**: tools outside Harvard (fal and others). **They are not Harvard-approved: send them only public (Level 1) material, never confidential data. Use the HUIT APIs for anything sensitive.** See [`external/README.md`](external/README.md).
 - **`lib/`**: a few shared helpers (finding keys, masking them).
 - **`test/`**: tests. `node --test ll-utilities/test/` runs the dry-run tests, which need no keys and send nothing; [`test/live.md`](test/live.md) lists the live tests.
 
@@ -25,7 +25,9 @@ Each was written fresh against HUIT's documentation and run once against the liv
 | script | HUIT API · endpoint | what it does | tested |
 | --- | --- | --- | --- |
 | [`huit/transcribe.mjs`](huit/transcribe.mjs) | OpenAI Direct v2 · `POST /audio/transcriptions` | audio file (25 MB max) in; `<name>.transcript.md` and the raw `<name>.transcript.json` out beside it. Options: `--language`, `--prompt`, `--timestamps` | 2026-11-12 · `whisper-1` · a 5-second clip made with macOS `say`, transcribed correctly in 2.2 s |
+| [`huit/gemini-image.mjs`](huit/gemini-image.mjs) | Google Gemini · `POST /v1beta/models/<model>:generateContent` (image output) | prompt in, image out; `--ref` adds reference images (sent as inlineData) to edit or restyle; `--aspect`; saves a `.json` beside it with the prompt, model, and token usage | 2026-11-12 · `gemini-3.1-flash-image` · a 1024×1024 PNG from a prompt in 9 s, and the same scene redrawn at night from a reference image in 10 s |
 
 Gateway notes from testing:
 
 - **Transcription:** HUIT forces `response_format=verbose_json`, so every transcript comes back with segments and timings; the script keeps that JSON beside the Markdown. `whisper-1` is the model HUIT documents.
+- **Gemini images:** the gateway's model list (`GET /v1beta1/publishers/google/models`, no charge) showed these image models on Nov 12: `gemini-3.1-flash-image` (tested), `gemini-3.1-flash-lite-image`, `gemini-3-pro-image`, `gemini-3.1-flash-image-preview`, `gemini-nano-banana-2.1` (listed, not tested).

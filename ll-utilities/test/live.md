@@ -15,3 +15,15 @@ cat /tmp/ll-test/hello.transcript.md
 ```
 
 Expect two timestamped lines matching what `say` spoke.
+
+## gemini-image.mjs
+
+Make an image from a prompt, then change it using that image as a reference:
+
+```
+node ll-utilities/huit/gemini-image.mjs --prompt "a small flat illustration of a red paper boat on a blue pond" --aspect 1:1 --out /tmp/ll-test/boat.png
+node ll-utilities/huit/gemini-image.mjs --prompt "the same scene at night, with the moon reflected in the pond" --ref /tmp/ll-test/boat.png --out /tmp/ll-test/boat-night.png
+open /tmp/ll-test/boat.png /tmp/ll-test/boat-night.png
+```
+
+Expect two 1024×1024 PNGs, the second the same scene at night, each with a `.json` beside it.

@@ -2,7 +2,7 @@
 // transcribe.mjs: audio in, Markdown transcript out, through HUIT's OpenAI Direct gateway.
 //
 // HUIT API: OpenAI Direct v2, POST /audio/transcriptions (multipart form).
-// HUIT says this gateway is approved for Level 3 confidential data.
+// Which data levels it is approved for: HUIT's documentation says, and _context/huit/ records it.
 // Limits: 25 MB per file; HUIT forces response_format=verbose_json.
 //
 //   node --env-file=.env ll-utilities/huit/transcribe.mjs interview.m4a
