@@ -64,9 +64,11 @@ Every route the gateway allows. Status is as of November 12, 2026.
 | --- | --- | --- |
 | GET | `/apigee/quota` | **tested** (`quota.mjs`) |
 
-### Not allowed (expect 403 or 404)
+### Not in HUIT's route list (expect 403 or 404)
 
-`GET /models`, `GET /files` and `GET /vector_stores` (the list routes), `DELETE /responses/{id}`, conversation item routes, `/audio/speech`, image edits and variations, moderations, fine-tuning, uploads, realtime. With no `GET /models`, the gateway can't tell a script which models exist; HUIT says new OpenAI models become available as they are publicly released.
+`GET /files` and `GET /vector_stores` (the list routes), `DELETE /responses/{id}`, conversation item routes, `/audio/speech`, image edits and variations, moderations, fine-tuning, uploads, realtime.
+
+**`GET /models`** isn't in HUIT's route list either, but on November 12 it answered 200 with a model list (tested). It works today and is undocumented, so don't build on it; HUIT says new OpenAI models become available as they are publicly released.
 
 Answers: 200; 400; 401 (wrong key or header); 403 (app not approved, or a route not allowed); 404; 429 (over budget); 500; 503 (OpenAI outage).
 
