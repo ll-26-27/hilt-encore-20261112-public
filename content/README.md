@@ -54,7 +54,7 @@ Body: the part as a readable page for participants (not shown on the slides).
 | `demo` | optional; a URL or site path the slide opens (layout `demo`; shows a big "open" button and the address) |
 | `cite` | optional; a source line under a quote |
 | `site` | optional, default `true`; `false` keeps the slide out of the readable part page |
-| `present` | optional, default `true`; `false` keeps the slide out of the talk at `/present` (and its grid and part jumps) but still shows it on `/talk/<part>`. Marlon, Nov 12, ~7:05 AM: "we won't be able to show every single thing--many we can just describe loosely." Which slides are shown follows the "Show, or say loosely" table in the private run of show. |
+| `present` | optional, default `true`; `false` keeps the slide out of the talk at `/present` (and its grid and part jumps) but still shows it on `/talk/<part>`. Marlon, Nov 12, ~6:22 AM: "we won't be able to show every single thing--many we can just describe loosely." Which slides are shown follows the "Show, or say loosely" table in the private run of show. |
 
 Body: the slide's words in Markdown. Keep slides short: one heading-sized line, or three to five bullets. For layout `shift` (meant for part 3's day-by-day plan), write one `## <label>` per column (e.g. `## Sept`, `## Oct`, `## Nov`) with bullets under each; the app shows them as columns that reveal one by one. Layout `made` is "how this talk was made": the live view of this morning's workspace (part 4); set `image:` to a screenshot as the fallback for when it isn't live, and the body's words are the fallback if there's no image. `kind` and `speaker` are accepted as aliases of `layout` and `who`. There is no `notes` field: speaker notes are never published.
 
