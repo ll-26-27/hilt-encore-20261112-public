@@ -26,6 +26,7 @@ Harvard classifies data in levels, from Level 1 (public) up through Level 2 and 
 | path | what | for |
 | --- | --- | --- |
 | `_context/` | the context folder: who the Learning Lab is, the talk, how to use this repo, HUIT's APIs, Harvard's data levels | read it before working |
+| `_context/huit/reference/` | every route HUIT's three gateways allow, with request bodies and what this kit has tested; HUIT's full specs are in the Harvard API Portal (HarvardKey) | read it before writing a new HUIT script |
 | `ll-utilities/huit/` | one script per HUIT AI API call (transcription, text, images, embeddings, quota) | sensitive-capable work, with the person's own HUIT key |
 | `ll-utilities/external/` | scripts for external tools (fal image generation) | non-sensitive work only |
 | `ll-utilities/lib/` | small shared helpers the scripts use | |

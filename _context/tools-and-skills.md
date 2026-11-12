@@ -10,6 +10,7 @@ Each script makes one kind of call to one AI service, and is short enough to rea
   - `gemini-image.mjs`, `gpt-image.mjs`: a prompt (and, for Gemini, reference images) in, an image out.
   - `embed.mjs`: texts in; which are most alike, and the vectors if you want them.
   - `quota.mjs`: what is left on your key on each gateway (free).
+  - To write another (streaming, document search, batches), start from [`huit/reference/`](huit/reference/), which lists every route each gateway allows and what is tested.
 - **`external/`: tools outside Harvard's gateways.** Image generation with fal. **Not Harvard-approved: only public (Level 1) or made-up material, never confidential data.** Each one prints a warning before it sends.
 
 Why scripts and not an app? Because a script is something you and your agent can both read, run, and change. Once a call works as a script, Claude can use it inside anything you build: a skill, a web page, a pipeline for a whole folder.
