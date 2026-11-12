@@ -57,9 +57,10 @@ async function agents(): Promise<MadeAgent[]> {
         role: ROLES[agent.id] ?? "",
         provider: agent.provider ?? "",
         model: agent.model ?? "",
-        status: handoff ? "handed off" : runtime?.status ?? "",
+        // A handoff can be a mid-run checkpoint ("partial"); only a complete one counts as done.
+        status: handoff?.status === "complete" ? "done" : runtime?.status ?? "",
         startedAt: runtime?.startedAt ?? "",
-        done: Boolean(handoff),
+        done: handoff?.status === "complete",
       };
     }),
   );
