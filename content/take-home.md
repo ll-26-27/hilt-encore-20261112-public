@@ -41,6 +41,11 @@ Our course this term, one public repository per week. Each is a working app the 
 - [Learning Lab origin stories](https://bok-learning-lab.github.io/ll-origin-stories/). Eight-panel comics from our origin-story workshops, with the skill that makes them.
 - [All the Learning Lab's public repositories](https://github.com/ll-26-27)
 
+## Sources we cited
+
+- ["Solving an urgent math problem: How to educate grad students amid AI disruptions"](https://current.fas.harvard.edu/stories/solving-urgent-math-problem-how-educate-grad-students-amid-ai-disruptions). Kermit Pattison, FAS Current, October 29, 2026.
+- ["AI has made it 'close to impossible' to assess university coursework, regulator says"](https://www.theguardian.com/education/2026/nov/11/ai-close-to-impossible-assess-university-coursework-regulator). Richard Adams, The Guardian, November 11, 2026.
+
 ## The Bok Center and the Learning Lab
 
 - [The Learning Lab](https://bokcenter.harvard.edu/learning-lab)
