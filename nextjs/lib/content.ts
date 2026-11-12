@@ -39,6 +39,7 @@ export type Slide = Doc & {
   demo: string;
   cite: string;
   site: boolean;
+  present: boolean; // false: on /talk/<part> for readers, but left out of the slides at /present
   steps: number; // how many presses reveal the slide (shift columns); 1 for most
 };
 
@@ -137,6 +138,7 @@ function toSlide(partSlug: string, fileSlug: string, doc: Doc): Slide {
     demo: str(doc.data.demo),
     cite: str(doc.data.cite),
     site: doc.data.site !== false,
+    present: doc.data.present !== false,
     steps: Math.max(1, columns),
   };
 }

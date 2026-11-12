@@ -48,6 +48,8 @@ The site is at http://localhost:3112. It reads `content/` on every request, so e
 
 On a phone, swipe left and right.
 
+Not every slide is shown in the talk. A slide with `present: false` in its frontmatter is left out of `/present` (and its grid and part jumps) but still appears on its part's page at `/talk/<part>`, for participants to read. `site: false` does the opposite: the slide is shown in the talk but left off the part's page.
+
 ## Live parts
 
 - **The title slide** counts down to noon ET, then shows how long the talk has been running.

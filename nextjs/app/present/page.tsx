@@ -156,11 +156,13 @@ export default async function PresentPage() {
     const base = { part: part.number, partTitle: part.title, who: "", steps: 1 };
     if (isOpen(part)) frames.push({ ...base, key: "open", title: home.title, layout: "title", body: <TitleBody home={home} svg={svg} url={url} /> });
     else frames.push({ ...base, key: part.slug, title: part.title, layout: "part", who: part.who, body: <PartBody part={part} /> });
-    for (const slide of part.slides) {
+    // Slides marked present: false stay on the part's page but aren't shown in the talk.
+    const shown = part.slides.filter((slide) => slide.present);
+    for (const slide of shown) {
       frames.push({ ...base, key: slide.id, title: slide.title, layout: slide.layout, who: slide.who, steps: slide.steps, body: <SlideBody slide={slide} svg={svg} url={url} /> });
     }
-    if (isClose(part) && !part.slides.some((s) => s.layout === "qr")) {
-      frames.push({ ...base, key: "take-home", title: "Take it home", layout: "qr", body: <SlideBody slide={{ ...part, id: "take-home", title: "Take it home", layout: "qr", who: "", image: "", demo: "", cite: "", site: true, steps: 1, content: "Repos, tools, and examples from today, on the site's take-home page." }} svg={svg} url={url} /> });
+    if (isClose(part) && !shown.some((s) => s.layout === "qr")) {
+      frames.push({ ...base, key: "take-home", title: "Take it home", layout: "qr", body: <SlideBody slide={{ ...part, id: "take-home", title: "Take it home", layout: "qr", who: "", image: "", demo: "", cite: "", site: true, present: true, steps: 1, content: "Repos, tools, and examples from today, on the site's take-home page." }} svg={svg} url={url} /> });
     }
   }
 
