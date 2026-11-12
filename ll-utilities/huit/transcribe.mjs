@@ -25,7 +25,7 @@ const HELP = `Usage: node --env-file=.env ll-utilities/huit/transcribe.mjs <audi
 
 Transcribes one audio file with HUIT's OpenAI Direct gateway (v2, /audio/transcriptions).
 Writes <name>.transcript.md and <name>.transcript.json next to the audio. A video file
-(mov, mkv, avi, or an mp4 with a picture) has its sound extracted first with ffmpeg
+(mov, mkv, avi, or an mp4 or webm with a picture) has its sound extracted first with ffmpeg
 (mono, 16 kHz MP3, removed afterwards); nothing else of the video is sent.
 
 Options:
@@ -46,12 +46,14 @@ Environment (read from the shell, or from .env at the repo root):
   HUIT_OPENAI_API_KEY    your OpenAI Direct key from the Harvard API Portal (required)
   HUIT_OPENAI_BASE_URL   default https://apis.huit.harvard.edu/ais-openai-direct/v2
 
-Files over 25 MB are refused before upload. Shrink speech with:
+Audio files over 25 MB are refused before upload (for a video, its extracted sound is
+checked instead). Shrink speech with:
   ffmpeg -i in.m4a -ac 1 -ar 16000 -b:a 32k out.m4a`
 
 const MAX_BYTES = 25 * 1024 * 1024
 const DEFAULT_BASE = 'https://apis.huit.harvard.edu/ais-openai-direct/v2'
 const VIDEO_TYPES = new Set(['.mov', '.mkv', '.avi', '.mxf', '.m4v'])
+const MAYBE_VIDEO = new Set(['.mp4', '.webm'])
 const AUDIO_TYPES = { '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4', '.mp4': 'audio/mp4', '.wav': 'audio/wav', '.webm': 'audio/webm', '.ogg': 'audio/ogg', '.flac': 'audio/flac', '.mpeg': 'audio/mpeg', '.mpga': 'audio/mpeg' }
 
 const fail = message => quit('transcribe', message)
@@ -131,11 +133,23 @@ const file = resolve(positionals[0])
 const info = await stat(file).catch(() => fail(`file not found: ${positionals[0]}`))
 if (!info.isFile()) fail(`not a file: ${positionals[0]}`)
 const ext = extname(file).toLowerCase()
-// mp4 can be audio-only or video; it's treated as video only when --words needs a probe anyway.
-const isVideo = VIDEO_TYPES.has(ext)
-if (!isVideo && !AUDIO_TYPES[ext]) fail(`${basename(file)}: use an audio file (${Object.keys(AUDIO_TYPES).join(' ')}) or a video (${[...VIDEO_TYPES].join(' ')}).`)
+if (!VIDEO_TYPES.has(ext) && !AUDIO_TYPES[ext]) fail(`${basename(file)}: use an audio file (${Object.keys(AUDIO_TYPES).join(' ')}) or a video (${[...VIDEO_TYPES].join(' ')}).`)
+// mp4 and webm can be sound only or video (HyperDeck records mp4): ffprobe looks for a picture.
+// Without ffprobe they're sent as they are, as before.
+let isVideo = VIDEO_TYPES.has(ext)
+let noProbe = false
+if (MAYBE_VIDEO.has(ext)) {
+  try {
+    const streams = JSON.parse(run('ffprobe', ['-v', 'error', '-show_entries', 'stream=codec_type:stream_disposition=attached_pic', '-of', 'json', file])).streams || []
+    isVideo = streams.some(s => s.codec_type === 'video' && !s.disposition?.attached_pic)
+  } catch (error) {
+    if (!/not installed/.test(error.message)) fail(`couldn't read ${basename(file)}: ${error.message}`)
+    noProbe = true
+  }
+}
+// The 25 MB limit applies to what's sent: a video's extracted sound is checked after extraction.
 if (!isVideo && info.size > MAX_BYTES) {
-  fail(`${basename(file)} is ${(info.size / 1048576).toFixed(1)} MB; HUIT's limit is 25 MB. Shrink or split it first:\n  ffmpeg -i in.m4a -ac 1 -ar 16000 -b:a 32k out.m4a`)
+  fail(`${basename(file)} is ${(info.size / 1048576).toFixed(1)} MB; HUIT's limit is 25 MB. Shrink or split it first:\n  ffmpeg -i in.m4a -ac 1 -ar 16000 -b:a 32k out.m4a${noProbe ? `\nIf it's a video, install ffmpeg (brew install ffmpeg) and its sound will be extracted instead.` : ''}`)
 }
 
 const mdPath = opt.out ? resolve(opt.out) : join(dirname(file), `${basename(file, extname(file))}.transcript.md`)

@@ -54,7 +54,7 @@ HUIT's gateways take the key in a header: `api-key` for OpenAI Direct and Gemini
 
 Transcribes one audio file, or a video's sound, optionally with every word's timing. **Endpoint:** OpenAI Direct v2, `POST /audio/transcriptions` (multipart form).
 
-**Call:** `node ll-utilities/huit/transcribe.mjs <audio-or-video-file> [options]`. Exactly one positional argument. Audio types: mp3, m4a, mp4, wav, webm, ogg, flac, mpeg, mpga (sent as is; over 25 MB is refused before upload; shrink speech with `ffmpeg -i in.m4a -ac 1 -ar 16000 -b:a 32k out.m4a`). Video types: mov, mkv, avi, mxf, m4v: the first audio track is extracted with ffmpeg to mono 16 kHz MP3 in a temporary folder, sent, and deleted; nothing else of the video leaves the machine. With `--words`, an mp4 with a picture is treated as video too.
+**Call:** `node ll-utilities/huit/transcribe.mjs <audio-or-video-file> [options]`. Exactly one positional argument. Audio types: mp3, m4a, mp4, wav, webm, ogg, flac, mpeg, mpga (sent as is; over 25 MB is refused before upload; shrink speech with `ffmpeg -i in.m4a -ac 1 -ar 16000 -b:a 32k out.m4a`). Video types: mov, mkv, avi, mxf, m4v, and any mp4 or webm that ffprobe finds a picture in (HyperDeck records mp4; cover art doesn't count): the first audio track is extracted with ffmpeg to mono 16 kHz MP3 in a temporary folder, sent, and deleted; nothing else of the video leaves the machine. A video of any size is accepted; the 25 MB limit is checked on the extracted sound. Without ffprobe, mp4 and webm are sent as is.
 
 | option | type | default | allowed values and notes |
 | --- | --- | --- | --- |

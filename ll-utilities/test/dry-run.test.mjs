@@ -75,6 +75,31 @@ test('transcribe refuses files over 25 MB before sending', () => {
   assert.match(result.stderr, /25 MB/)
 })
 
+// HyperDeck records .mp4: an mp4 (or webm) with a picture is a video, whatever its size.
+const hasFfmpeg = ['ffmpeg', 'ffprobe'].every(tool => spawnSync(tool, ['-version']).status === 0)
+test('transcribe tells an mp4 video from an mp4 of sound, and checks 25 MB only on what it sends', { skip: hasFfmpeg ? false : 'needs ffmpeg and ffprobe' }, () => {
+  const ffmpeg = args => assert.equal(spawnSync('ffmpeg', ['-v', 'error', '-y', ...args]).status, 0)
+  const video = join(tmp, 'hyperdeck.mp4')
+  ffmpeg(['-f', 'lavfi', '-i', 'testsrc2=size=160x90:rate=30', '-f', 'lavfi', '-i', 'sine=frequency=440', '-t', '1',
+    '-c:v', 'libx264', '-preset', 'ultrafast', '-pix_fmt', 'yuv420p', '-c:a', 'aac', video])
+  assert.match(dryRun('transcribe.mjs', [video]).form.file, /^the sound of hyperdeck\.mp4/)
+
+  // A 30 MB "4K recording": the same file padded with zeros, which ffprobe still reads.
+  const big = join(tmp, 'big-hyperdeck.mp4')
+  ffmpeg(['-i', video, '-c', 'copy', big])
+  truncateSync(big, 30 * 1024 * 1024)
+  assert.match(dryRun('transcribe.mjs', [big, '--words']).form.file, /^the sound of big-hyperdeck\.mp4/)
+
+  // An mp4 with sound only is sent as it is, so the 25 MB limit applies to it.
+  const sound = join(tmp, 'voice.mp4')
+  ffmpeg(['-f', 'lavfi', '-i', 'sine=frequency=440', '-t', '1', '-c:a', 'aac', sound])
+  assert.match(dryRun('transcribe.mjs', [sound]).form.file, /^voice\.mp4 \(\d+ bytes\)$/)
+  truncateSync(sound, 26 * 1024 * 1024)
+  const refused = run('transcribe.mjs', [sound, '--dry-run'])
+  assert.equal(refused.status, 1)
+  assert.match(refused.stderr, /25 MB/)
+})
+
 // gemini-image.mjs ----------------------------------------------------------
 
 const ref = join(tmp, 'ref.png')
