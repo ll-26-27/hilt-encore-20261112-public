@@ -15,14 +15,14 @@ The Learning Lab at the Derek Bok Center for Teaching and Learning is a studio f
 
 ## In this app
 
-- **Examples:** things we've made with AI, each with how we made it and what went wrong.
-- **Utilities:** small scripts that call Harvard's own AI gateways, with commands to copy.
-- **Ideas:** 132 teaching and learning ideas from our course, written for any subject.
+- **[Examples](/examples):** things we've made with AI, each with how we made it and what went wrong.
+- **[Utilities](/utilities):** small scripts that call Harvard's own AI gateways, with commands to copy.
+- **[Ideas](/ideas):** 132 teaching and learning ideas from our course, written for any subject.
 
 ## In the repository
 
 Everything here is in a public repository you can copy and change: https://github.com/ll-26-27/hilt-encore-20261112-public
 
-- `ll-utilities/`: the scripts, one per AI call, readable line by line.
-- `.env.example`: the names of the keys the scripts read; copy it to `.env` and fill in your own.
-- `nextjs/`: this app, to run on your own computer or copy for your own course.
+- [`ll-utilities/`](https://github.com/ll-26-27/hilt-encore-20261112-public/tree/main/ll-utilities): the scripts, one per AI call, readable line by line.
+- [`.env.example`](https://github.com/ll-26-27/hilt-encore-20261112-public/blob/main/.env.example): the names of the keys the scripts read; copy it to `.env` and fill in your own.
+- [`nextjs/`](https://github.com/ll-26-27/hilt-encore-20261112-public/tree/main/nextjs): this app, to run on your own computer or copy for your own course.
