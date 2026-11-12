@@ -1,0 +1,316 @@
+
+\documentclass[test,letterpaper]{cs20}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\begin{document}
+
+\header{5}{Final Exam}
+
+
+\begin{problem}
+
+For sets $A$ and $B$, define the \emph{symmetric difference} as $A \triangle B = (A \setminus B) \cup (B \setminus A)$.
+
+\subproblem Prove that $A \triangle B = (A \cup B) \setminus (A \cap B)$. (Hint: show $\subseteq$ in both directions.)
+
+\subproblem Using part (a), prove the cardinality formula $|A \triangle B| = |A| + |B| - 2|A \cap B|$ for finite sets $A$ and $B$. You may assume the inclusion--exclusion principle $|A \cup B| = |A| + |B| - |A \cap B|$ without proof.
+
+\subproblem State a condition on $A$ and $B$ that characterizes exactly when $A \triangle B = A \cup B$. (No justification required.)
+
+\begin{solution}
+\subsolution ($\subseteq$) Let $x \in A \triangle B = (A \setminus B) \cup (B \setminus A)$. Then either $x \in A$ and $x \notin B$, or $x \in B$ and $x \notin A$. In either case $x \in A \cup B$ and $x \notin A \cap B$, so $x \in (A \cup B) \setminus (A \cap B)$.
+
+($\supseteq$) Let $x \in (A \cup B) \setminus (A \cap B)$. Then $x \in A \cup B$ and $x \notin A \cap B$. Since $x \in A$ or $x \in B$ but $x$ is not in both, $x$ is in exactly one of them, so $x \in (A \setminus B) \cup (B \setminus A) = A \triangle B$. $\blacksquare$
+
+\subsolution By part (a), $A \triangle B = (A \cup B) \setminus (A \cap B)$. Since $A \cap B \subseteq A \cup B$, the elements of $A \triangle B$ are exactly the elements of $A \cup B$ that are not in $A \cap B$, so
+\[
+|A \triangle B| = |A \cup B| - |A \cap B|.
+\]
+By inclusion--exclusion, $|A \cup B| = |A| + |B| - |A \cap B|$. Substituting,
+\[
+|A \triangle B| = |A| + |B| - |A \cap B| - |A \cap B| = |A| + |B| - 2|A \cap B|. \quad \blacksquare
+\]
+
+\subsolution $A \triangle B = A \cup B$ iff $A$ and $B$ are disjoint (i.e., $A \cap B = \emptyset$).
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+Consider the claim: \emph{For all positive integers $a$ and $b$, if $ab$ is a perfect square, then both $a$ and $b$ are perfect squares.} (Recall: a positive integer $m$ is a \emph{perfect square} if there exists a positive integer $j$ with $m = j^2$.)
+
+\subproblem Disprove the claim by giving an explicit counterexample with concrete values of $a$ and $b$. Verify that your counterexample satisfies the hypothesis but not the conclusion.
+
+\subproblem Prove the \emph{strengthened claim:} For all positive integers $a$ and $b$ with $\gcd(a, b) = 1$, if $ab$ is a perfect square, then both $a$ and $b$ are perfect squares. You may use without proof the fact that every positive integer has a unique prime factorization.
+
+\begin{solution}
+\subsolution Take $a = 2$ and $b = 8$. Then $ab = 16 = 4^2$ is a perfect square. But $a = 2$ is not a perfect square (since $1^2 = 1$ and $2^2 = 4$ skip over 2), and $b = 8$ is not a perfect square (since $2^2 = 4$ and $3^2 = 9$ skip over 8). The hypothesis holds but the conclusion fails.
+
+\subsolution If $ab = k^2$, then by unique prime factorization every prime $p$ appears in $ab$ with even total exponent. Now decompose $a$ and $b$ into their prime factorizations. The hypothesis $\gcd(a,b) = 1$ means no prime appears in both $a$ and $b$, so each prime's contribution to the exponent in $ab$ comes entirely from $a$ alone or from $b$ alone. Since the total exponent of each prime is even and that exponent lives entirely in one factor, the exponent in $a$ alone (and likewise in $b$ alone) must already be even. Hence $a$ and $b$ are each perfect squares. The counterexample in part (a) violates this hypothesis: $\gcd(2, 8) = 2 \neq 1$, so the prime $2$ appears in both $a$ and $b$ and the exponents can ``cancel'' to even in the product without being even in each factor individually.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+Let $R$ be a relation on a set $A$ with $|A| \geq 2$. Recall that irreflexivity means that for every $x \in A$, $(x, x) \notin R$.
+
+\subproblem Prove the following: \emph{If $R$ is symmetric, transitive, and irreflexive, then $R = \emptyset$ (i.e., no pair is related).}
+
+\subproblem Show that the conclusion of part (a) can fail if the transitive hypothesis is dropped. Give a concrete non-empty relation on $A = \{1, 2, 3\}$ that is symmetric and irreflexive but not transitive, and verify your example.
+
+\begin{solution}
+\subsolution Suppose for contradiction that $R \neq \emptyset$. Then there exist $x, y \in A$ with $(x, y) \in R$. By symmetry, $(y, x) \in R$. By transitivity applied to $(x, y)$ and $(y, x)$, $(x, x) \in R$. But $R$ is irreflexive, so $(x, x) \notin R$. Contradiction. Hence $R = \emptyset$. $\blacksquare$
+
+\subsolution Take $R = \{(1, 2), (2, 1)\}$. Symmetric: yes ($(1,2)$ and $(2,1)$ are both present). Irreflexive: no $(x,x)$ pair. Transitive fails: $(1,2), (2,1) \in R$ but $(1,1) \notin R$. $R$ is non-empty.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+On the Cartesian plane, a \emph{lattice path} is a sequence of unit steps either right $(+1, 0)$ or up $(0, +1)$. For example, $(0,0) \to (1,0) \to (1,1) \to (2,1)$ is a lattice path from $(0,0)$ to $(2,1)$.
+
+\bigskip
+
+Consider lattice paths from the origin $(0,0)$ to the point $(5,3)$.
+
+\subproblem How many such paths exist with no further restrictions?
+
+\subproblem How many such paths pass through the point $(3, 2)$?
+
+\begin{solution}
+\subsolution Each path uses $5$ rights and $3$ ups for a total of $8$ steps. Choose which $3$ are ``up'':
+\[
+\binom{8}{3} = 56.
+\]
+
+\subsolution A path through $(3, 2)$ is the concatenation of a path from $(0,0)$ to $(3,2)$ (which uses $3$ rights and $2$ ups, $\binom{5}{2} = 10$ paths) with a path from $(3,2)$ to $(5,3)$ (which uses $2$ rights and $1$ up, $\binom{3}{1} = 3$ paths). By the product rule, the count is $10 \cdot 3 = 30$.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+\subproblem Verify that $7 \mid 8^n - 1$ for $n = 1, 2, 3$ by direct computation.
+
+\subproblem Prove by induction that $7 \mid 8^n - 1$ for every integer $n \geq 1$.
+
+\begin{solution}
+\subsolution
+\begin{itemize}
+\item $n = 1$: $8^1 - 1 = 7$, divisible by $7$.
+\item $n = 2$: $8^2 - 1 = 63 = 7 \cdot 9$, divisible by $7$.
+\item $n = 3$: $8^3 - 1 = 511 = 7 \cdot 73$, divisible by $7$.
+\end{itemize}
+
+\subsolution
+Let $P(n) := (7 \mid 8^n - 1)$. Proof for all $n \geq 1$ by induction.
+
+\emph{Base case ($n = 1$).} $8 - 1 = 7$ and $7 \mid 7$, so $P(1)$ holds.
+
+\emph{Inductive step.} Assume $P(k)$ holds: $7 \mid 8^k - 1$, so $8^k - 1 = 7m$ for some integer $m$, i.e., $8^k = 7m + 1$. Show $P(k+1)$: $7 \mid 8^{k+1} - 1$.
+\[
+8^{k+1} - 1 = 8 \cdot 8^k - 1 = 8(7m + 1) - 1 = 56 m + 8 - 1 = 56 m + 7 = 7(8 m + 1).
+\]
+Since $8m + 1 \in \mathbb{Z}$, $7 \mid 8^{k+1} - 1$. Hence $P(k + 1)$ holds, and by induction $P(n)$ holds for all $n \geq 1$. $\blacksquare$
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+Let $S$ be the smallest set of integer pairs satisfying:
+\begin{itemize}
+\item \textbf{Base:} $(0, 0) \in S$.
+\item \textbf{C1:} If $(x, y) \in S$, then $(x + 1,\ y + x + 1) \in S$.
+\end{itemize}
+
+\subproblem Show that $(3, 6) \in S$ by exhibiting an explicit derivation. List each rule application and the resulting pair.
+
+\subproblem Prove by structural induction that every $(x, y) \in S$ satisfies $y = \dfrac{x(x+1)}{2}$.
+
+\begin{solution}
+\subsolution Derivation of $(3, 6)$:
+\begin{enumerate}
+\item Base: $(0, 0) \in S$.
+\item C1: $(0 + 1, 0 + 0 + 1) = (1, 1) \in S$.
+\item C1: $(1 + 1, 1 + 1 + 1) = (2, 3) \in S$.
+\item C1: $(2 + 1, 3 + 2 + 1) = (3, 6) \in S$. $\checkmark$
+\end{enumerate}
+Sanity check: $\dfrac{3 \cdot 4}{2} = 6$. $\checkmark$
+
+\subsolution \textbf{Base case.} $(x, y) = (0, 0)$: $\dfrac{0 \cdot 1}{2} = 0 = y$. $\checkmark$
+
+\textbf{Inductive step.} Assume $(x, y) \in S$ has $y = \dfrac{x(x+1)}{2}$. Then C1 produces $(x', y') = (x + 1, y + x + 1)$. Compute:
+\[
+y' = y + x + 1 = \frac{x(x+1)}{2} + (x + 1) = \frac{x(x+1) + 2(x+1)}{2} = \frac{(x+1)(x+2)}{2} = \frac{x'(x'+1)}{2}.
+\]
+By structural induction, every $(x, y) \in S$ satisfies $y = \dfrac{x(x+1)}{2}$. $\blacksquare$
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+A disease has prevalence $\pi = 0.1$. There are two independent tests:
+\begin{itemize}
+\item Test $A$: true-positive rate $0.9$, false-positive rate $0.1$.
+\item Test $B$: true-positive rate $0.8$, false-positive rate $0.2$.
+\end{itemize}
+Conditional on the true disease status, the two test results are independent. A patient is given both tests.
+
+\subproblem Compute $P(\text{disease} \mid A^+ \cap B^+)$, the probability of having the disease given both tests are positive.
+
+\subproblem Compute $P(\text{disease} \mid A^+ \cap B^-)$, the probability of having the disease when test $A$ is positive but test $B$ is negative.
+
+\begin{solution}
+Let $D$ = disease ($P(D) = 0.1$, $P(\overline{D}) = 0.9$).
+
+\subsolution
+\[
+P(A^+ B^+ \mid D) = 0.9\cdot 0.8 = 0.72,\quad P(A^+ B^+ \mid \overline{D}) = 0.1\cdot 0.2 = 0.02.
+\]
+\[
+P(D \mid A^+ B^+) = \frac{0.72\cdot 0.1}{0.72\cdot 0.1 + 0.02\cdot 0.9} = \frac{0.072}{0.072 + 0.018} = \frac{0.072}{0.090} = \frac{4}{5} = 0.8.
+\]
+
+\subsolution
+\[
+P(A^+ B^- \mid D) = 0.9\cdot 0.2 = 0.18,\quad P(A^+ B^- \mid \overline{D}) = 0.1\cdot 0.8 = 0.08.
+\]
+\[
+P(D \mid A^+ B^-) = \frac{0.18\cdot 0.1}{0.18\cdot 0.1 + 0.08\cdot 0.9} = \frac{0.018}{0.018 + 0.072} = \frac{0.018}{0.090} = \frac{1}{5} = 0.2.
+\]
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+You roll a fair six-sided die repeatedly until you see either a $1$ or a $2$ (whichever comes first). Let $N$ be the number of rolls needed. Since the number of rolls is a geometric random variable with success probability $1/3$, $\mathbb{E}[N] = 3$. You may use this fact without proof.
+
+\subproblem Let $T$ be the value of the \emph{final} roll (so $T \in \{1, 2\}$). Compute $\mathbb{E}[T]$.
+
+\subproblem Let $S$ be the sum of the values of all rolls (including the final roll that produced the $1$ or $2$). Compute $\mathbb{E}[S]$.
+
+\begin{solution}
+\subsolution By symmetry, at each roll a $1$ and a $2$ are equally likely (each occurs with probability $1/6$ independently of past rolls). Hence the first of $\{1, 2\}$ to appear is equally likely to be either value, so
+\[
+\mathbb{E}[T] = \tfrac{1}{2}\cdot 1 + \tfrac{1}{2}\cdot 2 = \tfrac{3}{2} = 1.5.
+\]
+
+\subsolution Decompose $S = (\text{sum of the first } N - 1 \text{ rolls}) + (\text{value of the final roll})$. The first $N - 1$ rolls are each conditionally uniform on $\{3, 4, 5, 6\}$ (since they did not equal $1$ or $2$), with conditional mean
+\[
+\frac{3 + 4 + 5 + 6}{4} = \frac{18}{4} = 4.5.
+\]
+By linearity of expectation, using $\mathbb{E}[N] = 3$,
+\[
+\mathbb{E}[\text{sum of first } N-1] = \mathbb{E}[N - 1] \cdot 4.5 = 2 \cdot 4.5 = 9.
+\]
+The final roll has $\mathbb{E}[T] = 1.5$ from part (a). Therefore
+\[
+\mathbb{E}[S] = 9 + 1.5 = 10.5.
+\]
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+A small library has four events scheduled this week. Each event needs a meeting room. Two events conflict (cannot share a room) iff their time windows overlap.
+(Shared endpoints do not count as overlap: e.g., an event from 9:00--10:30 does not conflict with an event from 10:30--12:00.)
+
+\bigskip
+The events $E_1,\ldots,E_4$ have the following time windows:
+\begin{itemize}
+\item $E_1$: 9:00--10:30
+\item $E_2$: 10:00--11:30
+\item $E_3$: 10:00--11:00
+\item $E_4$: 11:00--12:00
+\end{itemize}
+
+\subproblem Build the conflict graph $G$ (the graph with one vertex per event and an edge between two vertices iff the events conflict).
+
+\subproblem Find the chromatic number $\chi(G)$. Justify both the lower and upper bounds.
+
+\begin{solution}
+\subsolution Two windows conflict iff they overlap (share more than just an endpoint). The edges are:
+\[
+E(G) = \{ \{E_1,E_2\},\ \{E_1,E_3\},\ \{E_2,E_3\},\ \{E_2,E_4\}\}.
+\]
+(Check: $E_1$ and $E_4$ do not overlap since $E_1$ ends at 10:30 and $E_4$ starts at 11:00. $E_3$ and $E_4$ touch at 11:00 only, so they do not conflict.)
+
+\subsolution $\chi(G) = 3$.
+
+\emph{Lower bound:} $\{E_1,E_2,E_3\}$ form a triangle: $E_1$--$E_2$ (overlap 10:00--10:30), $E_1$--$E_3$ (overlap 10:00--10:30), $E_2$--$E_3$ (overlap 10:00--11:00). A triangle requires at least $3$ colors, so $\chi(G) \ge 3$.
+
+\emph{Upper bound:} The $3$-coloring
+\[
+E_1 \mapsto 1,\quad E_2 \mapsto 2,\quad E_3 \mapsto 3,\quad E_4 \mapsto 1
+\]
+is proper: each of the $4$ edges has endpoints with different colors (verify on each edge from part (a)). Hence $\chi(G) \le 3$.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\begin{problem}
+
+Student Tom proposes a new, simplified algorithm for finding a minimum-weight spanning tree (MST) on a connected weighted graph $G$ with $n$ vertices: \emph{For $n - 1$ steps, add the edge of minimum weight that has not already been added.}
+
+\subproblem Draw a connected weighted graph on $4$ vertices with $5$ edges on which Tom's algorithm successfully produces an MST. Specify the edge weights and report the total MST weight.
+
+\subproblem Draw a connected weighted graph on $4$ vertices on which Tom's algorithm fails --- that is, the set of $n - 1 = 3$ edges output by Tom's algorithm is \emph{not} a spanning tree. Specify the weights and explain in $1$--$2$ sentences why the output is not a spanning tree.
+
+\subproblem Suggest a one-line modification to Tom's algorithm that would make it correct (i.e., always produce an MST on connected weighted graphs). Which well-known MST algorithm does it become after your modification?
+
+\begin{solution}
+\subsolution Take $V = \{A,B,C,D\}$ and edges with weights:
+\[
+AB = 1,\quad BC = 2,\quad CD = 3,\quad AD = 10,\quad AC = 20.
+\]
+Sorted by weight: $AB(1), BC(2), CD(3), AD(10), AC(20)$. Tom adds $AB, BC, CD$ --- total weight $6$. The result is a path $A - B - C - D$, which is a spanning tree of weight $6$. This is the MST (any other spanning tree must include an edge of weight $\ge 10$).
+
+\subsolution Take $V = \{A,B,C,D\}$ and edges with weights:
+\[
+AB = 1,\quad AC = 2,\quad BC = 3,\quad AD = 100,\quad BD = 101.
+\]
+Sorted: $AB(1), AC(2), BC(3), AD(100), BD(101)$. Tom adds the three lightest edges: $AB, AC, BC$. But these three edges form a triangle on $\{A,B,C\}$ and do not include vertex $D$. The output has $3$ edges, $3$ vertices used, and $1$ vertex isolated --- not a spanning tree (a spanning tree must touch all $4$ vertices and be acyclic).
+
+\subsolution \emph{Modified algorithm:} For $n-1$ steps, add the edge of minimum weight that has not already been added \emph{and that does not create a cycle with the edges already added}. This is exactly \textbf{Kruskal's algorithm}. The cycle-avoidance check forces the partial edge set to remain a forest, and after $n - 1$ added edges this forest has $n - 1$ edges on $n$ vertices --- so it is a spanning tree by the edge-count characterization of trees.
+\end{solution}
+
+\pagebreak 
+
+Scratch paper. 
+
+\pagebreak
+
+Scratch paper.
+
+\end{problem}
+
+\end{document}

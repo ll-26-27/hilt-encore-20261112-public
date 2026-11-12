@@ -1,0 +1,75 @@
+% Ported to the default house style by the handout-formatting skill, from
+% inputs/math/Homework/03-First-Order-Linear-Differential-Equations.pdf.
+% One source, multiple audiences (change only this option line):
+%   \usepackage[]{handout}     student problem set (work-space, no answers)
+%   \usepackage[key]{handout}  answer key (if/when solutions are added)
+\documentclass[10pt]{article}
+\usepackage{housestyle}
+\usepackage[]{handout}
+
+\hypersetup{pdftitle={First Order Linear Differential Equations -- Problem Set 3}}
+
+\begin{document}
+
+\handouttitle{First Order Linear Differential Equations}{Problem Set 3}{}
+
+\begin{problemonly}
+    \calloutbox{PSet Tips}{%
+        \begin{itemize}[leftmargin=*]
+            \item Remember to explain the reasoning behind all of your answers.
+            \item Keep your work organized and assign a page to each problem on Gradescope.
+            \item You don't have to do this by yourself --- office hours, the MQC, and your fellow students are great resources if you get stuck.
+        \end{itemize}%
+    }
+\end{problemonly}
+
+\bigskip
+
+\textbf{In problems 1 and 2, find the general solution to the differential equations.}
+
+\begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}]
+
+\item
+    \begin{problem}[5cm]
+        \((x^2 + 1)\dfrac{dy}{dx} + 2xy - 3x = 0\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(xy' + y = 4\sqrt{x}\,; \qquad x > 0.\)
+    \end{problem}
+
+\end{enumerate}
+
+\textbf{In problems 3--7, solve the initial value problems.}
+
+\begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}, resume]
+
+\item
+    \begin{problem}[5cm]
+        \(\dfrac{dy}{dx} = -2xy + 2x\,e^{(-x^2)}\,; \qquad y(0) = 2.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(xy' = 2y + x^3 \sin(x)\,; \qquad y(1) = 0.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \((x^2 + 1)y' + 5xy = x\,; \qquad y(0) = 2.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(xy' + 4y = \dfrac{e^{-x}}{x^3}\,; \qquad y(1) = 0,\ x > 0.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \((1 + x)y' + y = \cos(x)\,; \qquad y(0) = 1,\ 1 + x > 0.\)
+    \end{problem}
+
+\end{enumerate}
+
+\end{document}

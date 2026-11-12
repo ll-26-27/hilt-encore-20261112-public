@@ -1,0 +1,1462 @@
+[
+  {
+    "id": "summer-w1-d1",
+    "date": "2026-05-18",
+    "week": 1,
+    "day": 1,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Orientation and setup",
+        "activity": "Install desktop app; tour Chat, Cowork and Code; practice prompting.",
+        "modes": [
+          "Chat",
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      },
+      {
+        "title": "Cowork with own materials",
+        "activity": "Connect a folder of course/research materials; spend the majority of the session in Cowork.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      },
+      {
+        "title": "Code preview",
+        "activity": "Explain Cowork versus Code and show advanced possibilities.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Welcome, web interface and AI literacy",
+        "activity": "Accounts, web UI, memory/settings, tokens, multiplication versus Python, and Shakespeare grounding.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "07:52:58–08:19:16; multiplication 08:11:36–08:15:24"
+      },
+      {
+        "title": "Population-pyramid activity",
+        "activity": "Upload a CSV; build and revise an interactive artifact comparing Nigeria and Japan.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:19:19–08:30:45"
+      },
+      {
+        "title": "Local files and the context window",
+        "activity": "Move to desktop/Cowork; discuss file access, context, compaction and memory.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "08:30:45–08:49:44"
+      },
+      {
+        "title": "Recipe-photo workflow",
+        "activity": "Rename scanned cards, extract text, add context and build an HTML gallery; participants try the workflow.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "08:49:44–09:06:16"
+      },
+      {
+        "title": "More applications and tomorrow’s preview",
+        "activity": "Research-paper summaries, course scheduling and exam examples; terminal/VS Code preview.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "09:06:17–09:14:07"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The web/literacy segment took more space than the advertised majority-Cowork orientation; the formal Code demonstration became a preview.",
+        "evidence": "reflection"
+      },
+      {
+        "summary": "The recipe task worked as a bounded local-files exercise; the later claim that it did not transfer to faculty use cases is Marlon’s November reflection, not an observed universal failure on May 18.",
+        "evidence": "retrospective"
+      }
+    ]
+  },
+  {
+    "id": "summer-w1-d2",
+    "date": "2026-05-19",
+    "week": 1,
+    "day": 2,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Install the development environment",
+        "activity": "Install Claude Code and VS Code; set up GitHub with troubleshooting support.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      },
+      {
+        "title": "Commands and context",
+        "activity": "Built-in commands/settings, CLAUDE.md, skills and managing context files.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      },
+      {
+        "title": "Code and skills preview",
+        "activity": "Show how/why to write code and preview Day 3 skills.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Inputs → operations → outputs",
+        "activity": "Revisit Shakespeare, population data, recipes and exams through the shared folder pattern; explain why Code.",
+        "modes": [
+          "Chat",
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:07:09–08:15:23"
+      },
+      {
+        "title": "Faculty-use demonstrations",
+        "activity": "Show grading and asynchronous-course workflows to motivate setup.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:15:23–08:25:23"
+      },
+      {
+        "title": "Mac/Windows installation tracks",
+        "activity": "Homebrew/Winget, Git, Node, Python, VS Code and Claude Code; shell and installation troubleshooting.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "08:25:55–09:03; Mac/Windows split 08:25:55–08:26:27"
+      },
+      {
+        "title": "VS Code and selected-file context",
+        "activity": "Clone/open the repo; tour editor panels; select a file and ask Claude what it contains.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "09:04:22–09:05:06"
+      },
+      {
+        "title": "Personal-project invitation and help",
+        "activity": "Invite faculty to add their own material to My Project; staff assist, with some still setting up at the official close.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "09:05:50–09:20:51"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "Installation displaced commands, CLAUDE.md and skills teaching; later revision notes propose moving setup to a clinic and providing a desktop/Cowork route.",
+        "evidence": "reflection"
+      }
+    ]
+  },
+  {
+    "id": "summer-w1-d3",
+    "date": "2026-05-20",
+    "week": 1,
+    "day": 3,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Review setup and file navigation",
+        "activity": "Clone repo; navigate VS Code; read/write files and compare Markdown/HTML.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Review"
+      },
+      {
+        "title": "Project workflow",
+        "activity": "Initialize a project, plan in Markdown, use Git versioning and display HTML.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "New"
+      },
+      {
+        "title": "Advanced if reached",
+        "activity": "CLAUDE.md and SKILL.md; MCPs and subagents explicitly marked Next Time.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Advanced New; Next Time"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Review repo, Markdown and editor setup",
+        "activity": "Re-clone; locate Claude; dismiss Copilot; compare Markdown source/rendered HTML and practice file navigation.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "07:39:03–08:15:13"
+      },
+      {
+        "title": "Bring in own materials",
+        "activity": "Invite faculty to add a syllabus or other own materials to a new folder; staff circulate.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:15:21–08:21:12"
+      },
+      {
+        "title": "Git as a safety net",
+        "activity": "Initialize a local repository; commits, diffs, rollback and a custom commit command.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "08:21:13–08:32:08; custom commit command 08:30:19–08:30:46"
+      },
+      {
+        "title": "Plan before generating",
+        "activity": "Draft a syllabus plan, then create a folder of per-unit Markdown documents.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:32:13–08:47:30; plan prompt 08:35:03–08:35:24"
+      },
+      {
+        "title": "Durable memory and share-outs",
+        "activity": "Write handoff/journal docs; discuss parallel sessions, corpus work and faculty examples; preview Day 4 context files.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "08:49:35–09:07:54; handoff 08:52:36–08:53:31"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The public advanced curriculum had already been triaged in the handout. Setup/navigation and a planning-first workflow dominated; skills and MCPs were carried forward.",
+        "evidence": "reflection"
+      }
+    ]
+  },
+  {
+    "id": "summer-w1-d4",
+    "date": "2026-05-21",
+    "week": 1,
+    "day": 4,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Build from own raw materials",
+        "activity": "Use structured context, skills and integrations to develop a syllabus, problem bank or visualization.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "published description",
+        "locator": "Day 4"
+      },
+      {
+        "title": "Advanced gallery and follow-up",
+        "activity": "Leave with an artifact in progress and examples of advanced outputs.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "published description",
+        "locator": "Day 4"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Context and CLAUDE.md",
+        "activity": "Review context limits and placement; teach cascading CLAUDE.md and reusable personal context.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "14:40:16–15:01:42"
+      },
+      {
+        "title": "Skills and interface choice",
+        "activity": "Explain SKILL.md/YAML loading through prepared examples; revisit why Chat, Cowork or Code.",
+        "modes": [
+          "Chat",
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "15:01:46–15:19:44; interface clarification 15:12:23–15:14:37"
+      },
+      {
+        "title": "Commands and a template to explore",
+        "activity": "Resume/rewind/compact; open a self-contained project and inspect its instructions and skills.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "15:20:37–15:35:27"
+      },
+      {
+        "title": "Interactive examples, MCP preview and ethics",
+        "activity": "Physics/network visualization; Replicate/Canvas MCP concepts; Roomba/Rosie framing; invitation to stay and adapt a project.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "15:35:28–15:44:25; MCP out-of-scope remark 15:39:11–15:39:22"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The capstone became principally explanation and template walkthroughs. A build invitation survives at 15:34:46, but the transcript does not verify every person leaving with an artifact.",
+        "evidence": "reflection"
+      },
+      {
+        "summary": "Personalized examples were already being made within week 1: the interview-coding project was tailored to Mary Waters’ methodological paper and was committed May 21.",
+        "evidence": "artifact"
+      }
+    ]
+  },
+  {
+    "id": "summer-w2-d1",
+    "date": "2026-06-01",
+    "week": 2,
+    "day": 1,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Welcome and week ahead",
+        "activity": "Roadmap and reassurance that the desktop app is a valid path.",
+        "modes": [],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "The many Claudes",
+        "activity": "Draw one LLM underneath multiple interfaces; use decision grid.",
+        "modes": [
+          "Chat",
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "AI basics and context window",
+        "activity": "Multiplication, tokens, grounding, population data and context drawing.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Cowork demo",
+        "activity": "Rename and transcribe recipe photos; introduce local file types.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      },
+      {
+        "title": "Recipe metaphor",
+        "activity": "Inputs, operations and outputs as ingredients, steps and dish.",
+        "modes": [],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 5"
+      },
+      {
+        "title": "Fill out own recipe card",
+        "activity": "Paper plan for a faculty task; optional photo capture.",
+        "modes": [],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 6"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Begin with motivating use cases",
+        "activity": "Grading scans/rubrics and an asynchronous learning module precede the roadmap and interface handout.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "opening–14:35:11; explicit week-1 feedback at 14:34:56"
+      },
+      {
+        "title": "AI literacy in Chat",
+        "activity": "Models/settings, multiplication/Python, Shakespeare, tokenization and memory.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "14:42:39–14:50:54"
+      },
+      {
+        "title": "Context window and artifact demo",
+        "activity": "Context drawing, compaction/placement and population-pyramid artifact prepare the move to local files.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:50:51–15:07:33"
+      },
+      {
+        "title": "Cowork recipe workflow",
+        "activity": "Connect a safe folder; rename recipe photos, transcribe and build an HTML site; review file types.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "15:07:26–15:36:28; recipe photos 15:22:01"
+      },
+      {
+        "title": "Recipe planning at the close",
+        "activity": "Explain ingredients/operations/outputs, show a worked grading recipe and invite paired paper planning for overnight starter generation.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "15:36:28–15:42:25"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "Week-1 feedback moved motivating use cases to the opening and made the interface choices explicit.",
+        "evidence": "transcript"
+      },
+      {
+        "summary": "The following morning’s revision says not everyone received hands-on time on Day 1; Day 2 must compensate.",
+        "evidence": "plan"
+      }
+    ]
+  },
+  {
+    "id": "summer-w2-d2",
+    "date": "2026-06-02",
+    "week": 2,
+    "day": 2,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Recap by browsing/cloning",
+        "activity": "Day 1 ideas resurfaced through repo materials.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "Code as authoring/research",
+        "activity": "Explain the value beyond programming.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "Setup and interface: two surfaces",
+        "activity": "Show desktop app and VS Code/terminal; help users through dependencies.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Files and reference context",
+        "activity": "Navigate folders; deliberately pull documents into context.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      },
+      {
+        "title": "Memory and CLAUDE.md",
+        "activity": "Demonstrate auto-loaded instructions.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 5"
+      },
+      {
+        "title": "Commands",
+        "activity": "Rewind/resume/compact/context.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 6"
+      },
+      {
+        "title": "Read and make file types",
+        "activity": "Markdown, CLAUDE.md, SKILL.md and PLAN.md.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 7"
+      },
+      {
+        "title": "Own files and close",
+        "activity": "Create project context from own work.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 8"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Orientation and setup fork",
+        "activity": "Reframe Code as authoring; recommend desktop for non-developers, offer IDE/terminal path and a setup interval.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "13:20:17–13:45; desktop recommendation 13:30:47–13:31:14"
+      },
+      {
+        "title": "Two repo-acquisition demonstrations",
+        "activity": "Madeleine demonstrates terminal/VS Code; Marlon asks Code in the desktop app to clone. Both summaries end in a planted limerick.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "13:45:54–13:59; limerick 13:51:29–13:52:07"
+      },
+      {
+        "title": "Git and safety",
+        "activity": "Explain version history, commits, rollback, collaboration and .gitignore.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "14:00:10–14:10:16"
+      },
+      {
+        "title": "Files, context and CLAUDE.md reveal",
+        "activity": "Show Files; copying paths avoids search; reveal auto-loaded instructions and invite a behavior-changing edit/new session.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:18:37–14:35"
+      },
+      {
+        "title": "Faculty-recipe application",
+        "activity": "Inspect a student-persona/question-anticipation prototype generated from a faculty recipe card.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:40:43–14:46:15"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The observed split is now by preferred interface rather than only by operating system. Git receives a substantive segment that the table did not separately budget.",
+        "evidence": "transcript"
+      },
+      {
+        "summary": "The planned broad commands/file-making menu narrows around setup, git and the visible CLAUDE.md trick; skills remain tomorrow’s headline.",
+        "evidence": "plan"
+      }
+    ]
+  },
+  {
+    "id": "summer-w2-d3",
+    "date": "2026-06-03",
+    "week": 2,
+    "day": 3,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Harness choice",
+        "activity": "Show Cowork and Code; let faculty choose.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "Git safety",
+        "activity": "Local version history and custom commit workflow.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "Planning-first workflow",
+        "activity": "Plan then generate structured documents.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Capture-to-system",
+        "activity": "Draw a workflow; photograph it; generate and review scaffolded skills.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      },
+      {
+        "title": "Rosie/Roomba and ethics",
+        "activity": "Frame broad assistants versus narrow skills while runner builds.",
+        "modes": [],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 5"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Acquire and open the repo",
+        "activity": "Offer ZIP, desktop cloning and terminal; use a bounded folder and locate handouts.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "14:05:18–14:16:34"
+      },
+      {
+        "title": "Worked faculty examples",
+        "activity": "Class summarizer; paper to teaching materials; course preparation; smart corpus search; explain inputs/operations/outputs.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:16:30–14:40:47"
+      },
+      {
+        "title": "Build invitation and context-file distinction",
+        "activity": "Invite a new project or remix; explain CLAUDE.md versus conditional skills; staff circulate.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:40:07–15:10:27"
+      },
+      {
+        "title": "Skill-creator demonstration",
+        "activity": "Install/use skill-creator and build a repeatable chat summarizer; distinguish cloud and local skill storage.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "15:13:52–15:29"
+      },
+      {
+        "title": "Close and next-day advanced horizon",
+        "activity": "Preview subagents and integrations; offer help and continued work.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "15:29–15:33:34"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The observed sequence is project examples → personal build invitation → skill creation; the retained paper/photo/runner centerpiece is not established as having run.",
+        "evidence": "transcript"
+      },
+      {
+        "summary": "The design aim was to move from tool-first to project-first and preserve a Cowork path; the draft assumptions should remain visible rather than being silently treated as delivered.",
+        "evidence": "plan"
+      }
+    ]
+  },
+  {
+    "id": "summer-w2-d4",
+    "date": "2026-06-04",
+    "week": 2,
+    "day": 4,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Cascading CLAUDE.md",
+        "activity": "Review project inheritance.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "Skills → agents → outputs",
+        "activity": "Paper architecture and a build in own materials.",
+        "modes": [
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "Gallery as inspiration",
+        "activity": "Walk through examples and external integrations.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Follow-up tracks",
+        "activity": "Leave with started work and next steps.",
+        "modes": [],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Repo and advanced-tools framing",
+        "activity": "Get the day’s repo; introduce MCPs, slash commands and subagents.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "13:51:43–13:55:25"
+      },
+      {
+        "title": "MCP setup and API keys",
+        "activity": "Run setup script; dependencies, JSON, keys and project configuration; CLI registration and desktop configuration both enter the teaching.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "14:03:23–14:17; setup 14:04:22; config explanation 14:14:52–14:15:19"
+      },
+      {
+        "title": "External sources, commands and subagents",
+        "activity": "Demonstrate scholarly retrieval and an art-museum visual essay; explain rewind/resume/fork and parallel subagents.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "14:17:17–14:31:17; museum example 14:21:33–14:21:42; subagents 14:29:20–14:31:17"
+      },
+      {
+        "title": "Desktop configuration and security",
+        "activity": "Address desktop MCP configuration, keys, prompt injection and read-only access; image-generation example.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:31:19–14:38:43; read-only discussion 14:36:59–14:37:26"
+      },
+      {
+        "title": "Gallery, work invitation and close",
+        "activity": "Show summarizer, media/teaching examples, oral-exam tool and exam/lecture-note uses; invite work and discuss AI-era learning objectives.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "14:38:48–14:54:31"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The planned 40-minute build became substantial MCP configuration, demonstrations and a late work invitation. A retained week-3 reflection identifies setup friction as the reason to stop room-wide MCP installs.",
+        "evidence": "reflection"
+      }
+    ]
+  },
+  {
+    "id": "summer-w3-d1",
+    "date": "2026-06-08",
+    "week": 3,
+    "day": 1,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Orientation and setup",
+        "activity": "Install desktop app; tour Chat, Cowork and Code; practice prompting.",
+        "modes": [
+          "Chat",
+          "Cowork",
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      },
+      {
+        "title": "Cowork with own materials",
+        "activity": "Connect a folder of course/research materials; spend the majority of the session in Cowork.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      },
+      {
+        "title": "Code preview",
+        "activity": "Explain Cowork versus Code and show advanced possibilities.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 1"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Orientation and AI-literacy contrasts",
+        "activity": "Three-interface map, tokenization, multiplication/Python and Shakespeare; suggest using a weaker model if multiplication is too successful.",
+        "modes": [
+          "Chat"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "13:28:27–13:40:50; weaker-model instruction 13:35:52–13:36:09"
+      },
+      {
+        "title": "Artifact and faculty-use demonstrations",
+        "activity": "Population pyramids: diffusion image versus data-driven code; grading, asynchronous course and board-to-notes examples.",
+        "modes": [
+          "Chat",
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "transcript",
+        "locator": "13:40:29–13:53:33"
+      },
+      {
+        "title": "Context and local-file rationale",
+        "activity": "Context window, compaction, placement, memory and security tradeoffs; move toward desktop work.",
+        "modes": [
+          "Chat",
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "13:53:04–14:13:20"
+      },
+      {
+        "title": "Download and open a safe project",
+        "activity": "Acquire ZIP, organize folders, tour app tabs and choose a bounded Cowork folder.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:10–14:24:51"
+      },
+      {
+        "title": "Recipe-photo demo and own-use frame",
+        "activity": "Rename/transcribe cards with contextual history; produce a styled HTML gallery; recap prompt and recipe heuristics.",
+        "modes": [
+          "Cowork"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:24:51–14:53:23; photo prompt 14:25:19–14:25:41; recipe collection 14:53:18–14:53:23"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "Multiplication was becoming harder to make fail: the instructor explicitly suggests switching to a weaker model for the contrast.",
+        "evidence": "transcript"
+      },
+      {
+        "summary": "The three-interface frame remains in active use; this day does not support dating its removal to the third intensive.",
+        "evidence": "transcript"
+      }
+    ]
+  },
+  {
+    "id": "summer-w3-d2",
+    "date": "2026-06-09",
+    "week": 3,
+    "day": 2,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Install the development environment",
+        "activity": "Install Claude Code and VS Code; set up GitHub with troubleshooting support.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      },
+      {
+        "title": "Commands and context",
+        "activity": "Built-in commands/settings, CLAUDE.md, skills and managing context files.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      },
+      {
+        "title": "Code and skills preview",
+        "activity": "Show how/why to write code and preview Day 3 skills.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "terminal"
+        ],
+        "evidence": "published description",
+        "locator": "Day 2"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Desktop Code and personalized starters",
+        "activity": "Switch to the third tab; IDE/CLI optional; tour blank recipe and seven faculty-card starters.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:03:03–14:09:40"
+      },
+      {
+        "title": "Repo acquisition and unexpected Git dependency",
+        "activity": "ZIP, terminal clone or ask Claude; missing Git on some Macs requires Homebrew/Xcode setup.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "14:09:41–14:25:38"
+      },
+      {
+        "title": "Git safety and collaboration",
+        "activity": "Version history, GitHub, secrets, commits/PRs/branches; query how the example repo was made.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:26:05–14:38:50"
+      },
+      {
+        "title": "Copying a path as the core activity",
+        "activity": "Open the actual child repo, toggle Files, copy a transcript path and request five takeaways.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:44:55–14:50:31"
+      },
+      {
+        "title": "Edit and remix recipe folders",
+        "activity": "Markdown/Word/Excel discussion; video corpus, grades and course packs; invite a remix and table work.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:51:35–15:19:23"
+      },
+      {
+        "title": "Live PR and close",
+        "activity": "Merge an example correction, show pull, invite overnight recipe requests; advanced context files tomorrow.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "15:19:24–15:26:58"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "Desktop-first delivery did not eliminate setup: a missing Git dependency interrupts the simpler route. Path copying becomes an explicit core skill.",
+        "evidence": "transcript"
+      },
+      {
+        "summary": "Unlike week 2, CLAUDE.md’s limerick reveal was not taught on Day 2; the retained Day-3 plan therefore prioritizes it as fresh material.",
+        "evidence": "reflection"
+      }
+    ]
+  },
+  {
+    "id": "summer-w3-d3",
+    "date": "2026-06-10",
+    "week": 3,
+    "day": 3,
+    "observed": true,
+    "planned": [
+      {
+        "title": "Reconnect and reframe",
+        "activity": "Code as a writing room; open the cloned repo.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "CLAUDE.md",
+        "activity": "Make always-on context visible; demonstrate behavior change.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "Author across a folder",
+        "activity": "Navigate and write durable notes.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Co-author own context document",
+        "activity": "Build a useful teaching/research context doc with Claude.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      },
+      {
+        "title": "Skills",
+        "activity": "Conditional context; demo and optional build.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 5"
+      },
+      {
+        "title": "Wrap and commit",
+        "activity": "Name what was made and preview Day 4.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 6"
+      }
+    ],
+    "actual": [
+      {
+        "title": "Repo, model and Files orientation",
+        "activity": "Clone/open repo; discuss model/usage; explore other GitHub resources and safety.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app",
+          "terminal"
+        ],
+        "evidence": "transcript",
+        "locator": "13:22:35–13:45:47"
+      },
+      {
+        "title": "Authoring and session hygiene",
+        "activity": "Discuss folder/context distinctions, new sessions, compaction and context degradation.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "13:45–14:06:53; projects distinction 13:57:12–13:57:36"
+      },
+      {
+        "title": "Limerick reveal and CLAUDE.md exercise",
+        "activity": "Reveal root instructions; create a small directive in own CLAUDE.md and try a new session.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:06:29–14:16; exercise invitation 14:13:10–14:13:38"
+      },
+      {
+        "title": "Skills through worked projects",
+        "activity": "Narrow to two principal worked examples. Explain conditional skills, headers/location; demonstrate syllabus/course preparation, board-work, handout styling and PDF/LaTeX. A participant’s how-to question prompts a full live syllabus run.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:16–14:50:49; two-example rationale 14:20:55–14:21:40; syllabus live repair 14:35:26–14:42:24; PDF example 14:48:10–14:50:49"
+      },
+      {
+        "title": "APIs/MCPs promised for tomorrow",
+        "activity": "Preview external-tool access and invite exploration of examples.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "transcript",
+        "locator": "14:43:17–14:47:57"
+      }
+    ],
+    "changes": [
+      {
+        "summary": "The retained reflection reports that the 30-minute context-doc centerpiece shrank to demonstrations plus the short CLAUDE.md exercise; it reassigns the own-material build to Day 4.",
+        "evidence": "reflection"
+      },
+      {
+        "summary": "The transcript directly verifies the short shared exercise and next-day API/MCP promise; it does not verify everyone producing the larger context document.",
+        "evidence": "transcript"
+      }
+    ]
+  },
+  {
+    "id": "summer-w3-d4",
+    "date": "2026-06-11",
+    "week": 3,
+    "day": 4,
+    "observed": false,
+    "planned": [
+      {
+        "title": "Reconnect and join Slack",
+        "activity": "Join via QR; obtain repo and see live-transcript workspace.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 1"
+      },
+      {
+        "title": "UIs → APIs → MCPs",
+        "activity": "Demonstrate through running Slack bots; background Harvard Art Museums MCP build.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 2"
+      },
+      {
+        "title": "Own inputs → skill → output",
+        "activity": "Protected build in faculty material.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 3"
+      },
+      {
+        "title": "Gallery and advanced horizon",
+        "activity": "Menu of examples; optional subagent/Canvas demo.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [],
+        "evidence": "plan",
+        "locator": "Run of show, 4"
+      },
+      {
+        "title": "Harvest, recap and follow-up",
+        "activity": "Review background MCP builds; recap bot; commit and name next steps.",
+        "modes": [
+          "Code"
+        ],
+        "surfaces": [
+          "desktop app"
+        ],
+        "evidence": "plan",
+        "locator": "Run of show, 5"
+      }
+    ],
+    "actual": [],
+    "changes": [
+      {
+        "summary": "The proposed fix for week-2 configuration friction is to show already-running integrations and protect a 35-minute build, rather than have every participant register an MCP live.",
+        "evidence": "plan"
+      },
+      {
+        "summary": "Delivery cannot be reconstructed from the central transcript set. The June-11 repo shows resources prepared and calls two examples live-built in this series, but both were committed before the advertised 1pm session.",
+        "evidence": "artifact"
+      }
+    ]
+  }
+]

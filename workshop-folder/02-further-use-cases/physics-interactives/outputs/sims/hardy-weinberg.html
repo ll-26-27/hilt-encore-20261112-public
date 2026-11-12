@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardy-Weinberg: what actually changes allele frequency</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+--------------------------------------------------------------------
+Title:                  Hardy-Weinberg: what actually changes allele
+                        frequency
+Learning goal:          A student can state why a dominant allele does
+                        not become more common merely by being
+                        dominant, and can name which of the
+                        Hardy-Weinberg assumptions they broke when the
+                        frequency does move.
+Target learner:         Introductory genetics or evolution; knows
+                        dominant/recessive and can read p + q = 1.
+Core misconception:     "Dominant alleles spread." Overwhelmingly the
+                        most common intuition students bring, and the
+                        one Hardy-Weinberg exists to kill. A second,
+                        subtler one: that selection can purge a
+                        deleterious recessive allele quickly -- it
+                        cannot, because at low q almost every copy is
+                        hidden in a heterozygote.
+Manipulables:           Starting p (freq. of A), 0.01-0.99
+                        Selection against aa, s = 0-1
+                        Selection against AA, s = 0-1
+                        Population size N: 25 / 100 / 1000 / infinite
+Hidden/fixed by design: Random mating, no mutation, no migration, no
+                        overlapping generations. Those are held fixed
+                        precisely so that the two assumptions a student
+                        CAN break here (selection and finite size) are
+                        legible one at a time.
+Representations:        Three linked views: (a) genotype frequencies as
+                        a stacked bar with the expected Hardy-Weinberg
+                        proportions overlaid, (b) allele frequency p
+                        traced across generations, (c) a numeric panel
+                        showing p, q, and the three genotype
+                        frequencies.
+Reflection prompts:     5; see "Try this" panel.
+Model limitations:      See panel.
+Classroom use:          In-class demo. Run prompt 1 before any theory:
+                        the flat line is the whole lesson, and it lands
+                        harder as a surprise.
+Date:                   2026-09-14
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff; --fg: #111111; --muted: #555555; --panel: #f4f4f4;
+    --accent: #2a6fdb; --accent-fg: #ffffff;
+    --aa-dom: #2a6fdb;  /* AA */
+    --het: #7fa8e0;     /* Aa */
+    --rec: #d24a3d;     /* aa */
+    --trace: #111111;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px; line-height: 1.5; color: var(--fg); background: var(--bg);
+    margin: 0; padding: 1.5rem; max-width: 1400px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; max-width: 70ch; }
+  .layout { display: grid; grid-template-columns: 250px 1fr 1.3fr; gap: 1rem; align-items: start; }
+  .controls, .view, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .view h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--muted); }
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .panel ol { margin: 0; padding-left: 1.2rem; }
+  .panel li { margin-bottom: 0.5rem; }
+  label { display: block; margin: 0.75rem 0; font-size: 0.95rem; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  select { width: 100%; margin-top: 0.25rem; padding: 0.3rem; font-size: 0.95rem; }
+  button {
+    padding: 0.5rem 0.9rem; font-size: 0.95rem; background: var(--accent); color: var(--accent-fg);
+    border: none; border-radius: 4px; cursor: pointer; margin: 0.75rem 0.4rem 0 0;
+  }
+  button.secondary { background: #777; }
+  button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #ffb800; outline-offset: 2px; }
+  svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 4px; }
+  svg text { font-size: 11px; font-family: inherit; fill: var(--muted); }
+  svg text.axis-title { font-size: 12px; }
+  .live-readout { margin-top: 0.75rem; padding: 0.5rem; background: #fff; border-radius: 4px;
+    font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+  .live-readout div { margin: 0.15rem 0; }
+  .legend { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.85rem; margin-top: 0.5rem; }
+  .legend span { display: flex; align-items: center; gap: 0.3rem; }
+  .sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .status { margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600; min-height: 1.4em; }
+  @media (max-width: 1100px) { .layout, .panels { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>Hardy&ndash;Weinberg: what actually changes allele frequency</h1>
+<p class="goal">A dominant allele does not spread by being dominant. Run a population with nothing acting on it, then break one assumption at a time and watch what moves.</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      Starting p (freq. of <em>A</em>): <span id="p0-readout" class="readout">0.50</span>
+      <input id="p0" type="range" min="0.01" max="0.99" value="0.5" step="0.01" aria-label="Starting frequency of allele A">
+    </label>
+
+    <label>
+      Selection against <em>aa</em>: <span id="saa-readout" class="readout">0.00</span>
+      <input id="saa" type="range" min="0" max="1" value="0" step="0.01" aria-label="Selection coefficient against the aa genotype">
+    </label>
+
+    <label>
+      Selection against <em>AA</em>: <span id="sAA-readout" class="readout">0.00</span>
+      <input id="sAA" type="range" min="0" max="1" value="0" step="0.01" aria-label="Selection coefficient against the AA genotype">
+    </label>
+
+    <label for="popsize">Population size <em>N</em></label>
+    <select id="popsize" aria-label="Population size">
+      <option value="0" selected>Infinite (no drift)</option>
+      <option value="1000">1000</option>
+      <option value="100">100</option>
+      <option value="25">25</option>
+    </select>
+
+    <button id="playPause" type="button" aria-pressed="false">Run</button>
+    <button id="stepBtn" type="button" class="secondary">Step</button>
+    <button id="reset" type="button" class="secondary">Reset</button>
+
+    <p class="status" id="status" aria-live="polite">Generation 0</p>
+  </section>
+
+  <section class="view" aria-labelledby="geno-heading">
+    <h2 id="geno-heading">Genotype frequencies</h2>
+    <svg id="geno" viewBox="0 0 300 240" role="img" aria-labelledby="geno-desc">
+      <title id="geno-desc">Three bars showing the frequency of the AA, Aa, and aa genotypes in the current generation. Grey outlines show the Hardy-Weinberg expectation from the current allele frequency.</title>
+      <line x1="40" y1="200" x2="292" y2="200" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="14" x2="40" y2="200" stroke="#888" stroke-width="1"/>
+      <text x="36" y="204" text-anchor="end">0</text>
+      <text x="36" y="18" text-anchor="end">1</text>
+      <rect id="bar-AA" x="70"  y="200" width="50" height="0" fill="var(--aa-dom)"/>
+      <rect id="bar-Aa" x="145" y="200" width="50" height="0" fill="var(--het)"/>
+      <rect id="bar-aa" x="220" y="200" width="50" height="0" fill="var(--rec)"/>
+      <rect id="exp-AA" x="70"  y="200" width="50" height="0" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <rect id="exp-Aa" x="145" y="200" width="50" height="0" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <rect id="exp-aa" x="220" y="200" width="50" height="0" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <text x="95"  y="214" text-anchor="middle">AA</text>
+      <text x="170" y="214" text-anchor="middle">Aa</text>
+      <text x="245" y="214" text-anchor="middle">aa</text>
+      <text x="166" y="234" text-anchor="middle" class="axis-title">dashed = Hardy-Weinberg expectation</text>
+    </svg>
+    <div class="live-readout" aria-live="polite">
+      <div>p = <span id="p-readout" class="readout">0.500</span> &nbsp; q = <span id="q-readout" class="readout">0.500</span></div>
+      <div>AA <span id="fAA-readout" class="readout">0.250</span>
+         &nbsp; Aa <span id="fAa-readout" class="readout">0.500</span>
+         &nbsp; aa <span id="faa-readout" class="readout">0.250</span></div>
+    </div>
+  </section>
+
+  <section class="view" aria-labelledby="trace-heading">
+    <h2 id="trace-heading">Allele frequency across generations</h2>
+    <svg id="tracesvg" viewBox="0 0 400 240" role="img" aria-labelledby="trace-desc">
+      <title id="trace-desc">A line tracing the frequency of allele A over successive generations. A flat line means no evolution is occurring at this locus.</title>
+      <line x1="40" y1="200" x2="392" y2="200" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="14" x2="40" y2="200" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="107" x2="392" y2="107" stroke="#e0e0e0" stroke-width="1"/>
+      <text x="36" y="204" text-anchor="end">0</text>
+      <text x="36" y="111" text-anchor="end">0.5</text>
+      <text x="36" y="18" text-anchor="end">1</text>
+      <polyline id="trace" fill="none" stroke="var(--trace)" stroke-width="2" points=""/>
+      <text x="216" y="222" text-anchor="middle" class="axis-title">generation &rarr;</text>
+      <text x="216" y="236" text-anchor="middle" class="axis-title" id="gen-axis-label">0 - 100</text>
+    </svg>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--aa-dom)"></i> AA</span>
+      <span><i class="sw" style="background:var(--het)"></i> Aa</span>
+      <span><i class="sw" style="background:var(--rec)"></i> aa</span>
+      <span><i class="sw" style="background:var(--trace)"></i> p over time</span>
+    </div>
+  </section>
+
+</div>
+
+<div class="panels">
+
+  <section class="panel" aria-labelledby="notice-heading">
+    <h2 id="notice-heading">What to notice</h2>
+    <p>With both selection sliders at zero and <em>N</em> infinite, the trace is <strong>perfectly flat</strong> &mdash; forever, at any starting p. <em>A</em> can be the dominant allele and still sit at 0.05 for a thousand generations. Dominance decides which <em>phenotype</em> you see; it has nothing to do with which <em>allele</em> gets commoner.</p>
+    <p>The solid bars and the dashed outlines separate the instant you add selection. Dashed is what Hardy&ndash;Weinberg predicts from the current p; solid is what survived. The gap <em>is</em> the selection.</p>
+    <p>Frequency only moves when you break an assumption. There are two here: selection (the sliders) and finite population size (drift). Each looks different &mdash; selection is a smooth slide, drift is a stagger.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="tryit-heading">
+    <h2 id="tryit-heading">Try this</h2>
+    <ol>
+      <li>Before touching anything else: set starting p to 0.10 and press <strong>Run</strong>. <em>A</em> is dominant. Predict what happens to p over 100 generations, then watch. Explain the flat line to someone next to you.</li>
+      <li>Set selection against <em>aa</em> to 1.00 &mdash; lethal recessive, nobody with <em>aa</em> reproduces. Start at p = 0.50 and run. Does q reach zero? Step through the last few generations one at a time and read the <em>aa</em> frequency. Why does purging get so slow?</li>
+      <li>Set both selection sliders to 0.30 &mdash; heterozygote advantage. Start at p = 0.90, run; then reset, start at p = 0.10, run. Where does p end up each time?</li>
+      <li>Return both sliders to zero and set <em>N</em> to 25. Run it three times from p = 0.50. Same rules, same start &mdash; do you get the same answer? Now try <em>N</em> = 1000.</li>
+      <li>With <em>N</em> = 25 and no selection, run until p hits 0 or 1. Once it does, can it ever come back? What assumption would you have to restore to let it?</li>
+    </ol>
+  </section>
+
+  <section class="panel" aria-labelledby="limits-heading">
+    <h2 id="limits-heading">Model limitations</h2>
+    <p>One locus, two alleles, non-overlapping generations, and random mating with no mutation and no migration. Real populations violate all of these at once, which is why real allele frequencies are hard to attribute to a single cause.</p>
+    <p>Fitness here is a fixed number attached to a genotype. In a real population fitness depends on density, on environment, and on what the rest of the genome is doing &mdash; and it changes from year to year.</p>
+    <p>Drift is modelled by drawing 2<em>N</em> alleles at random each generation. That captures the sampling idea correctly but treats every individual as equally likely to reproduce, which no field population does.</p>
+  </section>
+
+</div>
+
+<script>
+  // === constants ===
+  const INITIAL = { p0: 0.5, sAA: 0, saa: 0, N: 0 };   // N = 0 means infinite
+  const MAX_GEN = 100;
+  const G = { left: 40, right: 292, top: 14, bottom: 200 };            // genotype bars
+  const T = { left: 40, right: 392, top: 14, bottom: 200 };            // trace plot
+  const FRAME_EVERY = 6;   // animation frames per generation
+
+  const state = { ...INITIAL, p: INITIAL.p0, gen: 0, history: [INITIAL.p0], running: false, fixed: false };
+  let frameCount = 0;
+  const $ = id => document.getElementById(id);
+
+  // === model ===
+  // One generation: Hardy-Weinberg genotypes, then viability selection,
+  // then (if N is finite) binomial sampling of 2N gametes.
+  function nextP(p) {
+    const q = 1 - p;
+    const wAA = 1 - state.sAA, wAa = 1, waa = 1 - state.saa;
+    const wbar = p * p * wAA + 2 * p * q * wAa + q * q * waa;
+    if (wbar <= 0) return p;                       // nobody survives; freeze
+    let pNext = (p * p * wAA + p * q * wAa) / wbar;
+    if (state.N > 0) pNext = drift(pNext, state.N);
+    return Math.min(1, Math.max(0, pNext));
+  }
+
+  // Binomial sample of 2N allele copies at frequency p.
+  function drift(p, N) {
+    let copies = 0;
+    const draws = 2 * N;
+    for (let i = 0; i < draws; i++) if (Math.random() < p) copies++;
+    return copies / draws;
+  }
+
+  function step() {
+    if (state.gen >= MAX_GEN || state.fixed) { pause(); return; }
+    state.p = nextP(state.p);
+    state.gen++;
+    state.history.push(state.p);
+    if (state.N > 0 && (state.p === 0 || state.p === 1)) state.fixed = true;
+    if (state.gen >= MAX_GEN || state.fixed) pause();
+    render();
+  }
+
+  // === render ===
+  const gy = f => G.bottom - f * (G.bottom - G.top);
+  const tx = g => T.left + (g / MAX_GEN) * (T.right - T.left);
+  const ty = p => T.bottom - p * (T.bottom - T.top);
+
+  function setBar(id, freq) {
+    const y = gy(freq);
+    $(id).setAttribute('y', y);
+    $(id).setAttribute('height', Math.max(0, G.bottom - y));
+  }
+
+  function render() {
+    const p = state.p, q = 1 - p;
+
+    // Observed genotype frequencies are the Hardy-Weinberg proportions of the
+    // CURRENT allele frequency; the dashed outline shows what those proportions
+    // would have been before this generation's selection acted.
+    const wAA = 1 - state.sAA, wAa = 1, waa = 1 - state.saa;
+    const raw = { AA: p * p, Aa: 2 * p * q, aa: q * q };
+    const wbar = raw.AA * wAA + raw.Aa * wAa + raw.aa * waa;
+    const obs = wbar > 0
+      ? { AA: raw.AA * wAA / wbar, Aa: raw.Aa * wAa / wbar, aa: raw.aa * waa / wbar }
+      : { AA: 0, Aa: 0, aa: 0 };
+
+    setBar('bar-AA', obs.AA); setBar('bar-Aa', obs.Aa); setBar('bar-aa', obs.aa);
+    setBar('exp-AA', raw.AA); setBar('exp-Aa', raw.Aa); setBar('exp-aa', raw.aa);
+
+    $('p-readout').textContent   = p.toFixed(3);
+    $('q-readout').textContent   = q.toFixed(3);
+    $('fAA-readout').textContent = obs.AA.toFixed(3);
+    $('fAa-readout').textContent = obs.Aa.toFixed(3);
+    $('faa-readout').textContent = obs.aa.toFixed(3);
+
+    $('p0-readout').textContent  = state.p0.toFixed(2);
+    $('saa-readout').textContent = state.saa.toFixed(2);
+    $('sAA-readout').textContent = state.sAA.toFixed(2);
+
+    $('trace').setAttribute('points',
+      state.history.map((v, i) => `${tx(i).toFixed(1)},${ty(v).toFixed(1)}`).join(' '));
+
+    let msg = `Generation ${state.gen}`;
+    if (state.fixed)                msg += state.p === 1 ? ' - A fixed' : ' - A lost';
+    else if (state.gen >= MAX_GEN)  msg += ' - done';
+    $('status').textContent = msg;
+  }
+
+  // === loop ===
+  function loop() {
+    if (state.running) {
+      frameCount++;
+      if (frameCount >= FRAME_EVERY) { frameCount = 0; step(); }
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function pause() {
+    state.running = false;
+    $('playPause').textContent = 'Run';
+    $('playPause').setAttribute('aria-pressed', 'false');
+  }
+
+  function restart() {
+    state.p = state.p0; state.gen = 0; state.history = [state.p0]; state.fixed = false;
+    render();
+  }
+
+  // === events ===
+  $('p0').addEventListener('input',  e => { state.p0 = +e.target.value; pause(); restart(); });
+  $('saa').addEventListener('input', e => { state.saa = +e.target.value; render(); });
+  $('sAA').addEventListener('input', e => { state.sAA = +e.target.value; render(); });
+  $('popsize').addEventListener('change', e => { state.N = +e.target.value; pause(); restart(); });
+
+  $('playPause').addEventListener('click', () => {
+    if (state.gen >= MAX_GEN || state.fixed) restart();
+    state.running = !state.running;
+    $('playPause').textContent = state.running ? 'Pause' : 'Run';
+    $('playPause').setAttribute('aria-pressed', String(state.running));
+  });
+  $('stepBtn').addEventListener('click', () => { pause(); step(); });
+  $('reset').addEventListener('click', () => {
+    pause();
+    Object.assign(state, INITIAL);
+    $('p0').value = state.p0; $('saa').value = state.saa; $('sAA').value = state.sAA;
+    $('popsize').value = '0';
+    restart();
+  });
+
+  // === init ===
+  $('gen-axis-label').textContent = `0 - ${MAX_GEN}`;
+  render();
+  requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>

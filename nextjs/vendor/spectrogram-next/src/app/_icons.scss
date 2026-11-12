@@ -1,0 +1,59 @@
+// Icons rebuilt from src/examples/vocal-spectrograms/live/icons/*.svg using CSS mask-image so we don't have
+// to generate an icon font. Color comes from `background-color` (which the
+// outer .icon rule pulls from `color`/currentColor on the parent).
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  // Fill the button; keeps a proportional margin inside.
+  width: 78%;
+  height: 78%;
+  background-color: currentColor;
+  pointer-events: none;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+@mixin icon-svg($file) {
+  -webkit-mask-image: url('/examples/vocal-spectrograms/live/icons/#{$file}.svg');
+          mask-image: url('/examples/vocal-spectrograms/live/icons/#{$file}.svg');
+}
+
+.icon-808       { @include icon-svg(808); }
+.icon-bird      { @include icon-svg(bird); }
+.icon-computer  { @include icon-svg(computer); }
+.icon-draw      { @include icon-svg(draw); }
+.icon-flute     { @include icon-svg(flute); }
+.icon-guy       { @include icon-svg(guy); }
+.icon-harp      { @include icon-svg(harp); }
+.icon-mic       { @include icon-svg(mic); }
+.icon-trombone  { @include icon-svg(trombone); }
+.icon-wine      { @include icon-svg(wine); }
+.icon-wave      { @include icon-svg(wave); }
+
+// In modal overlays the icon is shown larger and centered absolutely.
+.music-box__modal__icon.icon-mic {
+  width: 7rem;
+  height: 7rem;
+}
+
+// Photo-style icons bypass mask-image and render the raw image as a circular
+// background, so the real face is visible (unlike the monochrome SVG icons).
+.icon-photo {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+.icon-photo.icon-adele  { background-image: url('/examples/vocal-spectrograms/live/images/adele.jpg'); }
+.icon-photo.icon-billie { background-image: url('/examples/vocal-spectrograms/live/images/billie.jpg'); }

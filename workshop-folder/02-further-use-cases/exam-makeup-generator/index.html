@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exam make-up generator file guide</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#5a5a5a; --rule:#e4e4e4; --accent:#c8102e; --bg:#ffffff; --hl:#eef6ff; --hlrule:#7aa3d6; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); }
+  body { font-family:-apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  main { max-width:760px; margin:0 auto; padding:56px 32px 96px; }
+  h1 { font-size:30px; font-weight:700; letter-spacing:-0.01em; margin:0 0 8px; }
+  h1 .crumb { color:var(--muted); font-weight:500; }
+  .lede { color:var(--muted); margin:0 0 28px; font-size:17px; }
+  h2 { font-size:17px; font-weight:700; margin:32px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--rule); text-transform:lowercase; }
+  p { margin:0 0 12px; }
+  ul { margin:0 0 16px; padding-left:22px; }
+  ul ul { margin:4px 0 8px; }
+  li { margin:3px 0; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code { font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:0.92em; }
+  pre { font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:13px; background:#f5f5f5; padding:10px 14px; border-radius:4px; overflow-x:auto; margin:0 0 16px; }
+  .note { color:var(--muted); font-size:14px; margin-top:36px; padding-top:18px; border-top:1px solid var(--rule); font-style:italic; }
+  .desc { color:var(--muted); }
+  .install { background:var(--hl); border:1px solid var(--hlrule); border-radius:6px; padding:14px 16px; margin:0 0 32px; font-size:15px; }
+  .install strong { color:var(--ink); }
+  .install p { margin:0 0 6px; }
+  .install p:last-child { margin-bottom:0; }
+  .install pre { background:#dde9f5; margin-top:8px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Exam make-up generator <span class="crumb">/ file guide</span></h1>
+<p class="lede">This Claude Code skill drafts replacement questions, records instructor feedback, and assembles selected questions into a make-up exam. Read <a href="summary.md">summary.md</a> for installation, workflow, review criteria, and limitations.</p>
+
+<div class="install">
+  <p><strong>Installation:</strong> drop the skill into a project's <code>.claude/skills/</code> directory (or user-level <code>~/.claude/skills/</code>).</p>
+  <pre>mkdir -p .claude/skills/exam-makeup
+cp operations/skill.md .claude/skills/exam-makeup/SKILL.md
+cp operations/skill.json .claude/skills/exam-makeup/skill.json</pre>
+  <p>Then invoke in any Claude Code session: <code>Use exam-makeup to generate candidates from path/to/my-final.tex</code>.</p>
+</div>
+
+<h2>Top-level</h2>
+<ul>
+  <li><a href="summary.md">summary.md</a> <span class="desc">&mdash; installation, workflow, review criteria, and limitations</span></li>
+  <li><a href="CLAUDE.md">CLAUDE.md</a> <span class="desc">&mdash; project-level instructions loaded by Claude Code on session start</span></li>
+  <li><a href="index.md">index.md</a> / <a href="index.html">index.html</a> <span class="desc">&mdash; this file</span></li>
+</ul>
+
+<h2>inputs/</h2>
+<p class="desc">The worked run's input &mdash; the original exam the skill operated on.</p>
+<ul>
+  <li><a href="inputs/final_s.tex">final_s.tex</a> <span class="desc">&mdash; the CS20 spring-2026 final exam, LaTeX source (with solutions). 10 problems, the structural anchor for the run</span></li>
+  <li><a href="inputs/final_s.pdf">final_s.pdf</a> <span class="desc">&mdash; same exam, rendered, for visual reference</span></li>
+</ul>
+
+<h2>operations/</h2>
+<p class="desc">The skill instructions, metadata, and a shorter description of its three stages.</p>
+<ul>
+  <li><a href="operations/three-mode-state-machine.md">three-mode-state-machine.md</a> <span class="desc">&mdash; explanation of generation, iteration, and assembly</span></li>
+  <li><a href="operations/skill.md">skill.md</a> <span class="desc">&mdash; <strong>the skill itself.</strong> ~400 lines, deliberately single-document. Defines the three modes, the interview phase, the generation rules, the iteration semantics, the assembly sanity checks, the format-agnostic read strategies</span></li>
+  <li><a href="operations/skill.json">skill.json</a> <span class="desc">&mdash; the one-line manifest (name, description, version, author)</span></li>
+</ul>
+
+<h2>outputs/</h2>
+<p class="desc">The worked run's output, plus a reader's guide.</p>
+<ul>
+  <li><a href="outputs/worked-run-summary.md">worked-run-summary.md</a> <span class="desc">&mdash; a guide to the two real-run artifacts: what happened in which mode, what to look for in each file, what the numbers mean</span></li>
+  <li><a href="outputs/final_s_makeup_candidates.md">final_s_makeup_candidates.md</a> <span class="desc">&mdash; candidate questions, feedback history, and instructor selections from the example run</span></li>
+  <li><a href="outputs/final_s_makeup.tex">final_s_makeup.tex</a> <span class="desc">&mdash; <strong>the assembled exam.</strong> The chosen-per-slot candidates assembled into a complete make-up exam in the original's LaTeX format. Passed all sanity checks</span></li>
+</ul>
+
+<p class="note">The first run writes a candidates file. The instructor edits its Keep boxes and feedback sections, then runs the skill again. The skill uses those edits to add candidates or assemble the selected exam.</p>
+
+</main>
+</body>
+</html>

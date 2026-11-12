@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked-graph simulation template</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+This is the canonical PhET layout: physical model on the left, live
+graph on the right, both wired to the same state object. Use this when
+two linked representations are central to the learning goal.
+
+Replace bracketed placeholders. Keep the design record.
+--------------------------------------------------------------------
+Title:                  [Simulation title]
+Learning goal:          [One sentence]
+Target learner:         [Course level, prior knowledge]
+Core misconception:     [What this makes visible]
+Manipulables:           [List with units and ranges]
+Hidden/fixed by design: [What is simplified, and why]
+Representations:        [The two linked views: typically physical model
+                         + time-series or relationship graph]
+Reflection prompts:     [3-5; see "Try this" panel]
+Model limitations:      [2-3 sentences; see panel]
+Classroom use:          [Pre-class / in-class / lab / post-class]
+Date:                   [YYYY-MM-DD]
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #555555;
+    --panel: #f4f4f4;
+    --accent: #2a6fdb;
+    --accent-fg: #ffffff;
+    --graph: #d24a3d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--bg);
+    margin: 0;
+    padding: 1.5rem;
+    max-width: 1280px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .controls, .view, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .view h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--muted); }
+  .panel { margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  label { display: block; margin: 0.75rem 0; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  button:focus-visible, input:focus-visible {
+    outline: 3px solid #ffb800;
+    outline-offset: 2px;
+  }
+  svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 4px; }
+  svg text { font-size: 13px; font-family: inherit; fill: var(--muted); }
+  .live-readout {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: #fff;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>[Simulation title]</h1>
+<p class="goal">[Learning goal — one sentence, visible to the student.]</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      Frequency: <span id="freq-readout" class="readout">1.0</span> Hz
+      <input id="freq" type="range" min="0.1" max="3" value="1" step="0.1" aria-label="Frequency in hertz">
+    </label>
+
+    <label>
+      Amplitude: <span id="amp-readout" class="readout">50</span>
+      <input id="amp" type="range" min="0" max="100" value="50" step="1" aria-label="Amplitude">
+    </label>
+
+    <button id="playPause" type="button" aria-pressed="true">Pause</button>
+    <button id="reset" type="button">Reset</button>
+  </section>
+
+  <section class="view" aria-labelledby="model-heading">
+    <h2 id="model-heading">Physical model</h2>
+    <svg id="model" viewBox="0 0 300 240" role="img" aria-label="A point oscillating vertically. Its position is set by the current phase of the wave determined by frequency and amplitude.">
+      <line x1="0" y1="120" x2="300" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="150" y1="0" x2="150" y2="240" stroke="#eee" stroke-width="1"/>
+      <circle id="bob" cx="150" cy="120" r="14" fill="var(--accent)"/>
+      <text x="150" y="230" text-anchor="middle">position vs. time</text>
+    </svg>
+    <div class="live-readout" aria-live="polite">
+      Current y: <span id="y-readout" class="readout">0.0</span>
+    </div>
+  </section>
+
+  <section class="view" aria-labelledby="graph-heading">
+    <h2 id="graph-heading">Live graph</h2>
+    <svg id="graph" viewBox="0 0 300 240" role="img" aria-label="A live time-series plot of the model's y position. Updates in real time as the physical model moves.">
+      <line x1="30" y1="120" x2="300" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="30" y1="0" x2="30" y2="240" stroke="#888" stroke-width="1"/>
+      <text x="20" y="14" text-anchor="end">+A</text>
+      <text x="20" y="124" text-anchor="end">0</text>
+      <text x="20" y="234" text-anchor="end">−A</text>
+      <text x="165" y="234" text-anchor="middle">time →</text>
+      <polyline id="trace" fill="none" stroke="var(--graph)" stroke-width="2" points=""/>
+    </svg>
+  </section>
+
+</div>
+
+<section class="panel" aria-labelledby="notice-heading">
+  <h2 id="notice-heading">What to notice</h2>
+  <p>[Direct attention to the link between the two views — the physical model and the graph are different representations of the same state.]</p>
+</section>
+
+<section class="panel" aria-labelledby="tryit-heading">
+  <h2 id="tryit-heading">Try this</h2>
+  <ol>
+    <li>[Prompt 1 — ask a prediction about one view, check it in the other]</li>
+    <li>[Prompt 2]</li>
+    <li>[Prompt 3]</li>
+  </ol>
+</section>
+
+<section class="panel" aria-labelledby="limits-heading">
+  <h2 id="limits-heading">Model limitations</h2>
+  <p>[What is simplified or excluded — speak in the student's vocabulary.]</p>
+</section>
+
+<script>
+  // === constants ===
+  const INITIAL = { freq: 1.0, amp: 50 };
+  const MODEL = { width: 300, height: 240, centerY: 120 };
+  const GRAPH = { left: 30, right: 300, top: 0, bottom: 240, centerY: 120, ampPixels: 100 };
+  const TRACE_LENGTH = 270; // pixels of graph history shown
+  const TIME_STEP = 0.016;  // ~60 fps
+
+  // === state ===
+  const state = { ...INITIAL, running: true, t: 0, trace: [] };
+
+  // === model ===
+  function modelY() {
+    return state.amp * Math.sin(2 * Math.PI * state.freq * state.t);
+  }
+
+  function step() {
+    state.t += TIME_STEP;
+    const y = modelY();
+    state.trace.push(y);
+    if (state.trace.length > TRACE_LENGTH) state.trace.shift();
+  }
+
+  // === render ===
+  const $ = id => document.getElementById(id);
+
+  function render() {
+    const y = modelY();
+    $('bob').setAttribute('cy', MODEL.centerY - y);
+    $('y-readout').textContent = y.toFixed(1);
+    $('freq-readout').textContent = state.freq.toFixed(1);
+    $('amp-readout').textContent = state.amp;
+
+    // map trace samples to graph coordinates (newest on the right)
+    const points = state.trace.map((sample, i) => {
+      const x = GRAPH.right - (state.trace.length - 1 - i);
+      // normalise sample (-amp..+amp at any moment, but plot relative to current amp)
+      const py = GRAPH.centerY - (sample / 100) * GRAPH.ampPixels;
+      return `${x},${py.toFixed(1)}`;
+    }).join(' ');
+    $('trace').setAttribute('points', points);
+  }
+
+  function loop() {
+    if (state.running) step();
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  // === events ===
+  $('freq').addEventListener('input', (e) => {
+    state.freq = +e.target.value;
+  });
+  $('amp').addEventListener('input', (e) => {
+    state.amp = +e.target.value;
+  });
+  $('playPause').addEventListener('click', () => {
+    state.running = !state.running;
+    $('playPause').textContent = state.running ? 'Pause' : 'Play';
+    $('playPause').setAttribute('aria-pressed', state.running);
+  });
+  $('reset').addEventListener('click', () => {
+    Object.assign(state, INITIAL);
+    state.running = true;
+    state.t = 0;
+    state.trace = [];
+    $('freq').value = state.freq;
+    $('amp').value = state.amp;
+    $('playPause').textContent = 'Pause';
+    $('playPause').setAttribute('aria-pressed', 'true');
+    render();
+  });
+
+  // === init ===
+  render();
+  requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>

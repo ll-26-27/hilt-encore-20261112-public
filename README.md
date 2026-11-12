@@ -8,6 +8,7 @@ This repository is the site for the session: examples of what we built with facu
 | --- | --- |
 | `nextjs/` | the site (Next.js): Examples, Utilities, Ideas |
 | `content/` | the site's words, in Markdown: `home.md`, `utilities.md`, `examples/`, `ideas/` (one file per idea) |
+| `workshop-folder/` | desktop-app workshop: walkthrough, source materials, prompts, operations, and outputs; start with its `README.md` |
 | `ll-utilities/` | small readable scripts that call Harvard's HUIT AI APIs and a few outside services; its `README.md` says how to use them |
 
 ## Run the site
@@ -18,4 +19,6 @@ pnpm install
 pnpm dev
 ```
 
-The site is at http://localhost:3112. Every example runs in your browser: nothing calls a model or stores what you type, and model output that was generated beforehand is labelled as recorded.
+The site is at http://localhost:3112. The examples include browser interactives, saved outputs, screenshots, and externally hosted demonstrations. Saved model output is labelled as recorded. Some interactives keep notes in your browser; the soundbite example contains only supplied screenshots.
+
+The cooking simulations and German reading room are copied from `workshop-folder/` automatically before development and production builds. Keep that folder beside `nextjs/` when cloning or deploying.

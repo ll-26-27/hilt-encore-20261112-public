@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Onions Take 45 Minutes, Not 10</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --panel: #ffffff;
+    --ink: #2b2420;
+    --muted: #7a6f63;
+    --amber: #c9762b;
+    --amber-dark: #8f5218;
+    --water: #6fb3d9;
+    --water-dark: #3d7ea6;
+    --line: #e4dcd0;
+    --good: #4a7c4e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 32px 20px 60px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  /* --- Pan view --- */
+  .visuals-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 18px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .pan-stage svg { width: 100%; max-width: 210px; height: auto; }
+  .vessel-stage { text-align: center; }
+  .vessel-stage svg { width: 100%; max-width: 120px; height: auto; }
+  .vessel-caption {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 4px;
+    max-width: 160px;
+  }
+  .onion-piece {
+    stroke: #b8a67d;
+    stroke-width: 1;
+  }
+  .onion-layer {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 0.9;
+    mix-blend-mode: overlay;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .clock {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 4px 0 2px;
+  }
+  .clock-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-bottom: 14px; }
+
+  .markers {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .bar-track {
+    position: relative;
+    height: 10px;
+    background: #eee2d3;
+    border-radius: 6px;
+    overflow: visible;
+    margin-bottom: 4px;
+  }
+  .bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f2e8ce 0%, #d69634 55%, #6b3a18 100%);
+    border-radius: 6px;
+    transition: width 0.1s linear;
+  }
+  .bar-flag {
+    position: absolute;
+    top: -18px;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    color: var(--amber-dark);
+    white-space: nowrap;
+  }
+  .bar-flag.projected {
+    left: auto !important;
+    right: 0;
+    transform: none;
+    text-align: right;
+  }
+  .bar-flag.projected::after {
+    left: auto;
+    right: 0;
+  }
+  .bar-flag::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 16px;
+    width: 1px;
+    height: 8px;
+    background: var(--amber-dark);
+  }
+
+  .controls-row { display: flex; gap: 10px; justify-content: center; margin-top: 14px; }
+  button {
+    font: inherit;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 18px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #runBtn { background: var(--amber); color: white; }
+  #runBtn:hover { background: var(--amber-dark); }
+  #resetBtn { background: #eee2d3; color: var(--ink); }
+  #resetBtn:hover { background: #e2d3bc; }
+
+  /* --- Sliders --- */
+  .slider-group { margin-bottom: 20px; }
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  .slider-label .val { font-weight: 600; color: var(--amber-dark); }
+  input[type="range"] { width: 100%; accent-color: var(--amber); }
+
+  .onion-equiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: 8px;
+  }
+  .onion-equiv svg { display: block; }
+  .equiv-text {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .equation {
+    background: #fbf3e7;
+    border: 1px solid #eddcc0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 1.05rem;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .equation .sub { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .result-grid div.k { color: var(--muted); }
+  .result-grid div.v { font-weight: 600; text-align: right; }
+
+  .calibration {
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    font-size: 0.9rem;
+  }
+  .calibration .status {
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .calibration .pass { color: var(--good); }
+  .calibration .fail { color: #b5451e; }
+
+  details.ignores {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: var(--ink);
+  }
+  details.ignores summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  details.ignores ul { margin: 10px 0 0; padding-left: 20px; }
+  details.ignores li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Why onions take 45 minutes, not 10</h1>
+  <p class="subtitle">Most of the time isn't browning &mdash; it's driving the water out.</p>
+
+  <div class="layout">
+    <div class="panel">
+      <div class="visuals-row">
+        <div class="pan-stage">
+          <svg id="panSvg" viewBox="0 0 300 300">
+            <circle cx="150" cy="150" r="130" fill="#d9d0c3" stroke="#b8ab97" stroke-width="4"/>
+            <circle cx="150" cy="150" r="118" fill="#3a3530"/>
+            <g id="onionPieces">
+              <!-- each piece is a half-moon slice: a flat cut edge with layered arcs nested toward the root end, the way a chef actually halves then slices an onion -->
+              <g transform="rotate(-18 95 100)">
+                <path class="onion-piece" d="M 73 100 A 22 15 0 0 1 117 100 Z"/>
+                <path class="onion-layer" d="M 78.5 100 A 16.5 11.25 0 0 1 111.5 100 Z"/>
+                <path class="onion-layer" d="M 84 100 A 11 7.5 0 0 1 106 100 Z"/>
+                <path class="onion-layer" d="M 89.1 100 A 5.9 4.1 0 0 1 100.9 100 Z"/>
+              </g>
+              <g transform="rotate(22 205 95)">
+                <path class="onion-piece" d="M 183 95 A 22 15 0 0 1 227 95 Z"/>
+                <path class="onion-layer" d="M 188.5 95 A 16.5 11.25 0 0 1 221.5 95 Z"/>
+                <path class="onion-layer" d="M 194 95 A 11 7.5 0 0 1 216 95 Z"/>
+                <path class="onion-layer" d="M 199.1 95 A 5.9 4.1 0 0 1 210.9 95 Z"/>
+              </g>
+              <g transform="rotate(30 90 210)">
+                <path class="onion-piece" d="M 68 210 A 22 15 0 0 1 112 210 Z"/>
+                <path class="onion-layer" d="M 73.5 210 A 16.5 11.25 0 0 1 106.5 210 Z"/>
+                <path class="onion-layer" d="M 79 210 A 11 7.5 0 0 1 101 210 Z"/>
+                <path class="onion-layer" d="M 84.1 210 A 5.9 4.1 0 0 1 95.9 210 Z"/>
+              </g>
+              <g transform="rotate(-25 212 205)">
+                <path class="onion-piece" d="M 190 205 A 22 15 0 0 1 234 205 Z"/>
+                <path class="onion-layer" d="M 195.5 205 A 16.5 11.25 0 0 1 228.5 205 Z"/>
+                <path class="onion-layer" d="M 201 205 A 11 7.5 0 0 1 223 205 Z"/>
+                <path class="onion-layer" d="M 206.1 205 A 5.9 4.1 0 0 1 217.9 205 Z"/>
+              </g>
+              <g transform="rotate(4 150 70)">
+                <path class="onion-piece" d="M 128 70 A 22 15 0 0 1 172 70 Z"/>
+                <path class="onion-layer" d="M 133.5 70 A 16.5 11.25 0 0 1 166.5 70 Z"/>
+                <path class="onion-layer" d="M 139 70 A 11 7.5 0 0 1 161 70 Z"/>
+                <path class="onion-layer" d="M 144.1 70 A 5.9 4.1 0 0 1 155.9 70 Z"/>
+              </g>
+              <g transform="rotate(-6 150 235)">
+                <path class="onion-piece" d="M 128 235 A 22 15 0 0 1 172 235 Z"/>
+                <path class="onion-layer" d="M 133.5 235 A 16.5 11.25 0 0 1 166.5 235 Z"/>
+                <path class="onion-layer" d="M 139 235 A 11 7.5 0 0 1 161 235 Z"/>
+                <path class="onion-layer" d="M 144.1 235 A 5.9 4.1 0 0 1 155.9 235 Z"/>
+              </g>
+              <g transform="rotate(80 224 150)">
+                <path class="onion-piece" d="M 202 150 A 22 15 0 0 1 246 150 Z"/>
+                <path class="onion-layer" d="M 207.5 150 A 16.5 11.25 0 0 1 240.5 150 Z"/>
+                <path class="onion-layer" d="M 213 150 A 11 7.5 0 0 1 235 150 Z"/>
+                <path class="onion-layer" d="M 218.1 150 A 5.9 4.1 0 0 1 229.9 150 Z"/>
+              </g>
+              <g transform="rotate(-80 76 150)">
+                <path class="onion-piece" d="M 54 150 A 22 15 0 0 1 98 150 Z"/>
+                <path class="onion-layer" d="M 59.5 150 A 16.5 11.25 0 0 1 92.5 150 Z"/>
+                <path class="onion-layer" d="M 65 150 A 11 7.5 0 0 1 87 150 Z"/>
+                <path class="onion-layer" d="M 70.1 150 A 5.9 4.1 0 0 1 81.9 150 Z"/>
+              </g>
+              <!-- these two sit under the puddle at rest and reveal themselves as the water cooks off -->
+              <g transform="rotate(15 120 130)">
+                <path class="onion-piece" d="M 98 130 A 22 15 0 0 1 142 130 Z"/>
+                <path class="onion-layer" d="M 103.5 130 A 16.5 11.25 0 0 1 136.5 130 Z"/>
+                <path class="onion-layer" d="M 109 130 A 11 7.5 0 0 1 131 130 Z"/>
+                <path class="onion-layer" d="M 114.1 130 A 5.9 4.1 0 0 1 125.9 130 Z"/>
+              </g>
+              <g transform="rotate(-15 180 170)">
+                <path class="onion-piece" d="M 158 170 A 22 15 0 0 1 202 170 Z"/>
+                <path class="onion-layer" d="M 163.5 170 A 16.5 11.25 0 0 1 196.5 170 Z"/>
+                <path class="onion-layer" d="M 169 170 A 11 7.5 0 0 1 191 170 Z"/>
+                <path class="onion-layer" d="M 174.1 170 A 5.9 4.1 0 0 1 185.9 170 Z"/>
+              </g>
+            </g>
+            <ellipse id="puddle" cx="150" cy="150" rx="80" ry="58" fill="url(#waterGrad)" />
+            <ellipse id="puddleShine" cx="126" cy="132" rx="22" ry="10" fill="#ffffff" opacity="0.25" />
+            <defs>
+              <radialGradient id="waterGrad" cx="40%" cy="35%" r="75%">
+                <stop offset="0%" stop-color="#8fc6e6"/>
+                <stop offset="100%" stop-color="#3d7ea6"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="vessel-stage">
+          <svg id="vesselSvg" viewBox="0 0 160 320">
+            <rect x="30" y="20" width="70" height="260" rx="6" fill="#eef4f7" fill-opacity="0.5" stroke="#9fb3bd" stroke-width="2"/>
+            <clipPath id="vesselClip">
+              <rect x="33" y="23" width="64" height="254" rx="4"/>
+            </clipPath>
+            <rect id="vesselFill" x="33" y="277" width="64" height="0" fill="#4a8fb8" clip-path="url(#vesselClip)"/>
+            <line id="targetLine" x1="26" y1="277" x2="104" y2="277" stroke="#c9762b" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <g id="vesselTicks"></g>
+          </svg>
+          <div class="vessel-caption" id="vesselCaption">water collected</div>
+        </div>
+      </div>
+
+      <div class="clock" id="clockDisplay">00:00</div>
+      <div class="clock-note" id="clockNote">simulated stovetop time</div>
+
+      <div class="markers">
+        <span>0</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" id="energyBar"></div>
+        <div class="bar-flag" id="recipeFlag" style="left:0%">recipe: 10 min</div>
+        <div class="bar-flag projected" id="projectedFlag">projected: 0 min</div>
+      </div>
+
+      <div class="controls-row">
+        <button id="runBtn">Run</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="slider-group">
+        <div class="slider-label"><span>Onion mass</span><span class="val" id="massVal">1.0 kg</span></div>
+        <input type="range" id="massSlider" min="0.3" max="3" step="0.1" value="1.0">
+        <div class="onion-equiv" id="onionIcons"></div>
+        <div class="equiv-text" id="onionEquivText"></div>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>Water driven off</span><span class="val" id="fracVal">70%</span></div>
+        <input type="range" id="fracSlider" min="20" max="95" step="1" value="70">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>Burner power delivered to pan</span><span class="val" id="powerVal">1000 W</span></div>
+        <input type="range" id="powerSlider" min="400" max="2500" step="50" value="1000">
+      </div>
+
+      <div class="equation">
+        Q = m<sub>water</sub> &times; L<sub>v</sub> + m &times; c &times; &Delta;T
+        <div class="sub" id="equationValues">loading&hellip;</div>
+      </div>
+
+      <div class="result-grid">
+        <div class="k">Onions are ~89% water</div>
+        <div class="v" id="waterMass">&mdash;</div>
+        <div class="k">Water mass evaporated</div>
+        <div class="v" id="evapMass">&mdash;</div>
+        <div class="k">Energy to evaporate it</div>
+        <div class="v" id="latentEnergy">&mdash;</div>
+        <div class="k">Energy to reach boiling</div>
+        <div class="v" id="sensibleEnergy">&mdash;</div>
+        <div class="k">Total energy needed</div>
+        <div class="v" id="totalEnergy">&mdash;</div>
+        <div class="k">Predicted time</div>
+        <div class="v" id="predictedTime">&mdash;</div>
+      </div>
+
+      <div class="calibration">
+        <div>Calibration target: recipes claim <strong>~45 minutes</strong> for most of the water to cook off.</div>
+        <div class="status" id="calibStatus">&mdash;</div>
+      </div>
+
+      <details class="ignores">
+        <summary>What this model ignores</summary>
+        <ul>
+          <li>Not all burner power actually reaches the onions &mdash; some is lost to the pan, the air, and the stovetop.</li>
+          <li>L<sub>v</sub> (latent heat of vaporization) is treated as constant, but it actually drops slightly as temperature rises.</li>
+          <li>No Maillard browning chemistry &mdash; this model only accounts for water loss, not the sugar/protein reactions that make onions taste "caramelized."</li>
+          <li>Water doesn't evaporate at a perfectly steady rate &mdash; early moisture loss is faster, and the last bit trapped in collapsed cell walls is slower.</li>
+          <li>Assumes even heat distribution across the pan; real pans have hot spots and need stirring.</li>
+          <li>Ignores the energy already spent heating the onions from room temperature before evaporation starts in earnest.</li>
+          <li>Onion color darkening here is a visual timer, not a browning model &mdash; real caramelization depends on temperature and sugar concentration, not just elapsed time.</li>
+          <li>The vessel converts mass to volume assuming water's density is exactly 1 g/mL.</li>
+          <li>"Medium onion" is a rough kitchen approximation (~150 g) &mdash; real onions vary a lot in size.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</div>
+
+<script>
+  const LV = 2260;       // J/g, latent heat of vaporization of water
+  const WATER_FRAC = 0.89; // onions are ~89% water by mass
+  const C_ONION = 3.7;    // J/(g*K), rough specific heat of onion tissue
+  const DELTA_T = 80;     // K, roughly room temp -> boiling
+  const ONION_MEDIUM_G = 150; // rough kitchen approximation for "one medium onion"
+  const FLOZ_PER_ML = 1 / 29.5735;
+  const NICE_STEPS = [50, 100,150, 250, 300, 500, 750, 1000, 1500, 2000, 2500, 3000, 4000, 5000];
+  const VESSEL_TOP = 23, VESSEL_BOTTOM = 277;
+
+  function niceMaxFor(x) {
+    for (const s of NICE_STEPS) if (x <= s) return s;
+    return Math.ceil(x / 1000) * 1000;
+  }
+
+  function yForFraction(f) {
+    return VESSEL_BOTTOM - f * (VESSEL_BOTTOM - VESSEL_TOP);
+  }
+
+  function lerpColor(t) {
+    const stops = [
+      { t: 0, c: [242, 232, 206] },
+      { t: 0.55, c: [214, 150, 52] },
+      { t: 1, c: [107, 58, 24] }
+    ];
+    let a = stops[0], b = stops[stops.length - 1];
+    for (let i = 0; i < stops.length - 1; i++) {
+      if (t >= stops[i].t && t <= stops[i + 1].t) { a = stops[i]; b = stops[i + 1]; break; }
+    }
+    const localT = (t - a.t) / ((b.t - a.t) || 1);
+    const r = Math.round(a.c[0] + (b.c[0] - a.c[0]) * localT);
+    const g = Math.round(a.c[1] + (b.c[1] - a.c[1]) * localT);
+    const bl = Math.round(a.c[2] + (b.c[2] - a.c[2]) * localT);
+    return `rgb(${r},${g},${bl})`;
+  }
+
+  let onionIconIdCounter = 0;
+  function onionIconHTML(fraction) {
+    onionIconIdCounter++;
+    const id = 'onionClip' + onionIconIdCounter;
+    const w = (20 * Math.max(0, Math.min(1, fraction))).toFixed(2);
+    return `<svg viewBox="0 0 20 26" width="16" height="21">
+      <clipPath id="${id}"><rect x="0" y="0" width="${w}" height="26"/></clipPath>
+      <g clip-path="url(#${id})">
+        <path d="M10,3 C6,3 3,7 3,13 C3,19 6,23 10,23 C14,23 17,19 17,13 C17,7 14,3 10,3 Z" fill="#e3b463" stroke="#a97a3a" stroke-width="1"/>
+        <path d="M7,6 C6,10 6,16 7,20" fill="none" stroke="#c8934f" stroke-width="0.7"/>
+        <path d="M13,6 C14,10 14,16 13,20" fill="none" stroke="#c8934f" stroke-width="0.7"/>
+        <path d="M8,3 Q10,-1 12,3" fill="none" stroke="#8a6a3a" stroke-width="1"/>
+        <path d="M10,23 L10,25" stroke="#8a6a3a" stroke-width="1"/>
+      </g>
+    </svg>`;
+  }
+
+  function renderOnionEquivalence(massKg) {
+    const count = (massKg * 1000) / ONION_MEDIUM_G;
+    const whole = Math.floor(count);
+    const frac = count - whole;
+
+    let html = '';
+    for (let i = 0; i < whole; i++) html += onionIconHTML(1);
+    if (frac > 0.08) html += onionIconHTML(frac);
+    onionIconsEl.innerHTML = html;
+
+    onionEquivText.textContent = `≈ ${count.toFixed(1)} medium onions (${ONION_MEDIUM_G} g each)`;
+  }
+
+  const massSlider = document.getElementById('massSlider');
+  const fracSlider = document.getElementById('fracSlider');
+  const powerSlider = document.getElementById('powerSlider');
+
+  const massVal = document.getElementById('massVal');
+  const fracVal = document.getElementById('fracVal');
+  const powerVal = document.getElementById('powerVal');
+
+  const waterMassEl = document.getElementById('waterMass');
+  const evapMassEl = document.getElementById('evapMass');
+  const latentEnergyEl = document.getElementById('latentEnergy');
+  const sensibleEnergyEl = document.getElementById('sensibleEnergy');
+  const totalEnergyEl = document.getElementById('totalEnergy');
+  const predictedTimeEl = document.getElementById('predictedTime');
+  const equationValuesEl = document.getElementById('equationValues');
+  const calibStatusEl = document.getElementById('calibStatus');
+  const recipeFlag = document.getElementById('recipeFlag');
+  const projectedFlag = document.getElementById('projectedFlag');
+
+  const puddle = document.getElementById('puddle');
+  const puddleShine = document.getElementById('puddleShine');
+  const clockDisplay = document.getElementById('clockDisplay');
+  const clockNote = document.getElementById('clockNote');
+  const energyBar = document.getElementById('energyBar');
+  const runBtn = document.getElementById('runBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const onionPieces = document.querySelectorAll('.onion-piece');
+  const vesselFill = document.getElementById('vesselFill');
+  const targetLine = document.getElementById('targetLine');
+  const vesselTicks = document.getElementById('vesselTicks');
+  const vesselCaption = document.getElementById('vesselCaption');
+  const onionIconsEl = document.getElementById('onionIcons');
+  const onionEquivText = document.getElementById('onionEquivText');
+
+  const RECIPE_MINUTES = 10;
+  const TARGET_MINUTES = 45;
+
+  let state = { totalEnergyJ: 0, predictedMinutes: 0, powerW: 1000 };
+  let animId = null;
+  let animStart = null;
+  const REAL_DURATION_MS = 9000; // real seconds the animation takes, regardless of simulated minutes
+
+  function fmtEnergy(joules) {
+    if (joules >= 1e6) return (joules / 1e6).toFixed(2) + ' MJ';
+    return (joules / 1e3).toFixed(0) + ' kJ';
+  }
+
+  function compute() {
+    const massKg = parseFloat(massSlider.value);
+    const fracPct = parseFloat(fracSlider.value);
+    const powerW = parseFloat(powerSlider.value);
+
+    massVal.textContent = massKg.toFixed(1) + ' kg';
+    fracVal.textContent = fracPct.toFixed(0) + '%';
+    powerVal.textContent = powerW.toFixed(0) + ' W';
+    renderOnionEquivalence(massKg);
+
+    const massG = massKg * 1000;
+    const waterG = massG * WATER_FRAC;
+    const evapG = waterG * (fracPct / 100);
+
+    const latentJ = evapG * LV;
+    const sensibleJ = massG * C_ONION * DELTA_T;
+    const totalJ = latentJ + sensibleJ;
+
+    const seconds = totalJ / powerW;
+    const minutes = seconds / 60;
+
+    waterMassEl.textContent = waterG.toFixed(0) + ' g';
+    evapMassEl.textContent = evapG.toFixed(0) + ' g';
+    latentEnergyEl.textContent = fmtEnergy(latentJ);
+    sensibleEnergyEl.textContent = fmtEnergy(sensibleJ);
+    totalEnergyEl.textContent = fmtEnergy(totalJ);
+    predictedTimeEl.textContent = minutes.toFixed(1) + ' min';
+
+    equationValuesEl.textContent =
+      `${evapG.toFixed(0)}g × ${LV} J/g  +  ${massG.toFixed(0)}g × ${C_ONION} × ${DELTA_T}K  =  ${fmtEnergy(totalJ)}`;
+
+    const ratio = minutes / TARGET_MINUTES;
+    const withinFactorTwo = ratio >= 0.5 && ratio <= 2;
+    calibStatusEl.textContent = withinFactorTwo
+      ? `✓ ${minutes.toFixed(1)} min is within a factor of two of the 45-minute claim.`
+      : `✗ ${minutes.toFixed(1)} min is more than a factor of two off from 45 minutes.`;
+    calibStatusEl.className = 'status ' + (withinFactorTwo ? 'pass' : 'fail');
+
+    const recipePct = Math.min(100, (RECIPE_MINUTES / minutes) * 100);
+    recipeFlag.style.left = recipePct + '%';
+    projectedFlag.textContent = `projected: ${minutes.toFixed(1)} min`;
+
+    state.totalEnergyJ = totalJ;
+    state.predictedMinutes = minutes;
+    state.powerW = powerW;
+    state.evapG = evapG;
+    state.niceMax = niceMaxFor(evapG * 1.2 || 50);
+
+    rebuildVesselTicks(state.niceMax);
+    const targetY = yForFraction(Math.min(1, state.evapG / state.niceMax));
+    targetLine.setAttribute('y1', targetY);
+    targetLine.setAttribute('y2', targetY);
+    const flOz = evapG * FLOZ_PER_ML;
+    const cups = flOz / 8;
+    vesselCaption.textContent = `target: ${evapG.toFixed(0)} mL (${flOz.toFixed(1)} fl oz / ${cups.toFixed(2)} cup)`;
+
+    resetAnimationVisuals();
+  }
+
+  function rebuildVesselTicks(niceMax) {
+    while (vesselTicks.firstChild) vesselTicks.removeChild(vesselTicks.firstChild);
+    const svgNS = 'http://www.w3.org/2000/svg';
+    [0, 0.25, 0.5, 0.75, 1].forEach(f => {
+      const val = f * niceMax;
+      const y = yForFraction(f);
+
+      const lineL = document.createElementNS(svgNS, 'line');
+      lineL.setAttribute('x1', 22); lineL.setAttribute('x2', 30);
+      lineL.setAttribute('y1', y); lineL.setAttribute('y2', y);
+      lineL.setAttribute('stroke', '#9fb3bd'); lineL.setAttribute('stroke-width', 1.2);
+      vesselTicks.appendChild(lineL);
+
+      const textL = document.createElementNS(svgNS, 'text');
+      textL.setAttribute('x', 19); textL.setAttribute('y', y + 3);
+      textL.setAttribute('text-anchor', 'end'); textL.setAttribute('font-size', '8.5'); textL.setAttribute('fill', '#7a6f63');
+      textL.textContent = Math.round(val) + (f === 0 ? ' mL' : '');
+      vesselTicks.appendChild(textL);
+
+      const lineR = document.createElementNS(svgNS, 'line');
+      lineR.setAttribute('x1', 100); lineR.setAttribute('x2', 108);
+      lineR.setAttribute('y1', y); lineR.setAttribute('y2', y);
+      lineR.setAttribute('stroke', '#9fb3bd'); lineR.setAttribute('stroke-width', 1.2);
+      vesselTicks.appendChild(lineR);
+
+      const textR = document.createElementNS(svgNS, 'text');
+      textR.setAttribute('x', 111); textR.setAttribute('y', y + 3);
+      textR.setAttribute('text-anchor', 'start'); textR.setAttribute('font-size', '8.5'); textR.setAttribute('fill', '#7a6f63');
+      const ozVal = val * FLOZ_PER_ML;
+      textR.textContent = ozVal.toFixed(1) + (f === 0 ? ' fl oz' : '');
+      vesselTicks.appendChild(textR);
+    });
+  }
+
+  function resetAnimationVisuals() {
+    if (animId) { cancelAnimationFrame(animId); animId = null; }
+    puddle.setAttribute('rx', 80);
+    puddle.setAttribute('ry', 58);
+    puddleShine.setAttribute('opacity', 0.25);
+    energyBar.style.width = '0%';
+    clockDisplay.textContent = '00:00';
+    clockNote.textContent = 'simulated stovetop time';
+    runBtn.disabled = false;
+    runBtn.textContent = 'Run';
+
+    onionPieces.forEach(el => el.setAttribute('fill', lerpColor(0)));
+    vesselFill.setAttribute('height', 0);
+    vesselFill.setAttribute('y', VESSEL_BOTTOM);
+  }
+
+  function formatClock(simMinutes) {
+    const totalSec = Math.round(simMinutes * 60);
+    const m = Math.floor(totalSec / 60);
+    const s = totalSec % 60;
+    return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  }
+
+  function step(ts) {
+    if (!animStart) animStart = ts;
+    const elapsed = ts - animStart;
+    const progress = Math.min(1, elapsed / REAL_DURATION_MS);
+
+    const simMinutesNow = progress * state.predictedMinutes;
+    clockDisplay.textContent = formatClock(simMinutesNow);
+
+    energyBar.style.width = (progress * 100) + '%';
+
+    const rx = 80 * (1 - 0.82 * progress);
+    const ry = 58 * (1 - 0.82 * progress);
+    puddle.setAttribute('rx', Math.max(rx, 4));
+    puddle.setAttribute('ry', Math.max(ry, 3));
+    puddleShine.setAttribute('opacity', 0.25 * (1 - progress));
+
+    onionPieces.forEach(el => el.setAttribute('fill', lerpColor(progress)));
+
+    const fillFrac = Math.min(1, (progress * state.evapG) / state.niceMax);
+    const fillH = fillFrac * (VESSEL_BOTTOM - VESSEL_TOP);
+    vesselFill.setAttribute('height', fillH);
+    vesselFill.setAttribute('y', VESSEL_BOTTOM - fillH);
+
+    if (progress < 1) {
+      animId = requestAnimationFrame(step);
+    } else {
+      clockNote.textContent = 'done — most of the water is gone';
+      runBtn.disabled = false;
+      runBtn.textContent = 'Run';
+      animId = null;
+    }
+  }
+
+  runBtn.addEventListener('click', () => {
+    resetAnimationVisuals();
+    runBtn.disabled = true;
+    runBtn.textContent = 'Running…';
+    animStart = null;
+    animId = requestAnimationFrame(step);
+  });
+
+  resetBtn.addEventListener('click', resetAnimationVisuals);
+
+  [massSlider, fracSlider, powerSlider].forEach(s => s.addEventListener('input', compute));
+
+  compute();
+</script>
+</body>
+</html>

@@ -26,3 +26,5 @@ Everything here is in a public repository you can copy and change: https://githu
 - [`ll-utilities/`](https://github.com/ll-26-27/hilt-encore-20261112-public/tree/main/ll-utilities): the scripts, one per AI call, readable line by line.
 - [`.env.example`](https://github.com/ll-26-27/hilt-encore-20261112-public/blob/main/.env.example): the names of the keys the scripts read; copy it to `.env` and fill in your own.
 - [`nextjs/`](https://github.com/ll-26-27/hilt-encore-20261112-public/tree/main/nextjs): this app, to run on your own computer or copy for your own course.
+
+- [`workshop-folder/`](https://github.com/ll-26-27/hilt-encore-20261112-public/tree/main/workshop-folder): a desktop-app workshop with inputs, operations, outputs, and a blank project to adapt. Start with its walkthrough.

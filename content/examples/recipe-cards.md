@@ -1,7 +1,7 @@
 ---
 title: The recipe-card gallery
 order: 6
-index: A folder of badly named photos of old recipe cards becomes a recipe website, in two prompts.
+index: "Start with eight poorly named photographs of handwritten recipes and end with a browsable collection. The workflow combines reading images, proposing filenames, transcribing instructions, and researching context, while distinguishing what was written on a card from information added later."
 source: https://github.com/bok-learning-lab/claude-workshop-materials
 demo: https://bok-learning-lab.github.io/claude-workshop-materials/activities/recipes/recipe-collection.html
 image: ""

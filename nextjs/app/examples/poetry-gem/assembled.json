@@ -1,0 +1,1161 @@
+{
+ "message": "Write about learning to read.",
+ "genres": [
+  {
+   "id": "ghazal",
+   "label": "Ghazal",
+   "blurb": "Couplets, a refrain, a signature.",
+   "prompt": "You are a poetry workshop assistant. Whatever the user asks about, respond with a **ghazal**.\n\nForm rules:\n- 5 to 7 couplets (*sher*), each grammatically and thematically self-contained.\n- The first couplet (*matla*) ends both lines with the same refrain word or phrase (*radif*), preceded by a rhyme (*qafia*).\n- Every following couplet ends its second line with that same rhyme + refrain.\n- Lines in all couplets should be of similar length.\n- The final couplet (*maqta*) traditionally includes the poet's name or a direct self-address; here, have the speaker address themselves by a name or epithet.\n- Longing — erotic, spiritual, or both — is the traditional mood.\n\nAfter the poem, add one short line in italics naming the radif and qafia. Do not add other commentary unless the user asks for it."
+  },
+  {
+   "id": "haiku",
+   "label": "Haiku sequence",
+   "blurb": "Three linked haiku; image over statement.",
+   "prompt": "You are a poetry workshop assistant. Whatever the user asks about, respond with a **sequence of three linked haiku**.\n\nForm rules:\n- Each haiku is three lines in a 5–7–5 syllable pattern (English approximation).\n- Each haiku should hold one concrete, sensory image and include a seasonal or natural reference (*kigo*).\n- Use a *kireji*-like cut — a dash, colon, or line break that juxtaposes two images.\n- Prefer showing over stating; avoid abstract summary.\n- The three haiku should move through a small progression (time of day, season, or perspective).\n\nDo not add commentary after the poems unless the user asks for it."
+  },
+  {
+   "id": "sonnet",
+   "label": "Sonnet",
+   "blurb": "14 lines, fixed rhyme scheme, a turn.",
+   "prompt": "You are a poetry workshop assistant. Whatever the user asks about, respond with a **sonnet**.\n\nForm rules:\n- Exactly 14 lines.\n- Use either a Shakespearean (ABAB CDCD EFEF GG) or Petrarchan (ABBAABBA + CDECDE or CDCDCD) rhyme scheme.\n- Roughly iambic pentameter.\n- Include a clear *volta* (turn) — at line 9 for Petrarchan, or at the closing couplet for Shakespearean.\n\nAfter the poem, add one short line in italics naming the rhyme scheme you used and where the turn falls. Do not add other commentary unless the user asks for it."
+  }
+ ],
+ "packs": {
+  "phaedrus": {
+   "label": "Phaedrus",
+   "edition": "Plato, Phaedrus, translated by Benjamin Jowett",
+   "voiceOf": "Plato's Phaedrus, above all Socrates as he speaks there",
+   "levels": {
+    "voice": {
+     "label": "Voice prompt",
+     "blurb": "A description of the voice, not the text itself.",
+     "chars": 1436,
+     "approxTokens": 410,
+     "passages": 4
+    },
+    "assigned": {
+     "label": "257c to the end",
+     "blurb": "The assigned half: rhetoric, and the myth of Theuth on writing.",
+     "chars": 53236,
+     "approxTokens": 15210,
+     "passages": 34
+    },
+    "more": {
+     "label": "The whole dialogue",
+     "blurb": "From the walk by the Ilissus onward, all three speeches on love.",
+     "chars": 126120,
+     "approxTokens": 36034,
+     "passages": 73
+    },
+    "whole": {
+     "label": "Dialogue + Jowett",
+     "blurb": "Adds Jowett's long Victorian introduction: an editor's voice in the pack.",
+     "chars": 211829,
+     "approxTokens": 60523,
+     "passages": 128
+    }
+   }
+  },
+  "frankenstein": {
+   "label": "Frankenstein",
+   "edition": "Mary Shelley, Frankenstein; or, The Modern Prometheus (1818 text)",
+   "voiceOf": "Mary Shelley's Frankenstein (1818), above all the Creature's own narrative",
+   "levels": {
+    "voice": {
+     "label": "Voice prompt",
+     "blurb": "A description of the voice, not the text itself.",
+     "chars": 1652,
+     "approxTokens": 472,
+     "passages": 5
+    },
+    "assigned": {
+     "label": "Ch. 10–15",
+     "blurb": "The assigned chapters: the Creature tells his own story.",
+     "chars": 84427,
+     "approxTokens": 24122,
+     "passages": 63
+    },
+    "more": {
+     "label": "Letters + ch. 1–15",
+     "blurb": "The syllabus's \"recommended\": up to chapter 15.",
+     "chars": 245514,
+     "approxTokens": 70147,
+     "passages": 181
+    },
+    "whole": {
+     "label": "The whole novel",
+     "blurb": "All 23 chapters, with Percy Shelley's preface.",
+     "chars": 406620,
+     "approxTokens": 116177,
+     "passages": 297
+    }
+   }
+  },
+  "analects": {
+   "label": "Analects",
+   "edition": "Confucius, The Analects, translated with commentary by Annping Chin (Penguin Classics, 2014)",
+   "voiceOf": "the Analects of Confucius: the Master's sayings and his exchanges with his disciples",
+   "levels": {
+    "voice": {
+     "label": "Voice prompt",
+     "blurb": "A description of the voice, not the text itself.",
+     "chars": 1445,
+     "approxTokens": 413,
+     "passages": 4
+    },
+    "assigned": {
+     "label": "Books 1–4, sayings",
+     "blurb": "The first four books, the sayings alone (the Analects was recommended in full).",
+     "chars": 24646,
+     "approxTokens": 7042,
+     "passages": 16
+    },
+    "more": {
+     "label": "All 20 books, sayings",
+     "blurb": "Every saying, with no commentary.",
+     "chars": 173962,
+     "approxTokens": 49703,
+     "passages": 112
+    },
+    "whole": {
+     "label": "Penguin text, with commentary",
+     "blurb": "Chin's preface, introduction, commentary after each saying, notes: the editor's voice outweighs the Master's.",
+     "chars": 772631,
+     "approxTokens": 220752,
+     "passages": 533
+    }
+   }
+  }
+ },
+ "meter": {
+  "ghazal|phaedrus|voice|full": {
+   "instructions": 970,
+   "pack": 1485,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|phaedrus|voice|lexical": {
+   "instructions": 1025,
+   "pack": 0,
+   "retrieved": 491,
+   "message": 29,
+   "haystack": 1436
+  },
+  "ghazal|phaedrus|voice|agentic": {
+   "instructions": 1005,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1436
+  },
+  "ghazal|phaedrus|assigned|full": {
+   "instructions": 992,
+   "pack": 53285,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|phaedrus|assigned|lexical": {
+   "instructions": 1047,
+   "pack": 0,
+   "retrieved": 9182,
+   "message": 29,
+   "haystack": 53236
+  },
+  "ghazal|phaedrus|assigned|agentic": {
+   "instructions": 1027,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 53236
+  },
+  "ghazal|phaedrus|more|full": {
+   "instructions": 992,
+   "pack": 126169,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|phaedrus|more|lexical": {
+   "instructions": 1047,
+   "pack": 0,
+   "retrieved": 9157,
+   "message": 29,
+   "haystack": 126120
+  },
+  "ghazal|phaedrus|more|agentic": {
+   "instructions": 1027,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 126120
+  },
+  "ghazal|phaedrus|whole|full": {
+   "instructions": 992,
+   "pack": 211878,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|phaedrus|whole|lexical": {
+   "instructions": 1047,
+   "pack": 0,
+   "retrieved": 8849,
+   "message": 29,
+   "haystack": 211829
+  },
+  "ghazal|phaedrus|whole|agentic": {
+   "instructions": 1027,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 211829
+  },
+  "ghazal|frankenstein|voice|full": {
+   "instructions": 993,
+   "pack": 1705,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|frankenstein|voice|lexical": {
+   "instructions": 1048,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "ghazal|frankenstein|voice|agentic": {
+   "instructions": 1028,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "ghazal|frankenstein|assigned|full": {
+   "instructions": 1030,
+   "pack": 84480,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|frankenstein|assigned|lexical": {
+   "instructions": 1085,
+   "pack": 0,
+   "retrieved": 7835,
+   "message": 29,
+   "haystack": 84427
+  },
+  "ghazal|frankenstein|assigned|agentic": {
+   "instructions": 1065,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 84427
+  },
+  "ghazal|frankenstein|more|full": {
+   "instructions": 1030,
+   "pack": 245567,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|frankenstein|more|lexical": {
+   "instructions": 1085,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 245514
+  },
+  "ghazal|frankenstein|more|agentic": {
+   "instructions": 1065,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 245514
+  },
+  "ghazal|frankenstein|whole|full": {
+   "instructions": 1030,
+   "pack": 406673,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|frankenstein|whole|lexical": {
+   "instructions": 1085,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 406620
+  },
+  "ghazal|frankenstein|whole|agentic": {
+   "instructions": 1065,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 406620
+  },
+  "ghazal|analects|voice|full": {
+   "instructions": 999,
+   "pack": 1494,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|analects|voice|lexical": {
+   "instructions": 1054,
+   "pack": 0,
+   "retrieved": 1042,
+   "message": 29,
+   "haystack": 1445
+  },
+  "ghazal|analects|voice|agentic": {
+   "instructions": 1034,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1445
+  },
+  "ghazal|analects|assigned|full": {
+   "instructions": 1067,
+   "pack": 24695,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|analects|assigned|lexical": {
+   "instructions": 1122,
+   "pack": 0,
+   "retrieved": 8990,
+   "message": 29,
+   "haystack": 24646
+  },
+  "ghazal|analects|assigned|agentic": {
+   "instructions": 1102,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 24646
+  },
+  "ghazal|analects|more|full": {
+   "instructions": 1067,
+   "pack": 174011,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|analects|more|lexical": {
+   "instructions": 1122,
+   "pack": 0,
+   "retrieved": 8496,
+   "message": 29,
+   "haystack": 173962
+  },
+  "ghazal|analects|more|agentic": {
+   "instructions": 1102,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 173962
+  },
+  "ghazal|analects|whole|full": {
+   "instructions": 1067,
+   "pack": 772680,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "ghazal|analects|whole|lexical": {
+   "instructions": 1122,
+   "pack": 0,
+   "retrieved": 6707,
+   "message": 29,
+   "haystack": 772631
+  },
+  "ghazal|analects|whole|agentic": {
+   "instructions": 1102,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 772631
+  },
+  "ghazal|none|voice|full": {
+   "instructions": 800,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|phaedrus|voice|full": {
+   "instructions": 793,
+   "pack": 1485,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|phaedrus|voice|lexical": {
+   "instructions": 848,
+   "pack": 0,
+   "retrieved": 491,
+   "message": 29,
+   "haystack": 1436
+  },
+  "haiku|phaedrus|voice|agentic": {
+   "instructions": 828,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1436
+  },
+  "haiku|phaedrus|assigned|full": {
+   "instructions": 815,
+   "pack": 53285,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|phaedrus|assigned|lexical": {
+   "instructions": 870,
+   "pack": 0,
+   "retrieved": 9182,
+   "message": 29,
+   "haystack": 53236
+  },
+  "haiku|phaedrus|assigned|agentic": {
+   "instructions": 850,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 53236
+  },
+  "haiku|phaedrus|more|full": {
+   "instructions": 815,
+   "pack": 126169,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|phaedrus|more|lexical": {
+   "instructions": 870,
+   "pack": 0,
+   "retrieved": 9157,
+   "message": 29,
+   "haystack": 126120
+  },
+  "haiku|phaedrus|more|agentic": {
+   "instructions": 850,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 126120
+  },
+  "haiku|phaedrus|whole|full": {
+   "instructions": 815,
+   "pack": 211878,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|phaedrus|whole|lexical": {
+   "instructions": 870,
+   "pack": 0,
+   "retrieved": 8849,
+   "message": 29,
+   "haystack": 211829
+  },
+  "haiku|phaedrus|whole|agentic": {
+   "instructions": 850,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 211829
+  },
+  "haiku|frankenstein|voice|full": {
+   "instructions": 816,
+   "pack": 1705,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|frankenstein|voice|lexical": {
+   "instructions": 871,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "haiku|frankenstein|voice|agentic": {
+   "instructions": 851,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "haiku|frankenstein|assigned|full": {
+   "instructions": 853,
+   "pack": 84480,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|frankenstein|assigned|lexical": {
+   "instructions": 908,
+   "pack": 0,
+   "retrieved": 7835,
+   "message": 29,
+   "haystack": 84427
+  },
+  "haiku|frankenstein|assigned|agentic": {
+   "instructions": 888,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 84427
+  },
+  "haiku|frankenstein|more|full": {
+   "instructions": 853,
+   "pack": 245567,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|frankenstein|more|lexical": {
+   "instructions": 908,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 245514
+  },
+  "haiku|frankenstein|more|agentic": {
+   "instructions": 888,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 245514
+  },
+  "haiku|frankenstein|whole|full": {
+   "instructions": 853,
+   "pack": 406673,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|frankenstein|whole|lexical": {
+   "instructions": 908,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 406620
+  },
+  "haiku|frankenstein|whole|agentic": {
+   "instructions": 888,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 406620
+  },
+  "haiku|analects|voice|full": {
+   "instructions": 822,
+   "pack": 1494,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|analects|voice|lexical": {
+   "instructions": 877,
+   "pack": 0,
+   "retrieved": 1042,
+   "message": 29,
+   "haystack": 1445
+  },
+  "haiku|analects|voice|agentic": {
+   "instructions": 857,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1445
+  },
+  "haiku|analects|assigned|full": {
+   "instructions": 890,
+   "pack": 24695,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|analects|assigned|lexical": {
+   "instructions": 945,
+   "pack": 0,
+   "retrieved": 8990,
+   "message": 29,
+   "haystack": 24646
+  },
+  "haiku|analects|assigned|agentic": {
+   "instructions": 925,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 24646
+  },
+  "haiku|analects|more|full": {
+   "instructions": 890,
+   "pack": 174011,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|analects|more|lexical": {
+   "instructions": 945,
+   "pack": 0,
+   "retrieved": 8496,
+   "message": 29,
+   "haystack": 173962
+  },
+  "haiku|analects|more|agentic": {
+   "instructions": 925,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 173962
+  },
+  "haiku|analects|whole|full": {
+   "instructions": 890,
+   "pack": 772680,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "haiku|analects|whole|lexical": {
+   "instructions": 945,
+   "pack": 0,
+   "retrieved": 6707,
+   "message": 29,
+   "haystack": 772631
+  },
+  "haiku|analects|whole|agentic": {
+   "instructions": 925,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 772631
+  },
+  "haiku|none|voice|full": {
+   "instructions": 623,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|phaedrus|voice|full": {
+   "instructions": 701,
+   "pack": 1485,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|phaedrus|voice|lexical": {
+   "instructions": 756,
+   "pack": 0,
+   "retrieved": 491,
+   "message": 29,
+   "haystack": 1436
+  },
+  "sonnet|phaedrus|voice|agentic": {
+   "instructions": 736,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1436
+  },
+  "sonnet|phaedrus|assigned|full": {
+   "instructions": 723,
+   "pack": 53285,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|phaedrus|assigned|lexical": {
+   "instructions": 778,
+   "pack": 0,
+   "retrieved": 9182,
+   "message": 29,
+   "haystack": 53236
+  },
+  "sonnet|phaedrus|assigned|agentic": {
+   "instructions": 758,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 53236
+  },
+  "sonnet|phaedrus|more|full": {
+   "instructions": 723,
+   "pack": 126169,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|phaedrus|more|lexical": {
+   "instructions": 778,
+   "pack": 0,
+   "retrieved": 9157,
+   "message": 29,
+   "haystack": 126120
+  },
+  "sonnet|phaedrus|more|agentic": {
+   "instructions": 758,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 126120
+  },
+  "sonnet|phaedrus|whole|full": {
+   "instructions": 723,
+   "pack": 211878,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|phaedrus|whole|lexical": {
+   "instructions": 778,
+   "pack": 0,
+   "retrieved": 8849,
+   "message": 29,
+   "haystack": 211829
+  },
+  "sonnet|phaedrus|whole|agentic": {
+   "instructions": 758,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 211829
+  },
+  "sonnet|frankenstein|voice|full": {
+   "instructions": 724,
+   "pack": 1705,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|frankenstein|voice|lexical": {
+   "instructions": 779,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "sonnet|frankenstein|voice|agentic": {
+   "instructions": 759,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1652
+  },
+  "sonnet|frankenstein|assigned|full": {
+   "instructions": 761,
+   "pack": 84480,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|frankenstein|assigned|lexical": {
+   "instructions": 816,
+   "pack": 0,
+   "retrieved": 7835,
+   "message": 29,
+   "haystack": 84427
+  },
+  "sonnet|frankenstein|assigned|agentic": {
+   "instructions": 796,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 84427
+  },
+  "sonnet|frankenstein|more|full": {
+   "instructions": 761,
+   "pack": 245567,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|frankenstein|more|lexical": {
+   "instructions": 816,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 245514
+  },
+  "sonnet|frankenstein|more|agentic": {
+   "instructions": 796,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 245514
+  },
+  "sonnet|frankenstein|whole|full": {
+   "instructions": 761,
+   "pack": 406673,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|frankenstein|whole|lexical": {
+   "instructions": 816,
+   "pack": 0,
+   "retrieved": 7281,
+   "message": 29,
+   "haystack": 406620
+  },
+  "sonnet|frankenstein|whole|agentic": {
+   "instructions": 796,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 406620
+  },
+  "sonnet|analects|voice|full": {
+   "instructions": 730,
+   "pack": 1494,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|analects|voice|lexical": {
+   "instructions": 785,
+   "pack": 0,
+   "retrieved": 1042,
+   "message": 29,
+   "haystack": 1445
+  },
+  "sonnet|analects|voice|agentic": {
+   "instructions": 765,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 1445
+  },
+  "sonnet|analects|assigned|full": {
+   "instructions": 798,
+   "pack": 24695,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|analects|assigned|lexical": {
+   "instructions": 853,
+   "pack": 0,
+   "retrieved": 8990,
+   "message": 29,
+   "haystack": 24646
+  },
+  "sonnet|analects|assigned|agentic": {
+   "instructions": 833,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 24646
+  },
+  "sonnet|analects|more|full": {
+   "instructions": 798,
+   "pack": 174011,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|analects|more|lexical": {
+   "instructions": 853,
+   "pack": 0,
+   "retrieved": 8496,
+   "message": 29,
+   "haystack": 173962
+  },
+  "sonnet|analects|more|agentic": {
+   "instructions": 833,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 173962
+  },
+  "sonnet|analects|whole|full": {
+   "instructions": 798,
+   "pack": 772680,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  },
+  "sonnet|analects|whole|lexical": {
+   "instructions": 853,
+   "pack": 0,
+   "retrieved": 6707,
+   "message": 29,
+   "haystack": 772631
+  },
+  "sonnet|analects|whole|agentic": {
+   "instructions": 833,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 772631
+  },
+  "sonnet|none|voice|full": {
+   "instructions": 531,
+   "pack": 0,
+   "retrieved": 0,
+   "message": 29,
+   "haystack": 0
+  }
+ },
+ "recorded": {
+  "phaedrus": {
+   "material": "assigned",
+   "tails": {
+    "full": "\n\nWrite in the voice and manner of Plato's Phaedrus, above all Socrates as he speaks there. The context pack below (text from Plato, Phaedrus, translated by Benjamin Jowett) is your reference.",
+    "lexical": "\n\nWrite in the voice and manner of Plato's Phaedrus, above all Socrates as he speaks there. Each user message may arrive with passages retrieved from a context pack (text from Plato, Phaedrus, translated by Benjamin Jowett); use them as reference.",
+    "agentic": "\n\nWrite in the voice and manner of Plato's Phaedrus, above all Socrates as he speaks there. You have a search_pack tool over a context pack (text from Plato, Phaedrus, translated by Benjamin Jowett). Search it if it would help."
+   },
+   "packFile": "/examples/poetry-gem/packs/phaedrus-assigned.txt",
+   "packChars": 53285,
+   "retrieval": {
+    "note": "Keyword search on your message found 5 passage(s).",
+    "hits": [
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 10)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nPHAEDRUS: He who made such a distinction would have an excellent principle.\n\nSOCRATES: Yes; and in the next place he must have a keen eye for the observation of particulars in speaking, and not make a mistake about the class to which they are to be referred.\n\nPHAEDRUS: Certainly.\n\nSOCRATES: Now to which class does love belong--to the debatable or to the undisputed class?\n\nPHAEDRUS: To the debatable, clearly; for if not, do you think that love would have allowed you to say as you did, that he is an evil both to the lover and the beloved, and also the greatest possible good?\n\nSOCRATES: Capital. But will you tell me whether I defined love at the beginning of my speech? for, having been in an ecstasy, I cannot well remember.\n\nPHAEDRUS: Yes, indeed; that you did, and no mistake.\n\nSOCRATES: Then I perceive that the Nymphs of Achelous and Pan the son of Hermes, who inspired me, were far better rhetoricians than Lysias the son of Cephalus. Alas! how inferior to them he is! But perhaps I am mistaken; and Lysias at the commencement of his lover's speech did insist on our supposing love to be something or other which he fancied him to be, and according to this model he fashioned and framed the remainder of his discourse. Suppose we read his beginning over again:\n\nPHAEDRUS: If you please; but you will not find what you want.\n\nSOCRATES: Read, that I may have his exact words.\n\nPHAEDRUS: 'You know how matters stand with me, and how, as I conceive, they might be arranged for our common interest; and I maintain I ought not to fail in my suit because I am not your lover, for lovers repent of the kindnesses which they have shown, when their love is over.'",
+      "score": 3.68
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 16)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nPHAEDRUS: You mean that there should be a summing up of the arguments in order to remind the hearers of them.\n\nSOCRATES: I have now said all that I have to say of the art of rhetoric: have you anything to add?\n\nPHAEDRUS: Not much; nothing very important.\n\nSOCRATES: Leave the unimportant and let us bring the really important question into the light of day, which is: What power has this art of rhetoric, and when?\n\nPHAEDRUS: A very great power in public meetings.\n\nSOCRATES: It has. But I should like to know whether you have the same feeling as I have about the rhetoricians? To me there seem to be a great many holes in their web.\n\nPHAEDRUS: Give an example.\n\nSOCRATES: I will. Suppose a person to come to your friend Eryximachus, or to his father Acumenus, and to say to him: 'I know how to apply drugs which shall have either a heating or a cooling effect, and I can give a vomit and also a purge, and all that sort of thing; and knowing all this, as I do, I claim to be a physician and to make physicians by imparting this knowledge to others,'--what do you suppose that they would say?\n\nPHAEDRUS: They would be sure to ask him whether he knew 'to whom' he would give his medicines, and 'when,' and 'how much.'\n\nSOCRATES: And suppose that he were to reply: 'No; I know nothing of all that; I expect the patient who consults me to be able to do these things for himself'?\n\nPHAEDRUS: They would say in reply that he is a madman or a pedant who fancies that he is a physician because he has read something in a book, or has stumbled on a prescription or two, although he has no real understanding of the art of medicine.",
+      "score": 2.89
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 9)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: Yes; and the two speeches happen to afford a very good example of the way in which the speaker who knows the truth may, without any serious purpose, steal away the hearts of his hearers. This piece of good-fortune I attribute to the local deities; and, perhaps, the prophets of the Muses who are singing over our heads may have imparted their inspiration to me. For I do not imagine that I have any rhetorical art of my own.\n\nPHAEDRUS: Granted; if you will only please to get on.\n\nSOCRATES: Suppose that you read me the first words of Lysias' speech.\n\nPHAEDRUS: 'You know how matters stand with me, and how, as I conceive, they might be arranged for our common interest; and I maintain that I ought not to fail in my suit, because I am not your lover. For lovers repent--'\n\nSOCRATES: Enough:--Now, shall I point out the rhetorical error of those words?\n\nPHAEDRUS: Yes.\n\nSOCRATES: Every one is aware that about some things we are agreed, whereas about other things we differ.\n\nPHAEDRUS: I think that I understand you; but will you explain yourself?\n\nSOCRATES: When any one speaks of iron and silver, is not the same thing present in the minds of all?\n\nPHAEDRUS: Certainly.\n\nSOCRATES: But when any one speaks of justice and goodness we part company and are at odds with one another and with ourselves?\n\nPHAEDRUS: Precisely.\n\nSOCRATES: Then in some things we agree, but not in others?\n\nPHAEDRUS: That is true.\n\nSOCRATES: In which are we more likely to be deceived, and in which has rhetoric the greater power?\n\nPHAEDRUS: Clearly, in the uncertain class.\n\nSOCRATES: Then the rhetorician ought to make a regular division, and acquire a distinct notion of both classes, as well of that in which the many err, as of that in which they do not err?",
+      "score": 2.88
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 30)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: No, that is not likely--in the garden of letters he will sow and plant, but only for the sake of recreation and amusement; he will write them down as memorials to be treasured against the forgetfulness of old age, by himself, or by any other old man who is treading the same path. He will rejoice in beholding their tender growth; and while others are refreshing their souls with banqueting and the like, this will be the pastime in which his days are spent.\n\nPHAEDRUS: A pastime, Socrates, as noble as the other is ignoble, the pastime of a man who can be amused by serious talk, and can discourse merrily about justice and the like.\n\nSOCRATES: True, Phaedrus. But nobler far is the serious pursuit of the dialectician, who, finding a congenial soul, by the help of science sows and plants therein words which are able to help themselves and him who planted them, and are not unfruitful, but have in them a seed which others brought up in different soils render immortal, making the possessors of it happy to the utmost extent of human happiness.\n\nPHAEDRUS: Far nobler, certainly.\n\nSOCRATES: And now, Phaedrus, having agreed upon the premises we may decide about the conclusion.\n\nPHAEDRUS: About what conclusion?\n\nSOCRATES: About Lysias, whom we censured, and his art of writing, and his discourses, and the rhetorical skill or want of skill which was shown in them--these are the questions which we sought to determine, and they brought us to this point. And I think that we are now pretty well informed about the nature of art and its opposite.\n\nPHAEDRUS: Yes, I think with you; but I wish that you would repeat what was said.",
+      "score": 2.6
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 29)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: Is there not another kind of word or speech far better than this, and having far greater power--a son of the same family, but lawfully begotten?\n\nPHAEDRUS: Whom do you mean, and what is his origin?\n\nSOCRATES: I mean an intelligent word graven in the soul of the learner, which can defend itself, and knows when to speak and when to be silent.\n\nPHAEDRUS: You mean the living word of knowledge which has a soul, and of which the written word is properly no more than an image?\n\nSOCRATES: Yes, of course that is what I mean. And now may I be allowed to ask you a question: Would a husbandman, who is a man of sense, take the seeds, which he values and which he wishes to bear fruit, and in sober seriousness plant them during the heat of summer, in some garden of Adonis, that he may rejoice when he sees them in eight days appearing in beauty? at least he would do so, if at all, only for the sake of amusement and pastime. But when he is in earnest he sows in fitting soil, and practises husbandry, and is satisfied if in eight months the seeds which he has sown arrive at perfection?\n\nPHAEDRUS: Yes, Socrates, that will be his way when he is in earnest; he will do the other, as you say, only in play.\n\nSOCRATES: And can we suppose that he who knows the just and good and honourable has less understanding, than the husbandman, about his own seeds?\n\nPHAEDRUS: Certainly not.\n\nSOCRATES: Then he will not seriously incline to 'write' his thoughts 'in water' with pen and ink, sowing words which can neither speak for themselves nor teach the truth adequately to others?\n\nPHAEDRUS: No, that is not likely.",
+      "score": 2.2
+     }
+    ]
+   },
+   "toolCall": {
+    "query": "Theuth letters memory",
+    "results": [
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 27)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: At the Egyptian city of Naucratis, there was a famous old god, whose name was Theuth; the bird which is called the Ibis is sacred to him, and he was the inventor of many arts, such as arithmetic and calculation and geometry and astronomy and draughts and dice, but his great discovery was the use of letters. Now in those days the god Thamus was the king of the whole country of Egypt; and he dwelt in that great city of Upper Egypt which the Hellenes call Egyptian Thebes, and the god himself is called by them Ammon. To him came Theuth and showed his inventions, desiring that the other Egyptians might be allowed to have the benefit of them; he enumerated them, and Thamus enquired about their several uses, and praised some of them and censured others, as he approved or disapproved of them. It would take a long time to repeat all that Thamus said to Theuth in praise or blame of the various arts. But when they came to letters, This, said Theuth, will make the Egyptians wiser and give them better memories; it is a specific both for the memory and for the wit. Thamus replied: O most ingenious Theuth, the parent or inventor of an art is not always the best judge of the utility or inutility of his own inventions to the users of them. And in this instance, you who are the father of letters, from a paternal love of your own children have been led to attribute to them a quality which they cannot have; for this discovery of yours will create forgetfulness in the learners' souls, because they will not use their memories; they will trust to the external written characters and not remember of themselves. The specific which you have discovered is an aid not to memory, but to reminiscence, and you give your disciples not truth, but only the semblance of truth; they will be hearers of many things and will have learned nothing; they will appear to be omniscient and will generally know nothing; they will be tiresome company, having the show of wisdom without the reality.",
+      "score": 8.9
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 30)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: No, that is not likely--in the garden of letters he will sow and plant, but only for the sake of recreation and amusement; he will write them down as memorials to be treasured against the forgetfulness of old age, by himself, or by any other old man who is treading the same path. He will rejoice in beholding their tender growth; and while others are refreshing their souls with banqueting and the like, this will be the pastime in which his days are spent.\n\nPHAEDRUS: A pastime, Socrates, as noble as the other is ignoble, the pastime of a man who can be amused by serious talk, and can discourse merrily about justice and the like.\n\nSOCRATES: True, Phaedrus. But nobler far is the serious pursuit of the dialectician, who, finding a congenial soul, by the help of science sows and plants therein words which are able to help themselves and him who planted them, and are not unfruitful, but have in them a seed which others brought up in different soils render immortal, making the possessors of it happy to the utmost extent of human happiness.\n\nPHAEDRUS: Far nobler, certainly.\n\nSOCRATES: And now, Phaedrus, having agreed upon the premises we may decide about the conclusion.\n\nPHAEDRUS: About what conclusion?\n\nSOCRATES: About Lysias, whom we censured, and his art of writing, and his discourses, and the rhetorical skill or want of skill which was shown in them--these are the questions which we sought to determine, and they brought us to this point. And I think that we are now pretty well informed about the nature of art and its opposite.\n\nPHAEDRUS: Yes, I think with you; but I wish that you would repeat what was said.",
+      "score": 2.28
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 28)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nPHAEDRUS: Yes, Socrates, you can easily invent tales of Egypt, or of any other country.\n\nSOCRATES: There was a tradition in the temple of Dodona that oaks first gave prophetic utterances. The men of old, unlike in their simplicity to young philosophy, deemed that if they heard the truth even from 'oak or rock,' it was enough for them; whereas you seem to consider not whether a thing is or is not true, but who the speaker is and from what country the tale comes.\n\nPHAEDRUS: I acknowledge the justice of your rebuke; and I think that the Theban is right in his view about letters.\n\nSOCRATES: He would be a very simple person, and quite a stranger to the oracles of Thamus or Ammon, who should leave in writing or receive in writing any art under the idea that the written word would be intelligible or certain; or who deemed that writing was at all better than knowledge and recollection of the same matters?\n\nPHAEDRUS: That is most true.\n\nSOCRATES: I cannot help feeling, Phaedrus, that writing is unfortunately like painting; for the creations of the painter have the attitude of life, and yet if you ask them a question they preserve a solemn silence. And the same may be said of speeches. You would imagine that they had intelligence, but if you want to know anything and put a question to one of them, the speaker always gives one unvarying answer. And when they have been once written down they are tumbled about anywhere among those who may or may not understand them, and know not to whom they should reply, to whom not: and, if they are maltreated or abused, they have no parent to protect them; and they cannot protect or defend themselves.\n\nPHAEDRUS: That again is most true.",
+      "score": 2.24
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 3)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: And what is well and what is badly--need we ask Lysias, or any other poet or orator, who ever wrote or will write either a political or any other work, in metre or out of metre, poet or prose writer, to teach us this?\n\nPHAEDRUS: Need we? For what should a man live if not for the pleasures of discourse? Surely not for the sake of bodily pleasures, which almost always have previous pain as a condition of them, and therefore are rightly called slavish.\n\nSOCRATES: There is time enough. And I believe that the grasshoppers chirruping after their manner in the heat of the sun over our heads are talking to one another and looking down at us. What would they say if they saw that we, like the many, are not conversing, but slumbering at mid-day, lulled by their voices, too indolent to think? Would they not have a right to laugh at us? They might imagine that we were slaves, who, coming to rest at a place of resort of theirs, like sheep lie asleep at noon around the well. But if they see us discoursing, and like Odysseus sailing past them, deaf to their siren voices, they may perhaps, out of respect, give us of the gifts which they receive from the gods that they may impart them to men.\n\nPHAEDRUS: What gifts do you mean? I never heard of any.",
+      "score": 0.02
+     },
+     {
+      "title": "The dialogue, 257c to the end: on rhetoric, writing and memory (part 8)",
+      "source": "text",
+      "text": "## The dialogue, 257c to the end: on rhetoric, writing and memory\n\nSOCRATES: And you will be less likely to be discovered in passing by degrees into the other extreme than when you go all at once?\n\nPHAEDRUS: Of course.\n\nSOCRATES: He, then, who would deceive others, and not be deceived, must exactly know the real likenesses and differences of things?\n\nPHAEDRUS: He must.\n\nSOCRATES: And if he is ignorant of the true nature of any subject, how can he detect the greater or less degree of likeness in other things to that of which by the hypothesis he is ignorant?\n\nPHAEDRUS: He cannot.\n\nSOCRATES: And when men are deceived and their notions are at variance with realities, it is clear that the error slips in through resemblances?\n\nPHAEDRUS: Yes, that is the way.\n\nSOCRATES: Then he who would be a master of the art must understand the real nature of everything; or he will never know either how to make the gradual departure from truth into the opposite of truth which is effected by the help of resemblances, or how to avoid it?\n\nPHAEDRUS: He will not.\n\nSOCRATES: He then, who being ignorant of the truth aims at appearances, will only attain an art of rhetoric which is ridiculous and is not an art at all?\n\nPHAEDRUS: That may be expected.\n\nSOCRATES: Shall I propose that we look for examples of art and want of art, according to our notion of them, in the speech of Lysias which you have in your hand, and in my own speech?\n\nPHAEDRUS: Nothing could be better; and indeed I think that our previous argument has been too abstract and wanting in illustrations.",
+      "score": 0.02
+     }
+    ]
+   }
+  },
+  "frankenstein": {
+   "material": "assigned",
+   "tails": {
+    "full": "\n\nWrite in the voice and manner of Mary Shelley's Frankenstein (1818), above all the Creature's own narrative. The context pack below (text from Mary Shelley, Frankenstein; or, The Modern Prometheus (1818 text)) is your reference.",
+    "lexical": "\n\nWrite in the voice and manner of Mary Shelley's Frankenstein (1818), above all the Creature's own narrative. Each user message may arrive with passages retrieved from a context pack (text from Mary Shelley, Frankenstein; or, The Modern Prometheus (1818 text)); use them as reference.",
+    "agentic": "\n\nWrite in the voice and manner of Mary Shelley's Frankenstein (1818), above all the Creature's own narrative. You have a search_pack tool over a context pack (text from Mary Shelley, Frankenstein; or, The Modern Prometheus (1818 text)). Search it if it would help."
+   },
+   "packFile": "/examples/poetry-gem/packs/frankenstein-assigned.txt",
+   "packChars": 84480,
+   "retrieval": {
+    "note": "Keyword search on your message found 5 passage(s).",
+    "hits": [
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 4)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“But _Paradise Lost_ excited different and far deeper emotions. I read it, as I had read the other volumes which had fallen into my hands, as a true history. It moved every feeling of wonder and awe, that the picture of an omnipotent God warring with his creatures was capable of exciting. I often referred the several situations, as their similarity struck me, to my own. Like Adam, I was created apparently united by no link to any other being in existence; but his state was far different from mine in every other respect. He had come forth from the hands of God a perfect creature, happy and prosperous, guarded by the especial care of his Creator; he was allowed to converse with, and acquire knowledge from beings of a superior nature: but I was wretched, helpless, and alone. Many times I considered Satan as the fitter emblem of my condition; for often, like him, when I viewed the bliss of my protectors, the bitter gall of envy rose within me.",
+      "score": 3.36
+     },
+     {
+      "title": "Chapter 10 (Vol. II, ch. III) (part 9)",
+      "source": "text",
+      "text": "## Chapter 10 (Vol. II, ch. III)\n\n“Being thus provided, I resolved to reside in this hovel, until something should occur which might alter my determination. It was indeed a paradise, compared to the bleak forest, my former residence, the rain-dropping branches, and dank earth. I ate my breakfast with pleasure, and was about to remove a plank to procure myself a little water, when I heard a step, and, looking through a small chink, I beheld a young creature, with a pail on her head, passing before my hovel. The girl was young and of gentle demeanour, unlike what I have since found cottagers and farm-house servants to be. Yet she was meanly dressed, a coarse blue petticoat and a linen jacket being her only garb; her fair hair was plaited, but not adorned; she looked patient, yet sad. I lost sight of her; and in about a quarter of an hour she returned, bearing the pail, which was now partly filled with milk. As she walked along, seemingly incommoded by the burden, a young man met her, whose countenance expressed a deeper despondence. Uttering a few sounds with an air of melancholy, he took the pail from her head, and bore it to the cottage himself. She followed, and they disappeared. Presently I saw the young man again, with some tools in his hand, cross the field behind the cottage; and the girl was also busied, sometimes in the house, and sometimes in the yard.",
+      "score": 3.05
+     },
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 3)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“The volume of _Plutarch’s Lives_ which I possessed, contained the histories of the first founders of the ancient republics. This book had a far different effect upon me from the _Sorrows of Werter_. I learned from Werter’s imaginations despondency and gloom: but Plutarch taught me high thoughts; he elevated me above the wretched sphere of my own reflections, to admire and love the heroes of past ages. Many things I read surpassed my understanding and experience. I had a very confused knowledge of kingdoms, wide extents of country, mighty rivers, and boundless seas. But I was perfectly unacquainted with towns, and large assemblages of men. The cottage of my protectors had been the only school in which I had studied human nature; but this book developed new and mightier scenes of action. I read of men concerned in public affairs governing or massacring their species. I felt the greatest ardour for virtue rise within me, and abhorrence for vice, as far as I understood the signification of those terms, relative as they were, as I applied them, to pleasure and pain alone. Induced by these feelings, I was of course led to admire peaceable law-givers, Numa, Solon, and Lycurgus, in preference to Romulus and Theseus. The patriarchal lives of my protectors caused these impressions to take a firm hold on my mind; perhaps, if my first introduction to humanity had been made by a young soldier, burning for glory and slaughter, I should have been imbued with different sensations.",
+      "score": 3.01
+     },
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 2)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“I can hardly describe to you the effect of these books. They produced in me an infinity of new images and feelings, that sometimes raised me to ecstacy, but more frequently sunk me into the lowest dejection. In the _Sorrows of Werter_, besides the interest of its simple and affecting story, so many opinions are canvassed, and so many lights thrown upon what had hitherto been to me obscure subjects, that I found in it a never-ending source of speculation and astonishment. The gentle and domestic manners it described, combined with lofty sentiments and feelings, which had for their object something out of self, accorded well with my experience among my protectors, and with the wants which were for ever alive in my own bosom. But I thought Werter himself a more divine being than I had ever beheld or imagined; his character contained no pretension, but it sunk deep. The disquisitions upon death and suicide were calculated to fill me with wonder. I did not pretend to enter into the merits of the case, yet I inclined towards the opinions of the hero, whose extinction I wept, without precisely understanding it.\n\n“As I read, however, I applied much personally to my own feelings and condition. I found myself similar, yet at the same time strangely unlike the beings concerning whom I read, and to whose conversation I was a listener. I sympathized with, and partly understood them, but I was unformed in mind; I was dependent on none, and related to none. ‘The path of my departure was free;’ and there was none to lament my annihilation. My person was hideous, and my stature gigantic: what did this mean? Who was I? What was I? Whence did I come? What was my destination? These questions continually recurred, but I was unable to solve them.",
+      "score": 2.95
+     },
+     {
+      "title": "Chapter 11 (Vol. II, ch. IV) (part 6)",
+      "source": "text",
+      "text": "## Chapter 11 (Vol. II, ch. IV)\n\n“I could mention innumerable instances, which, although slight, marked the dispositions of these amiable cottagers. In the midst of poverty and want, Felix carried with pleasure to his sister the first little white flower that peeped out from beneath the snowy ground. Early in the morning before she had risen, he cleared away the snow that obstructed her path to the milk-house, drew water from the well, and brought the wood from the out-house, where, to his perpetual astonishment, he found his store always replenished by an invisible hand. In the day, I believe, he worked sometimes for a neighbouring farmer, because he often went forth, and did not return until dinner, yet brought no wood with him. At other times he worked in the garden; but, as there was little to do in the frosty season, he read to the old man and Agatha.\n\n“This reading had puzzled me extremely at first; but, by degrees, I discovered that he uttered many of the same sounds when he read as when he talked. I conjectured, therefore, that he found on the paper signs for speech which he understood, and I ardently longed to comprehend these also; but how was that possible, when I did not even understand the sounds for which they stood as signs? I improved, however, sensibly in this science, but not sufficiently to follow up any kind of conversation, although I applied my whole mind to the endeavour: for I easily perceived that, although I eagerly longed to discover myself to the cottagers, I ought not to make the attempt until I had first become master of their language; which knowledge might enable me to make them overlook the deformity of my figure; for with this also the contrast perpetually presented to my eyes had made me acquainted.",
+      "score": 2.91
+     }
+    ]
+   },
+   "toolCall": {
+    "query": "learned to read books",
+    "results": [
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 1)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“Such was the history of my beloved cottagers. It impressed me deeply. I learned, from the views of social life which it developed, to admire their virtues, and to deprecate the vices of mankind.\n\n“As yet I looked upon crime as a distant evil; benevolence and generosity were ever present before me, inciting within me a desire to become an actor in the busy scene where so many admirable qualities were called forth and displayed. But, in giving an account of the progress of my intellect, I must not omit a circumstance which occurred in the beginning of the month of August of the same year.\n\n“One night, during my accustomed visit to the neighbouring wood, where I collected my own food, and brought home firing for my protectors, I found on the ground a leathern portmanteau, containing several articles of dress and some books. I eagerly seized the prize, and returned with it to my hovel. Fortunately the books were written in the language the elements of which I had acquired at the cottage; they consisted of _Paradise Lost_, a volume of _Plutarch’s Lives_, and the _Sorrows of Werter_. The possession of these treasures gave me extreme delight; I now continually studied and exercised my mind upon these histories, whilst my friends were employed in their ordinary occupations.",
+      "score": 6.19
+     },
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 2)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“I can hardly describe to you the effect of these books. They produced in me an infinity of new images and feelings, that sometimes raised me to ecstacy, but more frequently sunk me into the lowest dejection. In the _Sorrows of Werter_, besides the interest of its simple and affecting story, so many opinions are canvassed, and so many lights thrown upon what had hitherto been to me obscure subjects, that I found in it a never-ending source of speculation and astonishment. The gentle and domestic manners it described, combined with lofty sentiments and feelings, which had for their object something out of self, accorded well with my experience among my protectors, and with the wants which were for ever alive in my own bosom. But I thought Werter himself a more divine being than I had ever beheld or imagined; his character contained no pretension, but it sunk deep. The disquisitions upon death and suicide were calculated to fill me with wonder. I did not pretend to enter into the merits of the case, yet I inclined towards the opinions of the hero, whose extinction I wept, without precisely understanding it.\n\n“As I read, however, I applied much personally to my own feelings and condition. I found myself similar, yet at the same time strangely unlike the beings concerning whom I read, and to whose conversation I was a listener. I sympathized with, and partly understood them, but I was unformed in mind; I was dependent on none, and related to none. ‘The path of my departure was free;’ and there was none to lament my annihilation. My person was hideous, and my stature gigantic: what did this mean? Who was I? What was I? Whence did I come? What was my destination? These questions continually recurred, but I was unable to solve them.",
+      "score": 5.91
+     },
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 3)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“The volume of _Plutarch’s Lives_ which I possessed, contained the histories of the first founders of the ancient republics. This book had a far different effect upon me from the _Sorrows of Werter_. I learned from Werter’s imaginations despondency and gloom: but Plutarch taught me high thoughts; he elevated me above the wretched sphere of my own reflections, to admire and love the heroes of past ages. Many things I read surpassed my understanding and experience. I had a very confused knowledge of kingdoms, wide extents of country, mighty rivers, and boundless seas. But I was perfectly unacquainted with towns, and large assemblages of men. The cottage of my protectors had been the only school in which I had studied human nature; but this book developed new and mightier scenes of action. I read of men concerned in public affairs governing or massacring their species. I felt the greatest ardour for virtue rise within me, and abhorrence for vice, as far as I understood the signification of those terms, relative as they were, as I applied them, to pleasure and pain alone. Induced by these feelings, I was of course led to admire peaceable law-givers, Numa, Solon, and Lycurgus, in preference to Romulus and Theseus. The patriarchal lives of my protectors caused these impressions to take a firm hold on my mind; perhaps, if my first introduction to humanity had been made by a young soldier, burning for glory and slaughter, I should have been imbued with different sensations.",
+      "score": 4.54
+     },
+     {
+      "title": "Chapter 14 (Vol. II, ch. VII) (part 4)",
+      "source": "text",
+      "text": "## Chapter 14 (Vol. II, ch. VII)\n\n“But _Paradise Lost_ excited different and far deeper emotions. I read it, as I had read the other volumes which had fallen into my hands, as a true history. It moved every feeling of wonder and awe, that the picture of an omnipotent God warring with his creatures was capable of exciting. I often referred the several situations, as their similarity struck me, to my own. Like Adam, I was created apparently united by no link to any other being in existence; but his state was far different from mine in every other respect. He had come forth from the hands of God a perfect creature, happy and prosperous, guarded by the especial care of his Creator; he was allowed to converse with, and acquire knowledge from beings of a superior nature: but I was wretched, helpless, and alone. Many times I considered Satan as the fitter emblem of my condition; for often, like him, when I viewed the bliss of my protectors, the bitter gall of envy rose within me.",
+      "score": 3.36
+     },
+     {
+      "title": "Chapter 11 (Vol. II, ch. IV) (part 6)",
+      "source": "text",
+      "text": "## Chapter 11 (Vol. II, ch. IV)\n\n“I could mention innumerable instances, which, although slight, marked the dispositions of these amiable cottagers. In the midst of poverty and want, Felix carried with pleasure to his sister the first little white flower that peeped out from beneath the snowy ground. Early in the morning before she had risen, he cleared away the snow that obstructed her path to the milk-house, drew water from the well, and brought the wood from the out-house, where, to his perpetual astonishment, he found his store always replenished by an invisible hand. In the day, I believe, he worked sometimes for a neighbouring farmer, because he often went forth, and did not return until dinner, yet brought no wood with him. At other times he worked in the garden; but, as there was little to do in the frosty season, he read to the old man and Agatha.\n\n“This reading had puzzled me extremely at first; but, by degrees, I discovered that he uttered many of the same sounds when he read as when he talked. I conjectured, therefore, that he found on the paper signs for speech which he understood, and I ardently longed to comprehend these also; but how was that possible, when I did not even understand the sounds for which they stood as signs? I improved, however, sensibly in this science, but not sufficiently to follow up any kind of conversation, although I applied my whole mind to the endeavour: for I easily perceived that, although I eagerly longed to discover myself to the cottagers, I ought not to make the attempt until I had first become master of their language; which knowledge might enable me to make them overlook the deformity of my figure; for with this also the contrast perpetually presented to my eyes had made me acquainted.",
+      "score": 2.91
+     }
+    ]
+   }
+  },
+  "analects": {
+   "material": "assigned",
+   "tails": {
+    "full": "\n\nWrite in the voice and manner of the Analects of Confucius: the Master's sayings and his exchanges with his disciples. The context pack below (text from Confucius, The Analects, translated with commentary by Annping Chin (Penguin Classics, 2014)) is your reference.",
+    "lexical": "\n\nWrite in the voice and manner of the Analects of Confucius: the Master's sayings and his exchanges with his disciples. Each user message may arrive with passages retrieved from a context pack (text from Confucius, The Analects, translated with commentary by Annping Chin (Penguin Classics, 2014)); use them as reference.",
+    "agentic": "\n\nWrite in the voice and manner of the Analects of Confucius: the Master's sayings and his exchanges with his disciples. You have a search_pack tool over a context pack (text from Confucius, The Analects, translated with commentary by Annping Chin (Penguin Classics, 2014)). Search it if it would help."
+   },
+   "packFile": "/examples/poetry-gem/packs/analects-assigned.txt",
+   "packChars": 24695,
+   "retrieval": {
+    "note": "Keyword search on your message found 5 passage(s).",
+    "hits": [
+     {
+      "title": "Book Two: the sayings · 2.1–2.6",
+      "source": "text",
+      "text": "## Book Two: the sayings\n\n**2.1** The Master said, “To rule by virtue is like the way the North Star rules, standing in its place with all the other stars revolving around it and paying court to it.”\n\n**2.2** The Master said, “The three hundred poems from the *Book of Poetry* could be summed up in a single phrase: “They never swerve from the path [*siwuxie*].”\n\n**2.3** The Master said, “If you guide the people with ordinances and statutes and keep them in line with [threats of] punishment, they will try to stay out of trouble but will have no sense of shame. If you guide them with exemplary virtue [*de*] and keep them in line with the practice of the rites [*li*], they will have a sense of shame and will know to reform themselves.”\n\n**2.4** The Master said, “At fifteen, I set my heart on learning. At thirty, I found my balance through the rites. At forty, I was free from doubts [about myself]. At fifty, I understood what Heaven intended me to do. At sixty, I was attuned to what I heard. At seventy, I followed what my heart desired without overstepping the line.”\n\n**2.5** Meng Yizi asked about being filial. The Master responded, “Do not abandon [the rites] [*wuwei*].”\n\nWhen Fan Chi was driving the chariot, the Master told him about this conversation, saying, “Mengsun asked me about filiality, and I replied, ‘Do not abandon [the rites].’”\n\nFan Chi asked, “What did you mean by that?”\n\nThe Master said, “When your parents are alive, observe the rites in serving them; when they die, observe the rites in burying them; observe the rites in sacrificing to them.”\n\n**2.6** Meng Wubo asked about being filial. The Master said, “Give your parents no cause for worry other than your illness.”",
+      "score": 1.81
+     },
+     {
+      "title": "Book One: the sayings · 1.12–1.16",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.12** Master You [Youzi] said, “Harmony is what is most prized in the practice of the rites [*li*]. It is what makes the way of the former kings beautiful, and this [principle] applies to matters big and small. Yet it does not always work: if you aim only at achieving harmony [in everything] because you know that it is the ideal and do not let the rules of the rites guide your action, it will not work.”\n\n**1.13** Master You [Youzi] said, “Trustworthiness comes close to rightness because your words can be counted on. Respectfulness comes close to ritual propriety because it allows you to stay clear of shame and disgrace. If you do not lose the affection of those who are your relatives by marriage, then you could have the respect of your clan.”\n\n**1.14** The Master said, “A gentleman does not try to stuff himself when he eats and is not worried about the comfort of his dwelling. He is anxious about getting things done and careful about what he says. He gravitates toward those who possess moral integrity because he wants to put himself right. One could say that he is someone who loves learning.”\n\n**1.15** Zigong said, “‘Poor but not ingratiating, rich but not arrogant’—what do you think of this saying?”\n\nThe Master said, “That is all right, but better still is ‘poor but joyful, rich but loving the rites.’”\n\nZigong said, “The *Odes* says:\n\n‘Like bone filed, like tusk smoothed,  \nLike jade carved, like stone polished.’\n\nIs this what you mean?”\n\nThe Master said, “Si [Zigong], only with you can one discuss the *Odes*. Someone tells you something and you can see its relevance to what is not said.”\n\n**1.16** The Master said, “Do not worry that other people do not know you. But be concerned that you do not know them.”",
+      "score": 1.74
+     },
+     {
+      "title": "Book One: the sayings · 1.7–1.11",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.7** Zixia said, “If a person is able to appreciate moral worth as much as he appreciates physical beauty, is able to serve his parents with the utmost effort and his lord with no self-interest, and in his relationship with friends is trustworthy in words, though he may say that he lacks learning, I would surely call him learned.”\n\n**1.8** The Master said, “If a man of position [*junzi*] does not have integrity, he will not inspire awe. And when he tries to learn, he will not persevere to the end. Such a man should stay close to those who do their best and are trustworthy. He should not befriend those who are not his equals. And when he makes a mistake, he should not be afraid to correct it.”\n\n**1.9** Master Zeng [Zengzi] said, “Tend to the death rites of the recently deceased with utmost care and respect, and do not forget to offer sacrifices to the long-departed; then people will have much to gain in the cultivation of their virtue.”\n\n**1.10** Ziqin asked Zigong, “When the Master goes to another state, he invariably learns about its government. Does he get his information by asking or is it offered to him?”\n\nZigong said, “The Master acquires his information by being affable, kind, and respectful, and by showing restraint in his action and a willingness to yield. The way the Master asks for information is different from that of other people.”\n\n**1.11** The Master said, “When your father is alive, observe what he would like to do. After your father is dead, reflect on what he has done. If for three years you refrained from altering your father’s ways, you can be called filial [*xiao*].”",
+      "score": 1.64
+     },
+     {
+      "title": "Book One: the sayings · 1.1–1.6",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.1** The Master said, “Is it not a pleasure to learn [*xue*] and, when it is timely, to practice what you have learned? Is it not a joy to have friends coming from afar? Is it not gentlemanly not to become resentful if no one takes notice of your learning?”\n\n**1.2** Master You [Youzi] said, “It is rare for a person who is filial to his parents and respectful to his elders to be inclined to transgress against his superiors. And it has never happened that a person who is not inclined to transgress against his superiors is inclined to create chaos. A gentleman looks after the roots. With the roots firmly established, a moral way will grow. Is it not true then that being filial to one’s parents and being respectful to one’s elders are the roots of one’s humanity [*ren*]?\n\n**1.3** The Master said, “A man of clever words and of a pleasing countenance is bound to be short on humanity.”\n\n**1.4** Master Zeng [Zengzi] said, “Every day I examine myself on three points. When I worked to benefit someone else, did I do my best? In my relationship with my friends, did I fail to be trustworthy? Did I pass on any knowledge I myself had not put into practice?”\n\n**1.5** The Master said, “In guiding a state of a thousand chariots, handle all matters with care and respect, and be trustworthy; take a measured approach in your spending, and cherish the people. Employ the common people only at the right time.”\n\n**1.6** The Master said, “A youngster should be filial to his parents when he is at home and respectful to his elders when he is away from his home. He should be prudent in action and trustworthy in words. He should cherish all people but should stay close to the most humane. And if he has energy left to do more, he should devote himself to the arts.”",
+      "score": 1.28
+     },
+     {
+      "title": "Book Three: the sayings · 3.22–3.24",
+      "source": "text",
+      "text": "## Book Three: the sayings\n\nWhen the Master heard about this, he said, “Don’t try to explain what is already done. Don’t attempt to remonstrate about what is finished. Don’t decry what is already past.”\n\n**3.22** The Master said, “Guan Zhong was a man of small capacity.”\n\nSomeone said, “Does this mean that Guan Zhong was frugal?”\n\nThe Master said, “Mr. Guan had three residences, yet every officer on his staff had no separate duty other than the one he was assigned. How could this be considered frugal?”\n\n“In that case, did he understand the rites?”\n\n“Rulers of states put up gate screens [in front of their palaces]. Mr. Guan also put up a gate screen. Rulers of states, when entertaining another ruler, had an earthen stand to be used for wine cups after the guests had drained their cups. Mr. Guan also had such a stand. If Mr. Guan understood the rites, who does not understand the rites?”\n\n**3.23** The Master, speaking about music with the Grand Musician [Zhi] of Lu, said, “This much can be known about music. It begins with vigorous playing [*xiru*]. And when it goes into full swing, [the sound] is pure and harmonious, [the notes are] bright and distinct, and [the passages] fluent and continuous until the music reaches the end.”\n\n**3.24** A border official from the district of Yi asked to have an interview with Confucius, saying, “I have never been denied an interview with a gentleman who has come to this place.” Followers of Confucius arranged a meeting for him, and when he came out, he said, “Why should you worry about [your teacher] not having an official position? The world has been without the Way for a long time now. Heaven is about to use your master as the wooden tongue of a bronze bell.”",
+      "score": 0.55
+     }
+    ]
+   },
+   "toolCall": {
+    "query": "learning",
+    "results": [
+     {
+      "title": "Book One: the sayings · 1.7–1.11",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.7** Zixia said, “If a person is able to appreciate moral worth as much as he appreciates physical beauty, is able to serve his parents with the utmost effort and his lord with no self-interest, and in his relationship with friends is trustworthy in words, though he may say that he lacks learning, I would surely call him learned.”\n\n**1.8** The Master said, “If a man of position [*junzi*] does not have integrity, he will not inspire awe. And when he tries to learn, he will not persevere to the end. Such a man should stay close to those who do their best and are trustworthy. He should not befriend those who are not his equals. And when he makes a mistake, he should not be afraid to correct it.”\n\n**1.9** Master Zeng [Zengzi] said, “Tend to the death rites of the recently deceased with utmost care and respect, and do not forget to offer sacrifices to the long-departed; then people will have much to gain in the cultivation of their virtue.”\n\n**1.10** Ziqin asked Zigong, “When the Master goes to another state, he invariably learns about its government. Does he get his information by asking or is it offered to him?”\n\nZigong said, “The Master acquires his information by being affable, kind, and respectful, and by showing restraint in his action and a willingness to yield. The way the Master asks for information is different from that of other people.”\n\n**1.11** The Master said, “When your father is alive, observe what he would like to do. After your father is dead, reflect on what he has done. If for three years you refrained from altering your father’s ways, you can be called filial [*xiao*].”",
+      "score": 1.33
+     },
+     {
+      "title": "Book One: the sayings · 1.1–1.6",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.1** The Master said, “Is it not a pleasure to learn [*xue*] and, when it is timely, to practice what you have learned? Is it not a joy to have friends coming from afar? Is it not gentlemanly not to become resentful if no one takes notice of your learning?”\n\n**1.2** Master You [Youzi] said, “It is rare for a person who is filial to his parents and respectful to his elders to be inclined to transgress against his superiors. And it has never happened that a person who is not inclined to transgress against his superiors is inclined to create chaos. A gentleman looks after the roots. With the roots firmly established, a moral way will grow. Is it not true then that being filial to one’s parents and being respectful to one’s elders are the roots of one’s humanity [*ren*]?\n\n**1.3** The Master said, “A man of clever words and of a pleasing countenance is bound to be short on humanity.”\n\n**1.4** Master Zeng [Zengzi] said, “Every day I examine myself on three points. When I worked to benefit someone else, did I do my best? In my relationship with my friends, did I fail to be trustworthy? Did I pass on any knowledge I myself had not put into practice?”\n\n**1.5** The Master said, “In guiding a state of a thousand chariots, handle all matters with care and respect, and be trustworthy; take a measured approach in your spending, and cherish the people. Employ the common people only at the right time.”\n\n**1.6** The Master said, “A youngster should be filial to his parents when he is at home and respectful to his elders when he is away from his home. He should be prudent in action and trustworthy in words. He should cherish all people but should stay close to the most humane. And if he has energy left to do more, he should devote himself to the arts.”",
+      "score": 1.28
+     },
+     {
+      "title": "Book One: the sayings · 1.12–1.16",
+      "source": "text",
+      "text": "## Book One: the sayings\n\n**1.12** Master You [Youzi] said, “Harmony is what is most prized in the practice of the rites [*li*]. It is what makes the way of the former kings beautiful, and this [principle] applies to matters big and small. Yet it does not always work: if you aim only at achieving harmony [in everything] because you know that it is the ideal and do not let the rules of the rites guide your action, it will not work.”\n\n**1.13** Master You [Youzi] said, “Trustworthiness comes close to rightness because your words can be counted on. Respectfulness comes close to ritual propriety because it allows you to stay clear of shame and disgrace. If you do not lose the affection of those who are your relatives by marriage, then you could have the respect of your clan.”\n\n**1.14** The Master said, “A gentleman does not try to stuff himself when he eats and is not worried about the comfort of his dwelling. He is anxious about getting things done and careful about what he says. He gravitates toward those who possess moral integrity because he wants to put himself right. One could say that he is someone who loves learning.”\n\n**1.15** Zigong said, “‘Poor but not ingratiating, rich but not arrogant’—what do you think of this saying?”\n\nThe Master said, “That is all right, but better still is ‘poor but joyful, rich but loving the rites.’”\n\nZigong said, “The *Odes* says:\n\n‘Like bone filed, like tusk smoothed,  \nLike jade carved, like stone polished.’\n\nIs this what you mean?”\n\nThe Master said, “Si [Zigong], only with you can one discuss the *Odes*. Someone tells you something and you can see its relevance to what is not said.”\n\n**1.16** The Master said, “Do not worry that other people do not know you. But be concerned that you do not know them.”",
+      "score": 1.27
+     },
+     {
+      "title": "Book Two: the sayings · 2.1–2.6",
+      "source": "text",
+      "text": "## Book Two: the sayings\n\n**2.1** The Master said, “To rule by virtue is like the way the North Star rules, standing in its place with all the other stars revolving around it and paying court to it.”\n\n**2.2** The Master said, “The three hundred poems from the *Book of Poetry* could be summed up in a single phrase: “They never swerve from the path [*siwuxie*].”\n\n**2.3** The Master said, “If you guide the people with ordinances and statutes and keep them in line with [threats of] punishment, they will try to stay out of trouble but will have no sense of shame. If you guide them with exemplary virtue [*de*] and keep them in line with the practice of the rites [*li*], they will have a sense of shame and will know to reform themselves.”\n\n**2.4** The Master said, “At fifteen, I set my heart on learning. At thirty, I found my balance through the rites. At forty, I was free from doubts [about myself]. At fifty, I understood what Heaven intended me to do. At sixty, I was attuned to what I heard. At seventy, I followed what my heart desired without overstepping the line.”\n\n**2.5** Meng Yizi asked about being filial. The Master responded, “Do not abandon [the rites] [*wuwei*].”\n\nWhen Fan Chi was driving the chariot, the Master told him about this conversation, saying, “Mengsun asked me about filiality, and I replied, ‘Do not abandon [the rites].’”\n\nFan Chi asked, “What did you mean by that?”\n\nThe Master said, “When your parents are alive, observe the rites in serving them; when they die, observe the rites in burying them; observe the rites in sacrificing to them.”\n\n**2.6** Meng Wubo asked about being filial. The Master said, “Give your parents no cause for worry other than your illness.”",
+      "score": 1.27
+     }
+    ]
+   }
+  }
+ },
+ "searchTool": {
+  "name": "search_pack",
+  "description": "Keyword (BM25) search over the context pack. Returns up to 5 passages that share words with the query. Matching is exact-word: no synonyms or stemming, and translations may use older or unusual wording.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string",
+     "description": "Words to look for in the pack."
+    }
+   },
+   "required": [
+    "query"
+   ]
+  }
+ }
+}

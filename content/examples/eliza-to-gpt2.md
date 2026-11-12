@@ -1,7 +1,7 @@
 ---
 title: Who is speaking?
 order: 1
-index: Talk to ELIZA (1966), then to GPT-2 with and without the first assistant script, and see where the chatbot's voice came from.
+index: "Talk to ELIZA and inspect the rule behind each reply, then compare saved GPT-2 output with and without an assistant prompt. The example makes a familiar chatbot voice strange again: what comes from a script, what comes from prediction, and what do we supply as readers?"
 source: https://github.com/ll-26-27/eng298ai-20261020
 demo: https://eng298ai-20261020.vercel.app/
 image: ""

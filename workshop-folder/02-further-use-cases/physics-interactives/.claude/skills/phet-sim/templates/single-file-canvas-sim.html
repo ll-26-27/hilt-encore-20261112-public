@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canvas simulation template</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+This is a template for simulations with many moving objects (particle
+systems, fields, fluids). For simpler diagrams use single-file-svg-sim.
+Replace the bracketed placeholders when adapting; keep the comment block.
+--------------------------------------------------------------------
+Title:                  [Simulation title]
+Learning goal:          [One sentence]
+Target learner:         [Course level, prior knowledge]
+Core misconception:     [What this makes visible]
+Manipulables:           [List with units and ranges]
+Hidden/fixed by design: [What is simplified and why]
+Representations:        [At least two — note that canvas content is not
+                         screen-reader accessible, so always pair the
+                         canvas with a DOM readout of key state]
+Reflection prompts:     [3-5; see "Try this" panel]
+Model limitations:      [2-3 sentences; see panel]
+Classroom use:          [Pre-class / in-class / lab / post-class]
+Date:                   [YYYY-MM-DD]
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #555555;
+    --panel: #f4f4f4;
+    --accent: #2a6fdb;
+    --accent-fg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--bg);
+    margin: 0;
+    padding: 1.5rem;
+    max-width: 1200px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; }
+  .layout { display: grid; grid-template-columns: 280px 1fr; gap: 1rem; align-items: start; }
+  .controls, .viewport, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .panel { margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  label { display: block; margin: 0.75rem 0; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  button:focus-visible, input:focus-visible {
+    outline: 3px solid #ffb800;
+    outline-offset: 2px;
+  }
+  canvas { display: block; width: 100%; height: auto; background: #fff; border-radius: 4px; }
+  .live-readout {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background: #fff;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>[Simulation title]</h1>
+<p class="goal">[Learning goal — one sentence, visible to the student.]</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      Particle count: <span id="paramN-readout" class="readout">50</span>
+      <input id="paramN" type="range" min="10" max="200" value="50" step="1" aria-label="Number of particles">
+    </label>
+
+    <label>
+      Speed: <span id="paramS-readout" class="readout">2</span>
+      <input id="paramS" type="range" min="0" max="5" value="2" step="0.1" aria-label="Particle speed">
+    </label>
+
+    <button id="playPause" type="button" aria-pressed="true">Pause</button>
+    <button id="reset" type="button">Reset</button>
+  </section>
+
+  <section class="viewport" aria-label="Simulation viewport">
+    <canvas id="canvas" width="600" height="400" aria-label="A field of particles moving at the speed and density set by the sliders. Live readouts of key state appear below the canvas."></canvas>
+    <!-- DOM-accessible parallel channel for screen readers and as a state inspector -->
+    <div class="live-readout" aria-live="polite">
+      <span>Active particles: <span id="active-count" class="readout">0</span></span>
+      &nbsp;|&nbsp;
+      <span>Avg speed: <span id="avg-speed" class="readout">0.00</span></span>
+    </div>
+  </section>
+
+</div>
+
+<section class="panel" aria-labelledby="notice-heading">
+  <h2 id="notice-heading">What to notice</h2>
+  <p>[One or two sentences directing attention to the conceptual point.]</p>
+</section>
+
+<section class="panel" aria-labelledby="tryit-heading">
+  <h2 id="tryit-heading">Try this</h2>
+  <ol>
+    <li>[Prompt 1 — predict before observing]</li>
+    <li>[Prompt 2]</li>
+    <li>[Prompt 3]</li>
+  </ol>
+</section>
+
+<section class="panel" aria-labelledby="limits-heading">
+  <h2 id="limits-heading">Model limitations</h2>
+  <p>[What this simplified model leaves out, in the student's vocabulary.]</p>
+</section>
+
+<script>
+  // === constants ===
+  const INITIAL = { count: 50, speed: 2 };
+  const CANVAS = { width: 600, height: 400 };
+
+  // === state ===
+  const state = { ...INITIAL, running: true, particles: [] };
+
+  // === model ===
+  function makeParticle() {
+    return {
+      x: Math.random() * CANVAS.width,
+      y: Math.random() * CANVAS.height,
+      vx: (Math.random() - 0.5) * 2,
+      vy: (Math.random() - 0.5) * 2,
+    };
+  }
+  function rebuildParticles() {
+    state.particles = Array.from({ length: state.count }, makeParticle);
+  }
+  function step() {
+    for (const p of state.particles) {
+      p.x += p.vx * state.speed;
+      p.y += p.vy * state.speed;
+      if (p.x < 0 || p.x > CANVAS.width) p.vx *= -1;
+      if (p.y < 0 || p.y > CANVAS.height) p.vy *= -1;
+    }
+  }
+  function averageSpeed() {
+    if (state.particles.length === 0) return 0;
+    const total = state.particles.reduce((s, p) => s + Math.hypot(p.vx, p.vy), 0);
+    return (total / state.particles.length) * state.speed;
+  }
+
+  // === render ===
+  const $ = id => document.getElementById(id);
+  const canvas = $('canvas');
+  const ctx = canvas.getContext('2d');
+
+  function render() {
+    ctx.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    ctx.fillStyle = '#2a6fdb';
+    for (const p of state.particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    $('paramN-readout').textContent = state.count;
+    $('paramS-readout').textContent = state.speed.toFixed(1);
+    $('active-count').textContent = state.particles.length;
+    $('avg-speed').textContent = averageSpeed().toFixed(2);
+  }
+
+  function loop() {
+    if (state.running) step();
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  // === events ===
+  $('paramN').addEventListener('input', (e) => {
+    state.count = +e.target.value;
+    rebuildParticles();
+  });
+  $('paramS').addEventListener('input', (e) => {
+    state.speed = +e.target.value;
+  });
+  $('playPause').addEventListener('click', () => {
+    state.running = !state.running;
+    $('playPause').textContent = state.running ? 'Pause' : 'Play';
+    $('playPause').setAttribute('aria-pressed', state.running);
+  });
+  $('reset').addEventListener('click', () => {
+    Object.assign(state, INITIAL);
+    state.running = true;
+    $('paramN').value = state.count;
+    $('paramS').value = state.speed;
+    $('playPause').textContent = 'Pause';
+    $('playPause').setAttribute('aria-pressed', 'true');
+    rebuildParticles();
+  });
+
+  // === init ===
+  rebuildParticles();
+  requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>

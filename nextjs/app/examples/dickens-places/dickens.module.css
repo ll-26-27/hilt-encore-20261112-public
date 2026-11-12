@@ -1,0 +1,34 @@
+.wrap { display: flex; flex-direction: column; gap: 12px; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 10px 20px; flex-wrap: wrap; }
+.toolbar > a { color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.jumps { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.jumpLabel { color: var(--muted); font-size: 14px; }
+.jumps button { font: inherit; font-size: 14px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--wash); color: var(--ink); cursor: pointer; }
+.jumps button:hover { border-color: var(--muted); }
+.jumps button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.frame { display: block; width: 100%; height: 820px; border: 1px solid var(--line); border-radius: 8px; background: #fbfaf7; }
+.note { margin: 0; max-width: 780px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.unmapped { margin-top: 12px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.unmapped > summary { cursor: pointer; color: var(--ink); font-weight: 600; font-size: 16px; }
+.unmapped[open] > summary { margin-bottom: 12px; }
+.unmapped > .note { margin-bottom: 12px; }
+.search { display: flex; flex-direction: column; gap: 6px; max-width: 460px; font-size: 14px; color: var(--muted); }
+.search input { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--ink); }
+.count { margin: 10px 0 6px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.list > li { border-bottom: 1px solid var(--line); }
+.list summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 8px 0; }
+.name { color: var(--ink); font-weight: 600; }
+.meta { color: var(--muted); font-size: 13px; }
+.why { margin: 0 0 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.passages { list-style: none; margin: 0 0 12px; padding: 0 0 0 14px; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+.passages li { display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.5; }
+.where { color: var(--muted); font-size: 12.5px; }
+.setting { color: var(--accent); }
+.passages q { color: var(--ink); }
+
+@media (max-width: 700px) {
+  .frame { height: 900px; }
+  .unmapped { padding: 12px; }
+}

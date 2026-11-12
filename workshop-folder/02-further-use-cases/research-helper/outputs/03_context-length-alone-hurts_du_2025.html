@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Context Length Alone Hurts — Research Summary</title>
+<style>
+  :root{--ink:#1a1a1a;--mut:#5c5c5c;--line:#e3e3e3;--accent:#7a3b2e;--twist-bg:#fdf6f3;--twist-bd:#e7c8bd;}
+  *{box-sizing:border-box;}
+  body{font:16px/1.65 Georgia,"Times New Roman",serif;color:var(--ink);background:#faf9f7;margin:0;}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+  .crumb{font:13px/1.4 -apple-system,system-ui,sans-serif;color:var(--mut);margin-bottom:28px;}
+  .crumb a{color:var(--accent);text-decoration:none;}
+  h1{font-size:30px;line-height:1.25;margin:0 0 6px;}
+  .meta{font:14px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);margin:0 0 4px;}
+  .gloss{font-size:18px;font-style:italic;color:#333;border-left:3px solid var(--accent);padding:6px 0 6px 16px;margin:22px 0 36px;}
+  h2{font:600 13px/1.3 -apple-system,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:42px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+  p{margin:0 0 16px;}
+  ul{margin:0 0 16px;padding-left:22px;}
+  li{margin:0 0 9px;}
+  .twist{background:var(--twist-bg);border:1px solid var(--twist-bd);border-radius:8px;padding:8px 26px 22px;margin:42px 0;}
+  .twist h2{border-bottom-color:var(--twist-bd);}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font:13px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);}
+  footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb"><a href="index.html">← Research Helper index</a> &nbsp;·&nbsp; Article 03</div>
+
+  <h1>Context Length Alone Hurts LLM Performance Despite Perfect Retrieval</h1>
+  <p class="meta">Yufeng Du, Minyang Tian (equal contribution), Srikanth Ronanki, Subendhu Rongali, Sravan Bodapati, Aram Galstyan, Azton Wells, Roy Schwartz, Eliu A. Huerta, Hao Peng · 2025</p>
+  <p class="meta">Source: arXiv:2510.05381v1 (cs.CL); UIUC, Amazon, USC ISI, Argonne, Hebrew University, U. Chicago. No peer-reviewed venue stated.</p>
+  <p class="gloss">Even when a model can perfectly retrieve everything it needs from a long input, simply making the input longer still substantially degrades its ability to solve the problem — and a simple "recite-then-solve" trick partly fixes this.</p>
+
+  <h2>Neutral Summary</h2>
+  <p>The paper challenges a common assumption in long-context research: that if a model can perfectly retrieve (identify and recite) the relevant information, it should solve the task as well as in a short-context setting. Long-context solving is usually decomposed into retrieval plus reasoning, with failures typically blamed on imperfect or hallucinated retrieval. The authors run systematic, controlled experiments to isolate the effect of input length itself.</p>
+  <p>Their method constructs a synthetic benchmark from four task types — a synthetic Variable Summation (VarSum) task, math (GSM8K), multiple-choice QA (MMLU), and coding (HumanEval). Each problem is split into "evidence" (all information needed) and a "question," with distraction tokens inserted between them to reach target lengths: [Evidence] [Distraction] [Question]. Evidence is a single consecutive chunk at the beginning (the easiest position, avoiding Lost-in-the-Middle effects), and retrieval is measured by exact-match recitation of both evidence and question. They test Llama-3.1-8B-Instruct, Mistral-v0.3-7B-Instruct, GPT-4o, Claude-3.7-Sonnet, and Gemini-2.0.</p>
+  <p>The key finding: problem-solving accuracy degrades substantially (13.9%–85% drops) as input length increases, even while retrieval remains near-perfect and well within the models' claimed context lengths. For example, Llama-3.1-8B retrieves evidence with exact match for 970/1000 MMLU problems at 30k tokens but its accuracy drops 24.2% versus the short-context case. The degradation persists under progressively weaker distraction — minimally distracting whitespace, evidence placed immediately before the question, and even full attention-masking of distraction tokens. Much of the drop occurs within 7k tokens, well below where retrieval starts to fail. Closed-source models are more robust than the small open models but still show substantial, mostly consistent degradation.</p>
+  <p>Motivated by this, the authors propose a simple, model-agnostic mitigation: a "retrieve-then-solve" strategy where the model first recites the relevant evidence, which is then prepended to the question to form a new, much shorter prompt — turning a long-context task into a short-context one. This boosts Mistral by up to 31.2% on GSM8K with essay distraction, and consistently improves an already strong GPT-4o baseline on RULER QA1/QA2 by up to ~4%. Stated limitations: only two open and three closed models and four tasks; retrieval not tested on closed-source models; the mitigation presupposes perfect retrieval (itself hard in practice); experiments run once.</p>
+
+  <h2>Key Findings</h2>
+  <ul>
+    <li>Context length alone degrades problem-solving even when retrieval is perfect (100% exact-match recitation), independent of retrieval quality and without any distraction.</li>
+    <li>Drops are large and consistent across 5 models and 4 task types (13.9%–85%), with much of the drop within 7k tokens — well below where retrieval declines (~30k).</li>
+    <li>The effect survives minimal distraction (whitespace), constant evidence-question distance, and complete distraction removal via attention masking (masking sometimes hurts more).</li>
+    <li>Retrieval and problem-solving diverge sharply: e.g., Llama-3 on MMLU at 30k retains ~97% retrieval but loses 24.2% accuracy.</li>
+    <li>Closed-source models (GPT-4o, Claude-3.7-Sonnet, Gemini-2.0) are more robust than small open models but still degrade substantially (exception: Gemini improves on GSM8K at 30k).</li>
+    <li>"Retrieve-then-solve" improves Mistral by up to 31.2% (GSM8K, essay distraction) and GPT-4o on RULER QA1/QA2 by up to ~4% over a strong baseline.</li>
+    <li>The standard retrieval+reasoning decomposition is incomplete: a model can excel at both yet still fail on long inputs purely due to length.</li>
+    <li>Offers a candidate explanation for why RAG saturates/degrades with more documents and why excessively long chain-of-thought can hurt reasoning.</li>
+  </ul>
+
+  <div class="twist">
+    <h2>The Twist — Implications for teaching, learning &amp; research with LLM harnesses</h2>
+    <p>This paper's most directly transferable lesson is concrete and well-supported: longer inputs degrade reasoning quality even when the needed information is fully present and the model can recite it back perfectly. For instructors and students using Claude Code or similar tools, this argues against the intuition that "dumping everything into the context window is safe as long as the relevant material is in there." The paper shows substantial accuracy losses occurring within the first ~7k tokens — far below advertised context limits — so the practical guidance is to keep prompts and working context lean: include the specific files, passages, or problem statements that matter, rather than entire repositories, textbooks, or long transcripts, when the task is reasoning rather than search.</p>
+    <p>The paper's own mitigation maps unusually cleanly onto good harness practice. "Retrieve-then-solve" — have the model recite the relevant evidence, then start a fresh, short prompt containing only that evidence plus the question — is essentially a principled argument for context curation: extract first, then reason in a clean session. In Claude Code terms this resembles the value of compaction, scoping a task to a small set of files, or starting a new session for a distinct sub-problem rather than letting one long thread accumulate. The paper provides empirical (not merely anecdotal) support that this context hygiene measurably improves output quality, even when nothing relevant was actually lost.</p>
+    <p>The limits of the bridge should be explicit. This study used 7B–8B open models plus a few 2024-era closed models on math, QA, coding, and a synthetic arithmetic task; it did not test agentic coding workflows, tool use, multi-turn software tasks, or current frontier models in a Claude Code–style harness. Closed models were notably more robust than small open ones, and the coding (HumanEval) trend was inconsistent and sometimes improved with length — so the magnitude for a modern coding agent on long tasks is genuinely uncertain and should be treated as <strong>speculative</strong> when extrapolated to Claude Code specifically. The cleanest claim that survives is directional: long context is not free, and retrieval being solved does not mean reasoning is solved.</p>
+    <p>For research and teaching about how these tools work, the paper is itself a useful object lesson — a good example of careful experimental isolation (controlling distraction, position, and masking to separate "length" from "retrieval failure") and a caution against over-trusting needle-in-a-haystack evaluations. <strong>Speculative but reasonable:</strong> instructors designing assignments or research workflows around LLM harnesses may get more reliable behavior by teaching deliberate context management — extract-then-reason, fresh sessions per subtask, minimal sufficient context — as a core skill. Faithfully, the paper does not study education at all; these connections are inferences, and the strongest, least speculative takeaway remains: shorter, well-scoped context tends to produce better reasoning.</p>
+  </div>
+
+  <footer>
+    <p>Du, Y., Tian, M., Ronanki, S., Rongali, S., Bodapati, S., Galstyan, A., Wells, A., Schwartz, R., Huerta, E. A., &amp; Peng, H. (2025). <em>Context Length Alone Hurts LLM Performance Despite Perfect Retrieval.</em> arXiv:2510.05381.</p>
+    <p><a href="index.html">← Back to Research Helper index</a></p>
+  </footer>
+</div>
+</body>
+</html>

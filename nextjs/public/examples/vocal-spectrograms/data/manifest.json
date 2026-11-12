@@ -1,0 +1,55 @@
+{
+  "stems": [
+    {
+      "id": "adele",
+      "label": "Adele",
+      "audio": "/assets/audio/adele.wav",
+      "spectrogram": "/assets/images/adele_spectrogram.png",
+      "spectrogramWithPeaks": "/assets/images/adele_peaks.png",
+      "profilePlot": "/assets/images/adele_profile.png",
+      "analysis": "/assets/data/adele_analysis.json",
+      "metrics": {
+        "spectral_flatness": 0.0088,
+        "spectral_centroid_hz": 2561.4,
+        "spectral_bandwidth_hz": 2405.6,
+        "harmonic_energy_ratio": 0.76,
+        "dominant_f0_hz": 405.8
+      },
+      "notes": "Strong tonal character. strong harmonic structure. wide overtone spread."
+    },
+    {
+      "id": "billie-eilish",
+      "label": "Billie-Eilish",
+      "audio": "/assets/audio/billie-eilish.wav",
+      "spectrogram": "/assets/images/billie-eilish_spectrogram.png",
+      "spectrogramWithPeaks": "/assets/images/billie-eilish_peaks.png",
+      "profilePlot": "/assets/images/billie-eilish_profile.png",
+      "analysis": "/assets/data/billie-eilish_analysis.json",
+      "metrics": {
+        "spectral_flatness": 0.0519,
+        "spectral_centroid_hz": 3484.0,
+        "spectral_bandwidth_hz": 2952.1,
+        "harmonic_energy_ratio": 0.82,
+        "dominant_f0_hz": 394.3
+      },
+      "notes": "Relatively noisy/breathy character. strong harmonic structure. wide overtone spread."
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "adele_vs_billie-eilish",
+      "a": "adele",
+      "b": "billie-eilish",
+      "overlayImage": "/assets/images/adele_vs_billie-eilish_overlay.png",
+      "stackedImage": "/assets/images/adele_vs_billie-eilish_stacked.png",
+      "profileComparison": "/assets/images/adele_vs_billie-eilish_profiles.png",
+      "differenceMetrics": {
+        "flatness_delta": -0.0431,
+        "bandwidth_delta_hz": -546.5,
+        "harmonic_energy_ratio_delta": -0.06,
+        "centroid_delta_hz": -922.6
+      },
+      "summary": "Adele is more tonally pure (lower spectral flatness). Billie-Eilish has wider overtone spread. Billie-Eilish has stronger harmonic structure."
+    }
+  ]
+}

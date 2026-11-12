@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cold brew vs hot brew — diffusive extraction</title>
+<style>
+  :root{
+    --bg:#12100e; --panel:#1c1917; --line:#332e2a; --ink:#f2ece4;
+    --dim:#a49b90; --accent:#d99a4e; --cold:#6fa8dc; --hot:#e07a5f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    padding:28px 20px 60px;
+  }
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px;font-weight:600;letter-spacing:-.01em}
+  .sub{color:var(--dim);margin:0 0 24px}
+  .grid{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--dim);margin:0 0 14px;font-weight:600}
+
+  .ctl{margin-bottom:17px}
+  .ctl:last-child{margin-bottom:0}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:13px;margin-bottom:5px;gap:8px}
+  .ctl .val{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600}
+  .ctl .val.cold{color:var(--cold)} .ctl .val.hot{color:var(--hot)}
+  input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+  input.cold{accent-color:var(--cold)} input.hot{accent-color:var(--hot)}
+  .hint{font-size:11.5px;color:var(--dim);margin-top:3px}
+
+  .eqbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin-bottom:18px;overflow-x:auto}
+  .eq{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+    white-space:nowrap;color:var(--ink)}
+  .eq .num{color:var(--accent);font-variant-numeric:tabular-nums}
+  .eq.c .num{color:var(--cold)} .eq.h .num{color:var(--hot)}
+  .eq + .eq{margin-top:9px}
+
+  .stage{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+  .glass{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px;text-align:center}
+  .glass h3{margin:0 0 2px;font-size:14px;font-weight:600}
+  .glass .cond{font-size:11.5px;color:var(--dim);margin:0 0 10px;
+    font-variant-numeric:tabular-nums}
+  .glass svg{display:block;margin:0 auto}
+  .pct{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:8px}
+  .pct small{font-size:12px;font-weight:400;color:var(--dim);display:block;margin-top:1px}
+
+  .btnrow{display:flex;gap:8px;margin-top:9px}
+  button{background:var(--accent);color:#1a1310;border:0;border-radius:6px;
+    padding:6px 13px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;flex:none}
+  button.ghost{background:transparent;color:var(--dim);border:1px solid var(--line)}
+  .fixed{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--dim);line-height:1.55}
+  .fixed b{color:var(--ink);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.06em}
+  td.n{font-variant-numeric:tabular-nums;text-align:right}
+  .ok{color:#7fb069;font-weight:600} .bad{color:#e07a5f;font-weight:600}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  @media(max-width:820px){.two,.stage{grid-template-columns:1fr}}
+  ul{margin:0;padding-left:18px;font-size:13px;color:var(--dim)}
+  li{margin-bottom:7px}
+  li b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Cold brew, 16 hours at 4&nbsp;°C. Hot brew, 5 minutes at 95&nbsp;°C.</h1>
+  <p class="sub">One recipe takes 192 times as long as the other. The model: extraction is
+  solute diffusing out of a coffee particle &mdash; temperature sets how fast, particle
+  size sets how far. D<sub>95</sub> is fitted so that hot brew finishes in 5 minutes;
+  everything after that is prediction. Can it reproduce the 16 hours?</p>
+
+  <div class="grid">
+
+    <!-- ---------------- controls ---------------- -->
+    <div class="panel">
+      <h2>Sliders</h2>
+
+      <div class="ctl">
+        <label for="rcold">Cold grind radius <span class="val cold" id="rcoldv"></span></label>
+        <input type="range" class="cold" id="rcold" min="0.10" max="1.20" step="0.01" value="0.90">
+        <div class="hint">Cold brew is ground coarse, about 0.90&nbsp;mm. Drip is
+        0.35&nbsp;mm &mdash; set it there to see what grind alone is doing.</div>
+      </div>
+
+      <div class="ctl">
+        <label for="tcold">Cold brew temperature <span class="val cold" id="tcoldv"></span></label>
+        <input type="range" class="cold" id="tcold" min="0" max="95" step="1" value="4">
+        <div class="hint">The recipe says 4&nbsp;°C. Fridge, counter, or anywhere up to the
+        hot brew's 95&nbsp;°C.</div>
+      </div>
+
+      <div class="ctl">
+        <label for="time">Brew time <span class="val" id="tv"></span></label>
+        <input type="range" id="time" min="0" max="1000" step="1" value="502">
+        <div class="btnrow">
+          <button id="play">▶ Play</button>
+          <button class="ghost" id="reset">Reset</button>
+        </div>
+        <div class="hint">Log scale, 1&nbsp;s to 24&nbsp;h.</div>
+      </div>
+
+      <div class="fixed">
+        <b>Held fixed.</b> The hot glass entirely: 95&nbsp;°C from the recipe and a
+        0.35&nbsp;mm drip grind from practice. It is the calibration anchor &mdash;
+        D<sub>95</sub> is fitted at those values, so every slider is a prediction knob and
+        none can move the fit. Also fixed: D doubling every 22&nbsp;°C, consistent with
+        measured coffee-extraction kinetics; same beans, same coffee-to-water
+        ratio.
+      </div>
+    </div>
+
+    <!-- ---------------- stage ---------------- -->
+    <div>
+      <div class="eqbox">
+        <div class="eq">E(t) = 1 &minus; (6/&pi;&sup2;) &Sigma; (1/n&sup2;)&thinsp;exp(&minus;n&sup2;&pi;&sup2;Dt/r&sup2;)
+          &nbsp;&nbsp;·&nbsp;&nbsp; D(T) = D<sub>95</sub> · 2<sup>(T&minus;95)/&Delta;T</sup></div>
+        <div class="eq c">cold: D = <span class="num" id="ecd"></span> m&sup2;/s ·
+          t = <span class="num" id="ect"></span> s · r = <span class="num" id="ecr"></span> m
+          &nbsp;&rarr;&nbsp; Dt/r&sup2; = <span class="num" id="ectau"></span>
+          &nbsp;&rarr;&nbsp; E = <span class="num" id="ece"></span></div>
+        <div class="eq h">hot:&nbsp; D = <span class="num" id="ehd"></span> m&sup2;/s ·
+          t = <span class="num" id="eht"></span> s · r = <span class="num" id="ehr"></span> m
+          &nbsp;&rarr;&nbsp; Dt/r&sup2; = <span class="num" id="ehtau"></span>
+          &nbsp;&rarr;&nbsp; E = <span class="num" id="ehe"></span></div>
+      </div>
+
+      <div class="stage">
+        <div class="glass">
+          <h3 style="color:var(--cold)">Cold brew</h3>
+          <p class="cond" id="cc"></p>
+          <svg width="140" height="175" viewBox="0 0 140 175" id="gc"></svg>
+          <div class="pct" id="pc">—<small>of extractable solids</small></div>
+        </div>
+        <div class="glass">
+          <h3 style="color:var(--hot)">Hot brew</h3>
+          <p class="cond" id="ch"></p>
+          <svg width="140" height="175" viewBox="0 0 140 175" id="gh"></svg>
+          <div class="pct" id="ph">—<small>of extractable solids</small></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Extraction vs time (log scale)</h2>
+        <svg viewBox="0 0 640 260" width="100%" id="plot"></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- calibration + caveats ---------------- -->
+  <div class="two">
+    <div class="panel">
+      <h2>Calibration check</h2>
+      <table>
+        <tr><th>Brew</th><th style="text-align:right">Recipe</th>
+            <th style="text-align:right">Model</th><th style="text-align:right">Ratio</th></tr>
+        <tr><td>Hot, 95&nbsp;°C</td><td class="n">5 min</td>
+            <td class="n" id="kh"></td><td class="n" id="rh"></td></tr>
+        <tr><td>Cold, 4&nbsp;°C</td><td class="n">16 h</td>
+            <td class="n" id="kc"></td><td class="n" id="rc"></td></tr>
+      </table>
+      <p class="hint" style="margin-top:10px"><b>Where 70&nbsp;% comes from.</b>
+      &ldquo;Done&rdquo; has to be defined, because the equation approaches 100&nbsp;%
+      without ever reaching it. Brewers measure extraction yield, the fraction of the bean's
+      dry mass that dissolves, and a well-made cup lands at 18–22&nbsp;%. Roasted coffee is
+      only about 30&nbsp;% water-soluble to begin with, so a real brew removes roughly
+      70&nbsp;% of what is available to remove. Coffee is not brewed to exhaustion; past that
+      point it turns bitter. Both brews use the same definition, and both the 70&nbsp;% and
+      the fitted D<sub>95</sub> cancel out of the comparison below, which is a ratio of two
+      times.</p>
+      <details style="margin-top:12px">
+        <summary style="cursor:pointer;font-size:12px;color:var(--accent);font-weight:600">
+          Check your reasoning — where does the gap come from?</summary>
+        <p class="hint" id="verdict" style="margin-top:8px"></p>
+      </details>
+    </div>
+
+    <div class="panel">
+      <h2>What this model ignores</h2>
+      <ul>
+        <li><b>D<sub>95</sub> is fitted, not measured.</b> It was chosen so that hot brew
+          reaches 70&nbsp;% at 5 minutes with a 0.35&nbsp;mm grind, so the hot row of the
+          calibration cannot fail on its own and is not evidence for anything. The fitted
+          value, 3.0×10<sup>&minus;11</sup> m²/s, is below most published effective
+          diffusivities for coffee solubles, which cluster nearer
+          10<sup>&minus;10</sup>&nbsp;m²/s. Part of that is the 70&nbsp;% definition: a
+          stricter cutoff would fit a larger D, and a 95&nbsp;% cutoff would put it at about
+          1.0×10<sup>&minus;10</sup>. The rest is probably the single-particle assumption
+          below. Matching brewing practice and matching the published constant pull in
+          opposite directions here, and this sim chose brewing practice.</li>
+        <li><b>Both brews approach the same final yield.</b> Lipids and heavier melanoidins
+          dissolve poorly at 4&nbsp;°C, so cold brew probably reaches a lower one. Each
+          compound also has its own solubility curve, so the two brews differ in composition
+          and not only in strength. This changes how strong cold brew gets rather than how
+          long it takes, so it does not affect the calibration.</li>
+        <li><b>The water is treated as infinitely dilute.</b> Cold brew is often brewed at
+          1:5 and diluted afterwards, against roughly 1:16 for drip. A more concentrated
+          brew has a smaller concentration gradient and extracts more slowly. This is one
+          plausible source of the remaining factor of 1.7.</li>
+        <li><b>One particle size.</b> A real grind is a wide distribution. Fines finish in
+          seconds and the largest particles never do.</li>
+        <li><b>Spheres, and no flow.</b> Coffee particles are irregular and porous, so D here
+          is an effective lumped value. Hot brew also has water moving through the bed, which
+          carries solute away from the particle surface; cold brew mostly sits still.</li>
+        <li><b>Yield is not flavour.</b> The 70&nbsp;% target is a whole-cup average, and
+          what a cup tastes like depends on which compounds came out rather than how many.
+          The 16 hours may well be chosen for taste, which this equation says nothing
+          about.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+// "Done" = 70 % extracted, from brewing practice: roasted coffee is ~30 % soluble and a
+// good cup dissolves 18-22 % of bean mass, so a real brew takes out roughly 70 % of what
+// is available. Solving E(tau) = 0.70 gives tau* below; D95 is then fitted so that
+// r = 0.35 mm reaches it at t = 300 s.
+const TARGET = 0.70;
+const TAUSTAR = 0.074357;
+const D95 = 3.036e-11;      // m^2/s = TAUSTAR * (3.5e-4)^2 / 300
+const TH = 95, TC = 4;      // recipe temperatures; hot is held fixed
+const RH = 3.5e-4;          // drip grind radius, m — fixed, part of the calibration anchor
+const DTD = 22;             // D doubles every 22 C, mid-range literature value
+const TMIN = 1, TMAX = 86400;    // 1 s .. 24 h, log time axis
+const RECIPE_H = 300, RECIPE_C = 57600;      // 5 min, 16 h
+const RATIO = RECIPE_C/RECIPE_H;             // 192
+
+const $ = id => document.getElementById(id);
+
+/* ---------- physics ---------- */
+
+// Fractional release from a sphere, tau = D t / r^2.
+function E(tau){
+  if (tau <= 0) return 0;
+  if (tau < 0.06) return Math.max(0, 6*Math.sqrt(tau/Math.PI) - 3*tau);  // short-time form
+  let s = 0;
+  for (let n = 1; n <= 60; n++){
+    const e = Math.exp(-n*n*Math.PI*Math.PI*tau);
+    if (e < 1e-14) break;
+    s += e/(n*n);
+  }
+  return Math.min(1, 1 - 6/(Math.PI*Math.PI)*s);
+}
+
+const Dof = (T, dTd) => D95 * Math.pow(2, (T - 95)/dTd);
+
+// Time to reach TARGET: t = tau* r^2 / D.
+const timeTo = (T, r, dTd) => TAUSTAR * r*r / Dof(T, dTd);
+
+/* ---------- formatting ---------- */
+
+function dur(s){
+  if (!isFinite(s)) return "—";
+  if (s < 90) return s.toFixed(0) + " s";
+  if (s < 5400) return (s/60).toFixed(s < 600 ? 1 : 0) + " min";
+  if (s < 172800) return (s/3600).toFixed(s < 36000 ? 1 : 0) + " h";
+  return (s/86400).toFixed(1) + " d";
+}
+const sci = x => {
+  const e = Math.floor(Math.log10(x));
+  return (x/Math.pow(10,e)).toFixed(2) + "e" + e;
+};
+
+const sliderToT = v => TMIN * Math.pow(TMAX/TMIN, v/1000);
+const tToX      = t => 60 + 560 * Math.log(t/TMIN)/Math.log(TMAX/TMIN);
+
+/* ---------- drawing ---------- */
+
+function glass(svg, e, uid){
+  // pale straw -> amber -> near-black, so mid-strength still reads as coffee
+  const stops = [[243,228,190],[176,100,44],[58,32,18]];
+  const lo = e < 0.5 ? 0 : 1, u = e < 0.5 ? e/0.5 : (e-0.5)/0.5;
+  const base = [0,1,2].map(i => stops[lo][i] + (stops[lo+1][i]-stops[lo][i])*u);
+  // f > 1 lightens (thin liquid near the surface), f < 1 darkens (long path length)
+  const sh = (f, mix=0) => "rgb(" + base
+    .map(c => Math.round(Math.max(0, Math.min(255, c*f + 255*mix))))
+    .join(",") + ")";
+
+  const top = 40, bot = 146, lx = 30, rx = 110, tp = 10;
+  const cx = (lx+rx)/2, ry = (rx-lx)/2;          // 70, 40
+  // walls taper inward, and the liquid pools over a rounded glass bottom
+  const body = `M${lx} ${top} L${lx+tp} ${bot-7} Q${cx} ${bot+10} ${rx-tp} ${bot-7}
+                L${rx} ${top} Z`;
+  const g = id => `${uid}-${id}`;
+
+  svg.innerHTML = `
+  <defs>
+    <!-- Beer-Lambert: light travels further through the bottom of the glass -->
+    <linearGradient id="${g('depth')}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="${sh(1.30, 0.06)}"/>
+      <stop offset="0.30" stop-color="${sh(1.00)}"/>
+      <stop offset="1"    stop-color="${sh(0.46)}"/>
+    </linearGradient>
+    <!-- cylindrical shading across the barrel, lit from upper left -->
+    <linearGradient id="${g('cyl')}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#000" stop-opacity="0.34"/>
+      <stop offset="0.16" stop-color="#fff" stop-opacity="0.16"/>
+      <stop offset="0.46" stop-color="#000" stop-opacity="0"/>
+      <stop offset="0.80" stop-color="#000" stop-opacity="0.20"/>
+      <stop offset="1"    stop-color="#000" stop-opacity="0.42"/>
+    </linearGradient>
+    <!-- the surface reflects the room, so it is lighter than the bulk -->
+    <linearGradient id="${g('surf')}" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0"   stop-color="${sh(1.55, 0.20)}"/>
+      <stop offset="0.5" stop-color="${sh(1.15, 0.04)}"/>
+      <stop offset="1"   stop-color="${sh(0.80)}"/>
+    </linearGradient>
+    <radialGradient id="${g('shadow')}" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#000" stop-opacity="0.40"/>
+      <stop offset="0.6" stop-color="#000" stop-opacity="0.14"/>
+      <stop offset="1"   stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- light focused through the liquid onto the surface below -->
+    <radialGradient id="${g('caustic')}" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="${sh(1.35, 0.10)}" stop-opacity="0.75"/>
+      <stop offset="1"   stop-color="${sh(1.2)}" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="${g('plate')}" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#f6f2ea"/><stop offset="1" stop-color="#ddd6ca"/>
+    </linearGradient>
+    <clipPath id="${g('clip')}"><path d="${body}"/></clipPath>
+  </defs>
+
+  <rect x="6" y="8" width="128" height="158" rx="10" fill="url(#${g('plate')})"/>
+
+  <!-- contact shadow and caustic on the plate -->
+  <ellipse cx="${cx}" cy="${bot+4}" rx="46" ry="11" fill="url(#${g('shadow')})"/>
+  <ellipse cx="${cx+13}" cy="${bot+5}" rx="30" ry="8" fill="url(#${g('caustic')})"/>
+
+  <!-- liquid: bulk colour, then depth and barrel shading -->
+  <path d="${body}" fill="url(#${g('depth')})"/>
+  <!-- a pale liquid absorbs less, so it shades less: scale the darkening with strength -->
+  <path d="${body}" fill="url(#${g('cyl')})" opacity="${(0.45 + 0.55*e).toFixed(3)}"/>
+  <g clip-path="url(#${g('clip')})">
+    <!-- inner wall darkening where the liquid meets the glass -->
+    <path d="${body}" fill="none" stroke="#000"
+          stroke-opacity="${(0.12 + 0.20*e).toFixed(3)}" stroke-width="7"/>
+    <!-- light pooling on the curved glass bottom -->
+    <ellipse cx="${cx-6}" cy="${bot-2}" rx="26" ry="9"
+             fill="#fff" fill-opacity="0.10"/>
+  </g>
+
+  <!-- surface: elliptical because we are looking down into the glass -->
+  <ellipse cx="${cx}" cy="${top}" rx="${ry}" ry="8" fill="url(#${g('surf')})"/>
+  <ellipse cx="${cx}" cy="${top}" rx="${ry}" ry="8" fill="none"
+           stroke="#fff" stroke-opacity="0.28" stroke-width="1"/>
+  <!-- meniscus climbing the wall -->
+  <path d="M${lx+1.5} ${top} A${ry-1.5} 7 0 0 0 ${rx-1.5} ${top}"
+        fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <!-- specular glint on the surface -->
+  <ellipse cx="${cx-16}" cy="${top-1.5}" rx="11" ry="2.6"
+           fill="#fff" fill-opacity="0.38"/>
+
+  <!-- the glass itself -->
+  <path d="${body}" fill="none" stroke="#4c463f" stroke-opacity="0.45"
+        stroke-width="2.5" stroke-linejoin="round"/>
+  <ellipse cx="${cx}" cy="${top}" rx="${ry}" ry="8" fill="none"
+           stroke="#4c463f" stroke-opacity="0.45" stroke-width="2.5"/>
+  <!-- rim catches the light -->
+  <path d="M${lx} ${top} A${ry} 8 0 0 1 ${rx} ${top}"
+        fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+  <!-- highlight streaks down the glass wall -->
+  <path d="M${lx+6} ${top+12} L${lx+tp+4} ${bot-18}" stroke="#fff"
+        stroke-opacity="0.30" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M${rx-7} ${top+16} L${rx-tp-5} ${bot-24}" stroke="#fff"
+        stroke-opacity="0.16" stroke-width="2.5" stroke-linecap="round"/>`;
+}
+
+function plot(state){
+  const {rc, rh, t, tc} = state;
+  const Dc = Dof(tc, DTD), Dh = Dof(TH, DTD);
+  const Y = e => 230 - 190*e;
+  let pc = "", ph = "";
+  for (let i = 0; i <= 260; i++){
+    const tt = TMIN * Math.pow(TMAX/TMIN, i/260), x = tToX(tt);
+    pc += (i ? "L" : "M") + x.toFixed(1) + " " + Y(E(Dc*tt/(rc*rc))).toFixed(1);
+    ph += (i ? "L" : "M") + x.toFixed(1) + " " + Y(E(Dh*tt/(rh*rh))).toFixed(1);
+  }
+  const gl = [[60,"1 min"],[300,"5 min"],[3600,"1 h"],[57600,"16 h"]].map(([tt,lab]) => `
+    <line x1="${tToX(tt)}" y1="30" x2="${tToX(tt)}" y2="230"
+          stroke="#332e2a" stroke-dasharray="3 4"/>
+    <text x="${tToX(tt)}" y="246" fill="#a49b90" font-size="10"
+          text-anchor="middle">${lab}</text>`).join("");
+  const hl = [[0,"0%"],[0.5,"50%"],[TARGET,(100*TARGET).toFixed(0)+"% done"],[1,"100%"]]
+    .map(([e,lab]) => `
+    <line x1="60" y1="${Y(e)}" x2="620" y2="${Y(e)}"
+          stroke="${e===TARGET?"#4a4038":"#262220"}"
+          ${e===TARGET?'stroke-dasharray="4 4"':""}/>
+    <text x="52" y="${Y(e)+3.5}" fill="#a49b90" font-size="10"
+          text-anchor="end">${lab}</text>`).join("");
+  const dot = (e,c) => `<circle cx="${tToX(t)}" cy="${Y(e)}" r="5"
+      fill="${c}" stroke="#12100e" stroke-width="2"/>`;
+  // where the recipes claim each brew is finished: the miss is the vertical gap to the curve
+  const tgt = (tt,c) => { const x = tToX(tt), y = Y(TARGET); return `
+    <circle cx="${x}" cy="${y}" r="6.5" fill="none" stroke="${c}" stroke-width="1.6"/>
+    <line x1="${x-10}" y1="${y}" x2="${x+10}" y2="${y}" stroke="${c}" stroke-width="1.2"/>
+    <line x1="${x}" y1="${y-10}" x2="${x}" y2="${y+10}" stroke="${c}" stroke-width="1.2"/>`; };
+  $("plot").innerHTML = hl + gl + `
+    <path d="${pc}" fill="none" stroke="#6fa8dc" stroke-width="2.5"/>
+    <path d="${ph}" fill="none" stroke="#e07a5f" stroke-width="2.5"/>
+    ${tgt(RECIPE_H,"#e07a5f")}${tgt(RECIPE_C,"#6fa8dc")}
+    <line x1="${tToX(t)}" y1="30" x2="${tToX(t)}" y2="230"
+          stroke="#f2ece4" stroke-opacity=".45" stroke-width="1.5"/>
+    ${dot(E(Dc*t/(rc*rc)),"#6fa8dc")}${dot(E(Dh*t/(rh*rh)),"#e07a5f")}
+    <text x="60" y="20" fill="#6fa8dc" font-size="11" font-weight="600">cold</text>
+    <text x="104" y="20" fill="#e07a5f" font-size="11" font-weight="600">hot</text>
+    <text x="145" y="20" fill="#a49b90" font-size="10">&#8853; where the recipe says
+      that brew is done</text>`;
+}
+
+/* ---------- main update ---------- */
+
+function update(){
+  const rh  = RH, rc = +$("rcold").value / 1000;   // mm -> m
+  const tc  = +$("tcold").value;
+  const t   = sliderToT(+$("time").value);
+  const Dc  = Dof(tc, DTD), Dh = Dof(TH, DTD);
+  const tauC = Dc*t/(rc*rc), tauH = Dh*t/(rh*rh);
+  const ec = E(tauC), eh = E(tauH);
+
+  $("rcoldv").textContent = (+$("rcold").value).toFixed(2) + " mm";
+  $("tcoldv").textContent = tc + " °C";
+  $("tv").textContent  = dur(t);
+
+  $("ecd").textContent = sci(Dc); $("ehd").textContent = sci(Dh);
+  $("ect").textContent = t.toFixed(t < 100 ? 1 : 0);
+  $("eht").textContent = t.toFixed(t < 100 ? 1 : 0);
+  $("ecr").textContent = sci(rc); $("ehr").textContent = sci(rh);
+  const tau = x => x < 0.01 ? sci(x) : x.toFixed(3);
+  $("ectau").textContent = tau(tauC); $("ehtau").textContent = tau(tauH);
+  $("ece").textContent = ec.toFixed(3);     $("ehe").textContent = eh.toFixed(3);
+
+  $("cc").textContent = `${tc} °C · r = ${(1000*rc).toFixed(2)} mm · D = ${sci(Dc)} m²/s`;
+  $("ch").textContent = `${TH} °C · r = ${(1000*rh).toFixed(2)} mm · D = ${sci(Dh)} m²/s`;
+  glass($("gc"), ec, "c"); glass($("gh"), eh, "h");
+  $("pc").innerHTML = (100*ec).toFixed(1) + "%<small>of extractable solids</small>";
+  $("ph").innerHTML = (100*eh).toFixed(1) + "%<small>of extractable solids</small>";
+
+  // calibration
+  const mh = timeTo(TH, rh, DTD), mc = timeTo(tc, rc, DTD);
+  const fh = mh/RECIPE_H, fc = mc/RECIPE_C;
+  const f = x => (x < 1 ? "1/" + (1/x).toFixed(1) : x.toFixed(1) + "×");
+  const cls = x => (x > 0.5 && x < 2) ? "ok" : "bad";
+  $("kh").textContent = dur(mh); $("kc").textContent = dur(mc);
+  $("rh").innerHTML = `<span class="${cls(fh)}">${f(fh)}</span>`;
+  $("rc").innerHTML = `<span class="${cls(fc)}">${f(fc)}</span>`;
+
+  // t ~ r^2/D, so the predicted gap factors into temperature x geometry
+  const fT = Dh/Dc, fG = (rc*rc)/(rh*rh), fTot = fT*fG;
+
+  const geom = (fG > 0.98 && fG < 1.02)
+    ? `Grind accounts for nothing here, because you have set both grinds the same.`
+    : fG > 1
+      ? `Grind accounts for <b>${fG.toFixed(1)}×</b>: the cold particles are
+         ${Math.sqrt(fG).toFixed(1)} times wider, and r is squared.`
+      : `Grind works against cold brew here, by <b>${(1/fG).toFixed(1)}×</b>: you have set
+         the cold grind finer than the drip grind.`;
+
+  let v = tc === TC ? "" : `You are brewing the cold glass at ${tc} °C; the recipe says
+    ${TC} °C, so the comparison below is against an off-recipe brew. `;
+  v += `Temperature accounts for <b>${fT.toFixed(0)}×</b>: D is ${fT.toFixed(0)} times
+    larger at ${TH} °C than at ${tc} °C. ${geom} Together
+    they predict that cold brew takes <b>${fTot.toFixed(0)}×</b> as long as hot. The
+    recipes differ by <b>${RATIO}×</b>, so the model is out by <b>${f(RATIO/fTot)}</b>. `;
+
+  if (cls(fc) === "ok"){
+    v += `Both rows are within a factor of two, so temperature and grind size together
+       account for most of the 16 hours. The notes on the right list what the remaining
+       factor could be.`;
+  } else {
+    v += `The cold row is out by <b>${f(fc)}</b>, which is outside the factor of two.`;
+  }
+
+  $("verdict").innerHTML = v;
+  plot({rc, rh, t, tc});
+}
+
+/* ---------- clock ---------- */
+
+let raf = null, last = 0;
+const SWEEP = 9000;          // ms for a full 0 -> 1000 sweep, independent of frame rate
+function tick(now){
+  const s = $("time");
+  const v = +s.value + 1000*(now - last)/SWEEP;
+  last = now;
+  if (v >= 1000){ s.value = 1000; stop(); }
+  else { s.value = v; raf = requestAnimationFrame(tick); }
+  update();
+}
+function stop(){
+  if (raf) cancelAnimationFrame(raf);
+  raf = null; $("play").textContent = "▶ Play";
+}
+$("play").onclick = () => {
+  if (raf) return stop();
+  if (+$("time").value >= 1000) $("time").value = 0;
+  $("play").textContent = "❚❚ Pause";
+  last = performance.now();
+  raf = requestAnimationFrame(tick);
+};
+$("reset").onclick = () => {
+  stop();
+  $("time").value = 502;      // 5 min on the log axis, the hot recipe's finish time
+  $("rcold").value = 0.90; $("tcold").value = 4;
+  update();
+};
+
+["rcold","tcold","time"].forEach(id =>
+  $(id).addEventListener("input", () => { if (id === "time") stop(); update(); }));
+
+update();
+</script>
+</body>
+</html>

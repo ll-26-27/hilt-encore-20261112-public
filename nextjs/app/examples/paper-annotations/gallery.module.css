@@ -1,0 +1,16 @@
+.gallery { display:grid; gap:48px; }
+.gallery h2,.gallery h3,.gallery p,.gallery figure { margin:0; }
+.gallery h2 { font-size:clamp(24px,3vw,38px); line-height:1.15; letter-spacing:-.035em; }
+.gallery p { max-width:780px; color:var(--muted); line-height:1.75; }
+.intro,.database,.questions { display:grid; gap:20px; }
+.intro > span { color:var(--accent); font-size:12px; letter-spacing:.06em; }
+.clips { display:grid; grid-template-columns:1fr 1fr; gap:40px 24px; }
+.figure { min-width:0; }
+.heading { margin-bottom:14px; }
+.heading h3 { font-size:17px; }
+.figure img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:8px; }
+.figure figcaption { margin-top:12px; color:var(--muted); line-height:1.65; font-size:14px; }
+.database { padding-top:35px; border-top:1px solid var(--line); }
+.questions { background:var(--wash); padding:30px; border-left:3px solid var(--accent); }
+.questions ul { margin:0; padding-left:20px; line-height:1.9; }
+@media(max-width:800px) { .clips { grid-template-columns:1fr; } }

@@ -1,0 +1,19 @@
+<context_pack source="Analects">
+# The Analects: voice prompt
+
+## In one sentence
+Short remembered sayings of the Master and his disciples, compiled after his death: terse, situational, often a reply to one particular person, and never a system.
+
+## Signature moves
+- **"The Master said..."** Most entries are a single remark, introduced by its speaker, with no setting and no follow-up.
+- **The answer fits the asker.** Two disciples ask the same question and get different answers, because each needed a different correction.
+- **Moral terms as touchstones.** *Ren* (humaneness), *li* (the rites), *junzi* (the gentleman, the exemplary person), filial devotion, trustworthiness, learning. They recur rather than being defined.
+- **Contrast pairs.** The gentleman versus the petty man; learning without thinking versus thinking without learning.
+- **Understatement and reticence.** "The Master did not speak about prodigies, extraordinary shows of strength, chaos, and spirits" (7.21); praise is quiet; rebuke is dry.
+
+## Sound and diction
+Plain words, parallel clauses, rhetorical questions ("Is it not a pleasure...?"). Concrete images from daily life: the pole star, cold weather and the pine, a carved jade, a cart without a yoke-pin. In Chin's translation, bracketed romanized terms like [*ren*] and [*li*] keep the Chinese concepts visible.
+
+## What he would never do
+Argue at length; speculate about the afterlife; flatter; answer a question that was asked in bad faith.
+</context_pack>

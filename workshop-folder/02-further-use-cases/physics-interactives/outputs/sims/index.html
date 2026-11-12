@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a Sim in Two Hours — GENED 1104</title>
+<style>
+  :root { --ink:#111; --mid:#555; --faint:#888; --rule:#ddd; --bg:#fff; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:400 16px/1.62 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-feature-settings:"tnum" 1;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:44rem; margin:0 auto; padding:56px 24px 96px; }
+
+  /* masthead */
+  .rule-top { border-top:2px solid var(--ink); }
+  .meta { font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--faint); margin:10px 0 22px; }
+  h1.title { font-size:30px; line-height:1.18; font-weight:650; letter-spacing:-.015em; margin:0; }
+  .standfirst { color:var(--mid); font-size:15px; margin:12px 0 0; }
+
+  /* nav */
+  .jump { margin:26px 0 0; padding:14px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); font-size:14px; }
+  .jump b { font-weight:600; }
+  .jump a { color:var(--ink); }
+
+  /* body copy */
+  h2 { font-size:13px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+       margin:52px 0 14px; padding-bottom:7px; border-bottom:1px solid var(--ink); }
+  h3 { font-size:17px; font-weight:650; margin:34px 0 10px; }
+  h4 { font-size:14px; font-weight:650; margin:26px 0 8px; color:var(--mid); }
+  p { margin:0 0 14px; }
+  ul, ol { margin:0 0 14px; padding-left:22px; }
+  li { margin:0 0 6px; }
+  a { color:var(--ink); text-underline-offset:2px; }
+  strong { font-weight:650; }
+  hr { border:0; border-top:1px solid var(--rule); margin:38px 0; }
+  code { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:13.5px;
+         background:#f4f4f4; padding:1px 5px; }
+  blockquote { margin:20px 0; padding:2px 0 2px 18px; border-left:2px solid var(--ink);
+               color:var(--mid); font-size:15px; }
+  blockquote p:last-child { margin-bottom:0; }
+  .m { font-style:italic; white-space:nowrap; }
+
+  table { border-collapse:collapse; width:100%; margin:18px 0; font-size:14.5px; }
+  th { text-align:left; font-weight:650; font-size:12px; letter-spacing:.06em;
+       text-transform:uppercase; color:var(--faint);
+       border-bottom:1px solid var(--ink); padding:0 12px 7px 0; }
+  td { border-bottom:1px solid var(--rule); padding:9px 12px 9px 0; vertical-align:top; }
+  td:last-child, th:last-child { padding-right:0; }
+
+  /* sims */
+  .sims { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0 0; }
+  .sim { display:block; border:1px solid var(--ink); padding:16px 16px 18px;
+         text-decoration:none; color:var(--ink); }
+  .sim:hover { background:var(--ink); color:#fff; }
+  .sim:hover .sim-eq, .sim:hover .sim-sub { color:#ccc; }
+  .sim-name { display:block; font-weight:650; font-size:17px; }
+  .sim-eq { display:block; font-style:italic; font-size:13.5px; color:var(--faint); margin:3px 0 7px; }
+  .sim-sub { display:block; font-size:13.5px; line-height:1.45; color:var(--mid); }
+
+  .foot { margin:64px 0 0; padding-top:14px; border-top:1px solid var(--rule);
+          font-size:12.5px; color:var(--faint); display:flex; justify-content:space-between; gap:16px; }
+
+  @media (max-width:640px) { .sims { grid-template-columns:1fr; } .wrap { padding:36px 18px 72px; } }
+  @media print { .jump { display:none; } a { text-decoration:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="rule-top"></div>
+  <p class="meta">Bok Center · Learning Lab · staff session</p>
+  <h1 class="title">Build a Sim in Two Hours</h1>
+  <p class="standfirst">Testing the GENED 1104 sim assignment before it goes near students.</p>
+
+  <p class="jump"><b>Worked examples:</b>
+    <a href="onion-caramelization-sim.html">Onions</a> ·
+    <a href="basil-sphere-sim.html">Basil spheres</a> ·
+    <a href="coffee-sim.html">Coffee</a> ·
+    <a href="tahini-seizing-sim.html">Tahini</a>
+  </p>
+
+<h2>The course</h2>
+<p>GENED 1104, Science and Cooking, taught by Pia Sörensen. Ten weeks of physical-science topics: energy and heat, phase transitions, fermentation, elasticity, diffusion, heat transfer, viscosity, emulsions and foams.</p>
+<p>Tuesday lectures open with twenty minutes of science and then hand over to a visiting chef — José Andrés, Joanne Chang, Bryan Furman, Mauro Colagreco and others in the 2025 roster, with a new roster coming for 2026. Thursday lectures are the instructors going deeper on the science and setting up the week's homework. Every student also does a two-hour lab in Maxwell Dworkin where they cook a recipe, take measurements, and hand in a worksheet. Grading is problem sets, lab worksheets, two in-class midterms, and a final project shown at a course-wide science fair. No final exam.</p>
+<p>The course already allows generative AI with citation, and says explicitly that students bear final responsibility for anything they submit.</p>
+<h2>The assignment we're testing</h2>
+<p>Students take one concept from the course, anchored in something a chef said or showed on a Tuesday, and build a PhET-style web page: one equation, two to four sliders with real units, one thing that moves. They defend it at a station in section.</p>
+<p>The two hard steps are getting from "a chef held up a dry-aged steak" to "here is a question/concept with a number in it," and then deciding what that question/concept should look like on screen.</p>
+<blockquote>
+<p><strong>NOTE: Madeleine, here</strong> — I actually took the class. Bridging this gap is the interesting part to me (outside of the actual vibe coding). Getting students to be able to hear about/see cooking processes or products and then extrapolate these to something scientific that can be explored/tested is the goal of the class. That is the final capstone, but this is a good way to practice that move before they get to the finals. My hope would be this would result in better final projects AND give them a cool artifact.</p>
+</blockquote>
+<hr />
+<h2>What we are testing</h2>
+<p>Two steps in this assignment are hard. Writing the code is not one of them.</p>
+<h3>Step 1 — turn a kitchen observation into an equation</h3>
+<p>You are given a description of something that happened in a kitchen. It contains no physics. Work out which quantity is changing and which relationship from the course governs it.</p>
+<table>
+<thead>
+<tr>
+<th>Kitchen observation</th>
+<th>Physics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caramelizing onions takes 45 minutes, and most of it is "getting the water out"</td>
+<td>Evaporating water costs energy. How much? <span class="m">Q = mL<sub>v</sub></span></td>
+</tr>
+<tr>
+<td>The spheres come out of the bath at two minutes</td>
+<td>Something is moving inward. How far does it get? <span class="m">δ = √(2Dt)</span></td>
+</tr>
+<tr>
+<td>Two and a half minutes and the beans are ruined</td>
+<td>Heat has to reach the middle. How long? <span class="m">t ≈ r²/α</span></td>
+</tr>
+</tbody>
+</table>
+<p>Method:</p>
+<ol>
+<li>Name what changed. Write down the start state and the end state.</li>
+<li>Name the process that got it there — heating, drying, diffusing, dissolving, settling.</li>
+<li>Decide what you would measure to know how far along it got. It has to have a unit.</li>
+<li>List what makes it go faster or slower. Those become your sliders.</li>
+</ol>
+<p>If you cannot finish step 3 with a quantity and a unit, the observation is still too vague to build on. Pick a different one.</p>
+<p><strong>This step is supposed to be hard.</strong> If it feels slow or uncertain, that is the intended experience and not a sign you are doing it wrong. Note how long it takes you — that number is one of the things we want out of today.</p>
+<h4>If you have no idea where to begin</h4>
+<p>Most people don't, the first time, and students will be worse off than you are. Answer these in one sentence each. They are deliberately dumber than the four above.</p>
+<ol>
+<li>What is this thing mostly made of? Water, fat, sugar, starch, protein, air.</li>
+<li>What went in or came out? Heat in, water out, salt in, air whipped in, something dissolved, something stiffened.</li>
+<li>How long did it take — seconds, minutes, or hours? What would make it faster?</li>
+<li><strong>Which domain is that?</strong> Heat transfer, diffusion, phase change, viscosity, elasticity, surface tension.</li>
+</ol>
+<p>Question 4 usually names the equation. The course only has about eight in total, so once you have the domain the search space is small.</p>
+<h4>Using AI at this step</h4>
+<p><strong>Use it.</strong> Students will, the course policy allows it, and nobody is expected to do this from memory. The distinction that matters is reference versus answer machine:</p>
+<table>
+<thead>
+<tr>
+<th>Useful</th>
+<th>Not useful</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"What physical process controls how fast water leaves a pan?"</td>
+<td>"Give me the equation for caramelizing onions."</td>
+</tr>
+<tr>
+<td>"What is the thermal diffusivity of a carrot? Cite a source."</td>
+<td>"Write my sim for the green bean problem."</td>
+</tr>
+<tr>
+<td>"My reasoning is X, Y, Z. What am I missing?"</td>
+<td>"What should my sliders be?"</td>
+</tr>
+<tr>
+<td>"Give me three ways to picture <span class="m">δ = √(2Dt)</span>."</td>
+<td>"Is this right?" with no reasoning of your own attached.</td>
+</tr>
+</tbody>
+</table>
+<p>The left column asks for material you then have to assemble. The right column asks for the answer to the thing being tested. If a model hands you an equation you still have to work out why that one and not another, which is what the crit will ask about.</p>
+<p><strong>Keep your transcript.</strong> Part of today's data is what people actually typed.</p>
+<h3>Step 2 — decide what to draw</h3>
+<p>An equation does not specify its own picture. You choose one. There is usually more than one defensible option, and different options teach different things.</p>
+<p>Some options for the topics below:</p>
+<ul>
+<li><strong>Onions.</strong> A pan from above with a shrinking puddle of water. An energy bar filling. A clock running against a marker at the 10 minutes recipes claim.</li>
+<li><strong>Sorbet.</strong> Two tubs side by side with a spoon that does or does not go in. One tub cut open showing ice crystals against syrup. A bar splitting into frozen and unfrozen fractions as you drag the sugar.</li>
+<li><strong>Green beans.</strong> A bean in cross-section with a colour front moving inward. A timer with a safe zone and a ruined zone, where a thickness slider moves the boundary.</li>
+<li><strong>Coffee.</strong> Two glasses darkening at different rates on one clock.</li>
+</ul>
+<p>Method:</p>
+<ol>
+<li>Decide what the viewer should be able to notice without being told.</li>
+<li>Pick the picture that makes that noticeable.</li>
+<li>Decide which variables the viewer controls and which you hold fixed. Be able to say why.</li>
+<li>Sketch it on paper before you start writing code.</li>
+</ol>
+<p><strong>This step requires creativity and has no single correct answer.</strong> Expect it to take longer than it looks, and expect to reject a first idea.</p>
+<h3>What is not hard: the code</h3>
+<p>Claude will write the HTML in about twenty minutes and it will mostly work. Use it for that, and use it during the two steps above as well — see the AI guidance under step 1. If you are more than forty minutes into styling, stop; you have left the part of the exercise being tested.</p>
+<hr />
+<h2>So, what we're doing today</h2>
+<p>Everyone picks a topic, works alone, and ships a sim in about an hour. Then we crit them.</p>
+<p>Students get their anchor (so the process or product from a chef) from having been in the room during the lecture. We obviously won't have that experience, so the topics below are supplied in writing. If a written topic works about as well, the teaching team has a cheap fallback for the weeks when a chef turns up to talk about their restaurant and nothing else.</p>
+<hr />
+<h2>Topics</h2>
+<p>Pick one. All plant-based (for Dani — they were originally steak, lol)</p>
+<p>Each is written the way a chef would say it, with no physics in it. Extracting the physics is step 1.</p>
+<ol>
+<li><strong>Onions.</strong> Caramelizing them takes 45 minutes, not the 10 that recipes claim. Most of the time goes to driving off water.</li>
+<li><strong>Sorbet.</strong> Two sorbets, same fruit purée, about 8% difference in sugar. One scoops straight from the freezer; the other is a brick.</li>
+<li><strong>Green beans.</strong> Blanched 90 seconds in boiling water, then into ice. At two and a half minutes they're ruined. Beans about as thick as a pencil.</li>
+<li><strong>Basil spheres.</strong> Purée dripped into a calcium bath, spheres pulled out after two minutes. Leave them longer and they set solid through.</li>
+<li><strong>Coffee.</strong> Cold brew, 16 hours at 4°C, against hot brew, 5 minutes at 95°C. Same beans, same grind, same ratio.</li>
+<li><strong>Aquafaba.</strong> Whips to stiff peaks in 8 minutes. Egg white takes 3.</li>
+<li><strong>Tahini.</strong> Seizes into a stiff paste when you stir in a splash of water, then loosens and pours when you add more. Hardest one here.</li>
+</ol>
+<p>Each topic contains a number. That number is your calibration target.</p>
+<hr />
+<h2>Procedure</h2>
+<p><strong>1 · Quantify</strong> — 20 minutes. Spend the <strong>first 10 on paper alone</strong>, then open laptops and use whatever you want, AI included. Run the four steps under step 1 above; if you stall, use the four dumber ones. Output: one measurable quantity with a unit, plus a list of what changes it.</p>
+<p>The short paper phase is a measurement, not a rule students will face — it shows us where people stall unaided. Students will have laptops throughout, so after minute 10 you should too.</p>
+<p><strong>2 · Reduce</strong> — pick one equation or interactive, not three. Everything the sim shows has to come out of it.</p>
+<p><strong>3 · Draw</strong> — sketch the picture on the same paper. Output: what the viewer sees, what they can drag, what they should notice.</p>
+<p><strong>4 · Build</strong> — one self-contained HTML file. Two to four sliders, each a real physical quantity with real units. The equation printed on screen with your current values in it. One thing that moves. Use Claude for the code. These PhET diagrams are everywhere — feel free to google any. But <a href="https://canvas.harvard.edu/courses/160209/pages/quantum-single-photon-interference">Logan</a> and Matt Schwartz have made these before for their courses.</p>
+<p><strong>5 · Check</strong> — your sim has to reproduce the number in your topic within a factor of two. Add a visible "what this model ignores" panel.</p>
+<p><strong>6 · Defend</strong> — someone else drives your sim while you stay quiet for sixty seconds, then tells you what rule they think they found.</p>
+<hr />
+<h2>Log where the model gets the physics wrong</h2>
+<p>Keep a running list: wrong constant, dropped factor of two, a plausible equation that isn't the right one, a confident citation to a paper that doesn't exist. This feeds the assignment's AI-policy paragraph, with examples.</p>
+
+  <h2>The worked examples</h2>
+  <p>Four of the seven topics already have a sim. Open them, drag the sliders,
+     and look at what each one chose to draw — the pictures are different
+     because the decision about what to show is a separate one from the physics.</p>
+
+  <div class="sims">
+      <a class="sim" href="onion-caramelization-sim.html">
+        <span class="sim-name">Onions</span>
+        <span class="sim-eq">Q = mL<sub>v</sub></span>
+        <span class="sim-sub">Why caramelizing takes 45 minutes, not the 10 recipes claim.</span>
+      </a>
+      <a class="sim" href="basil-sphere-sim.html">
+        <span class="sim-name">Basil spheres</span>
+        <span class="sim-eq">δ = √(2Dt)</span>
+        <span class="sim-sub">How thick the gel shell gets while the sphere sits in the calcium bath.</span>
+      </a>
+      <a class="sim" href="coffee-sim.html">
+        <span class="sim-name">Coffee</span>
+        <span class="sim-eq">√(Dt), D temperature-dependent</span>
+        <span class="sim-sub">Cold brew at 4 °C for 16 hours against hot brew at 95 °C for 5 minutes.</span>
+      </a>
+      <a class="sim" href="tahini-seizing-sim.html">
+        <span class="sim-name">Tahini</span>
+        <span class="sim-eq">capillary bridging</span>
+        <span class="sim-sub">Why a splash of water seizes it and more water loosens it again.</span>
+      </a>
+  </div>
+
+  <div class="foot">
+    <span>GENED 1104 · Science and Cooking · draft for discussion</span>
+    <span>Bok Center · Learning Lab</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG simulation template</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+This is a template. Replace the bracketed placeholders when adapting.
+Keep this comment block in the final file; it is the design record.
+--------------------------------------------------------------------
+Title:                  [Simulation title]
+Learning goal:          [One sentence: what should the student be able
+                         to do, see, or explain after using this?]
+Target learner:         [Course level and assumed prior knowledge]
+Core misconception:     [What does this make visible that students
+                         typically get wrong, miss, or hand-wave past?]
+Manipulables:           [List with units and ranges]
+Hidden/fixed by design: [What is deliberately simplified or excluded,
+                         and why]
+Representations:        [Physical model / graph / equation / table /
+                         narrative readout — pick at least two]
+Reflection prompts:     [3-5; see "Try this" panel below]
+Model limitations:      [2-3 sentences; see "Model limitations" panel]
+Classroom use:          [Pre-class / in-class / lab / post-class]
+Date:                   [YYYY-MM-DD]
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #555555;
+    --panel: #f4f4f4;
+    --accent: #2a6fdb;
+    --accent-fg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--bg);
+    margin: 0;
+    padding: 1.5rem;
+    max-width: 1200px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; }
+  .layout { display: grid; grid-template-columns: 280px 1fr; gap: 1rem; align-items: start; }
+  .controls, .viewport, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .panel { margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  label { display: block; margin: 0.75rem 0; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  button:focus-visible, input:focus-visible {
+    outline: 3px solid #ffb800;
+    outline-offset: 2px;
+  }
+  svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 4px; }
+  svg text { font-size: 14px; font-family: inherit; }
+  @media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>[Simulation title]</h1>
+<p class="goal">[Learning goal as a single sentence, visible to the student.]</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      Position offset: <span id="paramA-readout" class="readout">0</span> units
+      <input id="paramA" type="range" min="-100" max="100" value="0" step="1" aria-label="Position offset in units">
+    </label>
+
+    <label>
+      Radius: <span id="paramB-readout" class="readout">20</span> units
+      <input id="paramB" type="range" min="5" max="50" value="20" step="1" aria-label="Object radius in units">
+    </label>
+
+    <button id="reset" type="button">Reset</button>
+  </section>
+
+  <section class="viewport" aria-label="Simulation viewport">
+    <svg id="svg" viewBox="0 0 400 300" role="img" aria-label="A circle whose horizontal position and size are controlled by the sliders">
+      <line x1="0" y1="150" x2="400" y2="150" stroke="#ccc" stroke-width="1"/>
+      <circle id="object" cx="200" cy="150" r="20" fill="var(--accent)"/>
+      <text x="200" y="280" text-anchor="middle" fill="var(--muted)">
+        <tspan id="position-label">x = 200</tspan>
+      </text>
+    </svg>
+  </section>
+
+</div>
+
+<section class="panel" aria-labelledby="notice-heading">
+  <h2 id="notice-heading">What to notice</h2>
+  <p>[One or two sentences directing student attention. Example: "Notice how the position readout updates the moment you move the slider — no submit button required."]</p>
+</section>
+
+<section class="panel" aria-labelledby="tryit-heading">
+  <h2 id="tryit-heading">Try this</h2>
+  <ol>
+    <li>[Prompt 1 — ask the student to predict before they observe]</li>
+    <li>[Prompt 2]</li>
+    <li>[Prompt 3]</li>
+  </ol>
+</section>
+
+<section class="panel" aria-labelledby="limits-heading">
+  <h2 id="limits-heading">Model limitations</h2>
+  <p>[Two or three sentences naming what this simplified model leaves out. This panel is for the student, not for you — speak in their vocabulary.]</p>
+</section>
+
+<script>
+  // === constants ===
+  const INITIAL = { paramA: 0, paramB: 20 };
+  const VIEWPORT = { width: 400, height: 300, centerX: 200, centerY: 150 };
+
+  // === state ===
+  const state = { ...INITIAL };
+
+  // === model ===
+  // Pure functions: take state, return derived values. No DOM access here.
+  function modelPosition() {
+    return VIEWPORT.centerX + state.paramA;
+  }
+
+  // === render ===
+  const $ = id => document.getElementById(id);
+  function render() {
+    $('paramA-readout').textContent = state.paramA;
+    $('paramB-readout').textContent = state.paramB;
+    const x = modelPosition();
+    $('object').setAttribute('cx', x);
+    $('object').setAttribute('r', state.paramB);
+    $('position-label').textContent = `x = ${x}`;
+  }
+
+  // === events ===
+  $('paramA').addEventListener('input', (e) => {
+    state.paramA = +e.target.value;
+    render();
+  });
+  $('paramB').addEventListener('input', (e) => {
+    state.paramB = +e.target.value;
+    render();
+  });
+  $('reset').addEventListener('click', () => {
+    Object.assign(state, INITIAL);
+    $('paramA').value = state.paramA;
+    $('paramB').value = state.paramB;
+    render();
+  });
+
+  // === init ===
+  render();
+</script>
+
+</body>
+</html>

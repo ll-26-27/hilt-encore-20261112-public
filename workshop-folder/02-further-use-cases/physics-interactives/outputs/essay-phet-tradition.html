@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The PhET Tradition and the New Cost of Pedagogical Software — Bok Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+/* Standalone "Deep thoughts" essay styling.
+   Mirrors components/essay-layout.module.css from
+   /Users/mk/Development/ai-enhancement-stories (screen + mobile + print)
+   with the TOC sidebar and footer-links stripped, plus a floating
+   Print/Copy-MD control pair in the header. Light-mode only. */
+
+:root {
+  --bg: rgb(240, 238, 230);
+  --fg: rgb(31, 30, 29);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Newsreader", "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 32px;
+  position: relative;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+
+.author-name {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.header-controls {
+  position: absolute;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctrl-btn {
+  background: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  font-family: "Newsreader", "Times New Roman", serif;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  opacity: 1;
+}
+
+/* Layout */
+.essay-layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  gap: 64px;
+}
+
+/* Main content */
+.essay-content {
+  flex: 1;
+  max-width: 680px;
+}
+
+.essay-content h1 {
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-style: italic;
+  margin: 0 0 12px 0;
+  opacity: 0.8;
+}
+
+.date {
+  font-size: 16px;
+  margin: 0 0 32px 0;
+  opacity: 0.6;
+}
+
+.essay-content h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 48px 0 16px 0;
+  line-height: 1.3;
+}
+
+.essay-content h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 36px 0 12px 0;
+  line-height: 1.3;
+}
+
+.essay-content h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 32px 0 12px 0;
+  line-height: 1.3;
+  font-style: italic;
+}
+
+.essay-content p {
+  margin: 0 0 20px 0;
+}
+
+.essay-content em {
+  font-style: italic;
+}
+
+.essay-content strong {
+  font-weight: 600;
+}
+
+.essay-content ul,
+.essay-content ol {
+  margin: 0 0 20px 0;
+  padding-left: 24px;
+}
+
+.essay-content li {
+  margin-bottom: 8px;
+}
+
+.essay-content blockquote {
+  border-left: 3px solid var(--fg);
+  margin: 24px 0;
+  padding: 0 0 0 20px;
+  opacity: 0.85;
+}
+
+.essay-content a {
+  color: var(--fg);
+  text-decoration: underline;
+}
+
+.essay-content hr {
+  border: none;
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+  margin: 40px 0;
+}
+
+.essay-content pre {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.essay-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.essay-content :not(pre) > code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.essay-content table {
+  border-collapse: collapse;
+  margin: 0 0 20px 0;
+  width: 100%;
+  font-size: 17px;
+}
+
+.essay-content th,
+.essay-content td {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.essay-content th {
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .essay-layout {
+    padding: 32px 20px;
+    gap: 0;
+  }
+
+  .essay-content {
+    max-width: 100%;
+  }
+
+  .essay-content h1 {
+    font-size: 36px;
+  }
+
+  .site-header {
+    padding: 16px 20px;
+  }
+
+  .header-controls {
+    right: 20px;
+    gap: 10px;
+  }
+}
+
+/* Print */
+@media print {
+  @page {
+    margin: 0.75in;
+  }
+
+  body {
+    background: none;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.45;
+    min-height: 0;
+  }
+
+  .site-header,
+  .header-controls {
+    display: none !important;
+  }
+
+  .essay-layout {
+    display: block;
+    max-width: none;
+    padding: 0;
+    gap: 0;
+  }
+
+  .essay-content {
+    max-width: 6.5in;
+    margin: 0 auto;
+  }
+
+  .essay-content h1 {
+    font-size: 22pt;
+    line-height: 1.15;
+    margin: 0 0 6pt 0;
+  }
+
+  .subtitle {
+    font-size: 12pt;
+    margin: 0 0 6pt 0;
+    opacity: 1;
+  }
+
+  .date {
+    font-size: 10pt;
+    margin: 0 0 18pt 0;
+    opacity: 1;
+  }
+
+  .essay-content h2 {
+    font-size: 16pt;
+    margin: 20pt 0 6pt 0;
+    line-height: 1.25;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .essay-content h3 {
+    font-size: 13pt;
+    margin: 16pt 0 4pt 0;
+    line-height: 1.25;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .essay-content h4 {
+    font-size: 12pt;
+    margin: 14pt 0 4pt 0;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .essay-content p {
+    margin: 0 0 8pt 0;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .essay-content ul,
+  .essay-content ol {
+    margin: 0 0 8pt 0;
+  }
+
+  .essay-content li {
+    margin-bottom: 3pt;
+  }
+
+  .essay-content blockquote {
+    margin: 10pt 0;
+    padding-left: 14pt;
+    border-left-color: #000;
+    opacity: 1;
+  }
+
+  .essay-content hr {
+    margin: 18pt 0;
+  }
+
+  .essay-content a {
+    color: #000;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <span class="author-name">Bok Center</span>
+    <div class="header-controls">
+      <button type="button" class="ctrl-btn" id="print-btn">Print</button>
+      <button type="button" class="ctrl-btn" id="copy-btn">Copy MD</button>
+    </div>
+  </header>
+
+  <main class="essay-layout">
+    <article class="essay-content">
+      <h1>The PhET Tradition and the New Cost of Pedagogical Software</h1>
+      <p class="subtitle">Draft. Workshop essay for the day-4 &ldquo;physics interactives&rdquo; project.</p>
+
+      <h2>The insight PhET was built on</h2>
+
+      <p>PhET Interactive Simulations was founded at the University of Colorado Boulder in 2002 by Nobel laureate Carl Wieman, around a specific educational insight: students often understand difficult abstractions better when they can manipulate a system than when they only read about it, hear a lecture about it, or solve symbolic problems after the fact. That insight had been part of the cognitive-science literature for decades, but PhET turned it into a research program. The simulations were not animations and they were not games. They were carefully engineered conceptual environments — small, manipulable worlds in which the key idea of a topic became visible, immediate, and reversible.</p>
+
+      <p>A good PhET simulation contains five things:</p>
+
+      <ol>
+        <li><strong>A model.</strong> A simplified version of the system under study, faithful to the concept but not to every detail of reality.</li>
+        <li><strong>A manipulable interface.</strong> Sliders, draggable objects, toggles. The student changes things; the model responds.</li>
+        <li><strong>Immediate feedback.</strong> Cause and effect happen on screen, in real time, with no submit button between them.</li>
+        <li><strong>Multiple linked representations.</strong> The same phenomenon shown as physical model, graph, equation, and table, all updating together.</li>
+        <li><strong>A deliberately simplified world.</strong> The pedagogical move is the simplification, not the realism.</li>
+      </ol>
+
+      <p>These design moves are not aesthetic preferences. They are PhET&rsquo;s research-validated answers to specific learning problems — and they are what makes a simulation pedagogical rather than decorative.</p>
+
+      <h2>What it cost to build one</h2>
+
+      <p>The historical version of this work was expensive — not because writing the code was hard, but because the <em>coordination of expertise</em> was. PhET&rsquo;s own &ldquo;Simulation Design Process&rdquo; document describes each simulation as the product of a team of <strong>three to five specialists</strong>: a professional software developer, at least one content expert (scientist), a teacher, and a student-interface expert / education researcher.<sup><a href="#fn-phet-process" id="fnref-phet-process">1</a></sup> The cycle starts with the content team writing specific learning goals grounded in the cognitive-difficulties literature for the topic. A detailed initial layout follows. The developer then meets with the team to &ldquo;discuss feasibility, refine the interface, and acquire a cost benefit analysis&rdquo; before the first version is coded. That first version is posted as &ldquo;under construction&rdquo; and goes through rounds of one-on-one student interviews, with further revisions and further interviews until the desired engagement and learning are observed. Even after a simulation gets the public &ldquo;checkmark&rdquo; label, the team continues to run formal classroom studies on it two to four times a year.<sup><a href="#fn-phet-process" id="fnref-phet-process-2">1</a></sup></p>
+
+      <p>That is not a sprint. That is a multi-year, multi-specialist research program <em>per simulation</em>. At loaded salary rates for a university research center, the all-in cost of one well-built PhET-style simulation has historically run into the tens of thousands of dollars per simulation, not counting maintenance, accessibility work, and platform migration.</p>
+
+      <p>That migration cost was itself substantial. Many of the original PhET simulations were first authored in Java, then partly re-authored in Flash, then re-authored again in HTML5 as the earlier platforms were deprecated by browsers. The simulations faculty currently use in classrooms have already survived complete platform rewrites. Each rewrite was, again, a developer-team effort, not a faculty effort.</p>
+
+      <p>The historical barrier, in other words, was never <em>coding</em> as a single skill. It was the <em>coordination of expertise</em>: domain knowledge, learning-science knowledge, software engineering, interface design, and longitudinal classroom evaluation, all aimed at one small interactive artifact. That coordination is what funded PhET could afford and that an individual faculty member, however motivated, could not.</p>
+
+      <h2>What changed</h2>
+
+      <p>Generative AI collapses the distance between idea and prototype. A faculty member can describe a conceptual system in natural language — &ldquo;show me a tank where I can vary the wavelength and amplitude of two sources and watch the interference pattern on a screen behind them&rdquo; — and have a working interactive in minutes. They can iterate on the affordances (&ldquo;the slider for frequency should also update the equation under the graph&rdquo;), debug behavior (&ldquo;the waves should reset when I click the reset button, not just stop&rdquo;), tune the labels for their specific course, and generate parallel versions for different student levels.</p>
+
+      <p>The faculty member is still doing the hardest parts. They still know the misconception. They still know which simplification preserves the concept and which one destroys it. They still have to evaluate whether the interaction actually teaches. What they no longer have to do is wait for a funded software-development pipeline before discovering whether an interactive model is pedagogically promising.</p>
+
+      <p>This is a genuinely new condition. It is not &ldquo;PhET, but faster.&rdquo; It is &ldquo;PhET-as-a-genre, available to the people who used to be on the receiving end.&rdquo; The implication is not that polished PhET simulations become obsolete — they remain among the best examples of the form — but that faculty can now author their own conceptual environments for the topics PhET never covered, at the pace of a syllabus rather than a grant cycle.</p>
+
+      <p>And those uncovered topics are most of teaching. PhET concentrated on physics, chemistry, biology, math, and earth science because that is where its funding and audience were. The same design tradition — visual systems, direct manipulation, immediate feedback, linked representations, deliberate simplification — applies just as well to topics that have never had a simulation tradition:</p>
+
+      <ul>
+        <li>A rhetorical-feedback-loop simulator for a writing class.</li>
+        <li>A small-N qualitative-coding visualizer for a methods class.</li>
+        <li>A bargaining-game widget for an economics tutorial.</li>
+        <li>A representation/parameter visualizer for an attention-mechanism explainer in a CS class.</li>
+        <li>An infrastructure-decay simulator for an urban-studies seminar.</li>
+        <li>A historical-counterfactual sandbox for an intro history course.</li>
+      </ul>
+
+      <p>None of these existed at PhET scale because none of them had the funding to be built by a team. All of them are now within reach of a faculty member with Claude Code and an afternoon.</p>
+
+      <h2>What does not change</h2>
+
+      <p>The risk of the new condition is that the technical floor has dropped much faster than the design floor. A bad AI-generated simulation can be very seductive: sliders, particles, graphs, color, motion, all responding immediately to the user — and no clear learning goal at the center of it. PhET&rsquo;s hardest lesson was not &ldquo;make things interactive.&rdquo; It was <em>make the right things interactive, in the right way, and constrain everything else.</em> That lesson is more important now than it was when the technical barriers did the constraint work automatically.</p>
+
+      <p>The skill that lives alongside this essay (see <a href="../.claude/skills/phet-sim/SKILL.md">.claude/skills/phet-sim/SKILL.md</a>) is built around that constraint. Its first move is not to write code. Its first move is to make the faculty member name the learning goal, the misconception, the variables that should be manipulable, the variables that should be deliberately hidden, and the limitations of the model. Only after that work is done does it generate the HTML file.</p>
+
+      <p>That order matters. The cheapness of the prototype is the new affordance; the discipline of the design is what makes the affordance worth using.</p>
+
+      <hr>
+
+      <ol class="footnotes">
+        <li id="fn-phet-process">PhET Interactive Simulations, &ldquo;PhET Simulation Design Process,&rdquo; available at <a href="https://phet.colorado.edu/publications/phet_design_process.pdf">https://phet.colorado.edu/publications/phet_design_process.pdf</a>. Direct quotations and team composition (three to five specialists per simulation; the &ldquo;cost benefit analysis&rdquo; step with the developer; classroom studies two to four times a year) are drawn from that document. The document does not state a specific hour count per simulation; the &ldquo;tens of thousands of dollars&rdquo; estimate in this paragraph is an inference from the team composition and multi-year iteration cycle, not a PhET-published figure. <a href="#fnref-phet-process">↩</a></li>
+      </ol>
+    </article>
+  </main>
+
+  <script type="text/x-markdown-source" id="source-md"># The PhET Tradition and the New Cost of Pedagogical Software
+
+*Draft. Workshop essay for the day-4 "physics interactives" project.*
+
+## The insight PhET was built on
+
+PhET Interactive Simulations was founded at the University of Colorado Boulder in 2002 by Nobel laureate Carl Wieman, around a specific educational insight: students often understand difficult abstractions better when they can manipulate a system than when they only read about it, hear a lecture about it, or solve symbolic problems after the fact. That insight had been part of the cognitive-science literature for decades, but PhET turned it into a research program. The simulations were not animations and they were not games. They were carefully engineered conceptual environments — small, manipulable worlds in which the key idea of a topic became visible, immediate, and reversible.
+
+A good PhET simulation contains five things:
+
+1. **A model.** A simplified version of the system under study, faithful to the concept but not to every detail of reality.
+2. **A manipulable interface.** Sliders, draggable objects, toggles. The student changes things; the model responds.
+3. **Immediate feedback.** Cause and effect happen on screen, in real time, with no submit button between them.
+4. **Multiple linked representations.** The same phenomenon shown as physical model, graph, equation, and table, all updating together.
+5. **A deliberately simplified world.** The pedagogical move is the simplification, not the realism.
+
+These design moves are not aesthetic preferences. They are PhET's research-validated answers to specific learning problems — and they are what makes a simulation pedagogical rather than decorative.
+
+## What it cost to build one
+
+The historical version of this work was expensive — not because writing the code was hard, but because the *coordination of expertise* was. PhET's own "Simulation Design Process" document describes each simulation as the product of a team of **three to five specialists**: a professional software developer, at least one content expert (scientist), a teacher, and a student-interface expert / education researcher.[^phet-process] The cycle starts with the content team writing specific learning goals grounded in the cognitive-difficulties literature for the topic. A detailed initial layout follows. The developer then meets with the team to "discuss feasibility, refine the interface, and acquire a cost benefit analysis" before the first version is coded. That first version is posted as "under construction" and goes through rounds of one-on-one student interviews, with further revisions and further interviews until the desired engagement and learning are observed. Even after a simulation gets the public "checkmark" label, the team continues to run formal classroom studies on it two to four times a year.[^phet-process]
+
+That is not a sprint. That is a multi-year, multi-specialist research program *per simulation*. At loaded salary rates for a university research center, the all-in cost of one well-built PhET-style simulation has historically run into the tens of thousands of dollars per simulation, not counting maintenance, accessibility work, and platform migration.
+
+That migration cost was itself substantial. Many of the original PhET simulations were first authored in Java, then partly re-authored in Flash, then re-authored again in HTML5 as the earlier platforms were deprecated by browsers. The simulations faculty currently use in classrooms have already survived complete platform rewrites. Each rewrite was, again, a developer-team effort, not a faculty effort.
+
+The historical barrier, in other words, was never *coding* as a single skill. It was the *coordination of expertise*: domain knowledge, learning-science knowledge, software engineering, interface design, and longitudinal classroom evaluation, all aimed at one small interactive artifact. That coordination is what funded PhET could afford and that an individual faculty member, however motivated, could not.
+
+## What changed
+
+Generative AI collapses the distance between idea and prototype. A faculty member can describe a conceptual system in natural language — "show me a tank where I can vary the wavelength and amplitude of two sources and watch the interference pattern on a screen behind them" — and have a working interactive in minutes. They can iterate on the affordances ("the slider for frequency should also update the equation under the graph"), debug behavior ("the waves should reset when I click the reset button, not just stop"), tune the labels for their specific course, and generate parallel versions for different student levels.
+
+The faculty member is still doing the hardest parts. They still know the misconception. They still know which simplification preserves the concept and which one destroys it. They still have to evaluate whether the interaction actually teaches. What they no longer have to do is wait for a funded software-development pipeline before discovering whether an interactive model is pedagogically promising.
+
+This is a genuinely new condition. It is not "PhET, but faster." It is "PhET-as-a-genre, available to the people who used to be on the receiving end." The implication is not that polished PhET simulations become obsolete — they remain among the best examples of the form — but that faculty can now author their own conceptual environments for the topics PhET never covered, at the pace of a syllabus rather than a grant cycle.
+
+And those uncovered topics are most of teaching. PhET concentrated on physics, chemistry, biology, math, and earth science because that is where its funding and audience were. The same design tradition — visual systems, direct manipulation, immediate feedback, linked representations, deliberate simplification — applies just as well to topics that have never had a simulation tradition:
+
+- A rhetorical-feedback-loop simulator for a writing class.
+- A small-N qualitative-coding visualizer for a methods class.
+- A bargaining-game widget for an economics tutorial.
+- A representation/parameter visualizer for an attention-mechanism explainer in a CS class.
+- An infrastructure-decay simulator for an urban-studies seminar.
+- A historical-counterfactual sandbox for an intro history course.
+
+None of these existed at PhET scale because none of them had the funding to be built by a team. All of them are now within reach of a faculty member with Claude Code and an afternoon.
+
+## What does not change
+
+The risk of the new condition is that the technical floor has dropped much faster than the design floor. A bad AI-generated simulation can be very seductive: sliders, particles, graphs, color, motion, all responding immediately to the user — and no clear learning goal at the center of it. PhET's hardest lesson was not "make things interactive." It was *make the right things interactive, in the right way, and constrain everything else.* That lesson is more important now than it was when the technical barriers did the constraint work automatically.
+
+The skill that lives alongside this essay (see [.claude/skills/phet-sim/SKILL.md](../.claude/skills/phet-sim/SKILL.md)) is built around that constraint. Its first move is not to write code. Its first move is to make the faculty member name the learning goal, the misconception, the variables that should be manipulable, the variables that should be deliberately hidden, and the limitations of the model. Only after that work is done does it generate the HTML file.
+
+That order matters. The cheapness of the prototype is the new affordance; the discipline of the design is what makes the affordance worth using.
+
+[^phet-process]: PhET Interactive Simulations, "PhET Simulation Design Process," available at <https://phet.colorado.edu/publications/phet_design_process.pdf>. Direct quotations and team composition (three to five specialists per simulation; the "cost benefit analysis" step with the developer; classroom studies two to four times a year) are drawn from that document. The document does not state a specific hour count per simulation; the "tens of thousands of dollars" estimate in this paragraph is an inference from the team composition and multi-year iteration cycle, not a PhET-published figure.
+</script>
+
+  <script>
+    (function () {
+      var copyBtn = document.getElementById('copy-btn');
+      var printBtn = document.getElementById('print-btn');
+      var src = document.getElementById('source-md');
+
+      printBtn.addEventListener('click', function () {
+        window.print();
+      });
+
+      copyBtn.addEventListener('click', function () {
+        var text = src.textContent;
+        var done = function () {
+          var prev = copyBtn.textContent;
+          copyBtn.textContent = 'Copied';
+          setTimeout(function () { copyBtn.textContent = prev === 'Copied' ? 'Copy MD' : prev; }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () {
+            fallbackCopy(text); done();
+          });
+        } else {
+          fallbackCopy(text); done();
+        }
+      });
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+% Ported to the default house style by the handout-formatting skill, from
+% inputs/math/Homework/02-Separable-Differential-Equations.pdf.
+% One source, multiple audiences (change only this option line):
+%   \usepackage[]{handout}     student problem set (work-space, no answers)
+%   \usepackage[key]{handout}  answer key (if/when solutions are added)
+\documentclass[10pt]{article}
+\usepackage{housestyle}
+\usepackage[]{handout}
+
+\hypersetup{pdftitle={Separable Differential Equations -- Problem Set 2}}
+
+\begin{document}
+
+\handouttitle{Separable Differential Equations}{Problem Set 2}{}
+
+\begin{problemonly}
+    \calloutbox{PSet Tips}{%
+        \begin{itemize}[leftmargin=*]
+            \item Remember to explain the reasoning behind all of your answers.
+            \item Keep your work organized and assign a page to each problem on Gradescope.
+            \item You don't have to do this by yourself --- office hours, the MQC, and your fellow students are great resources if you get stuck.
+        \end{itemize}%
+    }
+\end{problemonly}
+
+\bigskip
+
+\textbf{In problems 1--4, find the general solution to the differential equations.}
+
+\begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}]
+
+\item
+    \begin{problem}[4cm]
+        \(\dfrac{dy}{dx} = \dfrac{x^2}{y^2}\)
+    \end{problem}
+
+\item
+    \begin{problem}[4cm]
+        \(\dfrac{dy}{dx} = 3y\)
+    \end{problem}
+
+\item
+    \begin{problem}[4cm]
+        \(\dfrac{dy}{dx} - \sqrt{4xy} = 0\)
+    \end{problem}
+
+\item
+    \begin{problem}[4cm]
+        \(\dfrac{dy}{dx} - (1 + x)(1 + y) = 0.\)
+    \end{problem}
+
+\end{enumerate}
+
+\textbf{In problems 5--8, find the particular solution to the differential equation.}
+
+\begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}, resume]
+
+\item
+    \begin{problem}[5cm]
+        \(\dfrac{dy}{dx} = \dfrac{2x + 3x^2}{3y^2}\,; \qquad y(1) = 2.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(\dfrac{dy}{dx} - 2e^{(x + 2y)} = 0\,; \qquad y(0) = 1.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(\dfrac{dy}{dx} + 3x^2 y^2 + 2xy^2 = 0\,; \qquad y(1) = 3.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        \(\dfrac{dy}{dx} = 3x^2 (y^2 + 1)\,; \qquad y(0) = 1.\)
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        A population of bacteria grows at a rate proportional to the size of the
+        existing population. Suppose that the population grows to 10 times its
+        original size in 24 hours. How long did it take for the population to double?
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        Suppose you invest \$10{,}000 in an account that grows at a rate of 4\% per
+        year compounded continuously.
+        \begin{enumerate}[label=(\alph*)]
+            \item How long does it take for the investment to double its original amount?
+            \item How much money will be in the account after 10 years?
+        \end{enumerate}
+    \end{problem}
+
+\item
+    \begin{problem}[5cm]
+        A turkey is heated in an oven to \(200^\circ\mathrm{F}\). At time \(t = 0\) it
+        is taken out of the oven and put on a counter in a room whose temperature is
+        \(70^\circ\mathrm{F}\). After 20 minutes the turkey's temperature is
+        \(150^\circ\mathrm{F}\). At what time will the turkey's temperature be
+        \(125^\circ\mathrm{F}\)?
+    \end{problem}
+
+\end{enumerate}
+
+\end{document}

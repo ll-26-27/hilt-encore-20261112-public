@@ -1,0 +1,65 @@
+.root { display: grid; gap: 24px; font-family: Inter, system-ui, sans-serif; color: var(--ink); }
+.loading { color: var(--muted); font-size: 14px; }
+
+.header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.appTitle { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+
+.modeSwitch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--wash); }
+.modeSwitch button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; padding: 6px 14px; border-radius: 999px; cursor: pointer; text-transform: capitalize; }
+.modeSwitch button:hover { color: var(--ink); }
+.modeSwitch button.on { background: var(--ink); color: var(--paper); }
+
+.controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px; }
+.toggleBar { margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.toggleBar button, .stemButtons button { border: 1px solid var(--line); background: var(--wash); color: var(--muted); font: inherit; border-radius: 8px; cursor: pointer; }
+.toggleBar button { font-size: 12px; padding: 5px 10px; }
+.stemButtons { display: flex; flex-wrap: wrap; gap: 8px; }
+.stemButtons button { font-size: 14px; padding: 6px 12px; }
+.toggleBar button:hover, .stemButtons button:hover { border-color: var(--muted); color: var(--ink); }
+.toggleBar button.on, .stemButtons button.on { border-color: var(--accent); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent); }
+
+.stack { display: grid; gap: 16px; }
+.stackTight { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.stackWide { display: grid; gap: 24px; }
+.pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 1024px) { .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.small { margin: 0 0 6px; font-size: 12px; color: var(--muted); }
+.mono { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; color: var(--muted); }
+.pos { color: var(--ok); }
+.neg { color: var(--error); }
+
+.img { display: block; width: 100%; height: auto; }
+.imageBox { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #0a0a0a; }
+.spectrogram { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; cursor: crosshair; background: #0a0a0a; }
+.playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(255, 255, 255, 0.75); pointer-events: none; }
+.playhead span { position: absolute; top: -2px; left: 50%; width: 6px; height: 6px; transform: translateX(-50%); border-radius: 50%; background: #fff; }
+
+.player { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.playBtn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: none; border: 0; border-radius: 50%; background: var(--line); color: var(--ink); cursor: pointer; }
+.playBtn:hover { background: var(--muted); color: var(--paper); }
+.restart { display: inline-flex; border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 0; }
+.restart:hover { color: var(--ink); }
+.time { width: 40px; flex: none; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.right { text-align: right; }
+.track { position: relative; flex: 1; height: 6px; border-radius: 999px; background: var(--line); cursor: pointer; }
+.trackFill { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--muted); }
+.track:hover .trackFill { background: var(--ink); }
+
+.card { padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.summary { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.diffGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+
+.metricList { display: grid; gap: 12px; }
+.metric { display: grid; gap: 8px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.metricHead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.metricTitle { font-size: 14px; font-weight: 600; }
+.scale { position: relative; height: 6px; border-radius: 999px; background: var(--line); }
+.scaleFill { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: linear-gradient(to right, color-mix(in srgb, var(--accent) 35%, transparent), color-mix(in srgb, var(--accent) 80%, transparent)); }
+.scaleDot { position: absolute; top: 50%; width: 10px; height: 10px; transform: translateY(-50%); border-radius: 50%; background: var(--ink); }
+.scaleLabels { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: var(--muted); }
+.describe { margin: 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
+.what summary { font-size: 11px; color: var(--muted); cursor: pointer; }
+.what summary:hover { color: var(--ink); }
+.what p { margin: 4px 0 0; font-size: 12px; line-height: 1.55; color: var(--muted); }

@@ -14,7 +14,7 @@ export default async function ExamplesPage() {
       <main id="main" className="examples-index">
         <header className="article-heading">
           <h1>Examples</h1>
-          <p className="lede">Things we built with faculty and students this term. Each one runs here in your browser.</p>
+          <p className="lede">Things we built with faculty and students this year. Explore the interactives, follow a playthrough, or look inside the work through images and recordings.</p>
         </header>
         <div className="example-cards">
           {examples.map((ex) => (

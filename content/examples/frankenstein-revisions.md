@@ -1,7 +1,7 @@
 ---
 title: Frankenstein, 1818 and 1831
 order: 5
-index: Every change Mary Shelley made between the 1818 and 1831 Frankenstein, found, sorted, and checked, with an audit trail.
+index: "Explore changes between the 1818 and 1831 editions of Frankenstein, from punctuation to rewritten passages. Text comparison finds the differences; model-assisted labels help organize them. Read the passages yourself and inspect the audit trail, including where the classification proved unreliable."
 source: https://github.com/ll-26-27/eng298ai-20261103/tree/main/01-use-cases/distant-reading/01-frankenstein-revisions
 image: ""
 ---

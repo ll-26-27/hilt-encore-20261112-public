@@ -6,7 +6,7 @@ import { getExample } from "@/lib/examples";
 // The frame every example page shares: title, CX's words ("What this is" above the demo, "How we made it" and
 // "Source" below), and the credit to the public repo it came from. `recorded` labels pages whose model output was
 // generated beforehand and saved in the repo, so nothing calls a model from the browser.
-export default async function ExampleFrame({ slug, recorded, children }: { slug: string; recorded?: string; children: React.ReactNode }) {
+export default async function ExampleFrame({ slug, recorded, children, showHero = true }: { slug: string; recorded?: string; children: React.ReactNode; showHero?: boolean }) {
   const ex = await getExample(slug);
   const what = ex.sections["what this is"];
   const how = ex.sections["how we made it"];
@@ -25,6 +25,10 @@ export default async function ExampleFrame({ slug, recorded, children }: { slug:
           </p>}
           {what && <div className="prose example-what"><Markdown content={what} dir="examples" /></div>}
         </header>
+        {showHero && <figure className="example-hero">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={ex.image} alt="" fetchPriority="high" />
+        </figure>}
         {recorded && <p className="example-recorded">Recorded: {recorded}</p>}
         <section className="example-demo">{children}</section>
         <section className="example-notes prose">

@@ -1,7 +1,7 @@
 ---
 title: The interview machine, with a context folder
 order: 3
-index: A simulated podcast interview, transcribed as it happens, with an AI producer that has read the guest's whole project folder.
+index: "Follow a scripted podcast interview alongside speaker transcripts and an AI producer’s notes. The invented guest’s project folder supplies sources, process logs, and questions to check, making it possible to see how context can support a conversation while keeping the human interviewer in charge."
 source: https://github.com/tdm155ai/tdm155ai-week-8
 image: ""
 ---

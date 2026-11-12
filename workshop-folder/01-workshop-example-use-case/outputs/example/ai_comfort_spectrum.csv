@@ -1,0 +1,182 @@
+group,task,task_type,comfort_level,confidence,position_on_scale,tied_with,source_image
+1,Write exam questions,teacher,1,high,1.0,0,group_01.HEIC
+1,Give feedback on drafts,teacher,2,low,2.42,0,group_01.HEIC
+1,Assign the grade,teacher,4,low,3.51,1,group_01.HEIC
+1,Generate synthetic data,teacher,4,low,3.53,1,group_01.HEIC
+1,Draft a rec letter,teacher,5,medium,4.66,0,group_01.HEIC
+1,Design the rubric,teacher,6,medium,5.75,0,group_01.HEIC
+1,Write the problem set + solutions,teacher,7,medium,6.74,0,group_01.HEIC
+1,Detect AI use,teacher,8,low,7.62,0,group_01.HEIC
+1,Clean the class dataset,teacher,10,high,10.0,0,group_01.HEIC
+2,Draft the essay,student,1,high,1.0,1,group2.HEIC
+2,Assign the grade,teacher,1,high,1.11,1,group2.HEIC
+2,Outline the essay,student,2,medium,1.59,2,group2.HEIC
+2,Detect AI use,teacher,2,medium,1.92,2,group2.HEIC
+2,Give feedback on drafts,teacher,2,medium,1.63,2,group2.HEIC
+2,Run + interpret the analysis,student,3,medium,2.75,2,group2.HEIC
+2,Design the rubric,teacher,3,medium,2.79,2,group2.HEIC
+2,Write exam questions,teacher,3,medium,2.67,2,group2.HEIC
+2,Explain a concept,student,5,high,4.98,2,group2.HEIC
+2,Draft a rec letter,teacher,5,high,5.0,2,group2.HEIC
+2,Generate synthetic data,teacher,5,high,5.17,2,group2.HEIC
+2,Make practice problems,student,6,high,6.06,0,group2.HEIC
+2,Code the interview transcripts,student,7,medium,7.23,0,group2.HEIC
+2,Debug the code,student,9,low,9.4,0,group2.HEIC
+2,Clean the class dataset,teacher,10,high,10.0,1,group2.HEIC
+2,Write the problem set + solutions,teacher,10,high,9.98,1,group2.HEIC
+3,Draft the essay,student,1,high,1.0,1,group-3.HEIC
+3,Detect AI use,teacher,1,high,1.11,1,group-3.HEIC
+3,Run + interpret the analysis,student,2,low,1.61,0,group-3.HEIC
+3,Give feedback on drafts,teacher,2,medium,2.02,0,group-3.HEIC
+3,Outline the essay,student,3,high,2.98,0,group-3.HEIC
+3,Summarize the reading,student,3,low,3.55,1,group-3.HEIC
+3,Assign the grade,teacher,3,low,3.42,1,group-3.HEIC
+3,Find + check sources,student,6,high,6.12,0,group-3.HEIC
+3,Debug the code,student,7,low,7.68,2,group-3.HEIC
+3,Design the rubric,teacher,7,low,7.24,2,group-3.HEIC
+3,Write exam questions,teacher,7,low,6.52,0,group-3.HEIC
+3,Write the problem set + solutions,teacher,7,low,7.46,2,group-3.HEIC
+3,Clean the class dataset,teacher,8,high,8.05,0,group-3.HEIC
+3,Code the interview transcripts,student,9,low,9.43,0,group-3.HEIC
+3,Explain a concept,student,9,medium,8.76,1,group-3.HEIC
+3,Draft a rec letter,teacher,9,medium,8.61,1,group-3.HEIC
+3,Make practice problems,student,10,medium,9.79,1,group-3.HEIC
+3,Generate synthetic data,teacher,10,high,10.0,1,group-3.HEIC
+4,Draft the essay,student,1,medium,1.38,0,grp4.HEIC
+4,Assign the grade,teacher,1,high,1.0,0,grp4.HEIC
+4,Run + interpret the analysis,student,2,medium,2.4,1,grp4.HEIC
+4,Detect AI use,teacher,2,high,1.85,0,grp4.HEIC
+4,Give feedback on drafts,teacher,2,medium,2.24,1,grp4.HEIC
+4,Summarize the reading,student,3,medium,3.39,1,grp4.HEIC
+4,Draft a rec letter,teacher,3,medium,3.37,1,grp4.HEIC
+4,Write the problem set + solutions,teacher,4,high,4.16,0,grp4.HEIC
+4,Explain a concept,student,5,low,5.59,3,grp4.HEIC
+4,Outline the essay,student,5,low,5.37,3,grp4.HEIC
+4,Design the rubric,teacher,5,low,5.6,3,grp4.HEIC
+4,Write exam questions,teacher,5,low,5.35,3,grp4.HEIC
+4,Code the interview transcripts,student,8,medium,7.91,2,grp4.HEIC
+4,Debug the code,student,8,medium,7.48,2,grp4.HEIC
+4,Make practice problems,student,8,medium,7.74,2,grp4.HEIC
+4,Clean the class dataset,teacher,9,high,9.04,1,grp4.HEIC
+4,Generate synthetic data,teacher,9,high,9.08,1,grp4.HEIC
+4,Find + check sources,student,10,high,10.0,0,grp4.HEIC
+5,Draft the essay,student,1,high,1.19,2,group 5 final.HEIC
+5,Draft a rec letter,teacher,1,high,1.38,2,group 5 final.HEIC
+5,Give feedback on drafts,teacher,1,high,1.0,2,group 5 final.HEIC
+5,Summarize the reading,student,2,high,2.17,1,group 5 final.HEIC
+5,Assign the grade,teacher,2,high,2.04,1,group 5 final.HEIC
+5,Outline the essay,student,3,high,3.1,0,group 5 final.HEIC
+5,Design the rubric,teacher,4,medium,3.63,0,group 5 final.HEIC
+5,Run + interpret the analysis,student,5,high,5.21,0,group 5 final.HEIC
+5,Clean the class dataset,teacher,6,high,5.86,0,group 5 final.HEIC
+5,Explain a concept,student,7,high,6.73,2,group 5 final.HEIC
+5,Write exam questions,teacher,7,high,7.08,2,group 5 final.HEIC
+5,Write the problem set + solutions,teacher,7,high,6.96,2,group 5 final.HEIC
+5,Code the interview transcripts,student,8,low,7.6,0,group 5 final.HEIC
+5,Make practice problems,student,8,low,8.43,0,group 5 final.HEIC
+5,Generate synthetic data,teacher,8,high,8.01,0,group 5 final.HEIC
+5,Debug the code,student,9,high,9.21,0,group 5 final.HEIC
+5,Find + check sources,student,10,high,10.0,1,group 5 final.HEIC
+5,Detect AI use,teacher,10,high,9.76,1,group 5 final.HEIC
+6,Detect AI use,teacher,1,low,1.46,0,Group 6.HEIC
+6,Give feedback on drafts,teacher,1,high,1.0,0,Group 6.HEIC
+6,Draft the essay,student,2,high,1.98,0,Group 6.HEIC
+6,Outline the essay,student,3,high,3.19,0,Group 6.HEIC
+6,Find + check sources,student,4,low,3.66,1,Group 6.HEIC
+6,Run + interpret the analysis,student,4,low,3.58,1,Group 6.HEIC
+6,Code the interview transcripts,student,5,medium,4.62,1,Group 6.HEIC
+6,Summarize the reading,student,5,low,5.44,1,Group 6.HEIC
+6,Assign the grade,teacher,5,low,5.43,1,Group 6.HEIC
+6,Draft a rec letter,teacher,5,medium,4.63,1,Group 6.HEIC
+6,Clean the class dataset,teacher,6,high,6.06,1,Group 6.HEIC
+6,Write exam questions,teacher,6,high,6.05,1,Group 6.HEIC
+6,Explain a concept,student,7,medium,7.32,0,Group 6.HEIC
+6,Generate synthetic data,teacher,8,low,8.47,0,Group 6.HEIC
+6,Make practice problems,student,9,high,9.22,0,Group 6.HEIC
+6,Debug the code,student,10,high,10.0,0,Group 6.HEIC
+7,Assign the grade,teacher,1,high,1.07,2,table 7.HEIC
+7,Design the rubric,teacher,1,high,1.0,2,table 7.HEIC
+7,Detect AI use,teacher,1,high,1.0,2,table 7.HEIC
+7,Code the interview transcripts,student,3,high,2.94,1,table 7.HEIC
+7,Give feedback on drafts,teacher,3,high,3.06,1,table 7.HEIC
+7,Find + check sources,student,4,high,3.97,0,table 7.HEIC
+7,Draft the essay,student,5,medium,4.71,0,table 7.HEIC
+7,Outline the essay,student,5,low,5.52,1,table 7.HEIC
+7,Summarize the reading,student,5,low,5.44,1,table 7.HEIC
+7,Draft a rec letter,teacher,5,high,5.06,0,table 7.HEIC
+7,Run + interpret the analysis,student,6,high,6.11,0,table 7.HEIC
+7,Explain a concept,student,7,high,7.22,0,table 7.HEIC
+7,Debug the code,student,9,low,8.52,1,table 7.HEIC
+7,Make practice problems,student,9,low,8.5,1,table 7.HEIC
+7,Generate synthetic data,teacher,10,high,10.0,0,table 7.HEIC
+8,Draft the essay,student,1,high,1.0,0,g8-photo.HEIC
+8,Outline the essay,student,2,high,1.8,0,g8-photo.HEIC
+8,Explain a concept,student,3,low,2.57,1,g8-photo.HEIC
+8,Summarize the reading,student,3,low,2.61,1,g8-photo.HEIC
+8,Run + interpret the analysis,student,4,medium,3.73,0,g8-photo.HEIC
+8,Code the interview transcripts,student,10,high,9.91,3,g8-photo.HEIC
+8,Debug the code,student,10,high,9.74,3,g8-photo.HEIC
+8,Find + check sources,student,10,high,10.0,3,g8-photo.HEIC
+8,Make practice problems,student,10,high,9.54,3,g8-photo.HEIC
+9,Assign the grade,teacher,1,high,1.0,0,nine.HEIC
+9,Give feedback on drafts,teacher,1,low,1.44,0,nine.HEIC
+9,Code the interview transcripts,student,2,low,2.42,0,nine.HEIC
+9,Write exam questions,teacher,2,high,2.12,0,nine.HEIC
+9,Outline the essay,student,3,high,3.29,2,nine.HEIC
+9,Design the rubric,teacher,3,high,2.73,2,nine.HEIC
+9,Write the problem set + solutions,teacher,3,high,2.99,2,nine.HEIC
+9,Summarize the reading,student,4,medium,4.34,0,nine.HEIC
+9,Draft a rec letter,teacher,4,high,3.98,0,nine.HEIC
+9,Explain a concept,student,7,low,6.55,0,nine.HEIC
+9,Detect AI use,teacher,7,low,7.47,0,nine.HEIC
+9,Clean the class dataset,teacher,9,high,9.02,0,nine.HEIC
+9,Debug the code,student,10,high,9.96,1,nine.HEIC
+9,Generate synthetic data,teacher,10,high,10.0,1,nine.HEIC
+10,Write exam questions,teacher,1,high,1.0,0,GROUP10.HEIC
+10,Draft the essay,student,2,high,1.85,2,GROUP10.HEIC
+10,Summarize the reading,student,2,high,1.83,2,GROUP10.HEIC
+10,Detect AI use,teacher,2,high,1.91,2,GROUP10.HEIC
+10,Find + check sources,student,3,high,3.07,2,GROUP10.HEIC
+10,Outline the essay,student,3,high,3.04,2,GROUP10.HEIC
+10,Draft a rec letter,teacher,3,high,2.75,2,GROUP10.HEIC
+10,Assign the grade,teacher,4,medium,3.77,1,GROUP10.HEIC
+10,Give feedback on drafts,teacher,4,medium,3.76,1,GROUP10.HEIC
+10,Run + interpret the analysis,student,5,medium,4.69,0,GROUP10.HEIC
+10,Design the rubric,teacher,5,high,5.05,0,GROUP10.HEIC
+10,Code the interview transcripts,student,6,high,5.91,0,GROUP10.HEIC
+10,Clean the class dataset,teacher,6,high,6.22,0,GROUP10.HEIC
+10,Make practice problems,student,8,high,7.91,0,GROUP10.HEIC
+10,Explain a concept,student,9,medium,8.86,1,GROUP10.HEIC
+10,Write the problem set + solutions,teacher,9,medium,8.68,1,GROUP10.HEIC
+10,Debug the code,student,10,high,9.94,1,GROUP10.HEIC
+10,Generate synthetic data,teacher,10,high,10.0,1,GROUP10.HEIC
+11,Assign the grade,teacher,1,high,1.0,1,11.HEIC
+11,Give feedback on drafts,teacher,1,high,1.15,1,11.HEIC
+11,Draft the essay,student,2,high,1.9,0,11.HEIC
+11,Draft a rec letter,teacher,2,low,2.49,1,11.HEIC
+11,Write exam questions,teacher,2,low,2.49,1,11.HEIC
+11,Write the problem set + solutions,teacher,5,low,5.46,0,11.HEIC
+11,Run + interpret the analysis,student,7,high,7.09,2,11.HEIC
+11,Summarize the reading,student,7,high,6.92,2,11.HEIC
+11,Detect AI use,teacher,7,high,7.05,2,11.HEIC
+11,Debug the code,student,8,high,8.0,0,11.HEIC
+11,Find + check sources,student,9,high,8.9,0,11.HEIC
+11,Make practice problems,student,10,high,10.0,0,11.HEIC
+12,Draft the essay,student,1,high,1.0,1,Group12_photo.HEIC
+12,Assign the grade,teacher,1,high,1.07,1,Group12_photo.HEIC
+12,Make practice problems,student,2,high,2.14,1,Group12_photo.HEIC
+12,Give feedback on drafts,teacher,2,high,2.03,1,Group12_photo.HEIC
+12,Design the rubric,teacher,3,high,3.03,0,Group12_photo.HEIC
+12,Code the interview transcripts,student,4,medium,4.27,2,Group12_photo.HEIC
+12,Run + interpret the analysis,student,4,medium,4.32,2,Group12_photo.HEIC
+12,Write exam questions,teacher,4,medium,4.12,2,Group12_photo.HEIC
+12,Write the problem set + solutions,teacher,4,high,3.8,0,Group12_photo.HEIC
+12,Summarize the reading,student,5,high,5.21,0,Group12_photo.HEIC
+12,Find + check sources,student,6,high,6.11,0,Group12_photo.HEIC
+12,Outline the essay,student,7,high,7.03,1,Group12_photo.HEIC
+12,Clean the class dataset,teacher,7,medium,6.65,0,Group12_photo.HEIC
+12,Draft a rec letter,teacher,7,high,6.98,1,Group12_photo.HEIC
+12,Detect AI use,teacher,8,high,8.14,0,Group12_photo.HEIC
+12,Debug the code,student,9,medium,8.77,0,Group12_photo.HEIC
+12,Generate synthetic data,teacher,9,medium,9.23,0,Group12_photo.HEIC
+12,Explain a concept,student,10,high,10.0,0,Group12_photo.HEIC

@@ -1,0 +1,65 @@
+{
+  "source_repository": "ll-26-27-secret/hilt-encore-20261112",
+  "source_commit": "8e00536f794c1aba45c35aff3d95381fa9fbfbfa",
+  "public_base_after_mk_merge": "7704ae3",
+  "example_count": 24,
+  "examples": [
+    "authorial-absence",
+    "black-key-etude",
+    "course-reflection",
+    "dickens-places",
+    "ekphrasis",
+    "eliza-to-gpt2",
+    "frankenstein-revisions",
+    "gened1196",
+    "german-reading-room",
+    "hand-instruments",
+    "handout-formatting",
+    "interruptions",
+    "paper-annotations",
+    "phaedrus-walk",
+    "pharmakon",
+    "phet-diagrams",
+    "poetry-gem",
+    "recipe-cards",
+    "shot-by-shot",
+    "simulated-interview",
+    "soundbite-finder",
+    "studio-circuits",
+    "twelve-models",
+    "vocal-spectrograms"
+  ],
+  "mapping": {
+    "content/examples/": "example descriptions and provenance",
+    "nextjs/app/examples/": "interactive pages and shared example frame",
+    "nextjs/public/examples/": "saved example assets and actual-material covers",
+    "workshop-folder/": "canonical downloadable inputs, operations and outputs",
+    "nextjs/scripts/sync-example-assets.mjs": "build-time selection of cooking HTML and German reader assets",
+    "nextjs/vendor/spectrogram-next/": "rebuild source for isolated live spectrogram"
+  },
+  "preserved_public_paths": [
+    "ll-utilities",
+    "content/ideas",
+    "content/utilities.md",
+    "nextjs/app/components/Chrome.tsx",
+    "nextjs/lib/content.ts",
+    "nextjs/next.config.ts"
+  ],
+  "private_mw_cli_untouched": "c5ea1a423670a87fba7e31cc3d45f5746a617c45",
+  "excluded": [
+    "kit/",
+    "_context/",
+    "private-only app routes",
+    "mw-cli branch",
+    "raw podcast recordings",
+    "local caches and credentials"
+  ],
+  "workshop_files": 383,
+  "integration_changes": [
+    "Added only Three.js to existing public dependencies",
+    "Retained public Next.js 16.4.6 and port 3112",
+    "Added example asset sync hooks before dev/build",
+    "Kept Examples / Utilities / Ideas navigation",
+    "Added workshop-folder links to home and README"
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 title: Walking the Phaedrus
 order: 7
-index: Plato's Phaedrus is the one dialogue set outside Athens. Follow the walk on a map, eleven stops, the text in Greek and two translations, conjecture marked as conjecture.
+index: "Follow Socrates and Phaedrus outside Athens through eleven stops linked to Greek passages and two English translations. The map connects a literary text to a landscape while marking conjecture, disputed locations, and the limits of the sources used to reconstruct the walk."
 source: https://github.com/ll-26-27/eng298ai-20261103
 image: ""
 ---

@@ -1,0 +1,365 @@
+
+\documentclass[test,letterpaper]{cs20}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\begin{document}
+
+\header{5}{Final Exam (Make-up)}
+
+
+\begin{problem}
+
+Let $A$, $B$, and $C$ be sets.
+
+\subproblem Prove that $(A \setminus B) \setminus C = A \setminus (B \cup C)$. (Hint: show $\subseteq$ in both directions.)
+
+\subproblem Using part (a), prove the cardinality formula
+\[
+|(A \setminus B) \setminus C| = |A| - |A \cap (B \cup C)|
+\]
+for finite sets $A$, $B$, $C$. You may use without proof that for finite sets $X \subseteq Y$, $|Y \setminus X| = |Y| - |X|$, and the standard identity $A \setminus S = A \setminus (A \cap S)$ for any $S$.
+
+\subproblem State a condition on $A$, $B$, $C$ that characterizes exactly when $(A \setminus B) \setminus C = A$. (No justification required.)
+
+\begin{solution}
+\subsolution ($\subseteq$) Let $x \in (A \setminus B) \setminus C$. Then $x \in A \setminus B$ and $x \notin C$, i.e., $x \in A$, $x \notin B$, and $x \notin C$. So $x \notin B \cup C$, hence $x \in A \setminus (B \cup C)$.
+
+($\supseteq$) Let $x \in A \setminus (B \cup C)$. Then $x \in A$, $x \notin B$, and $x \notin C$. Then $x \in A \setminus B$ and $x \notin C$, so $x \in (A \setminus B) \setminus C$. $\blacksquare$
+
+\subsolution By part (a), $(A \setminus B) \setminus C = A \setminus (B \cup C)$. Using $A \setminus S = A \setminus (A \cap S)$ with $S = B \cup C$, and then the given fact about cardinality of subtraction:
+\[
+|A \setminus (B \cup C)| = |A \setminus (A \cap (B \cup C))| = |A| - |A \cap (B \cup C)|. \quad \blacksquare
+\]
+
+\subsolution $(A \setminus B) \setminus C = A$ iff $A \cap (B \cup C) = \emptyset$, i.e., $A$ is disjoint from both $B$ and $C$.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Let $A$ and $B$ be (possibly infinite) sets. For functions $f: A \to B$ and $g: B \to A$, write $g \circ f: A \to A$ for the composition $(g \circ f)(x) = g(f(x))$. Let $\mathrm{id}_A: A \to A$ denote the identity function on $A$.
+
+Consider the claim: \emph{For all functions $f: A \to B$ and $g: B \to A$, if $g \circ f = \mathrm{id}_A$, then $f$ is a bijection and $g = f^{-1}$.}
+
+\subproblem Disprove the claim by giving explicit finite sets $A$, $B$ and explicit functions $f$, $g$ satisfying the hypothesis but not the conclusion. Verify each property.
+
+\subproblem Prove the \emph{strengthened claim:} For all functions $f: A \to B$ and $g: B \to A$, if $g \circ f = \mathrm{id}_A$ and $f \circ g = \mathrm{id}_B$, then $f$ is a bijection and $g = f^{-1}$.
+
+\begin{solution}
+\subsolution Take $A = \{1, 2\}$, $B = \{1, 2, 3\}$, with $f(1) = 1$, $f(2) = 2$, and $g(1) = 1$, $g(2) = 2$, $g(3) = 1$. Verify the hypothesis: $(g \circ f)(1) = g(1) = 1$ and $(g \circ f)(2) = g(2) = 2$, so $g \circ f = \mathrm{id}_A$. But $f$ is not surjective (no element of $A$ maps to $3 \in B$), so $f$ is not a bijection. Hence the conclusion fails.
+
+\subsolution Assume $g \circ f = \mathrm{id}_A$ and $f \circ g = \mathrm{id}_B$.
+
+\emph{$f$ is injective.} Suppose $f(x_1) = f(x_2)$ for some $x_1, x_2 \in A$. Apply $g$ to both sides: $g(f(x_1)) = g(f(x_2))$, i.e., $(g \circ f)(x_1) = (g \circ f)(x_2)$, i.e., $x_1 = x_2$.
+
+\emph{$f$ is surjective.} For any $y \in B$, take $x = g(y) \in A$. Then $f(x) = f(g(y)) = (f \circ g)(y) = y$.
+
+So $f$ is a bijection. Finally, $g = f^{-1}$: for every $y \in B$, $f(g(y)) = y$ (from the second hypothesis), which is exactly the defining property of the inverse. $\blacksquare$
+
+The counterexample violates the strengthened hypothesis: $f \circ g \neq \mathrm{id}_B$, since $(f \circ g)(3) = f(g(3)) = f(1) = 1 \neq 3$.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Define a relation $R$ on $\mathbb{Z}$ by
+\[
+a \mathbin{R} b \iff 3 \mid (a - b).
+\]
+
+\subproblem Prove that $R$ is an equivalence relation on $\mathbb{Z}$ (i.e., $R$ is reflexive, symmetric, and transitive).
+
+\subproblem Describe the equivalence classes of $R$. How many distinct classes are there, and what does each one look like?
+
+\begin{solution}
+\subsolution
+\emph{Reflexive.} For any $a \in \mathbb{Z}$, $a - a = 0$ and $3 \mid 0$, so $a \mathbin{R} a$.
+
+\emph{Symmetric.} Suppose $a \mathbin{R} b$, i.e., $3 \mid (a - b)$, so $a - b = 3k$ for some $k \in \mathbb{Z}$. Then $b - a = -3k = 3(-k)$, so $3 \mid (b - a)$, i.e., $b \mathbin{R} a$.
+
+\emph{Transitive.} Suppose $a \mathbin{R} b$ and $b \mathbin{R} c$, so $a - b = 3k$ and $b - c = 3m$ for integers $k, m$. Then $a - c = (a - b) + (b - c) = 3k + 3m = 3(k + m)$, so $3 \mid (a - c)$, i.e., $a \mathbin{R} c$. $\blacksquare$
+
+\subsolution The equivalence class of $a$ is $\{b \in \mathbb{Z} : 3 \mid (a - b)\}$, which is the set of integers congruent to $a$ modulo $3$.
+
+There are exactly $\boxed{3}$ distinct equivalence classes:
+\begin{itemize}
+\item $[0] = \{\ldots, -6, -3, 0, 3, 6, \ldots\}$ (integers divisible by $3$).
+\item $[1] = \{\ldots, -5, -2, 1, 4, 7, \ldots\}$ (integers $\equiv 1 \pmod 3$).
+\item $[2] = \{\ldots, -4, -1, 2, 5, 8, \ldots\}$ (integers $\equiv 2 \pmod 3$).
+\end{itemize}
+Every integer lies in exactly one of these three classes.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Six people --- including Alice and Bob --- are to be seated in a row of $6$ chairs.
+
+\subproblem In how many distinct orderings can the six people be seated, with no further restrictions?
+
+\subproblem In how many of those orderings do Alice and Bob sit next to each other (in either order)?
+
+\begin{solution}
+\subsolution The number of arrangements of $6$ distinct people in a row is $6! = 720$.
+
+\subsolution Treat Alice and Bob as a single "block." Then there are $5$ items to arrange (the AB-block plus the other $4$ people), giving $5! = 120$ arrangements. Within the block, Alice and Bob can be in $2$ internal orders (A--B or B--A). By the product rule, the count is $5! \cdot 2 = 240$.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+\subproblem Verify that $1^3 + 2^3 + \cdots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2$ for $n = 1, 2, 3$ by direct computation.
+
+\subproblem Prove by induction on $n$ that $1^3 + 2^3 + \cdots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2$ for every integer $n \geq 1$.
+
+\begin{solution}
+\subsolution
+\begin{itemize}
+\item $n = 1$: LHS $= 1^3 = 1$ and RHS $= (1 \cdot 2 / 2)^2 = 1$. $\checkmark$
+\item $n = 2$: LHS $= 1 + 8 = 9$ and RHS $= (2 \cdot 3 / 2)^2 = 9$. $\checkmark$
+\item $n = 3$: LHS $= 1 + 8 + 27 = 36$ and RHS $= (3 \cdot 4 / 2)^2 = 36$. $\checkmark$
+\end{itemize}
+
+\subsolution Let $P(n) := \left(\sum_{i=1}^n i^3 = \left(\frac{n(n+1)}{2}\right)^2\right)$. Proof for all $n \geq 1$ by induction.
+
+\emph{Base case ($n = 1$).} $1^3 = 1 = \left(\frac{1 \cdot 2}{2}\right)^2$, so $P(1)$ holds.
+
+\emph{Inductive step.} Assume $P(k)$. Compute:
+\[
+\sum_{i=1}^{k+1} i^3 = \sum_{i=1}^k i^3 + (k+1)^3 = \left(\frac{k(k+1)}{2}\right)^2 + (k+1)^3.
+\]
+Factor $(k+1)^2$:
+\[
+= (k+1)^2 \left[\frac{k^2}{4} + (k+1)\right] = (k+1)^2 \cdot \frac{k^2 + 4(k+1)}{4} = (k+1)^2 \cdot \frac{k^2 + 4k + 4}{4} = (k+1)^2 \cdot \frac{(k+2)^2}{4} = \left(\frac{(k+1)(k+2)}{2}\right)^2.
+\]
+Hence $P(k+1)$ holds, and by induction $P(n)$ holds for all $n \geq 1$. $\blacksquare$
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Let $S$ be the smallest set of integer pairs satisfying:
+\begin{itemize}
+\item \textbf{Base:} $(1, 1) \in S$.
+\item \textbf{C1:} If $(x, y) \in S$, then $(x + 1,\ 3 y) \in S$.
+\end{itemize}
+
+\subproblem Show that $(4, 27) \in S$ by exhibiting an explicit derivation. List each rule application and the resulting pair.
+
+\subproblem Prove by structural induction that every $(x, y) \in S$ satisfies $y = 3^{x - 1}$.
+
+\begin{solution}
+\subsolution Derivation of $(4, 27)$:
+\begin{enumerate}
+\item Base: $(1, 1) \in S$.
+\item C1: $(2, 3) \in S$.
+\item C1: $(3, 9) \in S$.
+\item C1: $(4, 27) \in S$. $\checkmark$
+\end{enumerate}
+Sanity check: $3^{4 - 1} = 27$. $\checkmark$
+
+\subsolution \textbf{Base case.} $(1, 1)$: $3^{1 - 1} = 1 = y$. $\checkmark$
+
+\textbf{Inductive step.} Assume $(x, y) \in S$ has $y = 3^{x - 1}$. Then C1 produces $(x + 1, 3y)$. Compute:
+\[
+3 y = 3 \cdot 3^{x - 1} = 3^x = 3^{(x + 1) - 1}.
+\]
+By structural induction, every $(x, y) \in S$ satisfies $y = 3^{x - 1}$. $\blacksquare$
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+A factory produces parts with defect rate $\pi = 0.2$. Each part is independently checked by two quality-control tests:
+\begin{itemize}
+\item Test $A$: probability of flagging given defective is $0.8$, probability of flagging given non-defective is $0.1$.
+\item Test $B$: probability of flagging given defective is $0.9$, probability of flagging given non-defective is $0.2$.
+\end{itemize}
+Conditional on the true defect status, the two test results are independent.
+
+\subproblem Compute $P(\text{defective} \mid A^+ \cap B^+)$, the probability a part is defective given both tests flag it.
+
+\subproblem Compute $P(\text{defective} \mid A^- \cap B^+)$, the probability a part is defective given test $A$ does not flag but test $B$ does.
+
+\begin{solution}
+Let $D$ = defective ($P(D) = 0.2$, $P(\overline{D}) = 0.8$).
+
+\subsolution
+\[
+P(A^+ B^+ \mid D) = 0.8 \cdot 0.9 = 0.72, \quad P(A^+ B^+ \mid \overline{D}) = 0.1 \cdot 0.2 = 0.02.
+\]
+\[
+P(D \mid A^+ B^+) = \frac{0.72 \cdot 0.2}{0.72 \cdot 0.2 + 0.02 \cdot 0.8} = \frac{0.144}{0.144 + 0.016} = \frac{0.144}{0.160} = \frac{9}{10}.
+\]
+
+\subsolution
+\[
+P(A^- B^+ \mid D) = 0.2 \cdot 0.9 = 0.18, \quad P(A^- B^+ \mid \overline{D}) = 0.9 \cdot 0.2 = 0.18.
+\]
+\[
+P(D \mid A^- B^+) = \frac{0.18 \cdot 0.2}{0.18 \cdot 0.2 + 0.18 \cdot 0.8} = \frac{0.036}{0.036 + 0.144} = \frac{0.036}{0.180} = \frac{1}{5}.
+\]
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+You roll a fair eight-sided die (with faces $1, 2, \ldots, 8$) repeatedly until you see a value in $\{1, 8\}$. Let $N$ be the number of rolls needed. Since the number of rolls is a geometric random variable with success probability $1/4$, $\mathbb{E}[N] = 4$. You may use this fact without proof.
+
+\subproblem Let $T$ be the value of the \emph{final} roll (so $T \in \{1, 8\}$). Compute $\mathbb{E}[T]$.
+
+\subproblem Let $S$ be the sum of the values of all rolls (including the final roll that produced the value in $\{1, 8\}$). Compute $\mathbb{E}[S]$.
+
+\begin{solution}
+\subsolution By symmetry, at each roll the values $1$ and $8$ are equally likely (each with probability $1/8$, independently of past rolls). Hence the first of $\{1, 8\}$ to appear is equally likely to be either, so
+\[
+\mathbb{E}[T] = \tfrac{1}{2}(1 + 8) = \tfrac{9}{2} = 4.5.
+\]
+
+\subsolution Decompose $S = (\text{sum of first } N - 1 \text{ rolls}) + T$. The first $N - 1$ rolls are conditionally uniform on $\{2, 3, 4, 5, 6, 7\}$ (six values, since they were not in $\{1, 8\}$), with conditional mean
+\[
+\frac{2 + 3 + 4 + 5 + 6 + 7}{6} = \frac{27}{6} = 4.5.
+\]
+By linearity of expectation, using $\mathbb{E}[N] = 4$,
+\[
+\mathbb{E}[\text{sum of first } N-1] = (\mathbb{E}[N] - 1) \cdot 4.5 = 3 \cdot 4.5 = 13.5.
+\]
+Therefore
+\[
+\mathbb{E}[S] = 13.5 + 4.5 = 18.
+\]
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Consider the directed graph $G$ on vertex set $V = \{1, 2, 3, 4, 5, 6, 7\}$ with edge set
+\[
+E(G) = \{(1, 3),\ (2, 3),\ (3, 4),\ (4, 5),\ (5, 4),\ (4, 6),\ (4, 7)\}.
+\]
+(So $(u, v) \in E$ means there is a directed edge from $u$ to $v$.)
+
+\subproblem Identify the strongly connected components (SCCs) of $G$. List each SCC as a set of vertices, and describe the \emph{condensation DAG} of $G$ --- the directed acyclic graph obtained by collapsing each SCC of $G$ to a single super-node, with an edge from super-node $X$ to super-node $Y$ whenever some edge of $G$ goes from a vertex in $X$ to a vertex in $Y$ (with $X \neq Y$).
+
+\subproblem Determine the minimum number of additional directed edges that must be added to $G$ to make it strongly connected, and exhibit one valid set of additions. Justify the minimum using the structure of the condensation DAG. (Hint: count sources and sinks of the condensation; when the condensation has at least two vertices, the answer is $\max(\#\text{sources}, \#\text{sinks})$.)
+
+\begin{solution}
+\subsolution Trace cycles in $G$: the only cycle is $4 \to 5 \to 4$, giving an SCC $\{4, 5\}$. Vertices $1$, $2$, $3$, $6$, $7$ each have no return path and are singleton SCCs.
+
+SCCs: $\{1\},\ \{2\},\ \{3\},\ \{4, 5\},\ \{6\},\ \{7\}$ ($6$ in total).
+
+Condensation DAG: project each edge of $G$ onto its SCC endpoints (skipping edges internal to an SCC):
+\begin{itemize}
+\item $(1, 3) \rightsquigarrow \{1\} \to \{3\}$.
+\item $(2, 3) \rightsquigarrow \{2\} \to \{3\}$.
+\item $(3, 4) \rightsquigarrow \{3\} \to \{4, 5\}$.
+\item $(4, 6) \rightsquigarrow \{4, 5\} \to \{6\}$.
+\item $(4, 7) \rightsquigarrow \{4, 5\} \to \{7\}$.
+\item $(4, 5)$ and $(5, 4)$ are internal to $\{4, 5\}$ --- they do not appear in the condensation.
+\end{itemize}
+So the condensation DAG has the $5$ edges
+\[
+\{1\} \to \{3\}, \quad \{2\} \to \{3\}, \quad \{3\} \to \{4, 5\}, \quad \{4, 5\} \to \{6\}, \quad \{4, 5\} \to \{7\}.
+\]
+
+\subsolution In the condensation DAG:
+\begin{itemize}
+\item \emph{Sources} (no incoming edges): $\{1\}$ and $\{2\}$. So $\#\text{sources} = 2$.
+\item \emph{Sinks} (no outgoing edges): $\{6\}$ and $\{7\}$. So $\#\text{sinks} = 2$.
+\end{itemize}
+By the standard result, the minimum number of edges to add is $\max(2, 2) = 2$.
+
+\emph{One valid set of $2$ additions:} the edges $(6, 1)$ and $(7, 2)$ (in the original graph $G$). Verify the augmented graph is strongly connected:
+\begin{itemize}
+\item Cycle $1 \to 3 \to 4 \to 6 \to 1$ exists, so $\{1, 3, 4, 5, 6\}$ are mutually reachable.
+\item Cycle $2 \to 3 \to 4 \to 7 \to 2$ exists, so $\{2, 3, 4, 5, 7\}$ are mutually reachable.
+\item These two cycles share vertex $3$ (and $4, 5$), so all $7$ vertices lie in one big SCC.
+\end{itemize}
+
+\emph{Lower bound argument:} every source SCC must gain at least one incoming edge from outside (else it remains a source after augmentation), and every sink SCC must gain at least one outgoing edge. By a pairing argument (each added edge can serve at most one source and one sink), at least $\max(\#\text{sources}, \#\text{sinks})$ edges are necessary. $\blacksquare$
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+
+\begin{problem}
+
+Student Alex proposes the following algorithm for finding a minimum-weight spanning tree (MST) on a connected weighted graph $G$ with $n$ vertices: \emph{Pick a starting vertex $v_0$ and add it to the tree. Maintain a ``current vertex'' $u$, initially set to $v_0$. Repeat $n - 1$ times: among edges incident to $u$ whose other endpoint is not yet in the tree, add the one of minimum weight; then update $u$ to be that newly added vertex.} (Alex only ever considers edges leaving the most recently added vertex, not edges leaving other tree vertices.)
+
+\subproblem Draw a connected weighted graph on $4$ vertices with $5$ edges, and choose a starting vertex $v_0$, on which Alex's algorithm successfully produces an MST. Specify the edge weights, the chosen $v_0$, and report the total MST weight.
+
+\subproblem Draw a connected weighted graph on $4$ vertices, and choose a starting vertex $v_0$, on which Alex's algorithm fails --- either the algorithm cannot complete $n - 1$ steps (the current vertex runs out of usable edges) or the set of $n - 1$ edges produced is not a minimum-weight spanning tree. Specify the weights, the chosen $v_0$, and explain in $1$--$2$ sentences exactly why the algorithm fails.
+
+\subproblem Suggest a one-line modification to Alex's algorithm that would make it correct (i.e., always produce an MST on connected weighted graphs). Which well-known MST algorithm does it become?
+
+\begin{solution}
+\subsolution Take $V = \{A, B, C, D\}$ with $v_0 = A$ and edges:
+\[
+AB = 1, \quad BC = 2, \quad CD = 3, \quad AD = 10, \quad AC = 20.
+\]
+Trace Alex's algorithm starting at $A$:
+\begin{itemize}
+\item $u = A$. Edges from $A$ to non-tree vertices: $AB(1), AC(20), AD(10)$. Cheapest: $AB$. Add. $u \leftarrow B$.
+\item $u = B$. Edges from $B$ to non-tree vertices ($\{C, D\}$): $BC(2)$ only. Add. $u \leftarrow C$.
+\item $u = C$. Edges from $C$ to non-tree vertices ($\{D\}$): $CD(3)$ only. Add. Done.
+\end{itemize}
+Output: $\{AB, BC, CD\}$, the path $A - B - C - D$, total weight $6$ --- the MST (any other spanning tree includes an edge of weight $\geq 10$).
+
+\subsolution Take $V = \{A, B, C, D\}$ with $v_0 = A$ and edges:
+\[
+AB = 1, \quad AC = 2, \quad AD = 3, \quad BC = 100.
+\]
+The graph is connected (everything reaches everything else through $A$). Trace Alex's algorithm:
+\begin{itemize}
+\item $u = A$. Cheapest edge from $A$ to a non-tree vertex: $AB(1)$. Add. $u \leftarrow B$.
+\item $u = B$. Edges from $B$ to non-tree vertices ($\{C, D\}$): $BC(100)$ only. (No edge $BD$ exists.) Add. $u \leftarrow C$.
+\item $u = C$. Edges from $C$ to non-tree vertices ($\{D\}$): \emph{none} (no edge $CD$ exists). Algorithm cannot proceed.
+\end{itemize}
+The algorithm halts after $2$ edges and never reaches $D$ --- not a spanning tree. The issue: from $C$, no edge to $D$ exists, but $A$ (already in the tree) has the edge $AD(3)$ available --- Alex's algorithm refuses to use it because $A$ is no longer the current vertex.
+
+\subsolution \emph{Modified algorithm:} For $n - 1$ steps, add the edge of minimum weight among all edges with exactly one endpoint anywhere in the current tree (the cheapest edge across the whole frontier, not just the last-added vertex). This is \textbf{Prim's algorithm}. Considering the whole frontier guarantees that any reachable non-tree vertex remains accessible through some tree vertex, so the tree always grows and after $n - 1$ steps spans all $n$ vertices.
+\end{solution}
+
+\pagebreak
+
+\end{problem}
+
+\end{document}

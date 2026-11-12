@@ -1,0 +1,17 @@
+.int { display: grid; grid-template-columns: minmax(0, 720px) minmax(260px, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.int-sheet { padding: 12px; background: var(--wash); }
+.int-sheet canvas { display: block; width: 100%; height: auto; border: 2px solid var(--ink); background: #fff; }
+.int-panel { display: grid; gap: 14px; padding-top: 14px; border-top: 2px solid var(--rule); }
+.int-slider { display: grid; gap: 6px; font-size: 14px; }
+.int-slider b { font-variant-numeric: tabular-nums; }
+.int-slider input { width: 100%; accent-color: var(--blue); }
+.int-actions { display: flex; gap: 10px; margin-top: 6px; }
+.int button { padding: 8px 14px; border: 1px solid var(--ink); border-radius: 0; background: var(--paper); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.int .int-go { border-color: var(--red); background: var(--red); color: #fff; }
+.int-meta { margin: 0; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.int-note { margin: 0; padding: 12px 14px; background: var(--yellow); font-size: 14px; line-height: 1.5; }
+@media (max-width: 900px) { .int { grid-template-columns: 1fr; } }
+
+.int { --paper:#fff; --ink:#171717; --muted:#555; --wash:#ecece6; --rule:#ddd; --blue:#1645ed; --red:#e52b20; --yellow:#f4d329; padding:24px; color:var(--ink); background:var(--paper); }
+.int input:focus-visible,.int button:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+@media(max-width:520px) { .int { padding:12px; } }

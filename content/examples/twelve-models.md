@@ -1,7 +1,7 @@
 ---
 title: Six prompts, twelve image models
 order: 4
-index: Seventy-two images from six plain prompts across twelve image models, side by side, with every request and response kept.
+index: "Compare seventy-two saved images made from six plain prompts across twelve model IDs. Group them by prompt or model and look closely at what each system assumes an artist or performer looks like, with the original requests and responses retained for inspection."
 source: https://github.com/tdm155ai/week-1-image-experiment
 demo: https://tdm155ai.github.io/week-1-image-experiment/
 image: ""

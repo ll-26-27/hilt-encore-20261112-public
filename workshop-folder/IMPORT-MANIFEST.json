@@ -1,0 +1,2413 @@
+{
+  "date": "2026-11-12",
+  "sources": {
+    "desktop-app-workshop": {
+      "commit": "e0b1e2b756e27864706174827eebf7a6b74e4528",
+      "working_tree_status": ""
+    },
+    "gened-1104": {
+      "commit": "ae8008d418898bdef27f463ac79be3b438fe5070",
+      "working_tree_status": ""
+    },
+    "mueser-prototypes": {
+      "commit": "51860381359b8c63a9623146f8bdee4aaf38c29a",
+      "working_tree_status": " M 01-use-cases/README.md\n M 01-use-cases/maps/01-places-to-map/outputs/index.html\n M 01-use-cases/maps/03-from-page-to-map/outputs/index.html\n M 01-use-cases/maps/04-from-map-data/outputs/index.html\n M 01-use-cases/transcription/01-fraktur-print-bakeoff/outputs/consensus/index.html\n M 01-use-cases/transcription/01-fraktur-print-bakeoff/outputs/index.html\n M 01-use-cases/transcription/02-kurrent-handwriting/outputs/consensus/index.html\n M 01-use-cases/transcription/02-kurrent-handwriting/outputs/index.html\n M 01-use-cases/transcription/03-layout-and-hybrid/outputs/consensus-hand/index.html\n M 01-use-cases/transcription/03-layout-and-hybrid/outputs/consensus-print/index.html\n M 01-use-cases/transcription/03-layout-and-hybrid/outputs/index-hand.html\n M 01-use-cases/transcription/03-layout-and-hybrid/outputs/index.html\n M 01-use-cases/transcription/03-layout-and-hybrid/outputs/layout.html\n M 01-use-cases/transcription/README.md\n M README.md\n M cache/cost-log.csv\n M index.html\n M scripts/refresh_review_ui.py\n M src/mueser/shared/web/review.js\n?? 01-use-cases/transcription/04-reading-room/\n?? cache/openrouter/193863a9172d2a40a662a2ecb4060d3eca27cb9f90da1e8868486275c4b6f980.json\n?? cache/openrouter/4b3cd583c7c675f07ccfe2d44c1f99eda9b6c4de2ecd8cf524efb7d040d89a56.json\n?? cache/openrouter/7e5dac63f41f8bc12a42c4e59c33567b7076a47c9f0c91c0a27be0cba1b6b36b.json\n?? cache/openrouter/d924073cad023b1df888be26cb475931990c7c26168771cb00926c2e17e71074.json\n?? cache/openrouter/f034919ed23577974743cee0a227176d6236f653e9895e707f96a2c275269ca7.json\n?? cache/openrouter/f16cd0801beb6bfd087091b2d140ed84eab3e1397fb28ffb57b9eda79129650b.json\n?? context/roadmap.md\n?? src/mueser/reading/\n?? src/mueser/text/backends/prompts/translate_de_en.md\n?? tests/test_reading.py\n"
+    }
+  },
+  "files": [
+    {
+      "repository": "desktop-app-workshop",
+      "source": ".gitignore",
+      "destination": ".gitignore",
+      "sha256": "9d1adabf63f4b8b476e5a1caaafbcbc826f59b799dff52ca5343cd9d4e0ad8fb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "00-start-here/tokenizer.html",
+      "destination": "00-start-here/tokenizer.html",
+      "sha256": "3260f2f059ebc8699ce1c6f3a811ac8f9366a346a0b6db5623896fc3dffd1306"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "00-start-here/walkthrough.md",
+      "destination": "00-start-here/walkthrough.md",
+      "sha256": "1268ae0141a776f229330f8991a3b28d67c9ee7788b626f9efd95dad4ea8e5e7"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/README.md",
+      "destination": "01-workshop-example-use-case/README.md",
+      "sha256": "d61ace09f46838f4d6d376eca74c26b09d26ce8ae7d67e7c8cfe0395d19ad8b8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/11.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/11.HEIC",
+      "sha256": "a2a5c4f5460d3a361f4063c1e76aad18bc39b4ec755cee26d9ff211dbdc0f644"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/GROUP10.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/GROUP10.HEIC",
+      "sha256": "a611eaf2a7a4fe7abeae4665708f1d57521b04a6d16f2e48aa8f5239b6098592"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/Group 6.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/Group 6.HEIC",
+      "sha256": "1d2519cabfb58b35f6134e0744e3be91c7da47071074a3fb610a69f41be55b4d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/Group12_photo.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/Group12_photo.HEIC",
+      "sha256": "c08b6e78543fb9730bc38c0b4c71a1d063d56b1661adb53036a8faabb1ab4b42"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/g8-photo.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/g8-photo.HEIC",
+      "sha256": "08382bbe992a62614f43ef7ddd389c9fa38619b81727466dbcdd74a10069a640"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/group 5 final.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/group 5 final.HEIC",
+      "sha256": "d006080adf6e47a56e681d40b2fbd58b088243feccb2aca62638774756ba9891"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/group-3.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/group-3.HEIC",
+      "sha256": "3c691a156f1c7d9e9f1fbcc491091da5c9789783043d0404a0299ca92b885480"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/group2.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/group2.HEIC",
+      "sha256": "012adfcc0c3d7e96105262e0cd49a5866db17cbe0d31e85a7093917c70eafc70"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/group_01.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/group_01.HEIC",
+      "sha256": "f51e41510014494bccc5fc8f34febf54e2cbb4e8f61f5e29fd8d59cf11a6cc3b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/grp4.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/grp4.HEIC",
+      "sha256": "c851f665a26b005c68093298d73d360fa0feb55de8c6423aaf41be65a0ad35a4"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/nine.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/nine.HEIC",
+      "sha256": "621450dc0addf2dd1389dab871adcf396952290116de811e42661aab6a9440a9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/inputs/table 7.HEIC",
+      "destination": "01-workshop-example-use-case/inputs/table 7.HEIC",
+      "sha256": "b1b2451a8341a646a19a3f1ce17e361aa7030cdb1c66cd74c57f90ed34fa3035"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/operations/01-photos-to-csv.md",
+      "destination": "01-workshop-example-use-case/operations/01-photos-to-csv.md",
+      "sha256": "a88af8dc5d223ed9ff27e196eaa3f2647973aed0c24f83c542f1589cf2098218"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/operations/02-csv-to-visualization.md",
+      "destination": "01-workshop-example-use-case/operations/02-csv-to-visualization.md",
+      "sha256": "0505be22107d12392a390a6ea99206e4f2fc628f612c040ebb86fc533e2e5b6c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/operations/extract.py",
+      "destination": "01-workshop-example-use-case/operations/extract.py",
+      "sha256": "4fad2830594e3e95975d084ad558ac6fa74ff5d0af0f941b1991feb74a1b141d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/outputs/example/ai_comfort_spectrum.csv",
+      "destination": "01-workshop-example-use-case/outputs/example/ai_comfort_spectrum.csv",
+      "sha256": "222db9911f1d011cfeaadebfc252472659568d00417df4f12153397822daa566"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/outputs/example/ai_comfort_spectrum.html",
+      "destination": "01-workshop-example-use-case/outputs/example/ai_comfort_spectrum.html",
+      "sha256": "3d8c4ded023cfa9d14baa867663ee8355d2345c8b20e4f39808b0de90baf7215"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "01-workshop-example-use-case/outputs/example/filename_map.csv",
+      "destination": "01-workshop-example-use-case/outputs/example/filename_map.csv",
+      "sha256": "f7f38f50e4b1eb2bc58ce3adff77afdc741a2494f459ff9c209941b2641fbf2a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/README.md",
+      "destination": "02-further-use-cases/README.md",
+      "sha256": "dc381318885902cd29bb13b2aec19ec0f704995a369ab43ffd91d167b748636f",
+      "ported_sha256": "4b7ec4ac69537fe08c7210ef6752d41b5d501e41611070ea698301e4d0a53177",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/CLAUDE.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/CLAUDE.md",
+      "sha256": "52358daa43e3c2462c851b5a9cf81ab9e0ceb0da870793a49d11b20c2c9cc36d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/index.html",
+      "destination": "02-further-use-cases/exam-makeup-generator/index.html",
+      "sha256": "83afd3116aff83020ba8a62427912096ab38138faf7e7013a66e48ea1b5ccea4"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/index.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/index.md",
+      "sha256": "e0205ebf7255b3b819aec9bdf62190535c63a1d80dd347fc6d149b5843079f0c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/inputs/final_s.pdf",
+      "destination": "02-further-use-cases/exam-makeup-generator/inputs/final_s.pdf",
+      "sha256": "f7c076f3765759aced446db51a7d6ceb636fd972537162c8d6a4aa6413534fda"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/inputs/final_s.tex",
+      "destination": "02-further-use-cases/exam-makeup-generator/inputs/final_s.tex",
+      "sha256": "ef4f616f3bb46a223ff1e254f80bd5018be04f39c64eb6562a97939f4ea5d8bc"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/operations/skill.json",
+      "destination": "02-further-use-cases/exam-makeup-generator/operations/skill.json",
+      "sha256": "7a14fc973a32b27b32c164fd7d3e15aff05eb563d1ad6c921c2e0828ecc294de"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/operations/skill.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/operations/skill.md",
+      "sha256": "52a35c59138b815692d24e20d057ee5fc6a7f4db02fb8f995f8e75b92e9abd06"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/operations/three-mode-state-machine.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/operations/three-mode-state-machine.md",
+      "sha256": "ed6a09dc55dcf356b993a99db6bf1b28f7c28dbb889c2b2c53dd8bced12ec29c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/outputs/final_s_makeup.tex",
+      "destination": "02-further-use-cases/exam-makeup-generator/outputs/final_s_makeup.tex",
+      "sha256": "41ec38d7700a667295abd3eedff18ce36181da8f3590ba77e2a5b5fac8220111"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/outputs/final_s_makeup_candidates.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/outputs/final_s_makeup_candidates.md",
+      "sha256": "3e715943b367e1c744b4acc9cb15c8fc3ce56bc1b9103518d0ae28ab08e201f0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/outputs/worked-run-summary.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/outputs/worked-run-summary.md",
+      "sha256": "d08abd54aab2b4dccde399af1daa19161a98ed0fe11d1f649382e2919c41957f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/exam-makeup-generator/summary.md",
+      "destination": "02-further-use-cases/exam-makeup-generator/summary.md",
+      "sha256": "b74da040acd1f49489758e02ec30b7c903c6dd3d220fe6a0e426b68ec0c08ace"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/SKILL.md",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/SKILL.md",
+      "sha256": "7f4c19c5a9da559b41697740fef7f966a2feec0e7b1c1ba01b3928f975c9bf79"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/accessibility.md",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/accessibility.md",
+      "sha256": "5e6cf9a153aebdc1e9da714d8bb87c4308f0e5b5ff89c8f6497721a8e30d251e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/content-types.md",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/content-types.md",
+      "sha256": "b3c57e2147c7168ff657aa8eac494df79e5f3d31cfb7671fb1a449398d187853"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/ingestion.md",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/reference/ingestion.md",
+      "sha256": "fcf98079200d426049f30889e710b8ed11f7f4465a165b894dbe3fd742f88396"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/scripts/build.sh",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/scripts/build.sh",
+      "sha256": "f1f128365d70b4d9b2e6ea593268f1b7c2e20c4a96783b82d8156c7f26fbce86"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/styles/handout.sty",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/styles/handout.sty",
+      "sha256": "0a940911682c13f9db476ef8cda4814890858757e68bb98008e2c268aee6f15f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/styles/housestyle.sty",
+      "destination": "02-further-use-cases/handout-formatting/.claude/skills/handout-formatting/styles/housestyle.sty",
+      "sha256": "11760ac024dd6944e061279cff9e62f04d30f00b978dcda11985bf2c2d93cbd0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/CLAUDE.md",
+      "destination": "02-further-use-cases/handout-formatting/CLAUDE.md",
+      "sha256": "6b206785aa6efeb2aff8088165a99837ab3cd1ac7bfc2d41f04aa6857cebf531"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/index.md",
+      "destination": "02-further-use-cases/handout-formatting/index.md",
+      "sha256": "a03db2cf309d16f18738e1b6e52592c3b2eb84e80cb336e26726f80964778ddc"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/inputs/math/Homework/02-Separable-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/inputs/math/Homework/02-Separable-Differential-Equations.pdf",
+      "sha256": "b35a1dac8077acb2c47f6f876c540686428a4aec93b04cdb4c9d4f6001834fe3"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/inputs/math/Homework/03-First-Order-Linear-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/inputs/math/Homework/03-First-Order-Linear-Differential-Equations.pdf",
+      "sha256": "03beb7417661554b5d137a301067149c936c1467780bbf7b13adbef5d22d5a89"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/inputs/math/Worksheets/02-Separable-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/inputs/math/Worksheets/02-Separable-Differential-Equations.pdf",
+      "sha256": "1d84bc0e622f717ac14e6c277894c32b963a08a44c559a5859ef653c188a9645"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/inputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/inputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.pdf",
+      "sha256": "d13a35f5a4300f6d26e71244b60b988f44e09bd1f3cee2ad70244595b7b2a65a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/inputs/spanish/spanish-rutina-diaria-DRAFT.docx",
+      "destination": "02-further-use-cases/handout-formatting/inputs/spanish/spanish-rutina-diaria-DRAFT.docx",
+      "sha256": "9ae08556f16ae22b286ad1b482d607ff656a2d6ad6e25b78b08c987beeeca57b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/operations/README.md",
+      "destination": "02-further-use-cases/handout-formatting/operations/README.md",
+      "sha256": "85307e2c217f27725197bf8034dd6bc301c2ac49e24ce56a7050b8f85571eca1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/ACCESSIBILITY.md",
+      "destination": "02-further-use-cases/handout-formatting/outputs/ACCESSIBILITY.md",
+      "sha256": "efc96c538fc619e4ffdf5dd7c93ea11e6b403127d9ba92044fca21db779c2192"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/02-Separable-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/02-Separable-Differential-Equations.pdf",
+      "sha256": "fc0c1856c5b6cd07967ba8dbea7dcb1d0a14e6ed73863679ba55bca606301d0f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/02-Separable-Differential-Equations.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/02-Separable-Differential-Equations.tex",
+      "sha256": "f443f41e42f26a1cf6613c221e36c6264071c05d34f619427ec6a8f38c65bf44"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/03-First-Order-Linear-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/03-First-Order-Linear-Differential-Equations.pdf",
+      "sha256": "27e14847c1ba03e29f0c728d1cd9d68e53935701ba5a1e9e0405ae75d891a7fe"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/03-First-Order-Linear-Differential-Equations.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/03-First-Order-Linear-Differential-Equations.tex",
+      "sha256": "3532b95ec366101db1fd26bd02073a9f547ad4fd2b8face883e1d9173ee6ef94"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/handout.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/handout.sty",
+      "sha256": "0a940911682c13f9db476ef8cda4814890858757e68bb98008e2c268aee6f15f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Homework/housestyle.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Homework/housestyle.sty",
+      "sha256": "11760ac024dd6944e061279cff9e62f04d30f00b978dcda11985bf2c2d93cbd0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/02-Separable-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/02-Separable-Differential-Equations.pdf",
+      "sha256": "28fa8f6c1ebe809dc00d8741776384131c5fac4710e775eed5d941282fdcbe78"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/02-Separable-Differential-Equations.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/02-Separable-Differential-Equations.tex",
+      "sha256": "024c0344d3e894dd242bfa9a5748aa2679d170024d087b5208223d1817b7d939"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.pdf",
+      "sha256": "b46906f39871539cdb2fe9eecbf3ccff8d1a4f982c11f93584ee7d36f636ee57"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.tex",
+      "sha256": "2c1edd15ecc6c3659dcf2bc8b6ac746372c7cd6edb36c15ada8df551f5568455"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/handout.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/handout.sty",
+      "sha256": "0a940911682c13f9db476ef8cda4814890858757e68bb98008e2c268aee6f15f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/housestyle.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/math/Worksheets/housestyle.sty",
+      "sha256": "11760ac024dd6944e061279cff9e62f04d30f00b978dcda11985bf2c2d93cbd0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/handout.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/handout.sty",
+      "sha256": "0a940911682c13f9db476ef8cda4814890858757e68bb98008e2c268aee6f15f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/housestyle.sty",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/housestyle.sty",
+      "sha256": "11760ac024dd6944e061279cff9e62f04d30f00b978dcda11985bf2c2d93cbd0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria-key.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria-key.pdf",
+      "sha256": "642920e0979d74b771a568a220a11eb2dc2490afbdc2001ed72833b82acd3cb9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria-key.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria-key.tex",
+      "sha256": "36ff08e93359cbece5469f7ba4914e4d5be103b9b0fc346abbdcfb269bed4d3f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria.pdf",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria.pdf",
+      "sha256": "0a45c9d1582d3b14b1fbbb61a2c06c9b40d539dac0c1383b1787ec1ef325a002"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria.tex",
+      "destination": "02-further-use-cases/handout-formatting/outputs/spanish/rutina-diaria.tex",
+      "sha256": "ef274f1aeb342ba6e8f0e53f7ae2cd0631ef51ee8ca7a31dc7128da02f988663"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/handout-formatting/summary.md",
+      "destination": "02-further-use-cases/handout-formatting/summary.md",
+      "sha256": "7d227544df9405940aa701f47e3fd671e783476950257e28d314d679cd671dbf"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/SKILL.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/SKILL.md",
+      "sha256": "f34fd1770cd79637058a28039999eb967dde99a5fe5d207d21a39a8ba7ac16a2",
+      "ported_sha256": "3fd469d9bcffab6507a4e144488d89bb3dd020058c73c7430e232e234ac19a4d",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/community-college-mothers-push-four-year.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/community-college-mothers-push-four-year.md",
+      "sha256": "b6875b31ea65a3c89726eefca03f8fa15fbf51249218fedd9f0510b1c2f0b16e",
+      "ported_sha256": "1e2fb4995bae4413bbaf1ccdf961f84563cbecc0ab1d1d7395b2793b55ad5952",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/instrumental-mothers-emotional-framing.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/instrumental-mothers-emotional-framing.md",
+      "sha256": "68608ec8fc7d7cdc975178fccc00a9cdc188d46a2c87875ec900568fea9d1654",
+      "ported_sha256": "0c90dde74c2420d4453369bdd8d1c55f675fadd06ec28e2711f74eaca2b46c9a",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/memo-template.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/memo-template.md",
+      "sha256": "9fbd4bedbb1eb9008a11883fc95c4958d6da1bf3ea53ca66340d3aa8395d9422"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/reasoning-guide.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/reasoning-guide.md",
+      "sha256": "f98cbc89d24b6f439f44dd6c33af56f49d4bb60401b2d3fa074407ebf386759f",
+      "ported_sha256": "6ab3ba224c90935ab3be4b065a5a3c81159e8ecd7e32e944027fe7d2717e77b0",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/SKILL.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/SKILL.md",
+      "sha256": "0abed7e63edb055409331263c59e9e23a5d36e8981dfaea1d2af2cb9c4d9feca",
+      "ported_sha256": "9fc9875c91d22b6ba98ef6289f397d19b4ca50386a40d96cc3a0e04f240380ec",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Coverage.md",
+      "sha256": "80ddefe7862d108d7f3618471a8d30cf8621924ccab5024c4238e97b2669e9ac",
+      "ported_sha256": "2cf8c4f155e811502053809c2c0555f6cfe7b56145e9a8b97e79ef4ff9eb565c",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Indexed.md",
+      "sha256": "8d1d6bf8b73cb0d89cc40b6f58afea21d19cc6b525be1803649404ec66226cec",
+      "ported_sha256": "6d083ea62a847f6d4f887252324f2b7048f4ce8ca33ca259126eab08397ae8ed",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Coverage.md",
+      "sha256": "dc2accc13dfc8ee234ce881ec945282834ba7e93b409a8b3b5024c5faa254fe7",
+      "ported_sha256": "5ec4aacf94d0e7c0bce3f0e50d1605494c155d1c43cbe332ceb7718334d9865a",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Indexed.md",
+      "sha256": "0b4d84049de4720a0b96be516de78d5d7223998f1336495581016be4577d6f4f",
+      "ported_sha256": "a25036d24af10a4a8a7b7e77937b8f42a479bb3ce3b7de2dc0c812c30d67abee",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Coverage.md",
+      "sha256": "6ec6329d03e84da6d96ff869f3ef6c8d02e2d45fdb296e61c2dcd5b20be1be5f",
+      "ported_sha256": "fe0db818f0dc6a10a31b227f699d9bc5cf70f5054bfbc39d5b333c3494ee3516",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Indexed.md",
+      "sha256": "4eec81036f4204e6b64d26135b96138bd5591f74861bdb9cafa8e02cd4e434a9",
+      "ported_sha256": "54664f8cf749203b4e87da96c7bacfc60ea4437cfa1976908d26800184b644eb",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Coverage.md",
+      "sha256": "a873c841b347c7c1c9bfc1776cddb4206ba6ca54bc1d65f069ef304c1fabc382",
+      "ported_sha256": "75e2121541c0c9717196fe4dfc6255cb9145cfd1e7b98fbb03d611169bae7a7a",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Indexed.md",
+      "sha256": "64fc2cd813a093c3e41ef35ed1552f0d26298b00348a245bbaac25190a179009",
+      "ported_sha256": "3bcae9a920025cf210918b954301958d2085f3942c35eaa4a9697bc2b3970827",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/reference/diff-check.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/reference/diff-check.md",
+      "sha256": "6ce8c5249267ca42fb88ece900e9a9dfcff88e08bdeb13d49a93b03f40077ce7"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/reference/protocol-mapping.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/index-transcript/reference/protocol-mapping.md",
+      "sha256": "d583ba465487a4ce9c16a4ffd63f0237ec54e99f9208205c8ef2042d38444971"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/SKILL.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/SKILL.md",
+      "sha256": "f7c2013be7de4e1d24209e67c9ed5459044013763df7525b14887d27eb16c308",
+      "ported_sha256": "7fed2c8b4c2982a07afd772c626b0dfde4b018d96a22d23098c393a0adc71257",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-empty.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-empty.md",
+      "sha256": "4d8b5d0f946ae5d9cdbe1753b1e6178f6bd9bc48f9dc999d963b36dafacf2f27",
+      "ported_sha256": "3e1fe63147d5e5688d543157803223c67bc5a8d01809063bda366d026ac1cfa0",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-full.md",
+      "destination": "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-full.md",
+      "sha256": "4d38a0fa816b05d110ff1b13131703e18bac19ee3f2a3073a0b43ca859251a87",
+      "ported_sha256": "dc4b6b2ac954828985ef596a96c1514eff5efbce226cdac2cd7ce233b1200cc9",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/CLAUDE.md",
+      "destination": "02-further-use-cases/interview-coding/CLAUDE.md",
+      "sha256": "74066b8ad648593a2aebc1ecf50e51ced4c36d1fc376cee3c72e1e5f565d6ec0",
+      "ported_sha256": "90d5d399298de9ded5333c8ec3aa9d37b19fe74d682d2832f2be705ff00b5ae3",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/background/PLAN.md",
+      "destination": "02-further-use-cases/interview-coding/background/PLAN.md",
+      "sha256": "149890887b71bf7cd0f082804fa4431176f676d6e5b7921e987977635c508eab",
+      "ported_sha256": "e10b2e5cc8d5af011d6ceb80cbcadaf86f9c1dd565d86ae3d94ac11d557fb4cb",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/background/affordance.md",
+      "destination": "02-further-use-cases/interview-coding/background/affordance.md",
+      "sha256": "b34c20d0bf2ce1e557acec28ade69b268575103e4745ac60a70741e708540c81",
+      "ported_sha256": "32f1a9d942580391e8776e84e9cfec351b8417dc74609b30b635982e9704e1c1",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/background/claude-thoughts.md",
+      "destination": "02-further-use-cases/interview-coding/background/claude-thoughts.md",
+      "sha256": "f4cb6ec4b46f555b1e50572229b233f7e9543f2c7ae818191d8280afea439128",
+      "ported_sha256": "15a5cfbc0722d01c1ceaa2f5d98ac1bbd7c608cd4d8b18917dddb6e43638d40a",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/background/how-we-built-this.md",
+      "destination": "02-further-use-cases/interview-coding/background/how-we-built-this.md",
+      "sha256": "997071db31a8adf857307398a07ea1df3e05ffc6dd263a2ef8ff75554e13971b",
+      "ported_sha256": "9ffacdb13a4c05f0d0237b069300812f2a24aedf9c09f27a9d02ff0ab4b7252e",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/background/tradition.md",
+      "destination": "02-further-use-cases/interview-coding/background/tradition.md",
+      "sha256": "8e5f5e2226d066cd2401491672e22a7c26b6dee41a149cb77933a76e0f6b1247",
+      "ported_sha256": "32f1a9d942580391e8776e84e9cfec351b8417dc74609b30b635982e9704e1c1",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/index.md",
+      "destination": "02-further-use-cases/interview-coding/index.md",
+      "sha256": "b1328ca91744dbbbb43a919c285d354ad653a9ca87ea385164dda6044dc7985b",
+      "ported_sha256": "5df809171b5e2b541affaeb23ead3b11cbd711593388dfd3628148d22d1820e9",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/README.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/README.md",
+      "sha256": "45a2422841b0eabc9164cd9e1f51b609bf4270683841724d096800d213e377de",
+      "ported_sha256": "67a800bc7d1baa270eeb03525854c845c941b79da42258d035b731422f65c056",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/attributes.csv",
+      "destination": "02-further-use-cases/interview-coding/inputs/attributes.csv",
+      "sha256": "da8d90b238835e225ef0bd662f632836bad6d4e5dec78d6c287d34aaa0546ba7",
+      "ported_sha256": "a3968d7b5d773fb0ff00a01611ca65df4c1a02e1747ecf77a87e8e9e8df9ac3e",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/protocol.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/protocol.md",
+      "sha256": "3f7ec59884f994b1cfccac7b09c7387f783e58106e5db7f09e7fd5130ebcff6f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/transcripts/R001-Transcript.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/transcripts/R001-Transcript.md",
+      "sha256": "d511371f3397cd8afa0bea2e3f1a29d0e46bd4dbfc46af3ddc1c714048590b9d",
+      "ported_sha256": "b8a6c387043bc68a911de94e7d7653437cab1d398688360768cc707cc940b7ff",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/transcripts/R002-Transcript.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/transcripts/R002-Transcript.md",
+      "sha256": "d58e175cd55863df9c6ad07069b64f10e361f405131f2b436aab48012273f89e",
+      "ported_sha256": "da9ef364ec1181de77874bb2080b78e3a2a165166f834b5df2910e8615970997",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/transcripts/R003-Transcript.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/transcripts/R003-Transcript.md",
+      "sha256": "91c0d1ed6a222731e8dc3f36f986836320720fe868f29841bd64e9303663da53",
+      "ported_sha256": "424754dc2d5c311b57e9a0970ca2501b5b78b6d2b6988b95e2b0f0d073c175f7",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/inputs/transcripts/R004-Transcript.md",
+      "destination": "02-further-use-cases/interview-coding/inputs/transcripts/R004-Transcript.md",
+      "sha256": "9a7eb8cd063c593f32110e0f9b93e44401db1572b0b7d96c37cca977bbcdde4b",
+      "ported_sha256": "4eb10238f4f65c3e1b8792e7e9d3f0e8e4bdbc5b44e305478c3b9c784d3c31ad",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R001-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R001-Coverage.md",
+      "sha256": "b82d5d45e8b344362141ed8ab6ed05ea5bbb8ff39ec5ae255600c94fe0518258"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R001-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R001-Indexed.md",
+      "sha256": "8d1d6bf8b73cb0d89cc40b6f58afea21d19cc6b525be1803649404ec66226cec",
+      "ported_sha256": "b0549c806a20df130c54c6fc4c8a37a07c64278d2ff8c63130e2b0212b7fc9ab",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R002-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R002-Coverage.md",
+      "sha256": "6ff1d896bb42d0bd49f30c51306a81cac05bfe2a5f90b326ef8032eda74626c1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R002-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R002-Indexed.md",
+      "sha256": "0b4d84049de4720a0b96be516de78d5d7223998f1336495581016be4577d6f4f",
+      "ported_sha256": "6ba97e706c7f78e3bd5a40e522807bc48cde9b34329b770f5abca088aac1b855",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R003-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R003-Coverage.md",
+      "sha256": "be04c31fc397614022c57cacc7e462ba7b565011e11a19c01656c6e157fe5463"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R003-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R003-Indexed.md",
+      "sha256": "4eec81036f4204e6b64d26135b96138bd5591f74861bdb9cafa8e02cd4e434a9",
+      "ported_sha256": "de39a9f10be7a0a640c4f69ca042ef059a48a7d9482dfd98fb488d28439c885c",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R004-Coverage.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R004-Coverage.md",
+      "sha256": "11c7ac5f30aec704e94c42de4ca56d3db8e84e7089d972c67668f9655b84ceba"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/indexed/R004-Indexed.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/indexed/R004-Indexed.md",
+      "sha256": "64fc2cd813a093c3e41ef35ed1552f0d26298b00348a245bbaac25190a179009",
+      "ported_sha256": "da6136c107ce0a8a7c55a626d9581604cd67be8e187b7c2fd8342f0accc1a83c",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/methods/methods-paragraph.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/methods/methods-paragraph.md",
+      "sha256": "08bd827bd68f96ff928eebcd76c21c5477a9030be276e14d55fc636a96af6837",
+      "ported_sha256": "1b29bf84f7f009dd2b3561a304798383a27c11cb6707484405777ae606467ff2",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/negative-cases/community-college-mothers-push-four-year.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/negative-cases/community-college-mothers-push-four-year.md",
+      "sha256": "b88d5dcf2db8d0ce29e7f7310684008479188610a1ba1ce78f97560896252733"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/outputs/negative-cases/instrumental-mothers-emotional-framing.md",
+      "destination": "02-further-use-cases/interview-coding/outputs/negative-cases/instrumental-mothers-emotional-framing.md",
+      "sha256": "e179c6a52267bf29e84ec8c48c371f386b7143643705bab16fc9b41093f08b90"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/interview-coding/summary.md",
+      "destination": "02-further-use-cases/interview-coding/summary.md",
+      "sha256": "ff3e609490aa3717ba171a9a8a9041ce1c7b30e634ed46b6e53a47009a7ed126",
+      "ported_sha256": "3cf46a0a34d2dae56f1dfe1206753aeafe771b005d8ea91ff31c5bddf0ff1f56",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/manuscript-transcription/CLAUDE.md",
+      "destination": "02-further-use-cases/manuscript-transcription/CLAUDE.md",
+      "sha256": "9790feff74d1e1bf1c624a7a83e7195d60557ec0fb89c45470f53e54cabdea5b",
+      "ported_sha256": "c3a837c1b85b66032d4871e53056a1e517634e6e0bad728f9d7b831d5d0baef6",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/manuscript-transcription/index.md",
+      "destination": "02-further-use-cases/manuscript-transcription/index.md",
+      "sha256": "c72f6fda9e46d7657b64d3e06193dfd162b0656d9ffb8c4ee3df60c9ea61452b",
+      "ported_sha256": "3c9f4d5c1d621ee19f48fb59d97509bf081b48736bac6cbb109e46e3ab74133d",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/manuscript-transcription/summary.md",
+      "destination": "02-further-use-cases/manuscript-transcription/summary.md",
+      "sha256": "44fdced577b2911475336f2a51b2e622ae5fe9170c211dbcc7217fa69fdae448",
+      "ported_sha256": "3c9f4d5c1d621ee19f48fb59d97509bf081b48736bac6cbb109e46e3ab74133d",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/SKILL.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/SKILL.md",
+      "sha256": "bc2f133b988a459188fceeccd1e1730f8e48ddfa118171bc10656e37e7809024"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/accessibility-v2-ideas.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/accessibility-v2-ideas.md",
+      "sha256": "94d0b6aafef98a1c8035324a538f592517f2a837b902b5bab552e9affda88469"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/rubrics/accessibility-checklist.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-accessibility-audit/rubrics/accessibility-checklist.md",
+      "sha256": "380b20a63207b5d897ba9ba2759fff2730551c9ef85ffc793cbc02080211ee9f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/SKILL.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/SKILL.md",
+      "sha256": "035847140326aff7ed4cde607fdc5c19d0c8eef84c3488ec6a14a70a8d62afe3"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/reference/wieman-pedagogy.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/reference/wieman-pedagogy.md",
+      "sha256": "c593947ff59d38b8c932400c1abe96ef1e2820756d86046c745a011aa7209b37"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/rubrics/lesson-quality-checklist.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/rubrics/lesson-quality-checklist.md",
+      "sha256": "9efc122204fdc23654d81960f4ed7d614145cb4aa21b24de5648a39d2cf86a9d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/templates/lesson-plan-template.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-activity/templates/lesson-plan-template.md",
+      "sha256": "5fd97a5fb48417d674934964513e5bd523a3e51f2235ab07b8bdb4fc9edbcf9d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-rationale/SKILL.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-rationale/SKILL.md",
+      "sha256": "50c25f61a9be055be68ad9d9d48fdbd987f388126dfeb0f62a6b7dc70ddefb8e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-rationale/templates/rationale-template.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-rationale/templates/rationale-template.md",
+      "sha256": "504b01a39804ebdfbc25cd68c18b88cef9ca6a6f80427051b8a98e6e5fdf38cb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/SKILL.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/SKILL.md",
+      "sha256": "caecbaa6bccc3539a7b11d230972509baeb82b2bf4f2430496ab6988d9ca05ea"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/accessibility-checklist.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/accessibility-checklist.md",
+      "sha256": "380b20a63207b5d897ba9ba2759fff2730551c9ef85ffc793cbc02080211ee9f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/pedagogical-design-worksheet.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/pedagogical-design-worksheet.md",
+      "sha256": "0c37e816bff52390ee1b0dc848bd3deccbf7a201411e9d4df70e565e43f4b5cb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/simulation-quality-rubric.md",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/rubrics/simulation-quality-rubric.md",
+      "sha256": "0df0de96690dde9c00783fd8b775e4636f3a00844f719234add409d889d1b7a8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-canvas-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-canvas-sim.html",
+      "sha256": "1b1315cf004fd9e8dc6be333a20cb1feffae3b4155aca2313970a5b3e38fbb5f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-linked-graph-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-linked-graph-sim.html",
+      "sha256": "dcdb826c9eb3727b8639bd584fa3013c0f61cf71a01afae984c73133ca480a7e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-svg-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/.claude/skills/phet-sim/templates/single-file-svg-sim.html",
+      "sha256": "749ad1e4c3a5a626c6d8a912ed9b477c4e30856193413ea35e5ec675b073d67b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/CLAUDE.md",
+      "destination": "02-further-use-cases/physics-interactives/CLAUDE.md",
+      "sha256": "05e5c26fb19b556b8abce8b08c5e065f45df05cdc8352595083630438ba02ad1",
+      "ported_sha256": "8a3d89637bdb53800870f1ac037f4ef714b8a78fae1d7f03c118cbde2e0a6755",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/index.html",
+      "destination": "02-further-use-cases/physics-interactives/index.html",
+      "sha256": "14497e3ad9e338455b54e717e2f7bb10cd7f508198fe1735aea45b6e0938f35d",
+      "ported_sha256": "ccbfdfae5cc3af5cfc2cc926f706931a6d9046c47539032e93d929eb293733e5",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/index.md",
+      "destination": "02-further-use-cases/physics-interactives/index.md",
+      "sha256": "4c13ac00af04cae7d46709cd443e4f4993c311e10040d483cb10a9e35c535042",
+      "ported_sha256": "6684fd2de2166499f2ec049541ef072ae5d3d2de0bc20d0b0d01c332518359e9",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/inputs/heat-pumps-teaching-brief.md",
+      "destination": "02-further-use-cases/physics-interactives/inputs/heat-pumps-teaching-brief.md",
+      "sha256": "13587c51f751d6af17b70ffc84b5ab9133c084af545da8f8897fd4631d0eea1f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/operations/deep-research-prompt.md",
+      "destination": "02-further-use-cases/physics-interactives/operations/deep-research-prompt.md",
+      "sha256": "5aecdbe643ed972fd940cfd2fea9de5c51d87bbd7bccad2298461a06bb4208da"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/AI-Built-Simulations-Faculty-Guide.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/AI-Built-Simulations-Faculty-Guide.md",
+      "sha256": "e51588a806399c023d1fbb7a2dc2907e1c34df6bfa1158abeab8cc14aea099c4"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/deep-research-report.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/deep-research-report.md",
+      "sha256": "10d08f46dc9319e16e35359eec5570d1193ae97772cf1346e07fb5f6a2d6be4c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/essay-manipulable-artifact.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/essay-manipulable-artifact.md",
+      "sha256": "14a6205cd53da11e13a69be83b0adcb5d55798cfeab0e446452e86ef8abc1a31"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/essay-phet-tradition.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/essay-phet-tradition.html",
+      "sha256": "5abd859b2c1c14f4f9ab3a8ee31b684e20eb6a380fab95a3cfacc5b5ad832e61"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/essay-phet-tradition.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/essay-phet-tradition.md",
+      "sha256": "62e5cf1703afc8e3ac8c225741604f347515c1b7b45058947bff351680cf8ef4"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/research-basis.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/research-basis.md",
+      "sha256": "6c7d7104ba42dc8e982cde78336493d7abe0fa80e12076a376a9401b511b8c7d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/sims/README.md",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/README.md",
+      "sha256": "5293696c508454c19db8e2d4ca255017140da18e258b48020f7a81474234bbe1",
+      "ported_sha256": "a78ac2a03ab949a3c6f4248e37c385532134a085a7d4e6a7b15d6eea62ac3b79",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/sims/enzyme-kinetics.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/enzyme-kinetics.html",
+      "sha256": "5fb1db84e66716c498124d3c3e526122493326f371d13cb77bd6f6a0492bd6b9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/sims/hardy-weinberg.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/hardy-weinberg.html",
+      "sha256": "aefe6ebf4d3706fe8d71268053a9a1a11e1261cdf92c9fd581d0954a2130758d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/outputs/sims/predator-prey.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/predator-prey.html",
+      "sha256": "59940683699ec1b3db31cd5c9a0a4cb9ab3f0eb066b4d4ed248bdb1c650ff9fb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/physics-interactives/summary.md",
+      "destination": "02-further-use-cases/physics-interactives/summary.md",
+      "sha256": "8d78fc1a56d00061e86866c7e9d53380ee108cf9bb95f01323c2fcfd39f41270",
+      "ported_sha256": "c3a002e393cb8b6fe9d0ec907aa9ea3db21d1ae221e5b1f2e91c1088b319648a",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/CLAUDE.md",
+      "destination": "02-further-use-cases/research-helper/CLAUDE.md",
+      "sha256": "c308c2d2a7f019263a2a1b2c0269ad3ac42ff25a5bf5d4918f2bad833d8c93e2"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/index.html",
+      "destination": "02-further-use-cases/research-helper/index.html",
+      "sha256": "82522f9b57fa0cddef2c11ccdce66719e2d4fad70c89c140ae5208d8ccb42dcc",
+      "ported_sha256": "21f399c61da753d963d466524e12b2ce902a7ea1b255b8a0b7273e4a1556034b",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/index.md",
+      "destination": "02-further-use-cases/research-helper/index.md",
+      "sha256": "62efad009dfc4ca8dcff4b89a1fe23ec7e2ec1442e0effab142e847dcac073b1",
+      "ported_sha256": "ad00204df54a2e193a20a00f4906977dc2b556ef6b1a71b250d412556b26b9d1",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/inputs/01_context-rot_hong-troynikov-huber_2025.md",
+      "destination": "02-further-use-cases/research-helper/inputs/01_context-rot_hong-troynikov-huber_2025.md",
+      "sha256": "6ed870a7e9196384cee21dce17d4ea4a25b496c515b8fbf4b574b93895630ddb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/inputs/02_lost-in-the-middle_liu_2024.pdf",
+      "destination": "02-further-use-cases/research-helper/inputs/02_lost-in-the-middle_liu_2024.pdf",
+      "sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/inputs/03_context-length-alone-hurts_du_2025.pdf",
+      "destination": "02-further-use-cases/research-helper/inputs/03_context-length-alone-hurts_du_2025.pdf",
+      "sha256": "bf264ad7a4e6fcd20153df7ddad571bf9fe6a340af6a7cbaf8629502b6dd06e5"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/inputs/14_fully-utilize-context_an_2024.pdf",
+      "destination": "02-further-use-cases/research-helper/inputs/14_fully-utilize-context_an_2024.pdf",
+      "sha256": "a1ecbde8a3821bc526f38742db50cfaf31485b7b6f76166728d269a59daca580"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/operations/01-generate-research-summary-prompt.md",
+      "destination": "02-further-use-cases/research-helper/operations/01-generate-research-summary-prompt.md",
+      "sha256": "cfea288b16a6e773818bcb4020812156d16cf285e64f57c704556889710d2a9b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/01_context-rot_hong-troynikov-huber_2025.html",
+      "destination": "02-further-use-cases/research-helper/outputs/01_context-rot_hong-troynikov-huber_2025.html",
+      "sha256": "60f339f17060cb4cb15636aaff6b07cb8d3535c4382ed26e5b90d6ccf495b1f1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/02_lost-in-the-middle_liu_2024.html",
+      "destination": "02-further-use-cases/research-helper/outputs/02_lost-in-the-middle_liu_2024.html",
+      "sha256": "8692d0f145eeaa8a0340a5ef8d794c17019b9f71e0dc7dabcfcb0890d4c29ac4"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/03_context-length-alone-hurts_du_2025.html",
+      "destination": "02-further-use-cases/research-helper/outputs/03_context-length-alone-hurts_du_2025.html",
+      "sha256": "d5cdd131593efe3ec9b1abe7531f0b1a63a741e864a95441372ae9ab1184a961"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/14_fully-utilize-context_an_2024.html",
+      "destination": "02-further-use-cases/research-helper/outputs/14_fully-utilize-context_an_2024.html",
+      "sha256": "0b4575a74dbb02db7a1c1386bdd2cce5a9aba7a90f7a9491a9178982a0a31628"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/assets/context-rot/header_plot.jpg",
+      "destination": "02-further-use-cases/research-helper/outputs/assets/context-rot/header_plot.jpg",
+      "sha256": "9643164fb13265e63c1ce59602ed6f27bdf7ea0b4167dc03f114deb57f86017b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/assets/context-rot/longmemeval_claude_comparison.png",
+      "destination": "02-further-use-cases/research-helper/outputs/assets/context-rot/longmemeval_claude_comparison.png",
+      "sha256": "0e16741782a24bcb96c628bd2264cd60f9229ad06f750323bc9dd00c405260e0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/assets/context-rot/niah_distractor_irrelevance.png",
+      "destination": "02-further-use-cases/research-helper/outputs/assets/context-rot/niah_distractor_irrelevance.png",
+      "sha256": "3a6dbcf5c8c8738e5425ece580276aa89737edc68257c5c5bae283f8ffd8f36c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/assets/context-rot/niah_hallucinations.png",
+      "destination": "02-further-use-cases/research-helper/outputs/assets/context-rot/niah_hallucinations.png",
+      "sha256": "c15686f31bdaac4401b36f9967a006ba5ff5346f283818633e85e3ae2eda7fd1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/assets/context-rot/repeated_words_claude_line_plot.png",
+      "destination": "02-further-use-cases/research-helper/outputs/assets/context-rot/repeated_words_claude_line_plot.png",
+      "sha256": "5df73579f502b0c1d2330a7d74cc5908aaf111999e8e88748c9be02c5462b3f9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/outputs/index.html",
+      "destination": "02-further-use-cases/research-helper/outputs/index.html",
+      "sha256": "f248f077c8298163d91152221696f438fdbb92cb3beadc31161e662f16eea7d3"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "02-further-use-cases/research-helper/summary.md",
+      "destination": "02-further-use-cases/research-helper/summary.md",
+      "sha256": "3c05a24b2b3701d40a27a4765023518df68b324eec629097b6dae4d985c21a05",
+      "ported_sha256": "7dd47aed018e126fcebf3914076f3bf116ce1a77b80659651a47623120938a1e",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "03-your-project/inputs/README.md",
+      "destination": "03-your-project/inputs/README.md",
+      "sha256": "5bbd575855751a750cdc411328eddb5b8bc24775f6b2dafebb7a7ad9c9dc3893"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "03-your-project/operations/README.md",
+      "destination": "03-your-project/operations/README.md",
+      "sha256": "65eba36a534c070f5c8c7526c15dcec7976ca9550eee0f3c8f75d4af700393f5"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "03-your-project/outputs/README.md",
+      "destination": "03-your-project/outputs/README.md",
+      "sha256": "c2e66a00de1705085163675614c2db521cd189e9307af217d3a035ab0532e89f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "README.md",
+      "destination": "README.md",
+      "sha256": "ba310ecb6ba28df0caefb9eb8ea5b2b740b10d157b3ba6257a79932796232aaa",
+      "ported_sha256": "6c59276c73e090d8cc7693a1bc6260f425023750d2e25eccb4f38f53c535fc38",
+      "adapted": true
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/README.md",
+      "destination": "resources/README.md",
+      "sha256": "938c168759291de7ab6e586d3b43820604f2258cab7452f80eae36eeea8a6e3c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/agent.html",
+      "destination": "resources/glossary/glossary-html/agent.html",
+      "sha256": "86af9717f7f55f5aeee39f086f5ce71ae3c98ba3f853a80b8da931dcbc1bc965"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/agentic-systems.html",
+      "destination": "resources/glossary/glossary-html/agentic-systems.html",
+      "sha256": "a72dc4479fbf6ad95b82c048c9c9d49cbe0456aa62f36e013f2e2fb1d482ab15"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/anthropic.html",
+      "destination": "resources/glossary/glossary-html/anthropic.html",
+      "sha256": "993d3d55062c537826d2417b7d246e79a276130f1e2269317a54cf6fcb4cbfbe"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/api.html",
+      "destination": "resources/glossary/glossary-html/api.html",
+      "sha256": "b823a8f72daa77346f8d4054feb8eea81d4b795ef0aa390c2662941aef139d9f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/artifact.html",
+      "destination": "resources/glossary/glossary-html/artifact.html",
+      "sha256": "60c543db0964deaa6713694ade0ac375c9a3b7e4389b1eb1fd030b49414aa17c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/claude-code.html",
+      "destination": "resources/glossary/glossary-html/claude-code.html",
+      "sha256": "41a1306b2bb501d7169e4c9c256ba5d18d8b6f290cc7373c88e4c127ed58eca8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/claude-cowork.html",
+      "destination": "resources/glossary/glossary-html/claude-cowork.html",
+      "sha256": "1f57b40bab16788731ddc1e9c5d050194aa9a7d099fa235f12b2f71f40818d41"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/claude-md.html",
+      "destination": "resources/glossary/glossary-html/claude-md.html",
+      "sha256": "ceccd201931cd7cfbe1aaed4d5ebdc76f764c8a6d71c6e01aeeb258cf998ff82"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/claude.html",
+      "destination": "resources/glossary/glossary-html/claude.html",
+      "sha256": "0bf1ffdd2908792525eca8fe1a525fa2abf089ec1b73c5d6fe90a52844f3d7df"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/compact.html",
+      "destination": "resources/glossary/glossary-html/compact.html",
+      "sha256": "e317ff90f17b8886d1358dad9c3206c1885649f630618f3ea3d6a6999e0fd1b3"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/context-engineering.html",
+      "destination": "resources/glossary/glossary-html/context-engineering.html",
+      "sha256": "23682510a75c63b69e186aff09a33df09c02df79160e173b1b10f54c1aa4c886"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/context-rot.html",
+      "destination": "resources/glossary/glossary-html/context-rot.html",
+      "sha256": "97ff09f54b9a223307adfdc04ac260ac2a2c15ff941992c90a66ee43b326debb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/context-window.html",
+      "destination": "resources/glossary/glossary-html/context-window.html",
+      "sha256": "cdb0cfff3511d51ccca666bb69d21852ebf35fe78d3e1fbed59fea3e536e3dc7"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/context.html",
+      "destination": "resources/glossary/glossary-html/context.html",
+      "sha256": "b8fd2bd39233b8f1f345cbb4c8dd6c3cd06068b5af37ef6c6022ac24ff1e466d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/data-classification.html",
+      "destination": "resources/glossary/glossary-html/data-classification.html",
+      "sha256": "d45cc9ef7d6a1260a7ce4c15f1316568d180ee64148a12082f1cdf81326c18b8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/hallucination.html",
+      "destination": "resources/glossary/glossary-html/hallucination.html",
+      "sha256": "67d861ba912aa36b08fc3874879bddf865ce11e8577c351485bc6194580dafca"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/harness.html",
+      "destination": "resources/glossary/glossary-html/harness.html",
+      "sha256": "1e7e148f45c5c556c1662159b122e80df819b8daea666eee940952d2596616af"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/html.html",
+      "destination": "resources/glossary/glossary-html/html.html",
+      "sha256": "5837b51d4d2285ba3aca758a0ae563c1121a9d23bcd85e289b5e2433e06b4350"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/index.html",
+      "destination": "resources/glossary/glossary-html/index.html",
+      "sha256": "6eeffe27a4f87214207d7c9ba5880bd5926224e459091c8d7b822a187f954d5f"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/llm.html",
+      "destination": "resources/glossary/glossary-html/llm.html",
+      "sha256": "59768eb422f4a14e021390ec8b454f0f2723535401a9e43f315f49b13996b2f1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/markdown-cheatsheet.html",
+      "destination": "resources/glossary/glossary-html/markdown-cheatsheet.html",
+      "sha256": "2037c68a4fddcb44e0ad504881b63664c263229bf53298898f786168151e2b16"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/markdown.html",
+      "destination": "resources/glossary/glossary-html/markdown.html",
+      "sha256": "f143b9aafe3d98274004d5aae3eda3b8b6f667764e28158735c27f162b978987"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/memory.html",
+      "destination": "resources/glossary/glossary-html/memory.html",
+      "sha256": "2ae36cef54252437600c935efe4366444aef95f5f30bfa4110ec104779be625a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/model.html",
+      "destination": "resources/glossary/glossary-html/model.html",
+      "sha256": "4ca67953fbaa80bfd4c9f9565fc211514f70fc502e07534d903c92818f5d0bf9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/project.html",
+      "destination": "resources/glossary/glossary-html/project.html",
+      "sha256": "00750c52bae483ec5291dc51f66f3abbd28be76888702fcff55c9c9f1ad22525"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/prompt-chaining.html",
+      "destination": "resources/glossary/glossary-html/prompt-chaining.html",
+      "sha256": "7335668504bc07831851bb2d7300983f59a9bba3077ecc67388b1db8c10bd654"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/prompt.html",
+      "destination": "resources/glossary/glossary-html/prompt.html",
+      "sha256": "a62d40bbe2d9ea3585c936b2e55aafdc2d766e093c0cb167ece57228d06eb0d9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/skill-md.html",
+      "destination": "resources/glossary/glossary-html/skill-md.html",
+      "sha256": "662baf27656151b0502bbf3cc4442d2fb2f5426198b7976b295ec8cc3a22dfd0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/style.css",
+      "destination": "resources/glossary/glossary-html/style.css",
+      "sha256": "322df37c1ea4d8bc5f20e10c93479ed94b69f571b6a6f8c524c697cea96540ca"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/system-prompt.html",
+      "destination": "resources/glossary/glossary-html/system-prompt.html",
+      "sha256": "57baa1bddeb029d27ab6d9ecbcdbc0ca57d216605b5f5279f237282e0e7f70f8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/token.html",
+      "destination": "resources/glossary/glossary-html/token.html",
+      "sha256": "814f6da61d84d08c7b56f7899da8e444d4a9259a978ae8ed9e49f01d46267a06"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-html/tool-call.html",
+      "destination": "resources/glossary/glossary-html/tool-call.html",
+      "sha256": "3f84954a81a48856be53eee60ae92bb49bc4a5c505f436560e438e2e8231adb2"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/00-index.md",
+      "destination": "resources/glossary/glossary-md/00-index.md",
+      "sha256": "2a5f36402ead1fec8264399ca269615a5979e048cf3533e2369ca35f3bcdc7fd"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/agent.md",
+      "destination": "resources/glossary/glossary-md/agent.md",
+      "sha256": "77bec6e2b6c8b0f7ecb43595da8365dcbcce12d23e47e6cc665d6c02a0e619d8"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/agentic-systems.md",
+      "destination": "resources/glossary/glossary-md/agentic-systems.md",
+      "sha256": "28331ab2e4f20c88ab224efa771af07541c45fbcdeea8eb89cf9f3f6734bea37"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/anthropic.md",
+      "destination": "resources/glossary/glossary-md/anthropic.md",
+      "sha256": "6618b4a7d2e62860a228b317bdbc2a3fcb55cb551997b0259eeb4545b3ffbfa1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/api.md",
+      "destination": "resources/glossary/glossary-md/api.md",
+      "sha256": "70ec3d87ea963db8d7827ad037c01439a9a1fc165c1d6017c040aa0090f2138e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/artifact.md",
+      "destination": "resources/glossary/glossary-md/artifact.md",
+      "sha256": "1e4baae281c6699ffc4c814657a933ad577c8b50e00f31145d6aa5627db7cdfe"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/claude-code.md",
+      "destination": "resources/glossary/glossary-md/claude-code.md",
+      "sha256": "f0539319050a577d971780e5e6a8cff43a75c5fd43daa8c5457fc56290b1fb8c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/claude-cowork.md",
+      "destination": "resources/glossary/glossary-md/claude-cowork.md",
+      "sha256": "b5da77c7259290bc6c9085a1247062c285ff14ce8dada43fd8ba7099d8c2a6ff"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/claude-md.md",
+      "destination": "resources/glossary/glossary-md/claude-md.md",
+      "sha256": "4c0abcf04b39f1cf7d6d8e776c17b42513c7cd1fbb7160d80ff2b49d3b5571c7"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/claude.md",
+      "destination": "resources/glossary/glossary-md/claude.md",
+      "sha256": "3f0a480d9196f16236384cfb2bcc86ae4cb085981acc38ece27c4babb8ed5d91"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/compact.md",
+      "destination": "resources/glossary/glossary-md/compact.md",
+      "sha256": "dd399eca5e04d9e11fbab23eeaabe64f3a2567d1387dd8971abfcbd11951b707"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/context-engineering.md",
+      "destination": "resources/glossary/glossary-md/context-engineering.md",
+      "sha256": "9267b03deb369c299172cef570d7b002c7caaa90bfe68469d6aff78e7cacd89e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/context-rot.md",
+      "destination": "resources/glossary/glossary-md/context-rot.md",
+      "sha256": "6ea65f9fbdd6d2ed9c8d9b948618e7be6afb677a8f4e743ed97f7eab033d66ec"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/context-window.md",
+      "destination": "resources/glossary/glossary-md/context-window.md",
+      "sha256": "676f220b7a5178731345c95e4686e5e5503ee4e610f91106803dd4551e4f7da1"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/context.md",
+      "destination": "resources/glossary/glossary-md/context.md",
+      "sha256": "7bdc8f88dc4d13e302d45beb122e0818b3a87b744d40bb008e46deae96dc8968"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/data-classification.md",
+      "destination": "resources/glossary/glossary-md/data-classification.md",
+      "sha256": "aeb9163a6e915e635902242cd425773a47ab534c20bc9f25309d9cec4ce631cd"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/hallucination.md",
+      "destination": "resources/glossary/glossary-md/hallucination.md",
+      "sha256": "43e4a10adb6d947c8a5e3cadb6721ad49e6a29453da67357796bfe0021e04d5d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/harness.md",
+      "destination": "resources/glossary/glossary-md/harness.md",
+      "sha256": "d309137cec34b329937df4c9a2bde1788a575ed218091ae5b65d5f7da7ece94d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/html.md",
+      "destination": "resources/glossary/glossary-md/html.md",
+      "sha256": "311482dfa8fb129ba704a561b0629a2b886efede10d67679e530e6c728fc31ea"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/llm.md",
+      "destination": "resources/glossary/glossary-md/llm.md",
+      "sha256": "cbfa8d0d3817ff551e5f75100e56cd4fddee4c9a26f0153a4370cca4c1e1a129"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/markdown-cheatsheet.md",
+      "destination": "resources/glossary/glossary-md/markdown-cheatsheet.md",
+      "sha256": "c9578e2a5da04cc8ba7a61117125cb7f5f70b5fda805be2a35902cef655c3738"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/markdown.md",
+      "destination": "resources/glossary/glossary-md/markdown.md",
+      "sha256": "78a533c7d75df2c8af72a0cc580603914a2e5cd9435d8d2de532453cc71b3066"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/memory.md",
+      "destination": "resources/glossary/glossary-md/memory.md",
+      "sha256": "a97d926eb032e977a521569cba82f8fd89e658b209fd9c2a73ffc34a71078111"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/model.md",
+      "destination": "resources/glossary/glossary-md/model.md",
+      "sha256": "ba0e2ed8b98715f062dcc6a12f76e61254adc0e0cb43b153ecd49b36a7ee7c91"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/project.md",
+      "destination": "resources/glossary/glossary-md/project.md",
+      "sha256": "babb72bc90d257e6ec0ed2fa9b68c105ff9ca53aca1972e84334edc406983f65"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/prompt-chaining.md",
+      "destination": "resources/glossary/glossary-md/prompt-chaining.md",
+      "sha256": "ea29f79b2ea3a0168cff5a457b56ee5db153946503c3de77648c6e8daff21cfb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/prompt.md",
+      "destination": "resources/glossary/glossary-md/prompt.md",
+      "sha256": "5f8357078abc18561bdd4a24324a4a33eafe4c71322eff078ce24ddb43cac103"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/skill-md.md",
+      "destination": "resources/glossary/glossary-md/skill-md.md",
+      "sha256": "affb8f0877921b1197cf64718fab234599d3cb76d00582b564b9d998deed9e55"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/system-prompt.md",
+      "destination": "resources/glossary/glossary-md/system-prompt.md",
+      "sha256": "14fea4bcc65c9e70da2b53de7034206208d0445aa67ea7a01e6f2f7cbf4ccd40"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/token.md",
+      "destination": "resources/glossary/glossary-md/token.md",
+      "sha256": "e5205259d6889439751482653c8dceb86d1cc991da9c3741ddc6ff1c738e7333"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/glossary/glossary-md/tool-call.md",
+      "destination": "resources/glossary/glossary-md/tool-call.md",
+      "sha256": "2d61690b9646667405c71fe67259c4bd46515ce9a97c23a39f62e73679110b9b"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/ai-surfaces/ai-surfaces.pdf",
+      "destination": "resources/handouts/ai-surfaces/ai-surfaces.pdf",
+      "sha256": "5f632e64c27ca80d40143a0575a622bab98bab744b68dddd49979e1c264c1311"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/ai-surfaces/index.html",
+      "destination": "resources/handouts/ai-surfaces/index.html",
+      "sha256": "a08fdefe93988b6d5c1bb0e7d373da0121c8176e5e2dcbb7ef4bd1fa63b9cbf9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.html",
+      "destination": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.html",
+      "sha256": "0b66c0a1ee07218f4b7a50eb80adbcf674cf951ceccee2f2893e85a531f1a472"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.md",
+      "destination": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.md",
+      "sha256": "3921e77b218335b0b2c485aca647093962e785fb0b127c63d790d7cdec61a1b2"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.pdf",
+      "destination": "resources/handouts/claude-code-commands-and-concepts/claude-code-commands-and-concepts.pdf",
+      "sha256": "3b17aba8b5c283084cf91d5286673151115a073f01560d585aca24af4aecb0eb"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/its-all-text/its-all-text.html",
+      "destination": "resources/handouts/its-all-text/its-all-text.html",
+      "sha256": "eb3fffe74bd5ac971f5b47a5a42fc10a8432f17c84d0023c94ed4f706a506767"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/its-all-text/its-all-text.pdf",
+      "destination": "resources/handouts/its-all-text/its-all-text.pdf",
+      "sha256": "2790e224ed6eb6d3dfbf8001207ee4c5d4e2bde44350c5afc8adb6cde8d85837"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/markdown-cheatsheet/markdown-cheatsheet.md",
+      "destination": "resources/handouts/markdown-cheatsheet/markdown-cheatsheet.md",
+      "sha256": "ba4788401881fa0b1ada330ffba0b983ada78a1bdd087a69f827f81d05de7e2c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/project-plan/project-plan.html",
+      "destination": "resources/handouts/project-plan/project-plan.html",
+      "sha256": "6a0d2fc07ab4a58c608be4c45b9f7be40cbd3201ba470b6953b866b4700766be"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/project-plan/project-plan.pdf",
+      "destination": "resources/handouts/project-plan/project-plan.pdf",
+      "sha256": "993588c610535cedbeb2232f3e903a5bc745e03a57e2acf20e05454ca266cbb9"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/security-concerns/security-concerns.html",
+      "destination": "resources/handouts/security-concerns/security-concerns.html",
+      "sha256": "1aecc03a9bd0350608a2dd2aa3da3d9f57643bd072cf1d9a091c3371c36ab049"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/security-concerns/security-concerns.md",
+      "destination": "resources/handouts/security-concerns/security-concerns.md",
+      "sha256": "e0f0f13413006c23ac815ce6e86ec847c1f219868edd98169085b595b12fe2ab"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/security-concerns/security-concerns.pdf",
+      "destination": "resources/handouts/security-concerns/security-concerns.pdf",
+      "sha256": "9abdec5052ebb20dbc47ec41c7f316e24a8b59d147abcfc9145d8be3c918eb89"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/checklists/claude-code-mac-checklist.html",
+      "destination": "resources/handouts/setup-checklists/code-ide/checklists/claude-code-mac-checklist.html",
+      "sha256": "1529ebe1f64ddfda2c6096dbe4eee53250ef72c8ce44bd3743b80b577d240e7c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/checklists/claude-code-windows-checklist.html",
+      "destination": "resources/handouts/setup-checklists/code-ide/checklists/claude-code-windows-checklist.html",
+      "sha256": "eb8877d8652ace2ee41dc5d4e5b2732a6e36c90f410cf14879b46b55edf0f08a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/checklists/index.html",
+      "destination": "resources/handouts/setup-checklists/code-ide/checklists/index.html",
+      "sha256": "8288af722b7e848fd4052f9d3a0d55257109f083130d629667d6232880d1ac1d"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/claude-code-mac-setup.md",
+      "destination": "resources/handouts/setup-checklists/code-ide/claude-code-mac-setup.md",
+      "sha256": "2c6713677f0cf43324e147d5c6f3ce0227331d8495499debd5e1dbee6338c090"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/claude-code-setup.md",
+      "destination": "resources/handouts/setup-checklists/code-ide/claude-code-setup.md",
+      "sha256": "5d23815fdbc0c15513d2c0e292074b5c81558418b2e950160af9b48815291e0a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/code-ide/claude-code-windows-setup.md",
+      "destination": "resources/handouts/setup-checklists/code-ide/claude-code-windows-setup.md",
+      "sha256": "b4e34d8d982d85339c12546762acbb3acf35611f99de560c86cbf002301c4ea0"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/desktop-app/README.md",
+      "destination": "resources/handouts/setup-checklists/desktop-app/README.md",
+      "sha256": "e981286a88b5adfd7981292b8a5deece88d3e4ce106cd7d338fd8a061204c20a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/desktop-app/claude-code-windows-setup.md",
+      "destination": "resources/handouts/setup-checklists/desktop-app/claude-code-windows-setup.md",
+      "sha256": "225da48674342a21b29c2449396b2febff0304641f3a2e0987cb0cfa5fcd2a6c"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/desktop-app/claude-cowork-setup.md",
+      "destination": "resources/handouts/setup-checklists/desktop-app/claude-cowork-setup.md",
+      "sha256": "0d350b5121408e0fa3b8ad090426054b55e4aa2c4e146215a4f9f0f11406cf86"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/setup-checklists/webui/claude-ai-setup.md",
+      "destination": "resources/handouts/setup-checklists/webui/claude-ai-setup.md",
+      "sha256": "7ee606045bfffe8ac6fc57de08b06554fa7c060d1e89a1dc8fa4feeb98f00c3a"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/terminal-refresher/terminal-refresher.html",
+      "destination": "resources/handouts/terminal-refresher/terminal-refresher.html",
+      "sha256": "edeff40f1a36b91f34927933a4caa4bc439e7c2218462d7fa09bcaa70403eb38"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/terminal-refresher/terminal-refresher.pdf",
+      "destination": "resources/handouts/terminal-refresher/terminal-refresher.pdf",
+      "sha256": "3576a0f46c4bd813d703ecba1766d8ba877cd6c482bec98378a50b43a340f258"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/what-you-can-make/what-you-can-make.html",
+      "destination": "resources/handouts/what-you-can-make/what-you-can-make.html",
+      "sha256": "5f8dcfa99bb4318d574d5841bf455024524bbebe5e24269e474e2e396a62f10e"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/what-you-can-make/what-you-can-make.md",
+      "destination": "resources/handouts/what-you-can-make/what-you-can-make.md",
+      "sha256": "aa1f5d8a6b3a899c63c8b91d6fee720fa7b976e58b688818fea814aca8084de5"
+    },
+    {
+      "repository": "desktop-app-workshop",
+      "source": "resources/handouts/what-you-can-make/what-you-can-make.pdf",
+      "destination": "resources/handouts/what-you-can-make/what-you-can-make.pdf",
+      "sha256": "19505cce8e28574bd4db3ac896a2033aa915ed1b91d823768e5b631700f82231"
+    },
+    {
+      "source": "onion-caramelization-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/onion-caramelization-sim.html",
+      "sha256": "beab344b0efe2d61ab8f24aea6f70b060b9642a5448b435f982e5738249ee263",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "coffee-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/coffee-sim.html",
+      "sha256": "3f3785ebfb73496dbc5bbdc9e4a21a17785e41fd280556fd1c730ba258f66ab3",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "basil-sphere-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/basil-sphere-sim.html",
+      "sha256": "fa422c08b03e2b063615f5072bfc58b8f5d393be80255ff9a7edea3c6d8280c9",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "tahini-seizing-sim.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/tahini-seizing-sim.html",
+      "sha256": "336de17656f81734bd791e165f400d7b6848fe1463d8eab3875a72eed2f19f72",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "sim-workshop-staff.md",
+      "destination": "02-further-use-cases/physics-interactives/inputs/gened-1104-staff-brief.md",
+      "sha256": "e5f67dbdbb6f7fe004dfc9cffea935f355dff09949b6a35bca0d8d1e7abe3e2f",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "index.html",
+      "destination": "02-further-use-cases/physics-interactives/outputs/sims/index.html",
+      "sha256": "1b04f619bfaf5c0c4f9d41cbe6db091ad7ddf226534d1220edbe0300000d5331",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "build-site.py",
+      "destination": "02-further-use-cases/physics-interactives/operations/gened-1104-build-site.py",
+      "sha256": "ef28f58af8e21234f21c4f31c143724a7d8b99ee047265c711905bcc5147c61e",
+      "repository": "gened-1104"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/CLAUDE.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/CLAUDE.md",
+      "sha256": "b492eeb0849d3c37fa4f1350e9fa0efbe270b901ff2416ca7987c38fb1f8cb7a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/HANDOFF.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/HANDOFF.md",
+      "sha256": "745fd19106dd51303618ea639e72942dcde4b16ab3e82310d6dfe4697580ffd4",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/README.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/README.md",
+      "sha256": "c5bbce664afd9e62a95463feba61ada2ab9f9d172bba2e481c7e996ecaa146ce",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/index.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/index.md",
+      "sha256": "cec3af56d0dd29279c9a2921430876f484fc0fb99f8b132c60fa74279dd700f4",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/README.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/README.md",
+      "sha256": "a4888b008dd74d6b3c001656224fcf96607b33f6f3fe390c72831c5294a6ee47",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/metadata.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/metadata.json",
+      "sha256": "0344e4f6b69dd26e7c6819ff751ff93cb34439603bfa115eb09d294f1ec00684",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/pages/real-grimm-khm-1812-i-p093.jpg",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/pages/real-grimm-khm-1812-i-p093.jpg",
+      "sha256": "9cea03a43d0423fec8318f00fbfdeee7d37d4789ff30033cd3981c48a05533bf",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/pages/real-kaskel-to-schnorr-1864.jpg",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/pages/real-kaskel-to-schnorr-1864.jpg",
+      "sha256": "9032245892d87eff927dcd1dea77c4824b341dc19fa32428d18990d16804af79",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/pages/real-schiller-musenalmanach-1796-p093.jpg",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/pages/real-schiller-musenalmanach-1796-p093.jpg",
+      "sha256": "a20c4eb5d629af3d0ff2726b5206e69193082277faff5a1a894fe1c9a33c957b",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-grimm-khm-1812-i-p093.consensus.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-grimm-khm-1812-i-p093.consensus.json",
+      "sha256": "82ef347cba0175a90c6872b88f95333aa1dead1a4b40b960fe44bb3a6993df9f",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-kaskel-to-schnorr-1864.consensus.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-kaskel-to-schnorr-1864.consensus.json",
+      "sha256": "c759b1578f64b7084b626c26f312760293ed3e89d29fc013059b3113370bb5c7",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-schiller-musenalmanach-1796-p093.consensus.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/consensus/real-schiller-musenalmanach-1796-p093.consensus.json",
+      "sha256": "ef036aed8a1f706e016c93fd066e4b170d9a852714b3964e95957e6645c1fb32",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-grimm-khm-1812-i-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-grimm-khm-1812-i-p093.json",
+      "sha256": "18b00211da7bd7a7e17775e00f27786befbcbe660da7f675b68742fc537c7d0e",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-kaskel-to-schnorr-1864.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-kaskel-to-schnorr-1864.json",
+      "sha256": "3000a3382fa30e5f5672c3de6c3233caaff7cbda2459f06b582976295beb162d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-schiller-musenalmanach-1796-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/medoid/real-schiller-musenalmanach-1796-p093.json",
+      "sha256": "12949de3d452de535f573fe44ca6e28c9d19e3fa3bbb490e3616de206dce410a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/provenance.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/provenance.json",
+      "sha256": "1cb46abd25bd9ae80853a6da1463dab93746c1c3a5a7d0a825cdf39b14936ee6",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-grimm-khm-1812-i-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-grimm-khm-1812-i-p093.json",
+      "sha256": "c3883f3a10116f15fb9a1a6c502c9c528e0166254b7f3a22bf98485be5cf8cc6",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-kaskel-to-schnorr-1864.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-kaskel-to-schnorr-1864.json",
+      "sha256": "25cd83cd4a7018001600157247dbb1db2c19ec13856176fc9b34bd1769bd59bf",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-schiller-musenalmanach-1796-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/inputs/readings/segmentation/real-schiller-musenalmanach-1796-p093.json",
+      "sha256": "12949de3d452de535f573fe44ca6e28c9d19e3fa3bbb490e3616de206dce410a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/00-collect-inputs.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/00-collect-inputs.py",
+      "sha256": "a43cd5aa1a22bd92f024cee107c197bb4d4c3ee92732482119195a38c9fe2104",
+      "repository": "mueser-prototypes",
+      "ported_sha256": "42a7081c097166abf1ceb41796672313d4ca5cb9aee31f804fcf52c4253c27d0",
+      "adapted": true
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/01-settle.sh",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/01-settle.sh",
+      "sha256": "8ccbecf6a6ea5ae9e2b377f413cce75f566b6a5b93a9c033cdbacdd0a3f776a5",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/02-translate.sh",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/02-translate.sh",
+      "sha256": "c8eb2ab18fd4486026b1fd3fb17eeedc1771bbbb8efb06b4edfd592f490eb5cb",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/03-build.sh",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/03-build.sh",
+      "sha256": "e01f2511f2417a2e0201de5be0fb720cc6a17597a90566a12ad7b55efa4d2f71",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/04-serve.sh",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/04-serve.sh",
+      "sha256": "68b76922bd1d2426f3877ede979445fd7869d69e7bf76254acc264e9e39c56b6",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/05-review.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/05-review.md",
+      "sha256": "9a119b7c6b729c95869d4dae73266375de5d45b9ed3c3fd6c852014aa179869d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/operations/README.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/operations/README.md",
+      "sha256": "5b848190b7ad7b7c40840c84032f2b58218536a02afa9a8f647aa94daf606298",
+      "repository": "mueser-prototypes",
+      "ported_sha256": "6be207eb06b6ba2e2e2e30f4fb60be990f60905f6a0f1bb7f7350a58d4fa9e97",
+      "adapted": true
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/README.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/README.md",
+      "sha256": "a266dc7b469472e47b1cd693951f6db34f113938fa77c963d1c70cbad7f5fe11",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/index.html",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/index.html",
+      "sha256": "5c41552b86cc63c3f9c34d42bf4a844ceab836b545cab83d41a9334c8712dc21",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/run.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/run.json",
+      "sha256": "2725bc9d871c3cfaa879e9e0eb17b367aac232e468c3fa7a857793b2699fcf72",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/settled.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/settled.json",
+      "sha256": "d53ac169e6eb819d94a952f9eb32317e69ffc5886e2d461cbc65265d70f87c31",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-grimm-khm-1812-i-p093.txt",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-grimm-khm-1812-i-p093.txt",
+      "sha256": "9b47a3b2fb0ab536c6227439819fc6acd49eda55ee6312254eb8eaa18ba804b1",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-kaskel-to-schnorr-1864.txt",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-kaskel-to-schnorr-1864.txt",
+      "sha256": "ab617dcdd880b4e54ed08c3cae2b4fbdaeb10aa33087b87e48bcabb1c1142059",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-schiller-musenalmanach-1796-p093.txt",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/builds/b-20261110-01/transcription/real-schiller-musenalmanach-1796-p093.txt",
+      "sha256": "6b1b504d67b6170fb3d5bd2fc824f03261029169b358577fdeb04708dd3557ef",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/inbox/.gitkeep",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/inbox/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/reading.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/reading.json",
+      "sha256": "89a38fc3dc97d6e6619c4865791ef67c629a7b117aeb7a91b7071269d88c1329",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/run.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/run.json",
+      "sha256": "36d050475c182056cf0a88e8b739b614f830d0a9ab81d223b1c8a40119de6258",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-grimm-khm-1812-i-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-grimm-khm-1812-i-p093.json",
+      "sha256": "3d05a468506c3253d75e72774af87191f8c772b88ed44e32ca54609dbda489a7",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-kaskel-to-schnorr-1864.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-kaskel-to-schnorr-1864.json",
+      "sha256": "590a338175a9d121889d6563fa89d6b952d5e0ad1bc1302257e4a78180f8538c",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-schiller-musenalmanach-1796-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/anthropic_claude-sonnet-5.5/real-schiller-musenalmanach-1796-p093.json",
+      "sha256": "e4d86bb20fdb090d5c24b502a6d4b12f4d7940ac51469a0cf11d8b2ff9c27a2a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-grimm-khm-1812-i-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-grimm-khm-1812-i-p093.json",
+      "sha256": "04b1eb9949ad568cbb15856b381d5999ab451c133d26d650fd21ed04b23647b4",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-kaskel-to-schnorr-1864.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-kaskel-to-schnorr-1864.json",
+      "sha256": "f1727d6886aaff3c86e5021faad0f333ce6cade3d25eee0f097288557cdf3a5a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-schiller-musenalmanach-1796-p093.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/google_gemini-3.8-flash/real-schiller-musenalmanach-1796-p093.json",
+      "sha256": "516648ad1f4cec4c5a186fec6d8517dc09f7c2fdfe672772f202995a6e6a3f54",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-grimm-khm-1812-i-p093.blocks.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-grimm-khm-1812-i-p093.blocks.json",
+      "sha256": "ae7a8094b7ccedfd272e45ef6b8f7ced123a83c799ca68174b677fd937fc0608",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-kaskel-to-schnorr-1864.blocks.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-kaskel-to-schnorr-1864.blocks.json",
+      "sha256": "89ba351903d3a8b5c3246bc6cec7bebea4049346592c680374ce716ea977ae71",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-schiller-musenalmanach-1796-p093.blocks.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/outputs/reading/runs/20261110-01/translation/real-schiller-musenalmanach-1796-p093.blocks.json",
+      "sha256": "a908a067868379b8450d5e59c1be6fcdd689f03e9dd522d781bf35c8d1e8b488",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "01-use-cases/transcription/04-reading-room/summary.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/01-use-cases/transcription/04-reading-room/summary.md",
+      "sha256": "b2d5db011dc6b62fffd722dfa59ddc991051213bf0fa3c2d977c353efc53a1f5",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/__init__.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/__init__.py",
+      "sha256": "3a3f0153a0f9c4736c5a8084666199b1abc685d0f5f68b3fdb881d3c998455d3",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/__init__.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/__init__.py",
+      "sha256": "166981bbe3075598fe489845ed4192fec455756c769416b8964fad4acac81d90",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/__main__.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/__main__.py",
+      "sha256": "86c075c067f69652a6cfd9f9fea3fd3b9bb0b08dd362b8997be1f94386a4c889",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/anchor.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/anchor.py",
+      "sha256": "3ee46fd4cb7bac8e7e334b45b5490965a9f9a1831f5b187615f3c66f0952535c",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/build.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/build.py",
+      "sha256": "33fee96d0e9b38576ffc9a67fb77c5c2f8301488fbd35e9daa2e66bd7117ffbe",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/cite.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/cite.py",
+      "sha256": "722f46c08b186c33a53060f14772a26047a585cf6f44f3dc7dbbd211ec4a397a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/log.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/log.py",
+      "sha256": "68082bee72c4030f9cf47a4bd217dafbfcf2c56cb81633eccf5daddcf9dbbbb0",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/serve.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/serve.py",
+      "sha256": "f366d5daa8c62cc24ebb94c79524438880603917b3edceffcff5a340c4f0f33b",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/settle.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/settle.py",
+      "sha256": "0515b2e7fda074e41d3c52d253f4a3b4777815465c3909043bf035f026fcc2cb",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/translate.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/translate.py",
+      "sha256": "a00d3f949c12120a1efb33548dd44cc7d85e7cd6f1c713729dc9ddc951ce8399",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/web/reading.css",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/web/reading.css",
+      "sha256": "a104fd980ddf21cc36aaf35dcb979e3648783599c969404ebeefc74ce2556820",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/web/reading.html",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/web/reading.html",
+      "sha256": "f480ceecade2bd2ad49047b3001fe68a94e48714418973aefd90fe9f7c703e0d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/reading/web/reading.js",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/reading/web/reading.js",
+      "sha256": "3bf64a2a3820e31d5945ab766498fc94f362367d276fc0f6d7dcd77ca2f589ba",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/__init__.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/__init__.py",
+      "sha256": "9184434f836e8bf7d8286cab83786473864c6ed43531e5ec5bccc0098363fc8c",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/cache.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/cache.py",
+      "sha256": "e2963bb84966168b0c953826cf59f4f0a9079b9b59358fffeedf6bfb15762005",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/env.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/env.py",
+      "sha256": "5d893401da0132e68a2a54b141d7ce9a8f2dc6bb8a3fa7577d14031fa64c376e",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/openrouter.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/openrouter.py",
+      "sha256": "4eaa956144f612e25ef3f9f1b4c99483b398e83836256c5368d64f2f3ea58b4e",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/record.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/record.py",
+      "sha256": "708a72144bd0b6a7ccb03802a7b1467208c8d392c4c3067c5e9a81b6bd779105",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/review.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/review.py",
+      "sha256": "c602b8cbfa27a936f29be36933fa200ac7595a25f30352b6e7fec79a2cb9fda0",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/runs.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/runs.py",
+      "sha256": "075fb1d685692e2e5fdb8577627be29b10f4b26cee0179e40ba6fab2df3b3cb1",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/web/review.css",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/web/review.css",
+      "sha256": "e6de87734d4358949da678972ce63d5202005e2e926e27e33e335b91d22cc3e4",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/shared/web/review.js",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/shared/web/review.js",
+      "sha256": "9ed371d9a3292ea7afd87cfe0888883732112a12ff0d980a0f2a999867bc65f9",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/text/__init__.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/text/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/text/backends/prompts/translate_de_en.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/text/backends/prompts/translate_de_en.md",
+      "sha256": "2928b61ec2ded12e21b27c60928f57869379f2245455b3cb93b841fdd2e4a016",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/text/compare.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/text/compare.py",
+      "sha256": "1207a82dbc10406067269b08b72e2382fa8227e221e32c7be5272d9982dcf215",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "src/mueser/text/evaluate.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/src/mueser/text/evaluate.py",
+      "sha256": "bb2bfa67a7678fac0d364b05790e01f58c294d8329102ffd7bf384a11f745430",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/193863a9172d2a40a662a2ecb4060d3eca27cb9f90da1e8868486275c4b6f980.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/193863a9172d2a40a662a2ecb4060d3eca27cb9f90da1e8868486275c4b6f980.json",
+      "sha256": "c4d5d421d49954b3fb3f637589725cc4ea11fd7dfd8b8f29af4e23c5d9973c4b",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/4b3cd583c7c675f07ccfe2d44c1f99eda9b6c4de2ecd8cf524efb7d040d89a56.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/4b3cd583c7c675f07ccfe2d44c1f99eda9b6c4de2ecd8cf524efb7d040d89a56.json",
+      "sha256": "31238083f8228a29df109e6727257a3023969d9ee4dca6da764b4eb17b1c49e6",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/7e5dac63f41f8bc12a42c4e59c33567b7076a47c9f0c91c0a27be0cba1b6b36b.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/7e5dac63f41f8bc12a42c4e59c33567b7076a47c9f0c91c0a27be0cba1b6b36b.json",
+      "sha256": "5fa0ffe0468c83e0477c11817511a5bca060249fddeb2d149715f0ea7ee4954d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/d924073cad023b1df888be26cb475931990c7c26168771cb00926c2e17e71074.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/d924073cad023b1df888be26cb475931990c7c26168771cb00926c2e17e71074.json",
+      "sha256": "d671c632a845e4becc25d2b9bc595fd47fbf1a6cb4b708793960acf26d03435d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/f034919ed23577974743cee0a227176d6236f653e9895e707f96a2c275269ca7.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/f034919ed23577974743cee0a227176d6236f653e9895e707f96a2c275269ca7.json",
+      "sha256": "393b39fad67cb1cfa076cc1c2947f90c9bcc0658cf917ecda675ff3068946b7a",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "cache/openrouter/f16cd0801beb6bfd087091b2d140ed84eab3e1397fb28ffb57b9eda79129650b.json",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/cache/openrouter/f16cd0801beb6bfd087091b2d140ed84eab3e1397fb28ffb57b9eda79129650b.json",
+      "sha256": "1f9cc62d970c21701e52179d51389c58339e17f7ad66a6db163d431ac2adddc9",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "README.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/README.md",
+      "sha256": "66bd118305b063d67f4bd390faae045e1db429b9e555f8f95ddd70b4aefe4866",
+      "repository": "mueser-prototypes",
+      "ported_sha256": "a44b00b2930b8992ee8f47a3e666661565f2c05877bdd3de2a0e5e870a96e187",
+      "adapted": true
+    },
+    {
+      "source": "CLAUDE.md",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/CLAUDE.md",
+      "sha256": "9e815bc718f92818619910b821180e296ac5aefaac0dd6545f475755a03b4d6e",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "pyproject.toml",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/pyproject.toml",
+      "sha256": "c3c55a18868a109b5bc5134ef67dabb0e2cf389e8e7486e80377baa1faee2f9d",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "uv.lock",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/uv.lock",
+      "sha256": "122f6280681bbc2d4c50082fc45e1347f66fd392ae9984b0e6d868d1e74c07a7",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": ".gitignore",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/.gitignore",
+      "sha256": "0bd74541f30e1df08578bcaa74d9710dec6591264cfad75d90365ded9c3a35b7",
+      "repository": "mueser-prototypes"
+    },
+    {
+      "source": "tests/test_reading.py",
+      "destination": "02-further-use-cases/manuscript-transcription/german-project/tests/test_reading.py",
+      "sha256": "fc5cc50be5cd40306bffc1a96b46ae7deac7ac9a1b4b410817184d5261f44e43",
+      "repository": "mueser-prototypes"
+    }
+  ],
+  "reading_room_scope": "Only 04-reading-room and the runtime dependencies needed to produce it; earlier transcription cases and English manuscript examples removed.",
+  "reading_room_http_snapshot": {
+    "url": "http://127.0.0.1:8765/01-use-cases/transcription/04-reading-room/outputs/index.html",
+    "sha256": "5c41552b86cc63c3f9c34d42bf4a844ceab836b545cab83d41a9334c8712dc21",
+    "matches_source_file": true
+  },
+  "revisions": [
+    {
+      "date": "2026-11-12",
+      "source_commit": "04b0670",
+      "source": "_context/claude-trainings/idealized-workshop/recipes/",
+      "scope": "Corrected interview recipe; reconcile earlier copies; add attributed PhET and research-helper audits",
+      "changed_files": [
+        "02-further-use-cases/README.md",
+        "02-further-use-cases/interview-coding/corrections.md",
+        "02-further-use-cases/interview-coding/summary.md",
+        "02-further-use-cases/interview-coding/README.md",
+        "02-further-use-cases/interview-coding/index.md",
+        "02-further-use-cases/interview-coding/PORT.md",
+        "02-further-use-cases/interview-coding/CLAUDE.md",
+        "02-further-use-cases/research-helper/index.html",
+        "02-further-use-cases/research-helper/summary.md",
+        "02-further-use-cases/research-helper/AUDIT.md",
+        "02-further-use-cases/research-helper/index.md",
+        "02-further-use-cases/research-helper/AUDIT.html",
+        "02-further-use-cases/physics-interactives/index.html",
+        "02-further-use-cases/physics-interactives/summary.md",
+        "02-further-use-cases/physics-interactives/AUDIT.md",
+        "02-further-use-cases/physics-interactives/index.md",
+        "02-further-use-cases/physics-interactives/AUDIT.html",
+        "02-further-use-cases/interview-coding/background/affordance.md",
+        "02-further-use-cases/interview-coding/background/claude-thoughts.md",
+        "02-further-use-cases/interview-coding/background/tradition.md",
+        "02-further-use-cases/interview-coding/background/how-we-built-this.md",
+        "02-further-use-cases/interview-coding/background/PLAN.md",
+        "02-further-use-cases/interview-coding/operations/08-audit-the-returns.md",
+        "02-further-use-cases/interview-coding/operations/02-write-it-down.md",
+        "02-further-use-cases/interview-coding/operations/05-PLAN.md",
+        "02-further-use-cases/interview-coding/operations/04-make-a-corpus.md",
+        "02-further-use-cases/interview-coding/operations/10-run-the-recipe.md",
+        "02-further-use-cases/interview-coding/operations/03-design-skills.md",
+        "02-further-use-cases/interview-coding/operations/07-claude-md.md",
+        "02-further-use-cases/interview-coding/operations/06-three-claudes-in-parallel.md",
+        "02-further-use-cases/interview-coding/operations/01-read-the-paper.md",
+        "02-further-use-cases/interview-coding/operations/09-deep-research.md",
+        "02-further-use-cases/interview-coding/inputs/README.md",
+        "02-further-use-cases/interview-coding/inputs/the-paper.md",
+        "02-further-use-cases/interview-coding/inputs/attributes.csv",
+        "02-further-use-cases/interview-coding/inputs/transcripts/R001-Transcript.md",
+        "02-further-use-cases/interview-coding/inputs/transcripts/R002-Transcript.md",
+        "02-further-use-cases/interview-coding/inputs/transcripts/R003-Transcript.md",
+        "02-further-use-cases/interview-coding/inputs/transcripts/R004-Transcript.md",
+        "02-further-use-cases/interview-coding/outputs/methods/methods-paragraph.md",
+        "02-further-use-cases/interview-coding/outputs/indexed/R002-Indexed.md",
+        "02-further-use-cases/interview-coding/outputs/indexed/R001-Indexed.md",
+        "02-further-use-cases/interview-coding/outputs/indexed/R004-Indexed.md",
+        "02-further-use-cases/interview-coding/outputs/indexed/R003-Indexed.md",
+        "02-further-use-cases/interview-coding/outputs/essay/research-result.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/SKILL.md",
+        "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/SKILL.md",
+        "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/reasoning-guide.md",
+        "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/SKILL.md",
+        "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/community-college-mothers-push-four-year.md",
+        "02-further-use-cases/interview-coding/.claude/skills/find-negative-cases/examples/instrumental-mothers-emotional-framing.md",
+        "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-empty.md",
+        "02-further-use-cases/interview-coding/.claude/skills/methods-paragraph/examples/methods-paragraph-full.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Coverage.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Indexed.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Indexed.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R002-Coverage.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Indexed.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R003-Indexed.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R004-Coverage.md",
+        "02-further-use-cases/interview-coding/.claude/skills/index-transcript/examples/R001-Coverage.md"
+      ],
+      "added_files": [
+        {
+          "destination": "02-further-use-cases/interview-coding/corrections.md",
+          "sha256": "f3c1e909f81961f968962faa9c62019b9f5a9e64590e416b08e4715250382027"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/README.md",
+          "sha256": "3f1aa27b5cd8bb3b6d21f079b683d58fec2a6d0c5af1ef3ef7696efa5c37c0e3"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/PORT.md",
+          "sha256": "525346b4bdfe3507a1e068aab588770427c7e540b177f5772d904c24e60e4a62"
+        },
+        {
+          "destination": "02-further-use-cases/research-helper/AUDIT.md",
+          "sha256": "cf7aa9243d4b8ea084ba5586d3823c3e40792d19407a15ebb5dde0c1ed43a260"
+        },
+        {
+          "destination": "02-further-use-cases/research-helper/AUDIT.html",
+          "sha256": "ec856bd05f242cc0a8405439b3a5d4831bab2351ff95a458a9ebc0bab1ea5481"
+        },
+        {
+          "destination": "02-further-use-cases/physics-interactives/AUDIT.md",
+          "sha256": "5ae5b547fb3fc30a5609e525accdef799b16d514429930d4267eeedd0cb201a7"
+        },
+        {
+          "destination": "02-further-use-cases/physics-interactives/AUDIT.html",
+          "sha256": "22d6e02ec023cb7992e58984702ac2afc68c8dd04ca7b326b4a89a9f9096290b"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/08-audit-the-returns.md",
+          "sha256": "d5d8cbe7f1c3779916dc4f4d898f214da15c81e8ab1abef576ff1c3d918e03fb"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/02-write-it-down.md",
+          "sha256": "86109e73fc26d00b9b48bfedb73774a075817e50c790d3bf176b24ddfba9330b"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/05-PLAN.md",
+          "sha256": "c3c44dbcab08f1546fd0fd75de1414e3f8f227e562895a2f3498b83760bc21c0"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/04-make-a-corpus.md",
+          "sha256": "51e530ddb63143e8b85b5e53ca5517532c9c8f58cae3b6521d175616ee115561"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/10-run-the-recipe.md",
+          "sha256": "c9ffd92b8c1d6d1b7ff2f4f21e87c910e8d335472e7d431445f1273bddf581eb"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/03-design-skills.md",
+          "sha256": "764d5ce163b6da9ea7b8053b87e46e032e9afae983700e72b5ca15107130a9f0"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/07-claude-md.md",
+          "sha256": "9a3d8c63664aaaa0d5b5041e70d5779976a7446a65330215bb52ab1ec0c6dcb7"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/06-three-claudes-in-parallel.md",
+          "sha256": "c3bbc12a08d3a79aa8bf37a6946ec978f223b7c7bf088326ce9e0530858d0d5e"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/01-read-the-paper.md",
+          "sha256": "d0bbf9bc1fab8dcbd8bc0175709f9873dc7ce29c405ea2719eb35d2d8a4a48f4"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/operations/09-deep-research.md",
+          "sha256": "24756481f8456a9fcd009498e79a0509f818d05277585f771713b6fa6d1d92d2"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/inputs/the-paper.md",
+          "sha256": "86b3bcc58409fad6a5a8fdb551106aa63e34e247734ec5dce91f1e235fb66356"
+        },
+        {
+          "destination": "02-further-use-cases/interview-coding/outputs/essay/research-result.md",
+          "sha256": "103a65362466812d33286fda1601807a8860d2520739bbcd74e828ac78a024f1"
+        }
+      ],
+      "excluded": "inputs/private-only paper PDF and personal planning material"
+    }
+  ]
+}

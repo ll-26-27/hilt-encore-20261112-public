@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predator and prey: why the peaks do not line up</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+--------------------------------------------------------------------
+Title:                  Predator and prey: why the peaks do not line up
+Learning goal:          A student can explain why the predator peak
+                        always trails the prey peak, can measure how far
+                        it trails and say what that fraction depends on,
+                        and can read a phase portrait as the same
+                        information as a time series.
+Target learner:         Introductory ecology or quantitative biology.
+                        Comfortable with "rate of change" informally;
+                        no calculus required to use this.
+Core misconception:     (1) That predator and prey numbers rise and
+                        fall together -- students reason "more prey,
+                        more predators" and place the peaks on top of
+                        each other. (2) That the cycle is driven by an
+                        external clock (seasons) rather than generated
+                        by the interaction itself. (3) That a phase
+                        portrait is a different phenomenon rather than
+                        a different projection of the same run.
+                        NOTE: the quarter-cycle lag is the SMALL-
+                        AMPLITUDE result. Near equilibrium the lag
+                        approaches 0.25 of a period; on the large
+                        boom-bust orbits it falls to roughly 0.10-0.18.
+                        The readout reports the measured fraction so
+                        students can find this themselves rather than
+                        being told a number that the default orbit
+                        does not actually show.
+Manipulables:           alpha, prey growth rate, 0.2-2.0
+                        beta,  predation rate, 0.01-0.15
+                        gamma, predator death rate, 0.2-2.0
+                        delta, conversion efficiency, 0.005-0.05
+                        Starting prey and predator counts
+Hidden/fixed by design: No carrying capacity for the prey, no handling
+                        time, no age structure, no space, no
+                        stochasticity. The classical Lotka-Volterra
+                        model is deliberately the WRONG model in these
+                        respects -- naming that is part of the lesson.
+Representations:        Two linked views: (a) a time series of both
+                        populations with peak markers, (b) a phase
+                        portrait plotting predators against prey, which
+                        closes into a loop. A readout reports the
+                        measured lag between peaks.
+Reflection prompts:     5; see "Try this" panel.
+Model limitations:      See panel.
+Classroom use:          In-class demo, then a lab activity in which
+                        students fit the four parameters to the
+                        Hudson's Bay lynx-hare pelt record and argue
+                        about where the model fails.
+Date:                   2026-09-14
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff; --fg: #111111; --muted: #555555; --panel: #f4f4f4;
+    --accent: #2a6fdb; --accent-fg: #ffffff;
+    --prey: #2a8a4a; --pred: #d24a3d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px; line-height: 1.5; color: var(--fg); background: var(--bg);
+    margin: 0; padding: 1.5rem; max-width: 1400px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; max-width: 70ch; }
+  .layout { display: grid; grid-template-columns: 250px 1.4fr 1fr; gap: 1rem; align-items: start; }
+  .controls, .view, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .view h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--muted); }
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .panel ol { margin: 0; padding-left: 1.2rem; }
+  .panel li { margin-bottom: 0.5rem; }
+  label { display: block; margin: 0.7rem 0; font-size: 0.95rem; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  .sub { font-size: 0.82rem; color: var(--muted); display: block; }
+  button {
+    padding: 0.5rem 0.9rem; font-size: 0.95rem; background: var(--accent); color: var(--accent-fg);
+    border: none; border-radius: 4px; cursor: pointer; margin: 0.75rem 0.4rem 0 0;
+  }
+  button.secondary { background: #777; }
+  button:focus-visible, input:focus-visible { outline: 3px solid #ffb800; outline-offset: 2px; }
+  svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 4px; }
+  svg text { font-size: 11px; font-family: inherit; fill: var(--muted); }
+  svg text.axis-title { font-size: 12px; }
+  .live-readout { margin-top: 0.75rem; padding: 0.5rem; background: #fff; border-radius: 4px;
+    font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+  .live-readout div { margin: 0.15rem 0; }
+  .legend { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.85rem; margin-top: 0.5rem; }
+  .legend span { display: flex; align-items: center; gap: 0.3rem; }
+  .sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  @media (max-width: 1100px) { .layout, .panels { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>Predator and prey: why the peaks do not line up</h1>
+<p class="goal">Nothing outside this model changes &mdash; no seasons, no weather. The cycle is produced entirely by the two populations eating and starving. Watch where the red peak falls relative to the green one &mdash; and by how much that changes when you change the size of the swing.</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      &alpha; prey growth: <span id="a-readout" class="readout">1.00</span>
+      <span class="sub">how fast prey breed with no predators</span>
+      <input id="alpha" type="range" min="0.2" max="2" value="1" step="0.05" aria-label="Prey growth rate alpha">
+    </label>
+
+    <label>
+      &beta; predation: <span id="b-readout" class="readout">0.050</span>
+      <span class="sub">prey removed per predator per unit time</span>
+      <input id="beta" type="range" min="0.01" max="0.15" value="0.05" step="0.005" aria-label="Predation rate beta">
+    </label>
+
+    <label>
+      &gamma; predator death: <span id="g-readout" class="readout">1.00</span>
+      <span class="sub">how fast predators starve with no prey</span>
+      <input id="gamma" type="range" min="0.2" max="2" value="1" step="0.05" aria-label="Predator death rate gamma">
+    </label>
+
+    <label>
+      &delta; conversion: <span id="d-readout" class="readout">0.020</span>
+      <span class="sub">predators produced per prey eaten</span>
+      <input id="delta" type="range" min="0.005" max="0.05" value="0.02" step="0.001" aria-label="Conversion efficiency delta">
+    </label>
+
+    <label>
+      Starting prey: <span id="x0-readout" class="readout">40</span>
+      <input id="x0" type="range" min="5" max="120" value="40" step="1" aria-label="Starting prey population">
+    </label>
+
+    <label>
+      Starting predators: <span id="y0-readout" class="readout">9</span>
+      <input id="y0" type="range" min="1" max="40" value="9" step="1" aria-label="Starting predator population">
+    </label>
+
+    <button id="playPause" type="button" aria-pressed="true">Pause</button>
+    <button id="reset" type="button" class="secondary">Reset</button>
+  </section>
+
+  <section class="view" aria-labelledby="ts-heading">
+    <h2 id="ts-heading">Populations over time</h2>
+    <svg id="ts" viewBox="0 0 420 240" role="img" aria-labelledby="ts-desc">
+      <title id="ts-desc">Two curves over time: prey in green, predators in red. Vertical markers show the most recent peak of each. The predator peak consistently falls after the prey peak.</title>
+      <line x1="40" y1="206" x2="412" y2="206" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="12"  x2="40"  y2="206" stroke="#888" stroke-width="1"/>
+      <text x="36" y="210" text-anchor="end">0</text>
+      <text id="ymax-label" x="36" y="16" text-anchor="end">120</text>
+      <line id="peak-prey" x1="0" y1="12" x2="0" y2="206" stroke="var(--prey)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>
+      <line id="peak-pred" x1="0" y1="12" x2="0" y2="206" stroke="var(--pred)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>
+      <polyline id="prey-line" fill="none" stroke="var(--prey)" stroke-width="2" points=""/>
+      <polyline id="pred-line" fill="none" stroke="var(--pred)" stroke-width="2" points=""/>
+      <text x="226" y="226" text-anchor="middle" class="axis-title">time &rarr;</text>
+    </svg>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--prey)"></i> prey</span>
+      <span><i class="sw" style="background:var(--pred)"></i> predators</span>
+    </div>
+    <div class="live-readout" aria-live="polite">
+      <div>Prey: <span id="x-readout" class="readout">40.0</span>
+         &nbsp; Predators: <span id="y-readout" class="readout">9.0</span></div>
+      <div>Cycle period: <span id="period-readout" class="readout">&mdash;</span></div>
+      <div>Predator peak lags by: <span id="lag-readout" class="readout">&mdash;</span></div>
+    </div>
+  </section>
+
+  <section class="view" aria-labelledby="pp-heading">
+    <h2 id="pp-heading">Phase portrait</h2>
+    <svg id="pp" viewBox="0 0 260 240" role="img" aria-labelledby="pp-desc">
+      <title id="pp-desc">Predators plotted against prey. The same run as the time series, drawn without a time axis. It closes into a loop travelled anticlockwise; the cross marks the equilibrium point.</title>
+      <line x1="40" y1="206" x2="252" y2="206" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="12"  x2="40"  y2="206" stroke="#888" stroke-width="1"/>
+      <text x="36" y="210" text-anchor="end">0</text>
+      <line id="eq-v" x1="0" y1="12" x2="0" y2="206" stroke="#ccc" stroke-width="1"/>
+      <line id="eq-h" x1="40" y1="0" x2="252" y2="0" stroke="#ccc" stroke-width="1"/>
+      <polyline id="orbit" fill="none" stroke="#333" stroke-width="1.5" points=""/>
+      <circle id="dot" cx="0" cy="0" r="4.5" fill="var(--accent)"/>
+      <text x="146" y="226" text-anchor="middle" class="axis-title">prey &rarr;</text>
+      <text x="14" y="20" class="axis-title">pred</text>
+    </svg>
+    <div class="live-readout" aria-live="polite">
+      <div>Equilibrium: prey <span id="eqx-readout" class="readout">50.0</span>,
+           predators <span id="eqy-readout" class="readout">20.0</span></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="panels">
+
+  <section class="panel" aria-labelledby="notice-heading">
+    <h2 id="notice-heading">What to notice</h2>
+    <p>The red curve peaks <em>after</em> the green one &mdash; always, for every parameter setting. Predators cannot increase until there is already a lot of prey to eat, and by the time there are many predators the prey are already crashing.</p>
+    <p><em>How far</em> after is not fixed. The textbook answer, a quarter of a cycle, is the small-oscillation result: it holds when the populations stay near the equilibrium point. On the big boom-and-bust orbits the lag is shorter &mdash; nearer a fifth or a tenth of a cycle. The readout gives you the measured fraction, so check it rather than trusting the number you were told.</p>
+    <p>Nothing in this model has a calendar. There is no winter, no drought, no external driver. The oscillation is generated by the interaction itself, which is the whole point.</p>
+    <p>The phase portrait is <em>the same run</em> with time thrown away. A closed loop means the populations return to exactly where they started and repeat &mdash; the loop is travelled anticlockwise, and one lap is one cycle.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="tryit-heading">
+    <h2 id="tryit-heading">Try this</h2>
+    <ol>
+      <li>Watch one full cycle and say, out loud, the four-stage story: prey rise &rarr; predators rise &rarr; prey crash &rarr; predators starve. Match each stage to a quarter of the loop in the phase portrait.</li>
+      <li>Raise &beta; (predation). Predict first: do the cycles get faster, taller, or both? Watch the measured period change.</li>
+      <li>Start close to equilibrium (prey 55, predators 22) and read the lag fraction. Now start far away (prey 120, predators 3) and read it again. The quarter-cycle rule holds in one case and not the other &mdash; which, and can you say why?</li>
+      <li>Set starting prey and predators to the equilibrium values shown under the phase portrait. What happens to the loop? What does that tell you about that point?</li>
+      <li>Start far from equilibrium (prey 120, predators 3). Does the loop ever spiral <em>inward</em> toward the equilibrium? Real populations usually do &mdash; what is this model missing?</li>
+      <li>Try to drive the prey extinct by pushing &beta; to maximum and &delta; high. You cannot. Name the assumption that makes extinction impossible here.</li>
+    </ol>
+  </section>
+
+  <section class="panel" aria-labelledby="limits-heading">
+    <h2 id="limits-heading">Model limitations</h2>
+    <p>This is classical Lotka&ndash;Volterra, and it is famously wrong in instructive ways. Prey grow without limit when predators are absent &mdash; there is no carrying capacity, no food supply of their own. Predators eat at a rate proportional to prey density with no upper bound, as though handling and digesting took no time.</p>
+    <p>The orbits are <em>neutrally stable</em>: a nudge moves the system to a different loop permanently, rather than returning it. Real predator&ndash;prey systems usually spiral in toward a stable cycle or point. Adding a carrying capacity or a saturating functional response fixes this, at the cost of a model you cannot solve by hand.</p>
+    <p>Populations here are continuous real numbers, so 0.3 of a lynx is possible and nothing ever goes extinct by bad luck. Any real small population can be wiped out by chance alone.</p>
+    <p>The quarter-cycle lag quoted in most textbooks comes from linearising these equations about the equilibrium point. That approximation is good for small wobbles and poor for the large cycles this simulation shows by default &mdash; a useful reminder that a remembered result usually carries an unstated condition.</p>
+  </section>
+
+</div>
+
+<script>
+  // === constants ===
+  const INITIAL = { alpha: 1.0, beta: 0.05, gamma: 1.0, delta: 0.02, x0: 40, y0: 9 };
+  const DT = 0.004;          // integration step
+  const STEPS_PER_FRAME = 8; // -> ~0.032 time units per frame
+  const WINDOW = 24;         // time units visible on the time series
+  const TS = { left: 40, right: 412, top: 12, bottom: 206 };
+  const PP = { left: 40, right: 252, top: 12, bottom: 206 };
+
+  const state = { ...INITIAL, x: INITIAL.x0, y: INITIAL.y0, t: 0, running: true,
+                  series: [], orbit: [], lastPreyPeak: null, prevPreyPeak: null,
+                  lastPredPeak: null, lag: null, period: null };
+  const $ = id => document.getElementById(id);
+
+  // === model: classical Lotka-Volterra, integrated with RK4 ===
+  // Euler drifts outward and breaks the closed orbit, which would teach the
+  // wrong thing; RK4 keeps the loop visibly closed over a classroom-length run.
+  function derivs(x, y) {
+    return [ state.alpha * x - state.beta * x * y,
+             state.delta * x * y - state.gamma * y ];
+  }
+  function rk4() {
+    const [x, y] = [state.x, state.y];
+    const [k1x, k1y] = derivs(x, y);
+    const [k2x, k2y] = derivs(x + DT / 2 * k1x, y + DT / 2 * k1y);
+    const [k3x, k3y] = derivs(x + DT / 2 * k2x, y + DT / 2 * k2y);
+    const [k4x, k4y] = derivs(x + DT * k3x,     y + DT * k3y);
+    state.x = Math.max(0, x + DT / 6 * (k1x + 2 * k2x + 2 * k3x + k4x));
+    state.y = Math.max(0, y + DT / 6 * (k1y + 2 * k2y + 2 * k3y + k4y));
+    state.t += DT;
+  }
+
+  function equilibrium() {
+    return { x: state.gamma / state.delta, y: state.alpha / state.beta };
+  }
+
+  // Detect a local maximum from the last three samples and record its time.
+  function detectPeaks() {
+    const s = state.series, n = s.length;
+    if (n < 3) return;
+    const [a, b, c] = [s[n - 3], s[n - 2], s[n - 1]];
+    if (b.x > a.x && b.x >= c.x) {
+      // period is the gap between successive prey peaks
+      if (state.lastPreyPeak !== null) state.period = b.t - state.lastPreyPeak;
+      state.prevPreyPeak = state.lastPreyPeak;
+      state.lastPreyPeak = b.t;
+    }
+    if (b.y > a.y && b.y >= c.y) {
+      state.lastPredPeak = b.t;
+      if (state.lastPreyPeak !== null && b.t > state.lastPreyPeak) {
+        state.lag = b.t - state.lastPreyPeak;
+      }
+    }
+  }
+
+  // === render ===
+  function render() {
+    const eq = equilibrium();
+    const visible = state.series.filter(p => p.t >= state.t - WINDOW);
+    if (visible.length === 0) return;
+
+    // shared y-scale for the time series, with headroom
+    const peak = visible.reduce((m, p) => Math.max(m, p.x, p.y), 1);
+    const yMax = Math.ceil(peak * 1.15 / 10) * 10;
+    const t0 = Math.max(0, state.t - WINDOW);
+    const sx = t => TS.left + ((t - t0) / WINDOW) * (TS.right - TS.left);
+    const sy = v => TS.bottom - (v / yMax) * (TS.bottom - TS.top);
+
+    $('prey-line').setAttribute('points',
+      visible.map(p => `${sx(p.t).toFixed(1)},${sy(p.x).toFixed(1)}`).join(' '));
+    $('pred-line').setAttribute('points',
+      visible.map(p => `${sx(p.t).toFixed(1)},${sy(p.y).toFixed(1)}`).join(' '));
+    $('ymax-label').textContent = yMax;
+
+    markPeak('peak-prey', state.lastPreyPeak, t0, sx);
+    markPeak('peak-pred', state.lastPredPeak, t0, sx);
+
+    // phase portrait, scaled to the orbit plus the equilibrium point
+    const xMax = Math.max(eq.x, ...state.orbit.map(p => p.x)) * 1.15 || 1;
+    const yMaxP = Math.max(eq.y, ...state.orbit.map(p => p.y)) * 1.15 || 1;
+    const px = v => PP.left + (v / xMax) * (PP.right - PP.left);
+    const py = v => PP.bottom - (v / yMaxP) * (PP.bottom - PP.top);
+
+    $('orbit').setAttribute('points',
+      state.orbit.map(p => `${px(p.x).toFixed(1)},${py(p.y).toFixed(1)}`).join(' '));
+    $('dot').setAttribute('cx', px(state.x));
+    $('dot').setAttribute('cy', py(state.y));
+    $('eq-v').setAttribute('x1', px(eq.x)); $('eq-v').setAttribute('x2', px(eq.x));
+    $('eq-h').setAttribute('y1', py(eq.y)); $('eq-h').setAttribute('y2', py(eq.y));
+
+    // readouts
+    $('x-readout').textContent   = state.x.toFixed(1);
+    $('y-readout').textContent   = state.y.toFixed(1);
+    $('eqx-readout').textContent = eq.x.toFixed(1);
+    $('eqy-readout').textContent = eq.y.toFixed(1);
+    $('period-readout').textContent = state.period === null
+      ? '—' : state.period.toFixed(2) + ' time units';
+    $('lag-readout').textContent = state.lag === null
+      ? '—'
+      : state.lag.toFixed(2) + (state.period
+          ? ` (${(state.lag / state.period).toFixed(3)} of a cycle)` : '');
+
+    $('a-readout').textContent  = state.alpha.toFixed(2);
+    $('b-readout').textContent  = state.beta.toFixed(3);
+    $('g-readout').textContent  = state.gamma.toFixed(2);
+    $('d-readout').textContent  = state.delta.toFixed(3);
+    $('x0-readout').textContent = state.x0;
+    $('y0-readout').textContent = state.y0;
+  }
+
+  function markPeak(id, t, t0, sx) {
+    const el = $(id);
+    if (t === null || t < t0) { el.setAttribute('opacity', 0); return; }
+    el.setAttribute('opacity', 0.9);
+    el.setAttribute('x1', sx(t)); el.setAttribute('x2', sx(t));
+  }
+
+  // === loop ===
+  function loop() {
+    if (state.running) {
+      for (let i = 0; i < STEPS_PER_FRAME; i++) rk4();
+      state.series.push({ t: state.t, x: state.x, y: state.y });
+      state.orbit.push({ x: state.x, y: state.y });
+      if (state.series.length > 4000) state.series.shift();
+      if (state.orbit.length > 3000)  state.orbit.shift();
+      detectPeaks();
+    }
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  function restart() {
+    state.x = state.x0; state.y = state.y0; state.t = 0;
+    state.series = [{ t: 0, x: state.x0, y: state.y0 }];
+    state.orbit  = [{ x: state.x0, y: state.y0 }];
+    state.lastPreyPeak = state.prevPreyPeak = state.lastPredPeak = null;
+    state.lag = state.period = null;
+    render();
+  }
+
+  // === events ===
+  ['alpha', 'beta', 'gamma', 'delta'].forEach(k => {
+    $(k).addEventListener('input', e => { state[k] = +e.target.value; restart(); });
+  });
+  $('x0').addEventListener('input', e => { state.x0 = +e.target.value; restart(); });
+  $('y0').addEventListener('input', e => { state.y0 = +e.target.value; restart(); });
+
+  $('playPause').addEventListener('click', () => {
+    state.running = !state.running;
+    $('playPause').textContent = state.running ? 'Pause' : 'Play';
+    $('playPause').setAttribute('aria-pressed', String(state.running));
+  });
+  $('reset').addEventListener('click', () => {
+    Object.assign(state, INITIAL);
+    ['alpha', 'beta', 'gamma', 'delta', 'x0', 'y0'].forEach(k => { $(k).value = state[k]; });
+    state.running = true;
+    $('playPause').textContent = 'Pause';
+    $('playPause').setAttribute('aria-pressed', 'true');
+    restart();
+  });
+
+  // === init ===
+  restart();
+  requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>

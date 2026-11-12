@@ -1,0 +1,6 @@
+{
+  "name": "exam-makeup",
+  "description": "Generate candidate replacement problems for a make-up exam, modeled on an original exam (any common format) and optional past exams or course context",
+  "version": "0.1.0",
+  "author": "Claude Code"
+}

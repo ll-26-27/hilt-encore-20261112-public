@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lost in the Middle — Research Summary</title>
+<style>
+  :root{--ink:#1a1a1a;--mut:#5c5c5c;--line:#e3e3e3;--accent:#7a3b2e;--twist-bg:#fdf6f3;--twist-bd:#e7c8bd;}
+  *{box-sizing:border-box;}
+  body{font:16px/1.65 Georgia,"Times New Roman",serif;color:var(--ink);background:#faf9f7;margin:0;}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+  .crumb{font:13px/1.4 -apple-system,system-ui,sans-serif;color:var(--mut);margin-bottom:28px;}
+  .crumb a{color:var(--accent);text-decoration:none;}
+  h1{font-size:30px;line-height:1.25;margin:0 0 6px;}
+  .meta{font:14px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);margin:0 0 4px;}
+  .gloss{font-size:18px;font-style:italic;color:#333;border-left:3px solid var(--accent);padding:6px 0 6px 16px;margin:22px 0 36px;}
+  h2{font:600 13px/1.3 -apple-system,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:42px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+  p{margin:0 0 16px;}
+  ul{margin:0 0 16px;padding-left:22px;}
+  li{margin:0 0 9px;}
+  .twist{background:var(--twist-bg);border:1px solid var(--twist-bd);border-radius:8px;padding:8px 26px 22px;margin:42px 0;}
+  .twist h2{border-bottom-color:var(--twist-bd);}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font:13px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);}
+  footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb"><a href="index.html">← Research Helper index</a> &nbsp;·&nbsp; Article 02</div>
+
+  <h1>Lost in the Middle: How Language Models Use Long Contexts</h1>
+  <p class="meta">Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, Percy Liang · 2023</p>
+  <p class="meta">Source: arXiv:2307.03172 (cs.CL); published in <em>Transactions of the ACL</em></p>
+  <p class="gloss">Language models use information best when it appears at the very start or very end of their input, and get noticeably worse when the relevant information is buried in the middle of a long context.</p>
+
+  <h2>Neutral Summary</h2>
+  <p>The paper investigates how well language models actually <em>use</em> information located in long input contexts, as opposed to merely being able to accept long inputs. The authors run controlled experiments on two tasks where the relevant information's position can be systematically varied: multi-document question answering (one answer-bearing document plus k−1 distractor documents from NaturalQuestions-Open / Wikipedia) and a synthetic key-value retrieval task (a JSON object of random UUID key-value pairs). They evaluate open models (MPT-30B-Instruct, LongChat-13B 16K) and closed models (GPT-3.5-Turbo / 16K, Claude-1.3 / 100K), holding the desired output fixed while changing the position of the relevant information and the total context length.</p>
+  <p>The central finding is a distinctive U-shaped performance curve: models perform best when relevant information is at the very beginning (primacy bias) or very end (recency bias), and degrade substantially when they must access information in the middle. The effect is large — GPT-3.5-Turbo's multi-document QA accuracy can drop by more than 20 points, and in the 20- and 30-document settings its worst-case middle-position performance falls below its closed-book performance (56.1%), i.e., below answering with no documents at all. Extended-context variants perform nearly identically to their base counterparts when inputs fit both windows, indicating that a larger context window does not by itself yield better use of context. On the synthetic key-value task, Claude-1.3 is near-perfect at all positions while several other models still show the U-shape.</p>
+  <p>To probe causes, the authors run preliminary analyses of three factors. <strong>Architecture:</strong> encoder-decoder models are relatively robust to position within their training-time sequence length but show the U-shape on longer sequences. <strong>Query-aware contextualization:</strong> placing the query both before and after the data dramatically helps the synthetic key-value task but barely changes multi-document QA. <strong>Instruction fine-tuning:</strong> base MPT-30B also shows the U-shape, so instruction tuning is not the sole cause; the primacy half of the curve emerges mainly in larger models (Llama-2 13B/70B vs. 7B).</p>
+  <p>A practical case study on open-domain QA with a retriever-reader setup shows reader accuracy saturates long before retriever recall does: going from 20 to 50 retrieved documents improves accuracy only ~1–1.5% while greatly increasing context length, latency, and cost. Stated limitations: the architecture, query-placement, and instruction-tuning analyses are explicitly preliminary; GPT-4 was evaluated only on a 500-example subset due to cost (higher absolute accuracy but still U-shaped).</p>
+
+  <h2>Key Findings</h2>
+  <ul>
+    <li>Performance follows a <strong>U-shaped curve</strong> by position: highest at the start (primacy) and end (recency), lowest in the middle.</li>
+    <li>The degradation is large — GPT-3.5-Turbo can lose &gt;20 points, dropping below its no-documents closed-book baseline (56.1%) in 20/30-document settings.</li>
+    <li>Extended-context models are not necessarily better at using context: base vs. 16K/100K variants perform nearly identically when inputs fit both windows.</li>
+    <li>The effect appears even on a minimal synthetic UUID key-value task for several models, though Claude-1.3 solves that task near-perfectly at all positions.</li>
+    <li>Encoder-decoder models are robust within their training sequence length but degrade on longer sequences; decoder-only models show the U-shape generally.</li>
+    <li>Query-aware contextualization nearly eliminates the problem on synthetic retrieval but barely helps multi-document QA.</li>
+    <li>Instruction fine-tuning is not the sole cause; the primacy half emerges mainly in larger models.</li>
+    <li>More retrieved context yields diminishing returns — only ~1–1.5% gain from 20→50 documents — making long context a cost/latency vs. accuracy trade-off.</li>
+  </ul>
+
+  <div class="twist">
+    <h2>The Twist — Implications for teaching, learning &amp; research with LLM harnesses</h2>
+    <p>This paper has direct, faithful relevance to how a harness like Claude Code is used, because such tools operate by stuffing large amounts of material (files, search results, retrieved docs, long transcripts) into a context window. The paper's core, well-supported finding is that simply putting information into a long context does not guarantee the model will use it: accuracy is highest for content at the very beginning or very end and measurably worse for content in the middle, and a bigger window does not fix this. For educators and researchers, the honest takeaway is that prompt and context <em>organization</em> matters as much as inclusion — the most important instructions, the key source passage, or the file a question depends on should sit at the start or end of the context, not buried among many other documents.</p>
+    <p>A second faithful, practical implication comes from the open-domain QA case study: reader performance saturated far before retriever recall, so dumping 50 documents instead of 20 barely helped while inflating cost and latency. Translated to a coding/research harness, this supports a deliberate, curated context over a maximalist "include everything" approach — fewer, well-targeted files or sources likely produce better results than indiscriminately loading a repository or document pile. The paper's own suggested remedies (effective reranking to push relevant material toward the start, truncating the list) map cleanly onto good practice for assembling context.</p>
+    <p>It is worth being explicit about scope. The paper studied 2023-era models on QA and synthetic retrieval — not code editing, multi-turn agentic workflows, or current models. Any claim that <em>today's</em> Claude Code model exhibits exactly this U-shaped curve, or that it does not, is <strong>speculative</strong> and not established here; the GPT-4 subset result (higher accuracy but still U-shaped) only weakly suggests the phenomenon may persist as models improve. The architecture, query-placement, and instruction-tuning analyses are explicitly preliminary in the paper and should not be taught as settled mechanisms.</p>
+    <p>For an evidence-based teaching message: this paper is a strong, citable basis for teaching <em>that</em> position and context curation can affect LLM reliability, and for motivating verification of outputs against the actual sources — especially when relevant material is deep within a long input. It does not, on its own terms, license strong quantitative claims about any specific modern harness; it is best used to instill the habit of structuring context thoughtfully and checking results, while noting that the precise magnitude of "lost in the middle" effects in current tools is an open empirical question.</p>
+  </div>
+
+  <footer>
+    <p>Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., &amp; Liang, P. (2023). <em>Lost in the Middle: How Language Models Use Long Contexts.</em> arXiv:2307.03172; TACL.</p>
+    <p><a href="index.html">← Back to Research Helper index</a></p>
+  </footer>
+</div>
+</body>
+</html>

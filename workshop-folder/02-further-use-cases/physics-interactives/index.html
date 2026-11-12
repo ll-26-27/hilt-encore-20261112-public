@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactive simulations file guide</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#5a5a5a; --rule:#e4e4e4; --accent:#c8102e; --bg:#ffffff; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); }
+  body { font-family:-apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  main { max-width:760px; margin:0 auto; padding:56px 32px 96px; }
+  h1 { font-size:30px; font-weight:700; letter-spacing:-0.01em; margin:0 0 8px; }
+  h1 .crumb { color:var(--muted); font-weight:500; }
+  .lede { color:var(--muted); margin:0 0 36px; font-size:17px; }
+  h2 { font-size:17px; font-weight:700; margin:32px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--rule); text-transform:lowercase; }
+  p { margin:0 0 12px; }
+  ul { margin:0 0 16px; padding-left:22px; }
+  ul ul { margin:4px 0 8px; }
+  li { margin:3px 0; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code { font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:0.92em; }
+  .note { color:var(--muted); font-size:14px; margin-top:36px; padding-top:18px; border-top:1px solid var(--rule); font-style:italic; }
+  .desc { color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Interactive simulations <span class="crumb">/ file guide</span></h1>
+<p class="lede">This example contains skills, templates, and review criteria for building standalone HTML teaching simulations. Read <a href="summary.md">summary.md</a> for the workflow and limitations.</p>
+
+<h2>GENED 1104: inputs → operations → outputs</h2>
+<p>Start with the <a href="outputs/sims/index.html">four cooking simulations</a>: onions, basil spheres, coffee and tahini, copied unchanged from the course project.</p>
+<ul><li>Inputs: <a href="inputs/gened-1104-staff-brief.md">kitchen observations</a> and <a href="inputs/model-and-math.md">models and math</a>.</li>
+<li>Operations: <a href="operations/01-observation-to-model.md">choose the model</a>, <a href="operations/02-model-to-simulation.md">build its representation</a>, <a href="operations/03-check-and-explain.md">check and explain</a>.</li>
+<li>Outputs: <a href="outputs/sims/onion-caramelization-sim.html">onions</a>, <a href="outputs/sims/basil-sphere-sim.html">basil spheres</a>, <a href="outputs/sims/coffee-sim.html">coffee</a>, <a href="outputs/sims/tahini-seizing-sim.html">tahini</a>.</li></ul>
+<p><strong>Source review:</strong> read <a href="AUDIT.html">the November 12 audit</a> for checked claims and unresolved issues in the supporting materials.</p>
+
+<h2>Supporting workshop materials</h2>
+<ul>
+  <li><a href="summary.md">summary.md</a> <span class="desc">— purpose, workflow, and limitations</span></li>
+  <li><a href="CLAUDE.md">CLAUDE.md</a> <span class="desc">— project-level instructions loaded by Claude Code on session start</span></li>
+  <li><a href="index.md">index.md</a> / <a href="index.html">index.html</a> <span class="desc">— this file</span></li>
+</ul>
+
+<h2>inputs/</h2>
+<p class="desc">Source material the skills can be exercised against.</p>
+<ul>
+  <li><a href="inputs/heat-pumps-teaching-brief.md">heat-pumps-teaching-brief.md</a> <span class="desc">— sample faculty teaching brief on thermodynamics, Carnot efficiency, and heat-pump calculations (first-year Harvard STEM audience)</span></li>
+</ul>
+
+<h2>operations/</h2>
+<p class="desc">The Deep Research prompt that produced the background artifacts in <code>outputs/</code>, plus the four project-scoped skills. Each skill is self-contained: its <code>SKILL.md</code>, rubrics, templates, and design notes travel with it.</p>
+<ul>
+  <li><a href="operations/deep-research-prompt.md">operations/deep-research-prompt.md</a> <span class="desc">— prompt that commissioned the background-research artifacts now in <code>outputs/</code></span></li>
+  <li>.claude/skills/
+    <ul>
+      <li><a href=".claude/skills/phet-sim/">phet-sim/</a> <span class="desc">— author a new simulation after a structured pedagogical interview</span>
+        <ul>
+          <li><a href=".claude/skills/phet-sim/SKILL.md">SKILL.md</a></li>
+          <li>rubrics/ — <a href=".claude/skills/phet-sim/rubrics/simulation-quality-rubric.md">simulation-quality-rubric.md</a> (8-dimension scoring), <a href=".claude/skills/phet-sim/rubrics/accessibility-checklist.md">accessibility-checklist.md</a> (accessibility floor), <a href=".claude/skills/phet-sim/rubrics/pedagogical-design-worksheet.md">pedagogical-design-worksheet.md</a> (paper-friendly long-form pedagogical interview)</li>
+          <li>templates/ — <a href=".claude/skills/phet-sim/templates/single-file-svg-sim.html">single-file-svg-sim.html</a> (SVG default starter), <a href=".claude/skills/phet-sim/templates/single-file-canvas-sim.html">single-file-canvas-sim.html</a> (Canvas starter for particle systems and fields), <a href=".claude/skills/phet-sim/templates/single-file-linked-graph-sim.html">single-file-linked-graph-sim.html</a> (canonical PhET model + live-graph layout)</li>
+        </ul>
+      </li>
+      <li><a href=".claude/skills/phet-activity/">phet-activity/</a> <span class="desc">— Wieman-style Predict → Observe → Explain → Synthesize lesson plan</span></li>
+      <li><a href=".claude/skills/phet-accessibility-audit/">phet-accessibility-audit/</a> <span class="desc">— categorized audit report (Blockers / Warnings / Notes); bundled with <a href=".claude/skills/phet-accessibility-audit/accessibility-v2-ideas.md">accessibility-v2-ideas.md</a>, the v2 roadmap</span></li>
+      <li><a href=".claude/skills/phet-rationale/">phet-rationale/</a> <span class="desc">— 600–1,000-word department-facing rationale</span></li>
+    </ul>
+  </li>
+</ul>
+
+<h2>outputs/</h2>
+<p class="desc">Produced artifacts — background essays, research reports, and any sims faculty generate.</p>
+<ul>
+  <li><a href="outputs/essay-phet-tradition.md">essay-phet-tradition.md</a> / <a href="outputs/essay-phet-tradition.html">.html</a> <span class="desc">— historical context for the design tradition</span></li>
+  <li><a href="outputs/essay-manipulable-artifact.md">essay-manipulable-artifact.md</a> <span class="desc">— companion essay placing PhET in the learning-sciences tradition</span></li>
+  <li><a href="outputs/research-basis.md">research-basis.md</a> <span class="desc">— empirical research basis (PhET design + Wieman/active-learning evidence)</span></li>
+  <li><a href="outputs/AI-Built-Simulations-Faculty-Guide.md">AI-Built-Simulations-Faculty-Guide.md</a> <span class="desc">— faculty-facing guide on building simulations with AI</span></li>
+  <li><a href="outputs/deep-research-report.md">deep-research-report.md</a> <span class="desc">— output of the deep-research prompt</span></li>
+</ul>
+
+<p class="note">To run end-to-end against the sample brief: open this folder in Claude Code, then <code>/phet-sim</code> with <a href="inputs/heat-pumps-teaching-brief.md">inputs/heat-pumps-teaching-brief.md</a> as the learning context; then <code>/phet-activity</code> against the generated sim; then <code>/phet-accessibility-audit</code>; then <code>/phet-rationale</code> for the department-facing argument.</p>
+
+</main>
+</body>
+</html>

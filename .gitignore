@@ -5,3 +5,7 @@ node_modules/
 .DS_Store
 _media/
 .vercel
+
+# Generated from canonical workshop artifacts during dev/build
+nextjs/public/example-assets/
+.pnpm-store/

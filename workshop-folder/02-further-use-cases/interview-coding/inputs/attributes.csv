@@ -1,0 +1,5 @@
+respondent_id,pseudonym,age,race_ethnicity,highest_education,employment,household_income_bracket,marital_status,num_children,oldest_child_age,interview_date,interview_location,interviewer
+R001,Tasha,36,Black,Some college (no degree),Home health aide,Under $25k,Single,2,14,2024-03-12,Respondent's home,Interviewer
+R002,Marisol,41,Latina,High school diploma,Daycare assistant,$25k-$40k,Married,2,16,2024-03-14,Public library,Interviewer
+R003,Carla,44,White,Associate's degree,Medical receptionist,$25k-$40k,Divorced,3,17,2024-03-18,Coffee shop,Interviewer
+R004,Denise,38,Black,Some college (no degree),Customer service rep,Under $25k,Single,1,15,2024-03-21,Respondent's home,Interviewer

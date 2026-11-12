@@ -10,7 +10,10 @@
     "dev": "next dev --port 3112",
     "build": "next build",
     "start": "next start --port 3112",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "examples:sync": "node scripts/sync-example-assets.mjs",
+    "predev": "npm run examples:sync",
+    "prebuild": "npm run examples:sync"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
@@ -21,7 +24,8 @@
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "three": "0.184.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

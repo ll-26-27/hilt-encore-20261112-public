@@ -1,0 +1,133 @@
+% Ported to the default house style by the handout-formatting skill, from
+% inputs/math/Worksheets/03-First-Order-Linear-Differential-Equations.pdf.
+% One source, three audiences (change only this option line):
+%   \usepackage[]{handout}        student handout (blanks, no solutions)
+%   \usepackage[key]{handout}     answer key (solutions shown)
+%   \usepackage[teacher]{handout} teacher copy (solutions + teacher notes)
+\documentclass[10pt]{article}
+\usepackage{housestyle}
+\usepackage[teacher]{handout}
+
+\hypersetup{pdftitle={First Order Linear Differential Equations -- Worksheet 3}}
+
+\begin{document}
+
+\handouttitle{First Order Linear Differential Equations}{Worksheet 3}{}
+
+\calloutbox{Today's Goals}{%
+    \begin{itemize}[leftmargin=*]
+        \item Recognize a first order \textbf{linear} equation \(\frac{dy}{dx} + P(x)y = Q(x)\).
+        \item Compute the integrating factor \(\rho(x) = e^{\int P(x)\,dx}\).
+        \item Use \(\frac{d}{dx}[\rho(x)y] = \rho(x)Q(x)\) to integrate both sides.
+        \item Solve general and initial-value problems, including ones requiring substitution to integrate.
+    \end{itemize}%
+}
+
+\bigskip
+
+We solve linear first order equations of the form
+\[
+    \frac{dy}{dx} + P(x)y = Q(x),
+\]
+where \(P(x)\) and \(Q(x)\) are continuous. We cannot separate variables, but multiplying by the
+\textbf{integrating factor} \(\rho(x) = e^{\int P(x)\,dx}\) makes the left side an exact derivative.
+
+\begin{note}
+    Since \(\dfrac{d}{dx}\!\left(\int P(x)\,dx\right) = P(x)\), the product rule gives
+    \[
+        \frac{d}{dx}\!\left[ y\, e^{\int P(x)\,dx}\right]
+        = e^{\int P(x)\,dx}\frac{dy}{dx} + P(x)e^{\int P(x)\,dx}\,y
+        = Q(x)\, e^{\int P(x)\,dx}.
+    \]
+    Integrating, \(\ y\,e^{\int P(x)\,dx} = \int Q(x)\, e^{\int P(x)\,dx}\,dx + C\).
+\end{note}
+
+\textbf{Steps to solve} \(\dfrac{dy}{dx} + P(x)y = Q(x)\):
+\begin{enumerate}[leftmargin=*, label=\arabic*.]
+    \item Calculate \(\rho(x) = e^{\int P(x)\,dx}\).
+    \item Multiply the equation by \(\rho(x)\).
+    \item Notice that \(\dfrac{d}{dx}\!\left[\rho(x)y\right] = \rho(x)Q(x)\).
+    \item Integrate both sides: \(\rho(x)y = \int \rho(x)Q(x)\,dx + C\).
+    \item Solve: \(y = \dfrac{1}{\rho(x)}\!\left[\int \rho(x)Q(x)\,dx + C\right]\).
+\end{enumerate}
+
+\section{Using an Integrating Factor}
+
+\begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}]
+
+\item
+    \begin{problem}[6cm]
+        Solve \(\ 2xy' + y = 10\sqrt{x}\ \) for \(x > 0\).
+    \end{problem}
+    \begin{solution}
+        Put the equation in standard form by dividing by \(2x\):
+        \[
+            y' + \frac{1}{2x}\,y = \frac{5}{\sqrt{x}},
+            \qquad P(x) = \frac{1}{2x}, \quad Q(x) = \frac{5}{\sqrt{x}}.
+        \]
+        The integrating factor is
+        \[
+            \rho(x) = e^{\int \frac{1}{2x}\,dx} = e^{\frac{1}{2}\ln x} = (e^{\ln x})^{1/2} = x^{1/2}.
+        \]
+        Multiplying by \(\sqrt{x}\):
+        \[
+            \sqrt{x}\,y' + \frac{1}{2\sqrt{x}}\,y = 5,
+            \qquad\text{i.e.}\qquad \frac{d}{dx}\!\left(\sqrt{x}\,y\right) = 5.
+        \]
+        Integrating, \(\ \sqrt{x}\,y = 5x + C\), so
+        \[
+            y = \frac{1}{\sqrt{x}}(5x + C) = 5\sqrt{x} + \frac{C}{\sqrt{x}} \qquad\text{(general solution).}
+        \]
+    \end{solution}
+
+\item
+    \begin{problem}[6cm]
+        Solve the initial value problem \(\ y' = 2xy + 3x^2 e^{x^2}\), \(\ y(0) = 5\).
+    \end{problem}
+    \begin{solution}
+        In standard form, \(\ y' - 2xy = 3x^2 e^{x^2}\), so \(P(x) = -2x\) and \(Q(x) = 3x^2 e^{x^2}\).
+        \[
+            \rho(x) = e^{\int -2x\,dx} = e^{-x^2}.
+        \]
+        Multiplying through:
+        \[
+            e^{-x^2}y' - 2x e^{-x^2}y = 3x^2 e^{x^2}\cdot e^{-x^2} = 3x^2,
+            \qquad \frac{d}{dx}\!\left(e^{-x^2}y\right) = 3x^2.
+        \]
+        Integrating, \(\ e^{-x^2}y = x^3 + C\), so \(y = e^{x^2}(x^3 + C)\) (general solution).
+        Applying \(y(0) = 5\):
+        \[
+            5 = e^{0}(0 + C) = C,
+        \]
+        so \(\ y = e^{x^2}(x^3 + 5)\) (particular solution).
+    \end{solution}
+
+\item
+    \begin{problem}[7cm]
+        Solve \(\ y' = -y\tan x + (\cos^2 x)\sin x\), \(\ y(0) = 3\), for \(-\tfrac{\pi}{2} < x < \tfrac{\pi}{2}\).
+    \end{problem}
+    \begin{solution}
+        In standard form, \(\ y' + (\tan x)y = (\cos^2 x)\sin x\), so \(P(x) = \tan x\) and
+        \(Q(x) = (\cos^2 x)\sin x\). With \(u = \cos x\), \(du = -\sin x\,dx\):
+        \[
+            \rho(x) = e^{\int \tan x\,dx} = e^{\int \frac{\sin x}{\cos x}\,dx}
+            = e^{-\int \frac{du}{u}} = e^{-\ln u} = \frac{1}{\cos x} = \sec x,
+        \]
+        valid since \(\cos x > 0\) on \(-\tfrac{\pi}{2} < x < \tfrac{\pi}{2}\). Multiplying through:
+        \[
+            (\sec x)y' + (\sec x)(\tan x)y = (\sec x)(\cos^2 x)\sin x = (\cos x)\sin x,
+        \]
+        i.e. \(\dfrac{d}{dx}\!\left[(\sec x)y\right] = (\cos x)\sin x\). Integrating with \(u = \cos x\):
+        \[
+            (\sec x)y = \int (\cos x)\sin x\,dx = -\int u\,du = -\frac{u^2}{2} + C = -\frac{\cos^2 x}{2} + C.
+        \]
+        Thus \(\ y = -\dfrac{\cos^3 x}{2} + C\cos x\) (general solution). Applying \(y(0) = 3\):
+        \[
+            3 = -\frac{\cos^2 0}{2} + C\cos 0 = -\frac{1}{2} + C \implies C = \frac{7}{2},
+        \]
+        so \(\ y = -\dfrac{\cos^3 x}{2} + \dfrac{7}{2}\cos x\) (particular solution).
+    \end{solution}
+
+\end{enumerate}
+
+\end{document}

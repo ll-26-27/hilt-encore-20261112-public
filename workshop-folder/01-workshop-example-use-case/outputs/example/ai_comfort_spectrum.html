@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Comfort Spectrum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --page:#f7f8f4; --surface:#fcfcfb; --surface-2:#f1f2ec;
+  --ink:#131412; --ink-2:#55574f; --ink-3:#83857b;
+  --rule:#e3e4db; --hair:rgba(11,11,11,.10);
+  --tape:#cfe0bd; --tape-edge:#b3cb99;
+  --teacher:#2a78d6; --student:#eb6834;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --disp:"Archivo",var(--sans);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page:#0e0f0c; --surface:#1a1a19; --surface-2:#232420;
+    --ink:#f5f6f1; --ink-2:#b9bbb1; --ink-3:#8a8c82;
+    --rule:#2c2d29; --hair:rgba(255,255,255,.10);
+    --tape:#36452b; --tape-edge:#4a5e38;
+    --teacher:#3987e5; --student:#d95926;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#0e0f0c; --surface:#1a1a19; --surface-2:#232420;
+  --ink:#f5f6f1; --ink-2:#b9bbb1; --ink-3:#8a8c82;
+  --rule:#2c2d29; --hair:rgba(255,255,255,.10);
+  --tape:#36452b; --tape-edge:#4a5e38;
+  --teacher:#3987e5; --student:#d95926;
+}
+
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);
+     font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;
+      display:flex;flex-direction:column;gap:28px}
+
+/* ---------- masthead ---------- */
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;
+         text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5.2vw,44px);
+   line-height:1.04;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.standfirst{margin:12px 0 0;max-width:62ch;color:var(--ink-2);font-size:16px}
+.standfirst b{color:var(--ink);font-weight:600}
+
+/* ---------- summary strip ---------- */
+.summary{display:flex;flex-wrap:wrap;gap:0;border-block:1px solid var(--rule);
+         padding-block:16px}
+.fact{flex:1 1 150px;padding-inline:18px;border-left:1px solid var(--rule)}
+.fact:first-child{padding-left:0;border-left:0}
+.fact dt{font-family:var(--mono);font-size:11px;letter-spacing:.09em;
+         text-transform:uppercase;color:var(--ink-3);margin:0 0 5px}
+.fact dd{margin:0;font-family:var(--disp);font-weight:600;font-size:26px;
+         letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.1}
+.fact dd small{font-family:var(--sans);font-weight:500;font-size:13px;
+               color:var(--ink-2);letter-spacing:0;display:block;margin-top:3px}
+.fact dd .swatch{display:inline-block;width:9px;height:9px;border-radius:50%;
+                 margin-right:7px;vertical-align:.08em}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.group{display:flex;align-items:center;gap:8px}
+.group > .glabel{font-family:var(--mono);font-size:11px;letter-spacing:.09em;
+                 text-transform:uppercase;color:var(--ink-3)}
+.seg{display:flex;background:var(--surface-2);border-radius:7px;padding:2px;
+     border:1px solid var(--hair)}
+.seg button{appearance:none;border:0;background:transparent;cursor:pointer;
+            font:500 13px/1 var(--sans);color:var(--ink-2);
+            padding:7px 12px;border-radius:5px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);
+            box-shadow:0 1px 2px rgba(0,0,0,.09)}
+.seg button:focus-visible,.chk:focus-visible{outline:2px solid var(--teacher);outline-offset:2px}
+.chk{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13.5px;
+     color:var(--ink-2);border-radius:5px}
+.chk input{accent-color:var(--teacher);width:15px;height:15px;margin:0}
+
+/* ---------- legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;
+        font-size:13px;color:var(--ink-2)}
+.key{display:flex;align-items:center;gap:7px}
+.key i{width:11px;height:11px;border-radius:50%;display:block}
+.key i.hollow{background:transparent;box-shadow:inset 0 0 0 2px var(--ink-3)}
+
+/* ---------- chart ---------- */
+.board{background:var(--surface);border:1px solid var(--hair);border-radius:10px;
+       padding:6px 22px 20px;overflow:hidden}
+.axis{position:sticky;top:0;z-index:3;background:var(--surface);
+      padding-top:14px;padding-bottom:6px}
+.grid{display:grid;grid-template-columns:var(--labw,218px) 1fr;align-items:center;gap:0 18px}
+.axis .ends{display:flex;justify-content:space-between;
+            font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+            text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.axis .ticks{position:relative;height:16px;padding-inline:8px}
+.axis .ticks span{position:absolute;transform:translateX(-50%);margin-left:8px;
+                  font-family:var(--mono);font-size:11px;color:var(--ink-3);
+                  font-variant-numeric:tabular-nums}
+.axis .rule{grid-column:2;height:1px;background:var(--rule)}
+.axis .heading{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+               text-transform:uppercase;color:var(--ink-3);align-self:end;padding-bottom:5px}
+
+.row{border-top:1px solid var(--rule)}
+.row:first-of-type{border-top:0}
+.rlabel{padding:10px 0;min-width:0}
+.rname{font-size:14px;font-weight:500;line-height:1.25;overflow-wrap:break-word}
+.rmeta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:3px;
+       font-variant-numeric:tabular-nums}
+.track{position:relative;height:var(--rowh);min-width:0}
+.tape{position:absolute;left:8px;right:8px;top:50%;height:6px;margin-top:-3px;
+      background:var(--tape);border-block:1px solid var(--tape-edge)}
+.gl{position:absolute;top:6px;bottom:6px;width:1px;background:var(--rule)}
+.med{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;
+     background:var(--ink);opacity:.34;z-index:1}
+.med::before{content:"";position:absolute;left:-4px;top:0;
+     border-left:5px solid transparent;border-right:5px solid transparent;
+     border-top:6px solid var(--ink)}
+.dot{position:absolute;width:13px;height:13px;border-radius:50%;
+     transform:translate(-50%,-50%);cursor:default;
+     box-shadow:0 0 0 2px var(--surface)}
+.dot.T{background:var(--teacher)}
+.dot.S{background:var(--student)}
+.dot.lo{background:var(--surface)}
+.dot.lo.T{box-shadow:0 0 0 2px var(--surface),inset 0 0 0 2.5px var(--teacher)}
+.dot.lo.S{box-shadow:0 0 0 2px var(--surface),inset 0 0 0 2.5px var(--student)}
+.dot:hover,.dot.on{z-index:2;box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink-3)}
+.empty{padding:40px 0;color:var(--ink-3);font-size:14px;text-align:center}
+
+/* ---------- tooltip ---------- */
+#tip{position:fixed;z-index:20;pointer-events:none;opacity:0;transition:opacity .1s;
+     background:var(--ink);color:var(--page);border-radius:7px;padding:8px 11px;
+     font-size:12.5px;line-height:1.4;max-width:250px;
+     box-shadow:0 6px 20px rgba(0,0,0,.22)}
+#tip .tt{font-weight:600;display:block;margin-bottom:2px}
+#tip .tm{font-family:var(--mono);font-size:11px;opacity:.78;
+         font-variant-numeric:tabular-nums}
+
+/* ---------- table ---------- */
+details{border-top:1px solid var(--rule);padding-top:18px}
+summary{cursor:pointer;font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;
+        text-transform:uppercase;color:var(--ink-2);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--ink-3)}
+details[open] summary::before{content:"▾ "}
+summary:focus-visible{outline:2px solid var(--teacher);outline-offset:3px;border-radius:3px}
+.tablewrap{overflow-x:auto;margin-top:14px;max-height:460px;overflow-y:auto;
+           border:1px solid var(--hair);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{position:sticky;top:0;background:var(--surface-2);font-family:var(--mono);
+   font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);z-index:1}
+td.n{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12px}
+tbody tr:last-child td{border-bottom:0}
+.pill{display:inline-flex;align-items:center;gap:6px}
+.pill i{width:8px;height:8px;border-radius:50%;display:block}
+
+footer{color:var(--ink-3);font-size:12.5px;line-height:1.6;border-top:1px solid var(--rule);
+       padding-top:16px}
+
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr;gap:0}
+  .axis .heading{display:none}
+  .rlabel{padding:12px 0 2px}
+  .track{margin-bottom:10px}
+  .board{padding-inline:14px}
+  .fact{flex-basis:118px;padding-inline:12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Harvard FAS &amp; SEAS &middot; AI-in-teaching workshop</p>
+    <h1>AI Comfort Spectrum</h1>
+    <p class="standfirst">Twelve tables sorted eighteen teaching tasks along a strip of green
+    tape running from <b>1, keep AI out</b> to <b>10, let AI do it</b>. Every dot below is one
+    paper card on one table&rsquo;s tape. Read across a row to see how much the tables agreed.</p>
+  </header>
+
+  <dl class="summary" id="summary"></dl>
+
+  <div class="controls">
+    <div class="group">
+      <span class="glabel">Rows</span>
+      <div class="seg" role="group" aria-label="Choose what each row shows">
+        <button id="v-task" type="button" aria-pressed="true">By task</button>
+        <button id="v-group" type="button" aria-pressed="false">By table</button>
+      </div>
+    </div>
+    <div class="group">
+      <span class="glabel">Cards</span>
+      <div class="seg" role="group" aria-label="Filter by card colour">
+        <button id="f-all" type="button" aria-pressed="true">All</button>
+        <button id="f-T" type="button" aria-pressed="false">Teacher</button>
+        <button id="f-S" type="button" aria-pressed="false">Student</button>
+      </div>
+    </div>
+    <label class="chk" for="hidelo">
+      <input type="checkbox" id="hidelo"> Hide low-confidence readings
+    </label>
+  </div>
+
+  <div class="legend">
+    <span class="key"><i style="background:var(--teacher)"></i> Teacher task (pink card)</span>
+    <span class="key"><i style="background:var(--student)"></i> Student task (orange card)</span>
+    <span class="key"><i class="hollow"></i> Low confidence in the reading</span>
+    <span class="key"><i style="width:0;height:0;border-radius:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--ink)"></i> Median across tables</span>
+  </div>
+
+  <section class="board" aria-label="Comfort spectrum">
+    <div class="axis grid" id="axis">
+      <div class="heading" id="axhead">Task</div>
+      <div>
+        <div class="ends"><span>Keep AI out</span><span>Let AI do it</span></div>
+        <div class="ticks" id="ticks"></div>
+      </div>
+    </div>
+    <div id="rows"></div>
+  </section>
+
+  <details id="tabledetails">
+    <summary>All 181 readings as a table</summary>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Table</th><th>Task</th><th>Card</th><th>Comfort</th><th>Confidence</th><th>Measured</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </details>
+
+  <footer>
+    Positions were read off photographs of each table: the leftmost card on a table&rsquo;s tape is
+    1 and the rightmost is 10, with everything between interpolated along the tape. Cards sitting
+    within 0.3 of each other share a number. <b>Measured</b> is the unrounded position before that
+    rounding &mdash; it is why two cards can read 5 from 5.35 and 5.60.
+    Three photographs were set aside before numbering: one table was withdrawn, one was framed
+    too tightly to anchor its scale, and one was a second shot of a table already counted.
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="off"></div>
+
+<script>
+const DATA = [{"g":1,"t":"Write exam questions","k":"T","v":1,"c":"h","p":1.0},{"g":1,"t":"Give feedback on drafts","k":"T","v":2,"c":"l","p":2.42},{"g":1,"t":"Assign the grade","k":"T","v":4,"c":"l","p":3.51},{"g":1,"t":"Generate synthetic data","k":"T","v":4,"c":"l","p":3.53},{"g":1,"t":"Draft a rec letter","k":"T","v":5,"c":"m","p":4.66},{"g":1,"t":"Design the rubric","k":"T","v":6,"c":"m","p":5.75},{"g":1,"t":"Write the problem set + solutions","k":"T","v":7,"c":"m","p":6.74},{"g":1,"t":"Detect AI use","k":"T","v":8,"c":"l","p":7.62},{"g":1,"t":"Clean the class dataset","k":"T","v":10,"c":"h","p":10.0},{"g":2,"t":"Draft the essay","k":"S","v":1,"c":"h","p":1.0},{"g":2,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.11},{"g":2,"t":"Outline the essay","k":"S","v":2,"c":"m","p":1.59},{"g":2,"t":"Detect AI use","k":"T","v":2,"c":"m","p":1.92},{"g":2,"t":"Give feedback on drafts","k":"T","v":2,"c":"m","p":1.63},{"g":2,"t":"Run + interpret the analysis","k":"S","v":3,"c":"m","p":2.75},{"g":2,"t":"Design the rubric","k":"T","v":3,"c":"m","p":2.79},{"g":2,"t":"Write exam questions","k":"T","v":3,"c":"m","p":2.67},{"g":2,"t":"Explain a concept","k":"S","v":5,"c":"h","p":4.98},{"g":2,"t":"Draft a rec letter","k":"T","v":5,"c":"h","p":5.0},{"g":2,"t":"Generate synthetic data","k":"T","v":5,"c":"h","p":5.17},{"g":2,"t":"Make practice problems","k":"S","v":6,"c":"h","p":6.06},{"g":2,"t":"Code the interview transcripts","k":"S","v":7,"c":"m","p":7.23},{"g":2,"t":"Debug the code","k":"S","v":9,"c":"l","p":9.4},{"g":2,"t":"Clean the class dataset","k":"T","v":10,"c":"h","p":10.0},{"g":2,"t":"Write the problem set + solutions","k":"T","v":10,"c":"h","p":9.98},{"g":3,"t":"Draft the essay","k":"S","v":1,"c":"h","p":1.0},{"g":3,"t":"Detect AI use","k":"T","v":1,"c":"h","p":1.11},{"g":3,"t":"Run + interpret the analysis","k":"S","v":2,"c":"l","p":1.61},{"g":3,"t":"Give feedback on drafts","k":"T","v":2,"c":"m","p":2.02},{"g":3,"t":"Outline the essay","k":"S","v":3,"c":"h","p":2.98},{"g":3,"t":"Summarize the reading","k":"S","v":3,"c":"l","p":3.55},{"g":3,"t":"Assign the grade","k":"T","v":3,"c":"l","p":3.42},{"g":3,"t":"Find + check sources","k":"S","v":6,"c":"h","p":6.12},{"g":3,"t":"Debug the code","k":"S","v":7,"c":"l","p":7.68},{"g":3,"t":"Design the rubric","k":"T","v":7,"c":"l","p":7.24},{"g":3,"t":"Write exam questions","k":"T","v":7,"c":"l","p":6.52},{"g":3,"t":"Write the problem set + solutions","k":"T","v":7,"c":"l","p":7.46},{"g":3,"t":"Clean the class dataset","k":"T","v":8,"c":"h","p":8.05},{"g":3,"t":"Code the interview transcripts","k":"S","v":9,"c":"l","p":9.43},{"g":3,"t":"Explain a concept","k":"S","v":9,"c":"m","p":8.76},{"g":3,"t":"Draft a rec letter","k":"T","v":9,"c":"m","p":8.61},{"g":3,"t":"Make practice problems","k":"S","v":10,"c":"m","p":9.79},{"g":3,"t":"Generate synthetic data","k":"T","v":10,"c":"h","p":10.0},{"g":4,"t":"Draft the essay","k":"S","v":1,"c":"m","p":1.38},{"g":4,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.0},{"g":4,"t":"Run + interpret the analysis","k":"S","v":2,"c":"m","p":2.4},{"g":4,"t":"Detect AI use","k":"T","v":2,"c":"h","p":1.85},{"g":4,"t":"Give feedback on drafts","k":"T","v":2,"c":"m","p":2.24},{"g":4,"t":"Summarize the reading","k":"S","v":3,"c":"m","p":3.39},{"g":4,"t":"Draft a rec letter","k":"T","v":3,"c":"m","p":3.37},{"g":4,"t":"Write the problem set + solutions","k":"T","v":4,"c":"h","p":4.16},{"g":4,"t":"Explain a concept","k":"S","v":5,"c":"l","p":5.59},{"g":4,"t":"Outline the essay","k":"S","v":5,"c":"l","p":5.37},{"g":4,"t":"Design the rubric","k":"T","v":5,"c":"l","p":5.6},{"g":4,"t":"Write exam questions","k":"T","v":5,"c":"l","p":5.35},{"g":4,"t":"Code the interview transcripts","k":"S","v":8,"c":"m","p":7.91},{"g":4,"t":"Debug the code","k":"S","v":8,"c":"m","p":7.48},{"g":4,"t":"Make practice problems","k":"S","v":8,"c":"m","p":7.74},{"g":4,"t":"Clean the class dataset","k":"T","v":9,"c":"h","p":9.04},{"g":4,"t":"Generate synthetic data","k":"T","v":9,"c":"h","p":9.08},{"g":4,"t":"Find + check sources","k":"S","v":10,"c":"h","p":10.0},{"g":5,"t":"Draft the essay","k":"S","v":1,"c":"h","p":1.19},{"g":5,"t":"Draft a rec letter","k":"T","v":1,"c":"h","p":1.38},{"g":5,"t":"Give feedback on drafts","k":"T","v":1,"c":"h","p":1.0},{"g":5,"t":"Summarize the reading","k":"S","v":2,"c":"h","p":2.17},{"g":5,"t":"Assign the grade","k":"T","v":2,"c":"h","p":2.04},{"g":5,"t":"Outline the essay","k":"S","v":3,"c":"h","p":3.1},{"g":5,"t":"Design the rubric","k":"T","v":4,"c":"m","p":3.63},{"g":5,"t":"Run + interpret the analysis","k":"S","v":5,"c":"h","p":5.21},{"g":5,"t":"Clean the class dataset","k":"T","v":6,"c":"h","p":5.86},{"g":5,"t":"Explain a concept","k":"S","v":7,"c":"h","p":6.73},{"g":5,"t":"Write exam questions","k":"T","v":7,"c":"h","p":7.08},{"g":5,"t":"Write the problem set + solutions","k":"T","v":7,"c":"h","p":6.96},{"g":5,"t":"Code the interview transcripts","k":"S","v":8,"c":"l","p":7.6},{"g":5,"t":"Make practice problems","k":"S","v":8,"c":"l","p":8.43},{"g":5,"t":"Generate synthetic data","k":"T","v":8,"c":"h","p":8.01},{"g":5,"t":"Debug the code","k":"S","v":9,"c":"h","p":9.21},{"g":5,"t":"Find + check sources","k":"S","v":10,"c":"h","p":10.0},{"g":5,"t":"Detect AI use","k":"T","v":10,"c":"h","p":9.76},{"g":6,"t":"Detect AI use","k":"T","v":1,"c":"l","p":1.46},{"g":6,"t":"Give feedback on drafts","k":"T","v":1,"c":"h","p":1.0},{"g":6,"t":"Draft the essay","k":"S","v":2,"c":"h","p":1.98},{"g":6,"t":"Outline the essay","k":"S","v":3,"c":"h","p":3.19},{"g":6,"t":"Find + check sources","k":"S","v":4,"c":"l","p":3.66},{"g":6,"t":"Run + interpret the analysis","k":"S","v":4,"c":"l","p":3.58},{"g":6,"t":"Code the interview transcripts","k":"S","v":5,"c":"m","p":4.62},{"g":6,"t":"Summarize the reading","k":"S","v":5,"c":"l","p":5.44},{"g":6,"t":"Assign the grade","k":"T","v":5,"c":"l","p":5.43},{"g":6,"t":"Draft a rec letter","k":"T","v":5,"c":"m","p":4.63},{"g":6,"t":"Clean the class dataset","k":"T","v":6,"c":"h","p":6.06},{"g":6,"t":"Write exam questions","k":"T","v":6,"c":"h","p":6.05},{"g":6,"t":"Explain a concept","k":"S","v":7,"c":"m","p":7.32},{"g":6,"t":"Generate synthetic data","k":"T","v":8,"c":"l","p":8.47},{"g":6,"t":"Make practice problems","k":"S","v":9,"c":"h","p":9.22},{"g":6,"t":"Debug the code","k":"S","v":10,"c":"h","p":10.0},{"g":7,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.07},{"g":7,"t":"Design the rubric","k":"T","v":1,"c":"h","p":1.0},{"g":7,"t":"Detect AI use","k":"T","v":1,"c":"h","p":1.0},{"g":7,"t":"Code the interview transcripts","k":"S","v":3,"c":"h","p":2.94},{"g":7,"t":"Give feedback on drafts","k":"T","v":3,"c":"h","p":3.06},{"g":7,"t":"Find + check sources","k":"S","v":4,"c":"h","p":3.97},{"g":7,"t":"Draft the essay","k":"S","v":5,"c":"m","p":4.71},{"g":7,"t":"Outline the essay","k":"S","v":5,"c":"l","p":5.52},{"g":7,"t":"Summarize the reading","k":"S","v":5,"c":"l","p":5.44},{"g":7,"t":"Draft a rec letter","k":"T","v":5,"c":"h","p":5.06},{"g":7,"t":"Run + interpret the analysis","k":"S","v":6,"c":"h","p":6.11},{"g":7,"t":"Explain a concept","k":"S","v":7,"c":"h","p":7.22},{"g":7,"t":"Debug the code","k":"S","v":9,"c":"l","p":8.52},{"g":7,"t":"Make practice problems","k":"S","v":9,"c":"l","p":8.5},{"g":7,"t":"Generate synthetic data","k":"T","v":10,"c":"h","p":10.0},{"g":8,"t":"Draft the essay","k":"S","v":1,"c":"h","p":1.0},{"g":8,"t":"Outline the essay","k":"S","v":2,"c":"h","p":1.8},{"g":8,"t":"Explain a concept","k":"S","v":3,"c":"l","p":2.57},{"g":8,"t":"Summarize the reading","k":"S","v":3,"c":"l","p":2.61},{"g":8,"t":"Run + interpret the analysis","k":"S","v":4,"c":"m","p":3.73},{"g":8,"t":"Code the interview transcripts","k":"S","v":10,"c":"h","p":9.91},{"g":8,"t":"Debug the code","k":"S","v":10,"c":"h","p":9.74},{"g":8,"t":"Find + check sources","k":"S","v":10,"c":"h","p":10.0},{"g":8,"t":"Make practice problems","k":"S","v":10,"c":"h","p":9.54},{"g":9,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.0},{"g":9,"t":"Give feedback on drafts","k":"T","v":1,"c":"l","p":1.44},{"g":9,"t":"Code the interview transcripts","k":"S","v":2,"c":"l","p":2.42},{"g":9,"t":"Write exam questions","k":"T","v":2,"c":"h","p":2.12},{"g":9,"t":"Outline the essay","k":"S","v":3,"c":"h","p":3.29},{"g":9,"t":"Design the rubric","k":"T","v":3,"c":"h","p":2.73},{"g":9,"t":"Write the problem set + solutions","k":"T","v":3,"c":"h","p":2.99},{"g":9,"t":"Summarize the reading","k":"S","v":4,"c":"m","p":4.34},{"g":9,"t":"Draft a rec letter","k":"T","v":4,"c":"h","p":3.98},{"g":9,"t":"Explain a concept","k":"S","v":7,"c":"l","p":6.55},{"g":9,"t":"Detect AI use","k":"T","v":7,"c":"l","p":7.47},{"g":9,"t":"Clean the class dataset","k":"T","v":9,"c":"h","p":9.02},{"g":9,"t":"Debug the code","k":"S","v":10,"c":"h","p":9.96},{"g":9,"t":"Generate synthetic data","k":"T","v":10,"c":"h","p":10.0},{"g":10,"t":"Write exam questions","k":"T","v":1,"c":"h","p":1.0},{"g":10,"t":"Draft the essay","k":"S","v":2,"c":"h","p":1.85},{"g":10,"t":"Summarize the reading","k":"S","v":2,"c":"h","p":1.83},{"g":10,"t":"Detect AI use","k":"T","v":2,"c":"h","p":1.91},{"g":10,"t":"Find + check sources","k":"S","v":3,"c":"h","p":3.07},{"g":10,"t":"Outline the essay","k":"S","v":3,"c":"h","p":3.04},{"g":10,"t":"Draft a rec letter","k":"T","v":3,"c":"h","p":2.75},{"g":10,"t":"Assign the grade","k":"T","v":4,"c":"m","p":3.77},{"g":10,"t":"Give feedback on drafts","k":"T","v":4,"c":"m","p":3.76},{"g":10,"t":"Run + interpret the analysis","k":"S","v":5,"c":"m","p":4.69},{"g":10,"t":"Design the rubric","k":"T","v":5,"c":"h","p":5.05},{"g":10,"t":"Code the interview transcripts","k":"S","v":6,"c":"h","p":5.91},{"g":10,"t":"Clean the class dataset","k":"T","v":6,"c":"h","p":6.22},{"g":10,"t":"Make practice problems","k":"S","v":8,"c":"h","p":7.91},{"g":10,"t":"Explain a concept","k":"S","v":9,"c":"m","p":8.86},{"g":10,"t":"Write the problem set + solutions","k":"T","v":9,"c":"m","p":8.68},{"g":10,"t":"Debug the code","k":"S","v":10,"c":"h","p":9.94},{"g":10,"t":"Generate synthetic data","k":"T","v":10,"c":"h","p":10.0},{"g":11,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.0},{"g":11,"t":"Give feedback on drafts","k":"T","v":1,"c":"h","p":1.15},{"g":11,"t":"Draft the essay","k":"S","v":2,"c":"h","p":1.9},{"g":11,"t":"Draft a rec letter","k":"T","v":2,"c":"l","p":2.49},{"g":11,"t":"Write exam questions","k":"T","v":2,"c":"l","p":2.49},{"g":11,"t":"Write the problem set + solutions","k":"T","v":5,"c":"l","p":5.46},{"g":11,"t":"Run + interpret the analysis","k":"S","v":7,"c":"h","p":7.09},{"g":11,"t":"Summarize the reading","k":"S","v":7,"c":"h","p":6.92},{"g":11,"t":"Detect AI use","k":"T","v":7,"c":"h","p":7.05},{"g":11,"t":"Debug the code","k":"S","v":8,"c":"h","p":8.0},{"g":11,"t":"Find + check sources","k":"S","v":9,"c":"h","p":8.9},{"g":11,"t":"Make practice problems","k":"S","v":10,"c":"h","p":10.0},{"g":12,"t":"Draft the essay","k":"S","v":1,"c":"h","p":1.0},{"g":12,"t":"Assign the grade","k":"T","v":1,"c":"h","p":1.07},{"g":12,"t":"Make practice problems","k":"S","v":2,"c":"h","p":2.14},{"g":12,"t":"Give feedback on drafts","k":"T","v":2,"c":"h","p":2.03},{"g":12,"t":"Design the rubric","k":"T","v":3,"c":"h","p":3.03},{"g":12,"t":"Code the interview transcripts","k":"S","v":4,"c":"m","p":4.27},{"g":12,"t":"Run + interpret the analysis","k":"S","v":4,"c":"m","p":4.32},{"g":12,"t":"Write exam questions","k":"T","v":4,"c":"m","p":4.12},{"g":12,"t":"Write the problem set + solutions","k":"T","v":4,"c":"h","p":3.8},{"g":12,"t":"Summarize the reading","k":"S","v":5,"c":"h","p":5.21},{"g":12,"t":"Find + check sources","k":"S","v":6,"c":"h","p":6.11},{"g":12,"t":"Outline the essay","k":"S","v":7,"c":"h","p":7.03},{"g":12,"t":"Clean the class dataset","k":"T","v":7,"c":"m","p":6.65},{"g":12,"t":"Draft a rec letter","k":"T","v":7,"c":"h","p":6.98},{"g":12,"t":"Detect AI use","k":"T","v":8,"c":"h","p":8.14},{"g":12,"t":"Debug the code","k":"S","v":9,"c":"m","p":8.77},{"g":12,"t":"Generate synthetic data","k":"T","v":9,"c":"m","p":9.23},{"g":12,"t":"Explain a concept","k":"S","v":10,"c":"h","p":10.0}];
+
+const TASKS = [...new Set(DATA.map(d => d.t))];
+const KIND = {}; DATA.forEach(d => KIND[d.t] = d.k);
+const GROUPS = [...new Set(DATA.map(d => d.g))].sort((a,b) => a-b);
+const median = a => { const s = [...a].sort((x,y) => x-y), m = s.length >> 1;
+  return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2; };
+const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1);
+/* scale is inset 8px each side so end-of-scale dots are never clipped */
+const pos = v => `calc(8px + ${(v-1)/9*100}% - ${(v-1)/9*16}px)`;
+
+const state = { view:'task', filter:'all', hidelo:false };
+
+/* ---- summary strip ---- */
+(function(){
+  const tv = DATA.filter(d => d.k==='T').map(d => d.v);
+  const sv = DATA.filter(d => d.k==='S').map(d => d.v);
+  const spread = TASKS.map(t => {
+    const v = DATA.filter(d => d.t===t).map(d => d.v);
+    return { t, w: Math.max(...v) - Math.min(...v), lo: Math.min(...v), hi: Math.max(...v) };
+  }).sort((a,b) => b.w - a.w)[0];
+  document.getElementById('summary').innerHTML = [
+    ['Tables', GROUPS.length, 'round tables, one tape each'],
+    ['Cards placed', DATA.length, 'across 18 tasks'],
+    ['Teacher median', fmt(median(tv)), '<span class="swatch" style="background:var(--teacher)"></span>' + tv.length + ' pink cards'],
+    ['Student median', fmt(median(sv)), '<span class="swatch" style="background:var(--student)"></span>' + sv.length + ' orange cards'],
+    ['Widest split', spread.lo + '&ndash;' + spread.hi, spread.t + ', across the tables']
+  ].map(([k,v,s]) => `<div class="fact"><dt>${k}</dt><dd>${v}<small>${s}</small></dd></div>`).join('');
+})();
+
+/* ---- axis ticks ---- */
+document.getElementById('ticks').innerHTML =
+  Array.from({length:10}, (_,i) => `<span style="left:calc(${i/9*100}% - ${i/9*16}px)">${i+1}</span>`).join('');
+
+/* ---- rows ---- */
+function visible(){
+  return DATA.filter(d => (state.filter === 'all' || d.k === state.filter)
+                       && !(state.hidelo && d.c === 'l'));
+}
+
+function render(){
+  const rows = document.getElementById('rows');
+  const data = visible();
+  document.getElementById('axhead').textContent = state.view === 'task' ? 'Task' : 'Table';
+  document.documentElement.style.setProperty('--labw', state.view === 'task' ? '218px' : '150px');
+
+  if(!data.length){ rows.innerHTML = '<p class="empty">No cards match these filters.</p>'; return; }
+
+  let keys;
+  if(state.view === 'task'){
+    keys = TASKS.filter(t => data.some(d => d.t === t))
+                .sort((a,b) => median(data.filter(d=>d.t===a).map(d=>d.v))
+                             - median(data.filter(d=>d.t===b).map(d=>d.v)));
+  } else {
+    keys = GROUPS.filter(g => data.some(d => d.g === g));
+  }
+
+  rows.innerHTML = keys.map(key => {
+    const items = data.filter(d => state.view === 'task' ? d.t === key : d.g === key);
+    const med = median(items.map(d => d.v));
+
+    /* stack cards that share a value */
+    const byVal = {};
+    items.forEach(d => (byVal[d.v] = byVal[d.v] || []).push(d));
+    const tallest = Math.max(...Object.values(byVal).map(a => a.length));
+    const pitch = 15, h = Math.max(46, tallest * pitch + 16);
+
+    const dots = Object.entries(byVal).flatMap(([v, arr]) => {
+      arr.sort((a,b) => state.view === 'task' ? a.g - b.g : a.t.localeCompare(b.t));
+      return arr.map((d,i) => {
+        const off = (i - (arr.length - 1) / 2) * pitch;
+        const label = state.view === 'task' ? ('Table ' + d.g) : d.t;
+        return `<span class="dot ${d.k}${d.c === 'l' ? ' lo' : ''}" tabindex="-1"
+          style="left:${pos(+v)};top:calc(50% + ${off}px)"
+          data-a="${label.replace(/"/g,'&quot;')}"
+          data-b="${(state.view === 'task' ? key : d.t).replace(/"/g,'&quot;')}"
+          data-v="${d.v}" data-p="${d.p.toFixed(2)}" data-c="${d.c}"
+          data-k="${d.k === 'T' ? 'Teacher' : 'Student'} task"></span>`;
+      });
+    }).join('');
+
+    const gls = Array.from({length:10}, (_,i) => `<span class="gl" style="left:${pos(i+1)}"></span>`).join('');
+    const name = state.view === 'task' ? key : 'Table ' + key;
+    const meta = state.view === 'task'
+      ? `${KIND[key] === 'T' ? 'Teacher' : 'Student'} &middot; ${items.length} tables &middot; median ${fmt(med)}`
+      : `${items.length} cards &middot; median ${fmt(med)}`;
+
+    return `<div class="row grid">
+      <div class="rlabel"><div class="rname">${name}</div><div class="rmeta">${meta}</div></div>
+      <div class="track" style="--rowh:${h}px">
+        <span class="tape"></span>${gls}
+        <span class="med" style="left:${pos(med)}"></span>${dots}
+      </div></div>`;
+  }).join('');
+}
+
+/* ---- tooltip ---- */
+const tip = document.getElementById('tip');
+let armed = null;
+document.getElementById('rows').addEventListener('pointerover', e => {
+  const d = e.target.closest('.dot'); if(!d) return;
+  armed = d;
+  const conf = { h:'high', m:'medium', l:'low' }[d.dataset.c];
+  tip.innerHTML = `<span class="tt">${d.dataset.a}</span>${d.dataset.b}
+    <div class="tm">${d.dataset.k} &middot; comfort ${d.dataset.v} &middot; measured ${d.dataset.p}
+    &middot; ${conf} confidence</div>`;
+  tip.style.opacity = 1;
+});
+document.getElementById('rows').addEventListener('pointermove', e => {
+  if(!armed) return;
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + pad, y = e.clientY - h - pad;
+  if(x + w > innerWidth - 8) x = e.clientX - w - pad;
+  if(y < 8) y = e.clientY + pad;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+document.getElementById('rows').addEventListener('pointerout', e => {
+  if(e.target.closest('.dot')){ armed = null; tip.style.opacity = 0; }
+});
+
+/* ---- controls ---- */
+function seg(ids, pick){
+  ids.forEach(id => document.getElementById(id).addEventListener('click', () => {
+    ids.forEach(o => document.getElementById(o).setAttribute('aria-pressed', String(o === id)));
+    pick(id); render();
+  }));
+}
+seg(['v-task','v-group'], id => state.view = id === 'v-task' ? 'task' : 'group');
+seg(['f-all','f-T','f-S'], id => state.filter = id.slice(2));
+document.getElementById('hidelo').addEventListener('change', e => {
+  state.hidelo = e.target.checked; render();
+});
+
+/* ---- table ---- */
+document.getElementById('tbody').innerHTML = [...DATA]
+  .sort((a,b) => a.g - b.g || a.v - b.v || a.t.localeCompare(b.t))
+  .map(d => `<tr>
+    <td class="n">${d.g}</td><td>${d.t}</td>
+    <td><span class="pill"><i style="background:var(--${d.k === 'T' ? 'teacher' : 'student'})"></i>${d.k === 'T' ? 'Teacher' : 'Student'}</span></td>
+    <td class="n">${d.v}</td>
+    <td>${{h:'high',m:'medium',l:'low'}[d.c]}</td>
+    <td class="n">${d.p.toFixed(2)}</td></tr>`).join('');
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.instructions { color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.instructions a { color: var(--accent); text-decoration: underline; }
+.frame { width: 100%; height: min(78vh, 780px); min-height: 440px; border: 1px solid var(--line); border-radius: 12px; background: #141414; }
+.earlier { margin-top: 32px; }
+.earlier summary { cursor: pointer; font-weight: 600; padding: 16px 0; }
+.earlier p { color: var(--muted); line-height: 1.6; }

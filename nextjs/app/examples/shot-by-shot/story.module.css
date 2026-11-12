@@ -1,0 +1,6 @@
+.toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:14px; font-size:14px; }
+.toolbar span { color:var(--muted); }
+.toolbar a { text-decoration:underline; text-underline-offset:4px; }
+.frame { display:block; width:100%; height:85svh; min-height:540px; max-height:1000px; border:1px solid var(--line); border-radius:8px; background:#000; }
+.note { color:var(--muted); font-size:13px; line-height:1.6; margin-top:12px; }
+@media(max-width:650px) { .frame { min-height:480px; height:80svh; } }

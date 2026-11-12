@@ -1,0 +1,143 @@
+/* The site is dark; the plates keep their cream paper (the ground the Midjourney costume plates were cut from). */
+.root {
+  --plate: #efe6d2;
+  --plate-ink: #231f1d;
+  --plate-muted: #6e6458;
+  color: var(--ink);
+}
+.root h3 { margin: 0 0 8px; font-size: 22px; }
+.root h4 { margin: 18px 0 6px; font-size: 15px; }
+.muted { color: var(--muted); font-size: 14px; line-height: 1.55; }
+.muted b { color: var(--ink); }
+.fine { color: var(--muted); font-size: 12.5px; line-height: 1.5; margin: 8px 0 0; }
+
+/* the atelier */
+.stage { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 860px) { .stage { grid-template-columns: minmax(0, 1fr); } }
+.plate {
+  margin: 0; width: 100%; background: var(--plate); color: var(--plate-ink); padding: 18px 16px 12px; border-radius: 4px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+}
+.figure { width: 100%; }
+.zone {
+  position: absolute; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px dashed rgba(35, 31, 29, .22);
+}
+.zone:last-child { border-bottom: none; }
+.arrow {
+  height: 100%; width: 40px; border: none; background: transparent; cursor: pointer; z-index: 1;
+  font-size: 30px; color: var(--plate-muted); font-family: Georgia, serif;
+}
+.arrow:hover, .arrow:focus-visible { color: #cf4a32; background: rgba(207, 74, 50, .08); }
+.tag {
+  position: absolute; left: 42px; top: 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--plate-muted); pointer-events: none; background: rgba(239, 230, 210, .85); padding: 0 4px;
+}
+.tag b { color: var(--plate-ink); font-weight: 600; }
+.caption { text-align: center; margin-top: 10px; }
+.plateTitle { display: block; font-family: Georgia, serif; font-size: 30px; letter-spacing: .04em; }
+.plateTitle::first-letter { color: #cf4a32; }
+.plateSub { display: block; font-size: 13px; color: var(--plate-muted); margin-top: 2px; }
+.planche {
+  display: flex; justify-content: space-between; margin-top: 10px; padding-top: 5px; border-top: 2px solid #cf4a32;
+  font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--plate-muted);
+}
+.side { min-width: 0; }
+.knobs { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; margin: 14px 0; }
+.knobs dt { color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: 12px; padding-top: 2px; }
+.knobs dd { margin: 0; }
+.subhead { color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: 12px !important; font-weight: 600; }
+
+.ladder { display: flex; flex-direction: column; gap: 4px; }
+.rung {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left;
+  font: inherit; font-size: 13px; color: var(--ink); background: var(--wash); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 10px; cursor: pointer;
+}
+.rung:hover { border-color: var(--accent); }
+.rung.on { border-color: var(--accent); background: var(--hover); }
+.rungLabel em { color: var(--accent); font-style: normal; font-size: 12px; }
+.rungBar { height: 6px; background: var(--paper); border-radius: 3px; overflow: hidden; }
+.rungBar i { display: block; height: 100%; background: #3f8a33; }
+.rung small { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* the meter */
+.gauge { margin: 32px 0 24px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); }
+.barLabel { font-size: 13px; color: var(--muted); margin: 4px 0; }
+.barLabel b { color: var(--ink); font-weight: 600; }
+.gaugeBar { position: relative; display: flex; height: 14px; border-radius: 3px; overflow: hidden; border: 1.5px solid var(--accent); background: var(--paper); }
+.zoomBar { height: 22px; }
+.scaled { position: relative; display: flex; height: 100%; transition: width .4s ease; }
+.searched {
+  position: absolute; left: 0; top: 0; bottom: 0; transition: width .4s ease;
+  background: repeating-linear-gradient(-45deg, rgba(110, 190, 95, .3) 0 3px, transparent 3px 7px);
+  border-right: 1.5px dashed rgba(110, 190, 95, .8);
+}
+.searchNote { font-size: 12.5px; color: var(--muted); margin: 4px 0 10px; line-height: 1.45; }
+.searchNote b { color: var(--ink); font-weight: 600; }
+.swSearched { display: inline-block; width: 14px; height: 10px; vertical-align: -1px; background: repeating-linear-gradient(-45deg, rgba(110, 190, 95, .5) 0 3px, transparent 3px 6px); }
+.seg { height: 100%; transition: width .4s ease; overflow: hidden; display: flex; align-items: center; }
+.seg + .seg { box-shadow: inset 1px 0 0 rgba(255, 255, 255, .5); }
+.seg span { font-size: 11px; color: #fff; padding: 0 6px; white-space: nowrap; text-shadow: 0 0 2px rgba(0, 0, 0, .5); }
+.legend { display: flex; flex-wrap: wrap; gap: 3px 14px; font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+.legend i, .partLabel i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 3px; vertical-align: -1px; }
+
+/* the exchange */
+.thread { display: flex; flex-direction: column; gap: 16px; }
+.user {
+  align-self: flex-end; max-width: 80%; background: var(--hover); border: 1px solid var(--line); border-radius: 14px 14px 2px 14px;
+  padding: 10px 14px;
+}
+.replyRow { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 560px) { .replyRow { grid-template-columns: minmax(0, 1fr); } .sticker { width: 80px; } }
+.sticker { width: 90px; background: var(--plate); border-radius: 4px; }
+.reply { min-width: 0; border: 1px solid var(--line); border-radius: 2px 14px 14px 14px; padding: 14px 16px; background: var(--wash); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chips span { font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.toolLine { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.poem { white-space: pre-wrap; font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.6; }
+.line { display: inline; }
+.inspector { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+.inspector summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.whole { display: flex; flex-direction: column; gap: 4px; }
+.part { border-left: 4px solid; padding: 4px 0 4px 10px; background: var(--paper); }
+.partLabel { cursor: pointer; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: var(--muted); }
+.pre {
+  margin: 6px 0 4px; max-height: 480px; overflow: auto; white-space: pre-wrap; word-break: break-word;
+  font-family: ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.5; color: var(--ink);
+}
+.passages { font-size: 13.5px; color: var(--ink); padding-left: 22px; }
+.passages small { color: var(--muted); }
+
+/* the exquisite corpse */
+.corpseStage { display: grid; grid-template-columns: 260px minmax(0, 420px); gap: 28px; align-items: start; }
+@media (max-width: 760px) { .corpseStage { grid-template-columns: minmax(0, 1fr); } }
+.corpseControls { display: flex; flex-direction: column; gap: 10px; }
+.control { display: grid; grid-template-columns: 60px 34px 1fr 34px; align-items: center; gap: 6px; }
+.control span { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: var(--muted); }
+.control code { text-align: center; background: var(--wash); border: 1px solid var(--line); border-radius: 4px; padding: 3px; }
+.control button, .buttons button {
+  font: inherit; color: var(--ink); border: 1px solid var(--line); background: var(--wash); border-radius: 6px; padding: 6px 10px; cursor: pointer;
+}
+.control button { font-size: 20px; line-height: 1; padding: 2px 0; }
+.control button:hover, .buttons button:hover { border-color: var(--accent); }
+.buttons { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+.buttons .primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.corpsePlate { background: var(--plate); padding: 16px 16px 10px; border-radius: 4px; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
+.fold {
+  position: absolute; left: 0; right: 0;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .025) 0 2px, transparent 2px 6px), var(--plate);
+  border-top: 1px dashed rgba(35, 31, 29, .3); border-bottom: 1px dashed rgba(35, 31, 29, .3);
+}
+.corpseCaption {
+  display: flex; justify-content: space-between; margin-top: 8px; padding-top: 5px; border-top: 2px solid #cf4a32;
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--plate-muted);
+}
+.corpseCaption span:first-child { font-family: Georgia, serif; font-size: 15px; text-transform: none; letter-spacing: .03em; color: var(--plate-ink); }
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+.tile {
+  border: 1px solid var(--line); background: var(--plate); padding: 6px; cursor: pointer; border-radius: 3px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.tile:hover { border-color: var(--accent); }
+.tile small { color: var(--plate-muted); font-size: 11px; }

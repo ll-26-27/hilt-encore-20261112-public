@@ -1,0 +1,830 @@
+[
+  {
+    "id": "ruined-room",
+    "title": "A room reclaimed",
+    "alt": "A weathered room with a wooden doorway, crumbling walls, and plants growing through a window.",
+    "image": "/examples/ekphrasis/ruined-room.jpg",
+    "width": 1290,
+    "height": 847,
+    "cols": 4,
+    "rows": 3,
+    "recordedAt": "2026-11-12T15:54:24.278Z",
+    "routeSHA256": "1a3469f453d9035040ffbb8a9a99ff86c6ff4c990acd50a957ad979090cb5351",
+    "tiles": [
+      {
+        "index": 0,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.9
+          },
+          {
+            "label": "brick",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Dark brick wall corner in dim olive light.",
+        "ekphrasis": "A pier of old brick dissolves into shadow at the left edge, its mortar lines barely surfacing from the murk. Light grazes the right face as if reluctant to touch it."
+      },
+      {
+        "index": 1,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.88
+          },
+          {
+            "label": "arch",
+            "confidence": 0.75
+          },
+          {
+            "label": "doorway",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Stone vault and arch with stained yellowed plaster.",
+        "ekphrasis": "A vault rib curves down like a seam in skin, splitting cold grey from a sickly gold wall. Dark blotches spread across the plaster like ink on wet paper."
+      },
+      {
+        "index": 2,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.85
+          },
+          {
+            "label": "arch",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Curved stained plaster wall with dark water marks.",
+        "ekphrasis": "The arch's edge is lost in a bloom of black damp that reads almost like a silhouette. A pale pillar edge cuts in from the right, out of focus."
+      },
+      {
+        "index": 3,
+        "objects": [
+          {
+            "label": "column",
+            "confidence": 0.85
+          },
+          {
+            "label": "window frame",
+            "confidence": 0.6
+          },
+          {
+            "label": "wall",
+            "confidence": 0.8
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Weathered stone pillar beside a wooden frame.",
+        "ekphrasis": "A worn pillar wears a block capital like a collar, moss streaking its flank. A wooden frame enters from the right, holding only more rock."
+      },
+      {
+        "index": 4,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.92
+          },
+          {
+            "label": "brick",
+            "confidence": 0.8
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Old brick wall with holes and a green streak.",
+        "ekphrasis": "Rows of square holes punctuate the brick like missing teeth. A thin green stain runs down the corner, a slow vertical seep."
+      },
+      {
+        "index": 5,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.88
+          },
+          {
+            "label": "door",
+            "confidence": 0.65
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Peeling plaster wall beside a weathered wooden door.",
+        "ekphrasis": "Plaster flakes in maplike patches, ochre over grey, ending at a door bleached silver. The door's top vanishes into darkness."
+      },
+      {
+        "index": 6,
+        "objects": [
+          {
+            "label": "door",
+            "confidence": 0.8
+          },
+          {
+            "label": "wall",
+            "confidence": 0.9
+          },
+          {
+            "label": "plant",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Wooden door edge and crumbling wall with a small hole.",
+        "ekphrasis": "A single round hole stares from the stone like an eye socket. Pale dry stems reach in from the right, catching light like wire."
+      },
+      {
+        "index": 7,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.88
+          },
+          {
+            "label": "plant",
+            "confidence": 0.75
+          },
+          {
+            "label": "window frame",
+            "confidence": 0.6
+          },
+          {
+            "label": "wire",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Mossy wall with ivy and a wooden frame.",
+        "ekphrasis": "Ivy climbs a rusted grate at the left edge while a thin cable loops lazily down. Blue daylight washes the plaster cold."
+      },
+      {
+        "index": 8,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.92
+          },
+          {
+            "label": "brick",
+            "confidence": 0.85
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Purple-tinted brick wall with dark horizontal bands.",
+        "ekphrasis": "The brick turns bruise-colored, banded by black strips of soot or shadow. A corner fold runs down the right like a spine."
+      },
+      {
+        "index": 9,
+        "objects": [
+          {
+            "label": "floor",
+            "confidence": 0.8
+          },
+          {
+            "label": "wooden plank",
+            "confidence": 0.8
+          },
+          {
+            "label": "debris",
+            "confidence": 0.75
+          },
+          {
+            "label": "wall",
+            "confidence": 0.8
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Debris-strewn floor with loose wooden planks.",
+        "ekphrasis": "Pebbles and dry leaves gather on a dusty threshold, a plank lying across like a forgotten step. White scraps glow at the right edge."
+      },
+      {
+        "index": 10,
+        "objects": [
+          {
+            "label": "leaves",
+            "confidence": 0.85
+          },
+          {
+            "label": "rock",
+            "confidence": 0.75
+          },
+          {
+            "label": "wooden plank",
+            "confidence": 0.8
+          },
+          {
+            "label": "plant",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Fallen leaves and debris on ground near a rock wall.",
+        "ekphrasis": "Green and pink leaves scatter like dropped confetti over dirt and stone. A dark slab tilts in from the right corner, cutting the scene."
+      },
+      {
+        "index": 11,
+        "objects": [
+          {
+            "label": "metal sheet",
+            "confidence": 0.6
+          },
+          {
+            "label": "rod",
+            "confidence": 0.6
+          },
+          {
+            "label": "wall",
+            "confidence": 0.7
+          },
+          {
+            "label": "window frame",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Slanted dark panels with a rusty rod against a wall.",
+        "ekphrasis": "Heavy grey slabs lean at odd angles, a rusted rod pinning them like a splint. Behind, pale wall and a wooden frame sit in thin daylight."
+      }
+    ],
+    "model": "anthropic/claude-opus-5.5",
+    "usage": {
+      "input": 2831,
+      "output": 1858
+    },
+    "seconds": 25.854
+  },
+  {
+    "id": "looking-at-a-painting",
+    "title": "Looking at a painting",
+    "alt": "A visitor seen from behind looking at a painting of books, papers, and musical instruments.",
+    "image": "/examples/ekphrasis/looking-at-a-painting.jpg",
+    "width": 1290,
+    "height": 842,
+    "cols": 4,
+    "rows": 3,
+    "recordedAt": "2026-11-12T15:54:50.746Z",
+    "routeSHA256": "1a3469f453d9035040ffbb8a9a99ff86c6ff4c990acd50a957ad979090cb5351",
+    "tiles": [
+      {
+        "index": 0,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.8
+          },
+          {
+            "label": "wall",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Top-left corner of a painting of wooden planks against a mauve wall.",
+        "ekphrasis": "Painted pine boards, knots like closed eyes, tiny nails pricking the grain. A tilted board slides in from the lower edge, and above it the dusky wall goes on unbroken."
+      },
+      {
+        "index": 1,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.85
+          },
+          {
+            "label": "picture frame",
+            "confidence": 0.8
+          },
+          {
+            "label": "paper",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Small framed landscape hanging on painted wooden boards above papers.",
+        "ekphrasis": "A picture within a picture: a misty grey landscape hangs from a brass ring on painted wood. Curling pages and an engraving crowd in from below, the edge cutting them mid-sentence."
+      },
+      {
+        "index": 2,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.8
+          },
+          {
+            "label": "hair",
+            "confidence": 0.6
+          },
+          {
+            "label": "shelf",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Painted wooden panel and cupboard shelves, top of a head at bottom.",
+        "ekphrasis": "A black hinge holds painted boards beside a dark cabinet. From the bottom corner the crown of a real head rises, its hair clip a small intrusion into the painted world."
+      },
+      {
+        "index": 3,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.8
+          },
+          {
+            "label": "book",
+            "confidence": 0.75
+          },
+          {
+            "label": "shelf",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Corner of a painting showing stacked books on a shelf.",
+        "ekphrasis": "Tied books with red ribbons wait on a shadowed shelf, a quill resting across them. The canvas ends abruptly, giving way to an empty, gently lit wall."
+      },
+      {
+        "index": 4,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.85
+          },
+          {
+            "label": "paper",
+            "confidence": 0.7
+          },
+          {
+            "label": "sculpture",
+            "confidence": 0.7
+          },
+          {
+            "label": "ribbon",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 1,
+        "emotion": "neutral",
+        "caption": "Painted crumpled papers, red figurine, and white bust on wooden boards.",
+        "ekphrasis": "A crushed sheaf of paper hangs like a pale cloud over a red clay child and a blank-eyed plaster bust. A blue bow and a medallion are pinned beside them, every object posing to fool the eye."
+      },
+      {
+        "index": 5,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.85
+          },
+          {
+            "label": "paper",
+            "confidence": 0.8
+          },
+          {
+            "label": "text",
+            "confidence": 0.7
+          },
+          {
+            "label": "violin",
+            "confidence": 0.6
+          },
+          {
+            "label": "hair",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Painted letters, pen, and violin beneath a pink ribbon; hair at right.",
+        "ekphrasis": "A pink strap pins letters, a sealed note, and a red pen to the boards; a printed title reads 'Le Fleau'. A curtain of real hair falls over the right edge."
+      },
+      {
+        "index": 6,
+        "objects": [
+          {
+            "label": "person",
+            "confidence": 0.85
+          },
+          {
+            "label": "hair",
+            "confidence": 0.9
+          },
+          {
+            "label": "painting",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Back of a long-haired person in front of a painted cabinet.",
+        "ekphrasis": "Long brown hair fills most of the view, straight and luminous. Behind it, painted jars and a rolled map sit in a dim cupboard."
+      },
+      {
+        "index": 7,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.85
+          },
+          {
+            "label": "book",
+            "confidence": 0.8
+          },
+          {
+            "label": "ribbon",
+            "confidence": 0.6
+          },
+          {
+            "label": "vase",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Painted shelf with leaning books, blue ribbons, and a clay jar.",
+        "ekphrasis": "Gilded and worn bindings lean together, blue bows loose as if just untied. The painting stops at a soft brown wall that holds nothing."
+      },
+      {
+        "index": 8,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.6
+          },
+          {
+            "label": "icon",
+            "confidence": 0.8
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Bottom edge of a framed painting above a dark wall with user icon.",
+        "ekphrasis": "The painting's lower lip casts a black shadow. Below, a grey circle with a faceless silhouette floats like a stand-in for someone."
+      },
+      {
+        "index": 9,
+        "objects": [
+          {
+            "label": "person",
+            "confidence": 0.7
+          },
+          {
+            "label": "clothing",
+            "confidence": 0.7
+          },
+          {
+            "label": "hair",
+            "confidence": 0.6
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Dark shoulder and hair silhouetted below a painting's edge.",
+        "ekphrasis": "A black garment swells into the frame like a cliff of shadow. Hair tips glow at the right edge."
+      },
+      {
+        "index": 10,
+        "objects": [
+          {
+            "label": "hair",
+            "confidence": 0.9
+          },
+          {
+            "label": "person",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Long brown hair falling over dark clothing against a wall.",
+        "ekphrasis": "Strands catch the light in fine copper lines, ending unevenly. A dark sleeve curves away into the plum-colored wall."
+      },
+      {
+        "index": 11,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.6
+          },
+          {
+            "label": "icon",
+            "confidence": 0.85
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Corner of painting over brown wall with a muted speaker icon.",
+        "ekphrasis": "The frame's corner hangs in shadow while a crossed-out speaker glows below. The scene is declared silent."
+      }
+    ],
+    "model": "anthropic/claude-opus-5.5",
+    "usage": {
+      "input": 2783,
+      "output": 1961
+    },
+    "seconds": 26.454
+  },
+  {
+    "id": "balloon-room",
+    "title": "After the celebration",
+    "alt": "A candlelit dining room with patterned walls, red chairs, and colorful balloons scattered around the table.",
+    "image": "/examples/ekphrasis/balloon-room.jpg",
+    "width": 1290,
+    "height": 857,
+    "cols": 4,
+    "rows": 3,
+    "recordedAt": "2026-11-12T15:55:17.685Z",
+    "routeSHA256": "1a3469f453d9035040ffbb8a9a99ff86c6ff4c990acd50a957ad979090cb5351",
+    "tiles": [
+      {
+        "index": 0,
+        "objects": [
+          {
+            "label": "window",
+            "confidence": 0.8
+          },
+          {
+            "label": "door",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Blurred glass pane in a pale wooden frame.",
+        "ekphrasis": "A smear of gold light hangs behind frosted glass, as if a room were trying to remember itself. The mullion cuts diagonally, soft and out of focus."
+      },
+      {
+        "index": 1,
+        "objects": [
+          {
+            "label": "curtain",
+            "confidence": 0.85
+          },
+          {
+            "label": "wall panel",
+            "confidence": 0.7
+          },
+          {
+            "label": "candle",
+            "confidence": 0.4
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Painted floral wall panel beside a green silk curtain.",
+        "ekphrasis": "Painted leaves climb a curved panel while a glare blooms at its base, bleaching the flowers white. The chartreuse curtain falls heavy, its rings biting the rod."
+      },
+      {
+        "index": 2,
+        "objects": [
+          {
+            "label": "chandelier",
+            "confidence": 0.9
+          },
+          {
+            "label": "window",
+            "confidence": 0.85
+          },
+          {
+            "label": "curtain",
+            "confidence": 0.85
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Crystal chandelier hanging before a tall window with green curtains.",
+        "ekphrasis": "Crystals drip like frozen rain from tarnished arms, cut off mid-cascade at the frame's edge. Behind them the window is black, holding night flat against the glass."
+      },
+      {
+        "index": 3,
+        "objects": [
+          {
+            "label": "wall panel",
+            "confidence": 0.8
+          },
+          {
+            "label": "chandelier",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Gilded wall panels painted with birds and blossoms under ornate molding.",
+        "ekphrasis": "Pink blossoms drift across gold-leaf walls that curve away from the eye. A single chandelier arm intrudes from the left, a dangling ribbon trailing beneath it."
+      },
+      {
+        "index": 4,
+        "objects": [
+          {
+            "label": "window",
+            "confidence": 0.75
+          },
+          {
+            "label": "candle",
+            "confidence": 0.85
+          },
+          {
+            "label": "door handle",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Three candle flames reflected through a glass door.",
+        "ekphrasis": "Three small flames float in a haze of glass, ghost-candles in another room. The dark latch hangs like a shut eyelid at the right."
+      },
+      {
+        "index": 5,
+        "objects": [
+          {
+            "label": "sculpture",
+            "confidence": 0.8
+          },
+          {
+            "label": "chair",
+            "confidence": 0.85
+          },
+          {
+            "label": "balloon",
+            "confidence": 0.85
+          },
+          {
+            "label": "curtain",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "White abstract sculpture on pedestal, chair with red balloon.",
+        "ekphrasis": "A pale bulbous sculpture leans on its plinth like a body folding into itself. Below, a red balloon presses against a chairback, glossy and patient."
+      },
+      {
+        "index": 6,
+        "objects": [
+          {
+            "label": "dining table",
+            "confidence": 0.9
+          },
+          {
+            "label": "candle",
+            "confidence": 0.9
+          },
+          {
+            "label": "wine glass",
+            "confidence": 0.85
+          },
+          {
+            "label": "potted plant",
+            "confidence": 0.8
+          },
+          {
+            "label": "chair",
+            "confidence": 0.8
+          },
+          {
+            "label": "window",
+            "confidence": 0.85
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Candlelit dining table with glasses and red poinsettia before a window.",
+        "ekphrasis": "The table is set and abandoned, glasses catching thin candle halos while a poinsettia burns red at its center. The window behind gives back only darkness."
+      },
+      {
+        "index": 7,
+        "objects": [
+          {
+            "label": "painting",
+            "confidence": 0.9
+          },
+          {
+            "label": "chair",
+            "confidence": 0.9
+          },
+          {
+            "label": "table",
+            "confidence": 0.7
+          },
+          {
+            "label": "wall panel",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Framed landscape painting above chairs against floral painted walls.",
+        "ekphrasis": "A framed woodland sits askew against painted trees, a forest inside a forest. Red velvet chairbacks crowd the foreground like a waiting audience."
+      },
+      {
+        "index": 8,
+        "objects": [
+          {
+            "label": "wall",
+            "confidence": 0.6
+          },
+          {
+            "label": "balloon",
+            "confidence": 0.5
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Blurred white wainscoting with a balloon edge at right.",
+        "ekphrasis": "Molding lines slide diagonally in soft focus, all cream and shadow. In the lower corner, a yellow curve of balloon peeks in."
+      },
+      {
+        "index": 9,
+        "objects": [
+          {
+            "label": "balloon",
+            "confidence": 0.95
+          },
+          {
+            "label": "chair",
+            "confidence": 0.9
+          },
+          {
+            "label": "rug",
+            "confidence": 0.85
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Colorful balloons along a wall beside a chair on a patterned rug.",
+        "ekphrasis": "Balloons gather along the baseboard like stranded fruit, and one white sphere hides under the chair. The rug's dense pattern drinks the low light."
+      },
+      {
+        "index": 10,
+        "objects": [
+          {
+            "label": "chair",
+            "confidence": 0.9
+          },
+          {
+            "label": "balloon",
+            "confidence": 0.9
+          },
+          {
+            "label": "bottle",
+            "confidence": 0.5
+          },
+          {
+            "label": "rug",
+            "confidence": 0.8
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Chair legs and balloons under a dining table in dim light.",
+        "ekphrasis": "Beneath the table it is twilight, carved legs standing among fallen balloons. A pale yellow one glows faintly, as if lit from within."
+      },
+      {
+        "index": 11,
+        "objects": [
+          {
+            "label": "chair",
+            "confidence": 0.9
+          },
+          {
+            "label": "balloon",
+            "confidence": 0.85
+          },
+          {
+            "label": "icon",
+            "confidence": 0.8
+          },
+          {
+            "label": "rug",
+            "confidence": 0.7
+          }
+        ],
+        "faces": 0,
+        "emotion": null,
+        "caption": "Chairs on a rug with balloons and a speaker icon overlay.",
+        "ekphrasis": "A gray speaker symbol floats over the scene, promising a sound no one hears. A white balloon is half-cut at the bottom edge; a blue one hides behind a chair."
+      }
+    ],
+    "model": "anthropic/claude-opus-5.5",
+    "usage": {
+      "input": 2831,
+      "output": 2015
+    },
+    "seconds": 26.935
+  }
+]

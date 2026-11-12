@@ -1,0 +1,124 @@
+%% handout.sty
+%% ---------------------------------------------------------------------------
+%% The BEHAVIOUR of a handout: the content environments and the one-source,
+%% three-audiences switch. Pair it with the visual layer (housestyle.sty):
+%%
+%%     \usepackage{housestyle}             % look & feel
+%%     \usepackage[]{handout}              % student handout  (default)
+%%     \usepackage[key]{handout}           % answer key       (solutions shown)
+%%     \usepackage[teacher]{handout}       % teacher version  (key + notes)
+%%
+%% The body of the document is written ONCE. The same .tex compiles to a blank
+%% student handout, an answer key, or a teacher copy by changing only the option
+%% above -- never by editing or forking the body. That is the move worth
+%% keeping: a solutions key is a compile target, not a second file.
+%%
+%% Environments / macros:
+%%   exercise[<workspace>]   a numbered task; <workspace> is a bare length
+%%                           (e.g. [4cm], [\vfill]) of blank space left for the
+%%                           student. Space is suppressed in key/teacher builds.
+%%   solution                a worked answer. Hidden for students; shown in a
+%%                           ruled box labelled "Solution." for key/teacher.
+%%   note                    a teacher-only aside (shown only in teacher builds).
+%%   passage                 a boxed reading passage (always shown).
+%%   \fitb[<width>]{<answer>} inline fill-in-the-blank: an underlined gap for
+%%                           students, the bold answer for key/teacher.
+%%   \studentonly{...}, \keyonly{...}, \teacheronly{...}  audience-gated inline.
+%% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{handout}[2026/06/11 Audience-toggled handout environments]
+\RequirePackage{ifthen}
+\RequirePackage{enumitem}
+\RequirePackage{needspace}                 % keep a problem from starting at a page bottom
+\RequirePackage{verbatim}                 % provides \comment to swallow hidden content
+\RequirePackage[skins, breakable]{tcolorbox}
+
+% ---- audience switches ------------------------------------------------------
+\newboolean{showsol}    \setboolean{showsol}{false}    % show solutions / answers
+\newboolean{showteach}  \setboolean{showteach}{false}  % show teacher notes
+\DeclareOption{key}{\setboolean{showsol}{true}}
+\DeclareOption{teacher}{\setboolean{showsol}{true}\setboolean{showteach}{true}}
+\ProcessOptions\relax
+
+% ---- inline audience gates --------------------------------------------------
+\newcommand{\studentonly}[1]{\ifthenelse{\boolean{showsol}}{}{#1}}
+\newcommand{\keyonly}[1]{\ifthenelse{\boolean{showsol}}{#1}{}}
+\newcommand{\teacheronly}[1]{\ifthenelse{\boolean{showteach}}{#1}{}}
+
+% ---- exercise: numbered task with optional student work-space ---------------
+% The work-space is left blank for students and removed in key/teacher builds.
+% (The optional length is stashed in begin so the end code can reach it.)
+% needspace keeps the prompt with what follows it, so breaks fall *between*
+% problems: student builds reserve the prompt plus its blank work-space; key /
+% teacher builds reserve the prompt plus the first lines of the solution.
+\newcommand{\ex@space}{0pt}
+\newenvironment{exercise}[1][0pt]{%
+    \renewcommand{\ex@space}{#1}%
+    \ifthenelse{\boolean{showsol}}%
+        {\needspace{6\baselineskip}}%
+        {\needspace{\dimexpr \ex@space + 3\baselineskip\relax}}%
+    \par\noindent
+}{%
+    \studentonly{\vspace{\ex@space}}\par
+}
+% Back-compat alias for math-worksheet sources that used "problem".
+\let\problem\exercise
+\let\endproblem\endexercise
+
+% ---- problemonly: a student-only block (the inverse of solution) ------------
+% Shown to students, hidden in key/teacher builds. Use for tips/instructions
+% that belong on the worksheet but not the answer key.
+\ifthenelse{\boolean{showsol}}{%
+    \let\problemonly\comment
+    \let\endproblemonly\endcomment
+}{%
+    \newenvironment{problemonly}{}{}%
+}
+
+% ---- passage: a boxed reading text (always shown) ---------------------------
+\newenvironment{passage}{%
+    \begin{tcolorbox}[blanker, breakable, boxsep=4pt,
+        borderline={0.6pt}{0pt}{black}, left=8pt, right=8pt, top=6pt, bottom=6pt]%
+}{%
+    \end{tcolorbox}%
+}
+
+% ---- solution: hidden for students, titled box for key/teacher --------------
+% The text label "Solution." carries the meaning, so the box is never colour-only.
+% Gated by \let to \comment when hidden -- the proven way to drop an environment.
+\ifthenelse{\boolean{showsol}}{%
+    \newenvironment{solution}{%
+        \begin{tcolorbox}[blanker, breakable, boxsep=4pt,
+            borderline={0.6pt}{0pt}{black}, left=8pt, right=8pt, top=6pt, bottom=6pt]%
+        {\bfseries Solution.}\hspace{0.5em}\ignorespaces
+    }{%
+        \end{tcolorbox}%
+    }%
+}{%
+    \let\solution\comment
+    \let\endsolution\endcomment
+}
+
+% ---- note: teacher-only aside (left-bar, set apart from solutions) ----------
+\ifthenelse{\boolean{showteach}}{%
+    \newenvironment{note}{%
+        \begin{tcolorbox}[blanker, breakable, boxsep=3pt,
+            borderline west={1.5pt}{0pt}{black}, left=10pt, right=4pt, top=4pt, bottom=4pt]%
+        {\bfseries Teacher note.}\hspace{0.5em}\ignorespaces
+    }{%
+        \end{tcolorbox}%
+    }%
+}{%
+    \let\note\comment
+    \let\endnote\endcomment
+}
+
+% ---- fill-in-the-blank ------------------------------------------------------
+% Students see an underlined gap; key/teacher see the bold answer.
+\newcommand{\fitb}[2][2cm]{%
+    \ifthenelse{\boolean{showsol}}%
+        {\underline{\makebox[#1]{\textbf{#2}}}}%
+        {\underline{\makebox[#1]{}}}%
+}
+
+\endinput

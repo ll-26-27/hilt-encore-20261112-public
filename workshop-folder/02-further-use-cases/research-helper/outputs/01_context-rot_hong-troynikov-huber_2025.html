@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Context Rot — Research Summary</title>
+<style>
+  :root{--ink:#1a1a1a;--mut:#5c5c5c;--line:#e3e3e3;--accent:#7a3b2e;--twist-bg:#fdf6f3;--twist-bd:#e7c8bd;}
+  *{box-sizing:border-box;}
+  body{font:16px/1.65 Georgia,"Times New Roman",serif;color:var(--ink);background:#faf9f7;margin:0;}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+  .crumb{font:13px/1.4 -apple-system,system-ui,sans-serif;color:var(--mut);margin-bottom:28px;}
+  .crumb a{color:var(--accent);text-decoration:none;}
+  h1{font-size:30px;line-height:1.25;margin:0 0 6px;}
+  .meta{font:14px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);margin:0 0 4px;}
+  .gloss{font-size:18px;font-style:italic;color:#333;border-left:3px solid var(--accent);padding:6px 0 6px 16px;margin:22px 0 36px;}
+  h2{font:600 13px/1.3 -apple-system,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:42px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+  p{margin:0 0 16px;}
+  ul{margin:0 0 16px;padding-left:22px;}
+  li{margin:0 0 9px;}
+  .twist{background:var(--twist-bg);border:1px solid var(--twist-bd);border-radius:8px;padding:8px 26px 22px;margin:42px 0;}
+  .twist h2{border-bottom-color:var(--twist-bd);}
+  figure{margin:22px 0;border:1px solid var(--line);background:#fff;border-radius:6px;padding:14px;}
+  figure img{display:block;width:100%;height:auto;border-radius:3px;}
+  figcaption{font:13px/1.5 -apple-system,system-ui,sans-serif;color:var(--mut);margin-top:10px;}
+  .fignote{font:12px/1.5 -apple-system,system-ui,sans-serif;color:var(--mut);background:#f0efec;border-radius:5px;padding:9px 13px;margin:0 0 24px;}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font:13px/1.6 -apple-system,system-ui,sans-serif;color:var(--mut);}
+  footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb"><a href="index.html">← Research Helper index</a> &nbsp;·&nbsp; Article 01</div>
+
+  <h1>Context Rot: How Increasing Input Tokens Impacts LLM Performance</h1>
+  <p class="meta">Kelly Hong, Anton Troynikov, Jeff Huber (Chroma) · 2025</p>
+  <p class="meta">Source: Chroma Technical Report (not peer-reviewed) · <a href="https://research.trychroma.com/context-rot">research.trychroma.com/context-rot</a> · code: <a href="https://github.com/chroma-core/context-rot">github.com/chroma-core/context-rot</a></p>
+  <p class="gloss">LLMs do not process long inputs uniformly — reliability degrades as input length grows, even on trivially simple tasks — so <em>where and how</em> information sits in the context window matters as much as whether it is present.</p>
+
+  <figure>
+    <img src="assets/context-rot/header_plot.jpg" alt="Context Rot header plot" loading="lazy">
+    <figcaption>Headline result: model performance is not flat as input length grows.</figcaption>
+  </figure>
+  <p class="fignote">Figures are reproduced from the original Chroma report (<code>trychroma.com/research/context-rot</code>) and saved locally under <code>assets/context-rot/</code>, so this page renders offline.</p>
+
+  <h2>Neutral Summary</h2>
+  <p>The paper challenges the common assumption that modern LLMs process context uniformly — that the 10,000th token is handled as reliably as the 100th. The authors argue that the dominant long-context benchmark, Needle in a Haystack (NIAH), measures only a narrow capability (lexical retrieval) on which models score near-perfectly, creating a false impression that long context is "solved." Their central methodological move is to hold task difficulty constant while varying only input length, isolating input length as the independent variable — something prior benchmarks conflate with task complexity. They evaluate 18 LLMs across closed-source and open-weights families (Claude Opus/Sonnet/Haiku, GPT-4.1/4o/4-Turbo/o3, Gemini 2.5/2.0, Qwen3), generally at temperature 0, judged by a GPT-4.1 LLM judge calibrated to &gt;0.99 alignment with human labels.</p>
+  <p>The method comprises four controlled experiment families. (1) An <strong>extended NIAH</strong> that varies needle–question semantic similarity, introduces distractors versus irrelevant content, varies needle–haystack similarity, and varies haystack structure (coherent vs. sentence-shuffled). (2) <strong>LongMemEval</strong>, a conversational QA benchmark, comparing "focused" prompts (~300 tokens) against "full" prompts (~113k tokens with irrelevant context). (3) A <strong>repeated-words</strong> replication task in which output length scales with input length, probing reliability when the model must reproduce a long sequence with one unique word inserted.</p>
+  <p>The key evidence is consistent across all experiments: performance degrades non-uniformly as input length grows. Lower needle–question similarity accelerates degradation. Distractors degrade performance even singly, compound when multiplied, and have non-uniform per-distractor impact that amplifies with length. Model families differ behaviorally — Claude models (especially Opus 4 and Sonnet 4) abstain under uncertainty and have the lowest hallucination rates, while GPT models hallucinate confidently more often. Counterintuitively, shuffling the haystack to destroy logical coherence consistently <em>improves</em> performance across all 18 models. On LongMemEval, every model does markedly better on focused than on full prompts. On repeated words, performance degrades with length and models drift into over/under-generation and random outputs.</p>
+  <p>The authors state clear limitations. The evaluation is intentionally minimal and not exhaustive of real-world complexity; they expect degradation to be <em>more</em> severe in realistic multi-step tasks. They do not disentangle how much degradation owes to intrinsic task difficulty versus long-context handling, and they explicitly do not explain the mechanism behind the degradation. Their broad takeaway is that "context engineering" — careful construction and management of the context window — is essential for reliable performance.</p>
+
+  <figure>
+    <img src="assets/context-rot/niah_distractor_irrelevance.png" alt="Distractors versus irrelevant content" loading="lazy">
+    <figcaption>Distractors (topically related but non-answering) degrade performance more than purely irrelevant filler, and the gap widens with length.</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/context-rot/niah_hallucinations.png" alt="Hallucination rates by model family" loading="lazy">
+    <figcaption>Behavioral split under ambiguity: Claude models tend to abstain (low hallucination); GPT models more often answer confidently and incorrectly.</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/context-rot/longmemeval_claude_comparison.png" alt="LongMemEval focused vs full prompt" loading="lazy">
+    <figcaption>LongMemEval: the same answer is found far more reliably in a ~300-token focused prompt than buried in ~113k tokens.</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/context-rot/repeated_words_claude_line_plot.png" alt="Repeated words degradation with length" loading="lazy">
+    <figcaption>Repeated-words task: accuracy decays as the sequence the model must reproduce grows longer.</figcaption>
+  </figure>
+
+  <h2>Key Findings</h2>
+  <ul>
+    <li>Across all experiments and all 18 models, performance degrades <strong>non-uniformly</strong> as input length increases — even on tasks the same models solve trivially at short lengths.</li>
+    <li>Lower <strong>needle–question semantic similarity</strong> causes faster degradation with length; needle position showed no notable effect for this NIAH task.</li>
+    <li><strong>Distractors degrade performance even singly</strong>, compound with more distractors, and have non-uniform per-distractor impact that worsens at longer inputs.</li>
+    <li><strong>Model families differ under ambiguity:</strong> Claude (esp. Opus 4, Sonnet 4) tends to abstain with the lowest hallucination rate; GPT models hallucinate confidently most often.</li>
+    <li><strong>Counterintuitive structure result:</strong> all 18 models perform <em>better</em> on randomly shuffled (incoherent) haystacks than on logically coherent ones — the authors do not explain why.</li>
+    <li><strong>LongMemEval:</strong> all models score significantly higher on ~300-token focused prompts than on ~113k-token full prompts; thinking modes help but do not close the gap.</li>
+    <li><strong>Repeated-words task:</strong> degradation with length, drift into over/under-generation and random tokens; accuracy highest when the unique word is near the start; some models refuse.</li>
+    <li>The paper does <strong>not</strong> explain the mechanism; it frames findings as motivation for better long-context benchmarks and for <strong>context engineering</strong>.</li>
+  </ul>
+
+  <div class="twist">
+    <h2>The Twist — Implications for teaching, learning &amp; research with LLM harnesses</h2>
+    <p>This paper is one of the more directly relevant pieces in the research agenda, because Claude Code is a long-context, agentic harness: it routinely fills the context window with file contents, tool outputs, prior turns, and search results. The paper's core empirical claim — that reliability degrades as the context window fills, even on tasks the model can do perfectly when the context is short — maps cleanly onto a practical instructional lesson. For instructors and students, the actionable takeaway is that <em>a long, stuffed context is not a free good</em>. Pasting an entire textbook, a 200-file repository, or a semester of chat history into the window and expecting uniform attention is exactly the assumption the paper falsifies. The pedagogically honest framing: scope tasks tightly, give the model the relevant slice rather than everything, and treat "the model has access to the information" as necessary but not sufficient for "the model will use it reliably."</p>
+    <p>The LongMemEval result is the strongest bridge. The focused-vs-full gap is a direct argument for the retrieval-first, narrow-context workflows that Claude Code supports — targeted file reads, grep/search before loading, subagents that return distilled findings rather than raw dumps, and context compaction. For research use specifically, this cautions against the appealing shortcut of dumping a whole corpus into one prompt for synthesis; the paper would predict that doing so makes the model do retrieval <em>and</em> reasoning at once, degrading both. The distractor findings reinforce this: in a real codebase or literature pile, near-miss content (an old API, a superseded result) functions as a distractor and measurably increases error and hallucination at scale.</p>
+    <p>Two model-behavior findings are worth surfacing as nuanced and double-edged. First, Claude's tendency to abstain under ambiguity rather than fabricate is, for scholarship and teaching, largely a <em>feature</em> — a model that says "I cannot determine this from what you gave me" is safer for research integrity than one that invents a citation. But the same conservatism lowers measured task completion on full prompts, so a Claude refusal or hedge should be read as a signal to <em>narrow the context and re-ask</em>, not as model failure. Second, the counterintuitive haystack-structure result is genuinely surprising and the authors explicitly do not explain it; instructors should resist over-teaching it. <strong>That bridge is speculative.</strong></p>
+    <p>Two honesty caveats bound the relevance. (a) This is a non-peer-reviewed industry technical report from a vendor (Chroma) whose product is retrieval infrastructure; its "retrieval matters" conclusion aligns with that commercial interest and should be taught as a well-constructed but unrefereed result, not settled science. (b) The experiments are deliberately minimal; the leap from "Claude Sonnet 4 mis-replicates strings at 10,000 words" to "Claude Code will mishandle your 50-file refactor" is intuitive and plausible but is <em>not</em> something this paper tested — the authors themselves frame it as a hypothesis. The defensible classroom message is the general principle — context length is an independent failure axis, manage it deliberately — not any specific quantitative claim about coding-agent behavior.</p>
+  </div>
+
+  <footer>
+    <p>Hong, K., Troynikov, A., &amp; Huber, J. (2025). <em>Context Rot: How Increasing Input Tokens Impacts LLM Performance.</em> Chroma Technical Report. research.trychroma.com/context-rot</p>
+    <p><a href="index.html">← Back to Research Helper index</a></p>
+  </footer>
+</div>
+</body>
+</html>

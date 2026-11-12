@@ -1,0 +1,127 @@
+%% housestyle.sty
+%% ---------------------------------------------------------------------------
+%% The LOOK of a handout: fonts, a clean title block, plain section headings,
+%% a simple callout box, list and table styling, and the PDF accessibility
+%% metadata. This is the default "house style" shipped with the
+%% handout-formatting skill -- deliberately plain: black and white, standard
+%% problem-set / handout typography, nothing decorative.
+%%
+%% Pair it with the behavioural package, which owns the environments and the
+%% student/key/teacher audience switches:
+%%
+%%     \usepackage{housestyle}             % this file -- look & feel
+%%     \usepackage[<options>]{handout}     % environments + audience toggles
+%%
+%% Keeping the two apart means you can drop in a department's own visual layer
+%% (swap this file) without touching the exercise/solution logic, and vice
+%% versa. To match a provided template instead of this default, replace this
+%% file with one built from that template -- see the skill's reference docs.
+%%
+%% Engine: written for a Unicode engine (tectonic / xelatex / lualatex) so that
+%% accented and non-Latin text in the source compiles directly. fontspec
+%% defaults to Latin Modern (bundled, no install); call \handoutfont{...} to use
+%% a system Unicode font for other scripts. See accessibility notes at the end.
+%% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{housestyle}[2026/06/11 Default house style for course handouts]
+
+\RequirePackage{geometry}
+\geometry{margin=1in}
+\RequirePackage{enumitem}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{amsmath, amssymb}   % harmless when absent; needed when math appears
+
+% ---- fonts (Unicode-first) --------------------------------------------------
+% fontspec defaults to Latin Modern, which covers Latin scripts with diacritics
+% out of the box and needs no font install. For Greek, Cyrillic, CJK, Arabic,
+% Devanagari, etc., point \handoutfont at an installed Unicode font, e.g.
+%   \handoutfont{Noto Serif}      % then add polyglossia for complex shaping
+\RequirePackage{fontspec}
+\newcommand{\handoutfont}[2][]{\setmainfont{#2}[#1]}
+
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0pt}
+
+% ---- plain section headings (unnumbered, with a rule under \section) --------
+\RequirePackage{titlesec}
+\RequirePackage{needspace}
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[{\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{2.2ex}{1ex}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.6ex}{0.6ex}
+
+% Keep a heading with the content that follows it: reserve enough room that a
+% heading near the page bottom moves to the next page together with its intro
+% line and the start of the first problem, instead of dangling alone.
+\let\hs@section\section
+\renewcommand{\section}{\needspace{9\baselineskip}\hs@section}
+\let\hs@subsection\subsection
+\renewcommand{\subsection}{\needspace{9\baselineskip}\hs@subsection}
+
+% ---- hyperlinks + PDF metadata (accessibility, no colored boxes) ------------
+\RequirePackage[hidelinks]{hyperref}
+\hypersetup{pdflang={en-US}, pdfdisplaydoctitle=true}
+% Per-document title is set in the .tex via \hypersetup{pdftitle={...}}.
+% Set \hypersetup{pdflang={...}} per document when the handout is not English.
+
+% ---- list styling -----------------------------------------------------------
+\setlist{itemsep=1ex, parsep=1ex, topsep=1ex}
+\setlist[itemize]{label=\textbullet}
+
+% ---- numbered-item label ----------------------------------------------------
+% Plain bold number. Use as: \begin{enumerate}[leftmargin=*, label=\numbox{\arabic*}]
+% (Named \numbox for compatibility with templates that expected a boxed label.)
+\newcommand{\numbox}[1]{\textbf{#1.}}
+
+% ---- title block ------------------------------------------------------------
+% \handouttitle{<subject>}{<kind, e.g. Worksheet 1>}{<date or blank>}
+% A centered title with an optional kind/date line, closed by a full-width rule.
+\newcommand{\handouttitle}[3]{%
+    \begin{center}
+        {\LARGE\bfseries #1\par}
+        \ifx\relax#2\relax\else\smallskip{\large #2}\fi
+        \ifx\relax#3\relax\else\quad{\large #3}\fi
+    \end{center}
+    \vspace{-0.5ex}\noindent\rule{\linewidth}{1pt}\par\vspace{0.5ex}%
+}
+
+% ---- callout box ------------------------------------------------------------
+% \calloutbox{<heading>}{<body>} -- a thin-ruled box with a bold heading,
+% for "Today's Goals" / "Tips" panels.
+\RequirePackage[skins, breakable]{tcolorbox}
+\newcommand{\calloutbox}[2]{%
+    \begin{tcolorbox}[blanker, breakable, boxsep=4pt,
+        borderline={0.6pt}{0pt}{black}, left=8pt, right=8pt, top=6pt, bottom=6pt]
+        {\bfseries #1}\par\smallskip
+        #2
+    \end{tcolorbox}%
+}
+
+% ---- vocabulary / glossary table -------------------------------------------
+% A clean two-column word list. \vocabentry{term}{gloss} per row.
+%   \begin{vocabtable}
+%     \vocabentry{la palabra}{the word}
+%   \end{vocabtable}
+\newenvironment{vocabtable}{%
+    \begin{center}
+    \renewcommand{\arraystretch}{1.3}%
+    \begin{tabular}{@{} >{\bfseries}p{0.40\textwidth} p{0.50\textwidth} @{}}
+    \toprule
+    \normalfont\bfseries Term & \bfseries Meaning \\
+    \midrule
+}{%
+    \bottomrule
+    \end{tabular}
+    \end{center}%
+}
+\newcommand{\vocabentry}[2]{#1 & #2 \\}
+
+% ---- dialogue / interlinear lines ------------------------------------------
+% \dialogue{speaker}{line} -- a speaker-labelled line for conversation handouts.
+\newcommand{\dialogue}[2]{\noindent\textbf{#1:}~#2\par}
+% \gloss{source line}{gloss line} -- two stacked lines for a literal gloss.
+\newcommand{\gloss}[2]{\noindent #1\\[-0.3ex]{\small\itshape #2}\par\medskip}
+
+\endinput

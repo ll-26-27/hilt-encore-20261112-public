@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enzyme kinetics: saturation and inhibition</title>
+<!--
+====================================================================
+PHET-SIM DESIGN RECORD
+--------------------------------------------------------------------
+Title:                  Enzyme kinetics: saturation and inhibition
+Learning goal:          A student can explain why reaction rate stops
+                        rising with substrate concentration, and can
+                        tell a competitive inhibitor from a
+                        non-competitive one by what it does to Km and
+                        Vmax rather than by memorising a definition.
+Target learner:         First-year biology or biochemistry; has seen
+                        rate = amount/time, has not yet derived
+                        Michaelis-Menten.
+Core misconception:     (1) That doubling substrate doubles rate --
+                        students read the near-linear low-[S] region as
+                        the whole story. (2) That Km is a rate. It is a
+                        concentration: the [S] at which half the active
+                        sites are occupied. (3) That "inhibitor" is one
+                        thing; competitive and non-competitive
+                        inhibition are visually distinct on both plots.
+Manipulables:           [S] substrate, 0-100 uM
+                        Vmax, 10-100 umol/min
+                        Km, 2-50 uM
+                        Inhibitor: none / competitive / non-competitive
+                        [I]/Ki ratio, 0-5 (dimensionless)
+Hidden/fixed by design: Enzyme concentration is fixed (Vmax stands in
+                        for it). No product inhibition, no cooperativity,
+                        no temperature or pH. The steady-state
+                        assumption is taken as given rather than derived
+                        -- deriving it is a different lesson.
+Representations:        Three linked views: (a) a population of 24
+                        enzyme molecules whose active sites fill as [S]
+                        rises, (b) the v-versus-[S] saturation curve
+                        with the current operating point marked,
+                        (c) the Lineweaver-Burk double-reciprocal plot.
+                        All three read from one state object.
+Reflection prompts:     5; see "Try this" panel.
+Model limitations:      See panel.
+Classroom use:          In-class demo then lab activity. The inhibition
+                        toggle is the second half; hold it back until
+                        saturation itself is secure.
+Date:                   2026-09-14
+====================================================================
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #555555;
+    --panel: #f4f4f4;
+    --accent: #2a6fdb;
+    --accent-fg: #ffffff;
+    --graph: #d24a3d;
+    --bound: #2a8a4a;
+    --free: #cfcfcf;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px; line-height: 1.5; color: var(--fg); background: var(--bg);
+    margin: 0; padding: 1.5rem; max-width: 1400px;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .goal { font-size: 1rem; color: var(--muted); margin: 0 0 1.5rem; max-width: 70ch; }
+  .layout { display: grid; grid-template-columns: 230px 1fr 1fr 1fr; gap: 1rem; align-items: start; }
+  .controls, .view, .panel { background: var(--panel); padding: 1rem; border-radius: 8px; }
+  .view h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--muted); }
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .panel h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .panel ol, .panel ul { margin: 0; padding-left: 1.2rem; }
+  .panel li { margin-bottom: 0.5rem; }
+  label { display: block; margin: 0.75rem 0; font-size: 0.95rem; }
+  .readout { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; margin-top: 0.25rem; }
+  fieldset { border: 1px solid #ccc; border-radius: 4px; margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; }
+  legend { font-size: 0.9rem; color: var(--muted); padding: 0 0.3rem; }
+  fieldset label { margin: 0.3rem 0; font-size: 0.9rem; }
+  button {
+    padding: 0.5rem 1rem; font-size: 1rem; background: var(--accent); color: var(--accent-fg);
+    border: none; border-radius: 4px; cursor: pointer; margin-top: 0.75rem;
+  }
+  button:focus-visible, input:focus-visible { outline: 3px solid #ffb800; outline-offset: 2px; }
+  svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 4px; }
+  svg text { font-size: 11px; font-family: inherit; fill: var(--muted); }
+  svg text.axis-title { font-size: 12px; }
+  .live-readout { margin-top: 0.75rem; padding: 0.5rem; background: #fff; border-radius: 4px;
+    font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+  .live-readout div { margin: 0.15rem 0; }
+  .disabled { opacity: 0.45; }
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 1fr; }
+    .panels { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Enzyme kinetics: saturation and inhibition</h1>
+<p class="goal">Reaction rate stops climbing once the enzyme's active sites are full. Watch the same state shown three ways &mdash; as molecules, as a curve, and as a straight line.</p>
+
+<div class="layout">
+
+  <section class="controls" aria-labelledby="controls-heading">
+    <h2 id="controls-heading" style="font-size:1rem;margin:0 0 0.5rem;">Controls</h2>
+
+    <label>
+      Substrate [S]: <span id="s-readout" class="readout">10.0</span> &micro;M
+      <input id="s" type="range" min="0" max="100" value="10" step="0.5" aria-label="Substrate concentration in micromolar">
+    </label>
+
+    <label>
+      V<sub>max</sub>: <span id="vmax-readout" class="readout">60</span> &micro;mol/min
+      <input id="vmax" type="range" min="10" max="100" value="60" step="1" aria-label="Maximum velocity in micromoles per minute">
+    </label>
+
+    <label>
+      K<sub>m</sub>: <span id="km-readout" class="readout">15</span> &micro;M
+      <input id="km" type="range" min="2" max="50" value="15" step="1" aria-label="Michaelis constant in micromolar">
+    </label>
+
+    <fieldset>
+      <legend>Inhibitor</legend>
+      <label><input type="radio" name="inh" value="none" checked> None</label>
+      <label><input type="radio" name="inh" value="comp"> Competitive</label>
+      <label><input type="radio" name="inh" value="noncomp"> Non-competitive</label>
+      <label id="ilabel" class="disabled">
+        [I]/K<sub>i</sub>: <span id="i-readout" class="readout">0.0</span>
+        <input id="iratio" type="range" min="0" max="5" value="0" step="0.1" disabled aria-label="Inhibitor concentration over inhibition constant">
+      </label>
+    </fieldset>
+
+    <button id="reset" type="button">Reset</button>
+  </section>
+
+  <section class="view" aria-labelledby="model-heading">
+    <h2 id="model-heading">Enzyme molecules</h2>
+    <svg id="model" viewBox="0 0 300 240" role="img" aria-labelledby="model-desc">
+      <title id="model-desc">Twenty-four enzyme molecules. Filled green circles have substrate bound; grey circles have an empty active site. The proportion filled equals the current reaction rate as a fraction of Vmax.</title>
+      <g id="enzymes"></g>
+      <text x="150" y="232" text-anchor="middle" class="axis-title">active sites occupied</text>
+    </svg>
+    <div class="live-readout" aria-live="polite">
+      <div>Sites occupied: <span id="occ-readout" class="readout">0</span>%</div>
+      <div>Rate v: <span id="v-readout" class="readout">0.0</span> &micro;mol/min</div>
+      <div>v / V<sub>max</sub>: <span id="frac-readout" class="readout">0.00</span></div>
+    </div>
+  </section>
+
+  <section class="view" aria-labelledby="curve-heading">
+    <h2 id="curve-heading">Rate vs. [S]</h2>
+    <svg id="curve" viewBox="0 0 300 240" role="img" aria-labelledby="curve-desc">
+      <title id="curve-desc">Michaelis-Menten saturation curve: reaction rate against substrate concentration. A hollow marker shows the current operating point. Dashed lines mark Vmax and the half-maximal rate at Km.</title>
+      <line x1="40" y1="210" x2="292" y2="210" stroke="#888" stroke-width="1"/>
+      <line x1="40" y1="12" x2="40" y2="210" stroke="#888" stroke-width="1"/>
+      <line id="vmax-line" x1="40" y1="12" x2="292" y2="12" stroke="#999" stroke-width="1" stroke-dasharray="4 3"/>
+      <line id="half-line" x1="40" y1="111" x2="292" y2="111" stroke="#bbb" stroke-width="1" stroke-dasharray="2 3"/>
+      <line id="km-line" x1="80" y1="111" x2="80" y2="210" stroke="#bbb" stroke-width="1" stroke-dasharray="2 3"/>
+      <path id="curve-uninh" d="" fill="none" stroke="#bfbfbf" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <path id="curve-path" d="" fill="none" stroke="var(--graph)" stroke-width="2.5"/>
+      <circle id="op-point" cx="40" cy="210" r="5" fill="#fff" stroke="var(--fg)" stroke-width="2"/>
+      <text id="vmax-label" x="288" y="9" text-anchor="end">Vmax</text>
+      <text id="km-label" x="80" y="222" text-anchor="middle">Km</text>
+      <text x="36" y="214" text-anchor="end">0</text>
+      <text x="166" y="236" text-anchor="middle" class="axis-title">[S] (&micro;M) &rarr;</text>
+    </svg>
+  </section>
+
+  <section class="view" aria-labelledby="lb-heading">
+    <h2 id="lb-heading">Lineweaver&ndash;Burk</h2>
+    <svg id="lb" viewBox="0 0 300 240" role="img" aria-labelledby="lb-desc">
+      <title id="lb-desc">Double-reciprocal plot: one over rate against one over substrate concentration. The y-intercept is one over Vmax; the x-intercept is minus one over Km. A competitive inhibitor moves the x-intercept only; a non-competitive inhibitor moves the y-intercept only.</title>
+      <line x1="20" y1="200" x2="292" y2="200" stroke="#888" stroke-width="1"/>
+      <line id="lb-yaxis" x1="156" y1="12" x2="156" y2="212" stroke="#888" stroke-width="1"/>
+      <line id="lb-line-uninh" x1="0" y1="0" x2="0" y2="0" stroke="#bfbfbf" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line id="lb-line" x1="0" y1="0" x2="0" y2="0" stroke="var(--graph)" stroke-width="2.5"/>
+      <circle id="lb-yint" cx="156" cy="200" r="4" fill="var(--graph)"/>
+      <circle id="lb-xint" cx="156" cy="200" r="4" fill="#fff" stroke="var(--graph)" stroke-width="2"/>
+      <text x="152" y="212" text-anchor="end">0</text>
+      <text x="166" y="226" text-anchor="middle" class="axis-title">1/[S] &rarr;</text>
+      <text x="16" y="20" class="axis-title">1/v</text>
+    </svg>
+    <div class="live-readout" aria-live="polite">
+      <div>Apparent K<sub>m</sub>: <span id="kmapp-readout" class="readout">15.0</span> &micro;M</div>
+      <div>Apparent V<sub>max</sub>: <span id="vmaxapp-readout" class="readout">60.0</span> &micro;mol/min</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="panels">
+
+  <section class="panel" aria-labelledby="notice-heading">
+    <h2 id="notice-heading">What to notice</h2>
+    <p>The three views are one state. Drag <strong>[S]</strong> and the green circles fill, the marker slides along the curve, and the point on the double-reciprocal plot moves &mdash; all from the same number.</p>
+    <p>The curve <em>bends</em>. At low [S] it looks like a straight line through the origin, which is why rate seems proportional to substrate. Keep dragging and it flattens: every active site is busy, and more substrate has nowhere to go.</p>
+    <p>K<sub>m</sub> is marked on the <em>horizontal</em> axis. It is a concentration, not a rate &mdash; the [S] that gets you halfway to V<sub>max</sub>.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="tryit-heading">
+    <h2 id="tryit-heading">Try this</h2>
+    <ol>
+      <li>Set [S] to 5 &micro;M and note the rate. Predict the rate at 10 &micro;M <em>before</em> you move the slider. Now set it to 10. Were you right? Try the same prediction from 50 to 100 &micro;M.</li>
+      <li>Put [S] exactly at the K<sub>m</sub> value. What fraction of V<sub>max</sub> do you get? Change K<sub>m</sub> and repeat. Does the fraction ever change?</li>
+      <li>Turn on the <strong>competitive</strong> inhibitor and raise [I]/K<sub>i</sub>. Which intercept on the Lineweaver&ndash;Burk plot moves &mdash; and which stays pinned?</li>
+      <li>Now switch to <strong>non-competitive</strong>. The other intercept moves. Say out loud what that means about whether more substrate can out-compete the inhibitor.</li>
+      <li>With a competitive inhibitor at [I]/K<sub>i</sub> = 3, push [S] to 100 &micro;M. Compare the rate to the grey dashed uninhibited curve. Can substrate win? Repeat with non-competitive.</li>
+    </ol>
+  </section>
+
+  <section class="panel" aria-labelledby="limits-heading">
+    <h2 id="limits-heading">Model limitations</h2>
+    <p>This is the simplest possible enzyme. It assumes one substrate, one active site, no cooperativity, and a steady state that is reached instantly &mdash; so there is no time axis here at all, only the rate once things have settled.</p>
+    <p>Real enzymes have temperature and pH optima, are often inhibited by their own product, and may show sigmoidal rather than hyperbolic curves when subunits talk to each other. Allosteric enzymes such as phosphofructokinase do not obey the curve on screen.</p>
+    <p>The green circles are a <em>visualisation</em> of the occupied fraction, not a physical simulation of binding. Real molecules bind and release constantly; what stays steady is the proportion bound at any instant.</p>
+  </section>
+
+</div>
+
+<script>
+  // === constants ===
+  const INITIAL = { S: 10, Vmax: 60, Km: 15, inh: 'none', iratio: 0 };
+  const N_ENZYME = 24;
+  const GRID = { cols: 6, rows: 4, x0: 38, y0: 34, dx: 45, dy: 45, r: 15 };
+
+  // curve plot geometry
+  const C = { left: 40, right: 292, top: 12, bottom: 210, sMax: 100, vMax: 100 };
+  // lineweaver-burk geometry: x from -0.5 to +0.5, y from 0 to 0.5
+  const L = { left: 20, right: 292, top: 12, bottom: 200, x0: -0.5, x1: 0.5, yMax: 0.5 };
+
+  const state = { ...INITIAL };
+  const $ = id => document.getElementById(id);
+
+  // === model ===
+  // Competitive inhibitor raises apparent Km; non-competitive lowers apparent Vmax.
+  function apparent() {
+    const f = 1 + state.iratio;
+    if (state.inh === 'comp')    return { Km: state.Km * f, Vmax: state.Vmax };
+    if (state.inh === 'noncomp') return { Km: state.Km,     Vmax: state.Vmax / f };
+    return { Km: state.Km, Vmax: state.Vmax };
+  }
+  function rate(S, Km, Vmax) { return Vmax * S / (Km + S); }
+
+  // === coordinate helpers ===
+  const cx = S => C.left + (S / C.sMax) * (C.right - C.left);
+  const cy = v => C.bottom - (v / C.vMax) * (C.bottom - C.top);
+  const lx = x => L.left + ((x - L.x0) / (L.x1 - L.x0)) * (L.right - L.left);
+  const ly = y => L.bottom - (y / L.yMax) * (L.bottom - L.top);
+
+  // === build the enzyme grid once ===
+  (function buildEnzymes() {
+    const g = $('enzymes');
+    for (let i = 0; i < N_ENZYME; i++) {
+      const col = i % GRID.cols, row = Math.floor(i / GRID.cols);
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', GRID.x0 + col * GRID.dx);
+      c.setAttribute('cy', GRID.y0 + row * GRID.dy);
+      c.setAttribute('r', GRID.r);
+      c.setAttribute('stroke', '#999');
+      c.setAttribute('stroke-width', '1.5');
+      c.setAttribute('fill', 'var(--free)');
+      g.appendChild(c);
+    }
+  })();
+
+  // === render ===
+  function curvePath(Km, Vmax) {
+    let d = '';
+    for (let i = 0; i <= 100; i++) {
+      const S = (i / 100) * C.sMax;
+      d += (i === 0 ? 'M' : 'L') + cx(S).toFixed(1) + ',' + cy(rate(S, Km, Vmax)).toFixed(1);
+    }
+    return d;
+  }
+
+  function render() {
+    const app = apparent();
+    const v = rate(state.S, app.Km, app.Vmax);
+    const occupied = state.S / (app.Km + state.S);   // fraction of sites bound
+
+    // control readouts
+    $('s-readout').textContent    = state.S.toFixed(1);
+    $('vmax-readout').textContent = state.Vmax;
+    $('km-readout').textContent   = state.Km;
+    $('i-readout').textContent    = state.iratio.toFixed(1);
+
+    // enzyme grid: fill the first n circles
+    const nBound = Math.round(occupied * N_ENZYME);
+    const circles = $('enzymes').childNodes;
+    for (let i = 0; i < N_ENZYME; i++) {
+      circles[i].setAttribute('fill', i < nBound ? 'var(--bound)' : 'var(--free)');
+    }
+    $('occ-readout').textContent  = (occupied * 100).toFixed(0);
+    $('v-readout').textContent    = v.toFixed(1);
+    $('frac-readout').textContent = (app.Vmax > 0 ? v / app.Vmax : 0).toFixed(2);
+
+    // saturation curve
+    $('curve-path').setAttribute('d', curvePath(app.Km, app.Vmax));
+    if (state.inh === 'none' || state.iratio === 0) {
+      $('curve-uninh').setAttribute('d', '');
+    } else {
+      $('curve-uninh').setAttribute('d', curvePath(state.Km, state.Vmax));
+    }
+    $('op-point').setAttribute('cx', cx(state.S));
+    $('op-point').setAttribute('cy', cy(v));
+    $('vmax-line').setAttribute('y1', cy(app.Vmax));
+    $('vmax-line').setAttribute('y2', cy(app.Vmax));
+    $('vmax-label').setAttribute('y', Math.max(10, cy(app.Vmax) - 3));
+    $('half-line').setAttribute('y1', cy(app.Vmax / 2));
+    $('half-line').setAttribute('y2', cy(app.Vmax / 2));
+    const kmX = cx(Math.min(app.Km, C.sMax));
+    $('km-line').setAttribute('x1', kmX);
+    $('km-line').setAttribute('x2', kmX);
+    $('km-line').setAttribute('y1', cy(app.Vmax / 2));
+    $('km-label').setAttribute('x', kmX);
+
+    // lineweaver-burk: 1/v = (Km/Vmax)(1/S) + 1/Vmax
+    drawLB('lb-line', 'lb-yint', 'lb-xint', app.Km, app.Vmax, true);
+    if (state.inh === 'none' || state.iratio === 0) {
+      $('lb-line-uninh').setAttribute('x1', 0); $('lb-line-uninh').setAttribute('x2', 0);
+      $('lb-line-uninh').setAttribute('y1', 0); $('lb-line-uninh').setAttribute('y2', 0);
+    } else {
+      drawLB('lb-line-uninh', null, null, state.Km, state.Vmax, false);
+    }
+    $('kmapp-readout').textContent   = app.Km.toFixed(1);
+    $('vmaxapp-readout').textContent = app.Vmax.toFixed(1);
+  }
+
+  function drawLB(lineId, yIntId, xIntId, Km, Vmax, showPoints) {
+    const slope = Km / Vmax, yInt = 1 / Vmax;
+    const yAt = x => slope * x + yInt;
+    const line = $(lineId);
+    line.setAttribute('x1', lx(L.x0)); line.setAttribute('y1', ly(yAt(L.x0)));
+    line.setAttribute('x2', lx(L.x1)); line.setAttribute('y2', ly(yAt(L.x1)));
+    if (showPoints) {
+      $(yIntId).setAttribute('cx', lx(0));      $(yIntId).setAttribute('cy', ly(yInt));
+      $(xIntId).setAttribute('cx', lx(-1 / Km)); $(xIntId).setAttribute('cy', ly(0));
+    }
+  }
+
+  // === events ===
+  $('s').addEventListener('input',    e => { state.S = +e.target.value; render(); });
+  $('vmax').addEventListener('input', e => { state.Vmax = +e.target.value; render(); });
+  $('km').addEventListener('input',   e => { state.Km = +e.target.value; render(); });
+  $('iratio').addEventListener('input', e => { state.iratio = +e.target.value; render(); });
+
+  document.querySelectorAll('input[name="inh"]').forEach(r => {
+    r.addEventListener('change', e => {
+      state.inh = e.target.value;
+      const off = state.inh === 'none';
+      $('iratio').disabled = off;
+      $('ilabel').classList.toggle('disabled', off);
+      if (off) { state.iratio = 0; $('iratio').value = 0; }
+      render();
+    });
+  });
+
+  $('reset').addEventListener('click', () => {
+    Object.assign(state, INITIAL);
+    $('s').value = state.S; $('vmax').value = state.Vmax; $('km').value = state.Km;
+    $('iratio').value = 0; $('iratio').disabled = true;
+    $('ilabel').classList.add('disabled');
+    document.querySelector('input[name="inh"][value="none"]').checked = true;
+    render();
+  });
+
+  // === init ===
+  render();
+</script>
+
+</body>
+</html>

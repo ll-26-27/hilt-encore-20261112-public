@@ -1,7 +1,7 @@
 ---
 title: Hand instruments
 order: 2
-index: Instruments you play with your hands in front of a webcam, built by our undergraduate fellows in an afternoon, then given to a class the next day.
+index: "Turn hand movements in front of a webcam into sound. These instruments began as undergraduate experiments and became material for a class on live installations, showing how a small idea can become something you play, tune, and share with an audience."
 source: https://github.com/tdm155ai/tdm155ai-week-10
 image: ""
 ---
