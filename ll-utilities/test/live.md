@@ -59,3 +59,16 @@ node ll-utilities/huit/gpt.mjs --file /tmp/ll-test/notes.md --effort low "Summar
 ```
 
 Expect a greeting and a one-sentence summary of the tea committee, with token counts on stderr.
+
+## gemini.mjs
+
+A question, a made-up text file, an image, and a made-up PDF:
+
+```
+node ll-utilities/huit/gemini.mjs "Say hello to a room of Harvard educators in one short sentence."
+node ll-utilities/huit/gemini.mjs --file /tmp/ll-test/notes.md "Summarize in one sentence."
+node ll-utilities/huit/gemini.mjs --file /tmp/ll-test/boat.png "Describe this image in one sentence."
+printf 'Made-up handout\n\nClaim one: tea improves meetings.\nClaim two: biscuits need a vote.\nClaim three: oolong is a compromise.\n' > /tmp/ll-test/handout.txt
+cupsfilter /tmp/ll-test/handout.txt > /tmp/ll-test/handout.pdf
+node ll-utilities/huit/gemini.mjs --file /tmp/ll-test/handout.pdf "List the three claims, one line each."
+```

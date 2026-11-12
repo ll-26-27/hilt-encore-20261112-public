@@ -154,3 +154,25 @@ test('gpt rejects an unknown effort', () => {
   const result = run('gpt.mjs', ['--effort', 'max', 'hi', '--dry-run'])
   assert.equal(result.status, 1)
 })
+
+// gemini.mjs ----------------------------------------------------------------
+
+test('gemini --dry-run: text files as text, images and PDFs as inlineData', () => {
+  const pdf = join(tmp, 'handout.pdf')
+  writeFileSync(pdf, '%PDF-1.4 not really')
+  const req = dryRun('gemini.mjs', ['--file', notes, '--file', pdf, '--system', 'Be brief.', 'Summarize.'])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-google-gemini/v1beta/models/gemini-3.5-flash:generateContent')
+  assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
+  const [text, data, prompt] = req.body.contents[0].parts
+  assert.match(text.text, /<file name="notes.md">/)
+  assert.equal(data.inlineData.mimeType, 'application/pdf')
+  assert.equal(prompt.text, 'Summarize.')
+  assert.deepEqual(req.body.systemInstruction, { parts: [{ text: 'Be brief.' }] })
+})
+
+test('gemini refuses file types it cannot send', () => {
+  const doc = join(tmp, 'essay.docx')
+  writeFileSync(doc, 'x')
+  const result = run('gemini.mjs', ['--file', doc, 'hi', '--dry-run'])
+  assert.equal(result.status, 1)
+})
