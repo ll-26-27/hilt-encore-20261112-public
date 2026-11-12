@@ -11,6 +11,10 @@ people:
 url: ""
 ---
 
+This summer, the Bok Center’s Learning Lab ran four-day, hands-on AI intensives for Harvard faculty, moving from basic prompting to complex projects in Claude Code. Faculty worked with their own syllabi, archives, and data to build grading helpers, language-practice apps, and qualitative-research assistants.
+
+In this session, we’ll try some of those activities, share what we learned, and think together about where this is heading. No technical background or AI account needed.
+
 The Learning Lab at the Derek Bok Center for Teaching and Learning is a studio for multimodal communication: video, podcasts, 3D, the web, games. This year we ran a series of four-day Claude Code workshops that took Harvard faculty from wherever they were, even with no coding or command-line experience, to building with AI in their own material. This session is what we learned: how we designed the workshops, how they changed as the tools changed under us, and what we have kept doing since, with faculty and in our own course.
 
 ## In this app

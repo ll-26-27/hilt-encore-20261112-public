@@ -48,9 +48,9 @@ export default function Playthrough() {
 
   return <div className={s.root}>
     <div className={s.intro}>
-      <a className={s.photo} href="/examples/gened1196/elisa-tabletop.png" target="_blank" rel="noreferrer" aria-label="Open Elisa’s tabletop photograph at full size">
+      <a className={s.photo} href="/examples/gened1196/elisa-tabletop-color.jpg" target="_blank" rel="noreferrer" aria-label="Open Elisa’s tabletop photograph at full size">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/examples/gened1196/elisa-tabletop.png" alt="Elisa’s three card decks and handwritten preparation notes on a wooden table" width={1920} height={1080} />
+        <img src="/examples/gened1196/elisa-tabletop-color.jpg" alt="Elisa’s three card decks and handwritten preparation notes on a wooden table" width={1920} height={1080} />
         <span>Elisa’s tabletop · enlarge ↗</span>
       </a>
       <div><p className={s.eyebrow}>GENED 1196 · Fall 2026</p><h2>Follow Elisa’s practice run</h2><p>Play the tour or choose a stage below.</p><details className={s.disclosure}><summary>About this demonstration</summary><p>Elisa demonstrates as a Learning Lab fellow, not as a student submitting an assessment. Her photograph and full transcript are supplied examples. The draw and notes are reconstructed around her chosen cards; the practice feedback is newly written for this page.</p></details></div>
