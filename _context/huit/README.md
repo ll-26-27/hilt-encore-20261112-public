@@ -87,6 +87,7 @@ Compared on November 12, 2026, against HUIT's specs as exported from the Harvard
 - **Gemini 1.0.0 and Bedrock 2.0.0:** version numbers unchanged.
 - **Unchanged on all three:** the opening statement, "APPROVED FOR USE WITH LEVEL 3 CONFIDENTIAL DATA," and the billing-number requirement.
 - **Fable:** the Bedrock spec still says "Fable 5 is the only model in this API for which the provider-data-share option is enabled" and doesn't mention Fable 5.1 or 5.2, which the gateway now lists. The kit still treats every Fable model as data-share (see the table above).
+- **OpenAI Direct `GET /models`:** not among the routes HUIT's November 12 spec documents, but it answered HTTP 200 with a model list on November 12 (tested, the kit's key). It works today; because it isn't documented, it may change without notice.
 - **Key header:** the specs' security schemes name `X-Api-Key` for Gemini and OpenAI Direct, while their examples use `api-key`; both gateways accept `api-key` (tested November 12). Bedrock uses `x-api-key`.
 - **Newer models on all three gateways**, and newer OpenAI transcription models that don't work through HUIT: see the table above.
 - **Not checked:** rate limits (the specs give none), whether Fable 5.1 and 5.2 run in provider data share mode, and whether `gemini-3.5-transcribe` works through the gateway.
