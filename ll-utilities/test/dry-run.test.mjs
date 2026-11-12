@@ -109,3 +109,25 @@ test('quota rejects an unknown gateway', () => {
   assert.equal(result.status, 1)
   assert.match(result.stderr, /unknown gateway/)
 })
+
+// claude.mjs ----------------------------------------------------------------
+
+const notes = join(tmp, 'notes.md')
+writeFileSync(notes, '# Made-up notes\n\n- The tea committee chose oolong.\n')
+
+test('claude --dry-run builds a Bedrock converse request with the file first', () => {
+  const req = dryRun('claude.mjs', ['--file', notes, '--system', 'Be brief.', '--max-tokens', '50', 'Summarize.'])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-bedrock-llm/v2/model/us.anthropic.claude-sonnet-5-5/converse')
+  assert.equal(req.headers['x-api-key'], `[hidden, ${FAKE.length} characters]`)
+  const [file, prompt] = req.body.messages[0].content
+  assert.match(file.text, /<file name="notes.md">/)
+  assert.equal(prompt.text, 'Summarize.')
+  assert.deepEqual(req.body.system, [{ text: 'Be brief.' }])
+  assert.equal(req.body.inferenceConfig.maxTokens, 50)
+})
+
+test('claude needs a prompt', () => {
+  const result = run('claude.mjs', ['--dry-run'])
+  assert.equal(result.status, 1)
+  assert.match(result.stderr, /give a prompt/)
+})

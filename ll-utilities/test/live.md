@@ -37,3 +37,16 @@ node ll-utilities/huit/quota.mjs
 ```
 
 Expect one line per gateway: spent, limit, period, and what's left. Run it before and after another test to see what that test cost.
+
+## claude.mjs
+
+A one-line question, then a made-up file with the cheaper model:
+
+```
+node ll-utilities/huit/claude.mjs --max-tokens 60 "Say hello to a room of Harvard educators in one short sentence."
+printf '# Made-up meeting notes\n\n- The tea committee met on Tuesday.\n- They chose oolong for the spring term.\n- Biscuits remain unresolved.\n' > /tmp/ll-test/notes.md
+node ll-utilities/huit/claude.mjs --model us.anthropic.claude-haiku-5-5 --file /tmp/ll-test/notes.md --max-tokens 80 "Summarize in one sentence."
+node ll-utilities/huit/claude.mjs --list-models
+```
+
+Expect a greeting, a one-sentence summary of the tea committee, and a list of Claude model IDs. Each call prints its token counts to stderr.
