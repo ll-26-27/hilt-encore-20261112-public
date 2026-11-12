@@ -1,19 +1,19 @@
 import Link from "next/link";
 
-export const sections = [
-  ["/ideas", "Ideas"],
-  ["/utilities", "Utilities"],
-  ["/examples", "Examples"],
+const sections = [
+  ["examples", "/examples", "Examples"],
+  ["utilities", "/utilities", "Utilities"],
+  ["ideas", "/ideas", "Ideas"],
 ] as const;
 
-export function SiteHeader() {
+export function SiteHeader({ current = "" }: { current?: string }) {
   return (
     <header className="site-header">
       <Link className="wordmark" href="/">
-        The Learning Lab <span>HILT Encore 2026</span>
+        The Learning Lab <span>at HILT Encore 2026</span>
       </Link>
       <nav aria-label="Main navigation">
-        {sections.map(([href, label]) => <Link key={href} href={href}>{label}</Link>)}
+        {sections.map(([key, href, label]) => <Link key={key} href={href} aria-current={current === key ? "page" : undefined}>{label}</Link>)}
       </nav>
     </header>
   );
@@ -22,17 +22,12 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>The Learning Lab · Derek Bok Center for Teaching and Learning</span>
-      <span>HILT Encore · November 12, 2026</span>
+      <span>The Learning Lab · Derek Bok Center for Teaching and Learning, Harvard University</span>
+      <a href="https://github.com/ll-26-27/hilt-encore-20261112-public" target="_blank" rel="noreferrer">This site’s repo ↗</a>
     </footer>
   );
 }
 
-export function Placeholder({ title }: { title: string }) {
-  return (
-    <main id="main" className="article-shell">
-      <h1>{title}</h1>
-      <p className="lede">Coming soon.</p>
-    </main>
-  );
+export function Placeholder({ children }: { children: React.ReactNode }) {
+  return <p className="placeholder">{children}</p>;
 }

@@ -1,0 +1,28 @@
+/* The chooser, the tabs, and the frame around the hand instruments. Site colors come from globals.css. */
+.chooser { display: grid; gap: 18px; }
+.note { margin: 0; max-width: 760px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.card { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--wash); color: var(--ink); text-decoration: none; transition: border-color .15s, transform .15s; }
+.card:hover, .card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.glyph { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 16px; background: color-mix(in srgb, var(--accent) 16%, transparent); font-size: 34px; line-height: 1; }
+.card strong { font-size: 22px; letter-spacing: -.02em; }
+.what { color: var(--ink); font-size: 15px; line-height: 1.45; }
+.card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 13.5px; line-height: 1.45; display: grid; gap: 4px; }
+.play { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 650; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.tabs a { padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 14px; text-decoration: none; }
+.tabs a:hover { color: var(--ink); border-color: var(--muted); }
+.tabs a[aria-current="page"] { color: var(--paper); background: var(--accent); border-color: var(--accent); font-weight: 650; }
+
+.framed { display: grid; gap: 8px; }
+.frame { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; background: #000; }
+.under { margin: 0; color: var(--muted); font-size: 13px; }
+.under a { color: var(--accent); }
+
+.reactWrap { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+
+@media (max-width: 760px) {
+  .frame { max-height: 80vh; }
+  .cards { grid-template-columns: 1fr; }
+}

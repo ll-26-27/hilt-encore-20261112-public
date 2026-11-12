@@ -1,0 +1,100 @@
+{
+ "recipes": [
+  {
+   "slug": "french-toast-cupcakes",
+   "title": "French Toast Cupcakes",
+   "cardTitle": "French Toast Cupcakes",
+   "blurb": "A 2010s food-blog mashup of a Roman-era breakfast dish, with maple-cinnamon cream cheese icing.",
+   "subtitle": "",
+   "alt": "Handwritten recipe card for French Toast Cupcakes",
+   "original": "20130811-164637.jpg",
+   "renamed": "french-toast-cupcakes.jpg",
+   "image": "/examples/recipe-cards/french-toast-cupcakes.webp",
+   "html": "<h2>About this recipe</h2>\n<p>French toast is much older than its name suggests — a version appears in <em>Apicius</em>, a Roman cookbook from the 4th or 5th century, where stale bread is soaked in milk and egg and fried in oil. By the medieval period it had spread across Europe under dozens of names (<em>pain perdu</em> in France, \"poor knights\" in England and Germany), almost all of them a way to rescue bread that was going stale. The American breakfast version, drenched in butter, maple syrup, and cinnamon, is a 19th-century descendant of those thrift dishes.</p>\n<p>What makes this card unusual is the format. The recipe turns a griddle dish into a cupcake — folding the flavor profile of breakfast (cinnamon, maple, a cream cheese \"icing\" that reads like a Danish glaze) into a baking-powder cake. That mashup is very much a product of the 2010s food-blog era, when classic breakfast flavors started showing up in cupcake, donut, and pancake-stack form. The maple extract instead of syrup is the giveaway: it concentrates flavor without adding moisture, which is a baker's trick rather than a cook's.</p>\n<h2>Ingredients</h2>\n<div class=\"columns\">\n<div>\n<h3>Cupcakes</h3>\n<ul>\n<li>1½ cups all-purpose flour</li>\n<li>1½ tsp baking powder</li>\n<li>1½ tsp ground cinnamon</li>\n<li>¼ tsp salt</li>\n<li>1 cup sugar</li>\n<li>½ cup butter, melted &amp; cooled</li>\n<li>2 eggs</li>\n<li>1 tsp maple extract</li>\n<li>½ cup milk</li>\n</ul>\n</div>\n<div>\n<h3>Icing</h3>\n<ul>\n<li>1 pkg low-fat cream cheese</li>\n<li>4 tbsp butter, room temp</li>\n<li>3 cups confectioners' sugar</li>\n<li>1 tsp ground cinnamon</li>\n</ul>\n</div>\n</div>\n<h2>Directions</h2>\n<ol>\n<li>In a large bowl, mix flour, baking powder, cinnamon, &amp; salt.</li>\n<li>In a small bowl, whisk butter, sugar, and eggs until smooth.</li>\n<li>Whisk in maple extract and add the dry ingredients and milk alternately.</li>\n<li>Beat until smooth and scoop into pan.</li>\n<li>Bake 20–25 minutes.</li>\n<li><strong>Icing:</strong> Blend dry ingredients and add in wet mixture, beating until smooth.</li>\n</ol>"
+  },
+  {
+   "slug": "peanut-butter-fudge",
+   "title": "Peanut Butter Fudge",
+   "cardTitle": "Peanut Butter Fudge",
+   "blurb": "Mrs. Bray's mid-century card, using \"oleo,\" evaporated milk, and the pre-thermometer soft-ball test.",
+   "subtitle": "From Mrs. Bray",
+   "alt": "Handwritten recipe card for Peanut Butter Fudge",
+   "original": "27756_Hospitality_12-7e7ff36328884d81b10f6ae04fe9d801.jpg",
+   "renamed": "peanut-butter-fudge.jpg",
+   "image": "/examples/recipe-cards/peanut-butter-fudge.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Fudge is a distinctly American confection. The most-repeated origin story traces it to Baltimore in the 1880s, where a batch of caramels was supposedly \"fudged\" — under-cooked — into a softer, more crystalline candy. The recipe spread quickly through women's colleges (Vassar, Smith, and Wellesley all claim to have refined it), where students made it in their dorm rooms over gas rings. Peanut butter as a fudge ingredient is a 20th-century addition: peanut butter only became a pantry staple in the U.S. after about 1910, and pairing it with chocolate took off after the Reese's cup arrived in the 1920s.</p>\n<p>What dates this card is the cooking method — \"boil until it forms a soft ball in cold water.\" That's the pre-thermometer test for the soft-ball stage (around 235°F), and the fact that the writer trusts the reader to know it suggests a kitchen from the 1940s or 50s. The word \"oleo\" (for margarine) and the casual use of evaporated milk in place of cream point the same direction: this is wartime or postwar economy cooking, where shortening and canned milk stretched the more expensive butter and cream.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>2 cups sugar</li>\n<li>1 small can evaporated milk (6 oz.)</li>\n<li>2 sqs. bitter chocolate <em>or</em> 2 tsp cocoa</li>\n<li>Small lump oleo (butter)</li>\n<li>1 tsp vanilla</li>\n<li>1¼ cups peanut butter</li>\n</ul>\n<h2>Directions</h2>\n<ol>\n<li>Mix cocoa with sugar.</li>\n<li>On medium heat, bring to a boil and cook for about 4 minutes, or until it forms a soft ball in cold water.</li>\n<li>Remove from fire; add vanilla and peanut butter.</li>\n<li>Beat until it thickens slightly, then pour into a buttered pan.</li>\n<li>When cool, cut into squares.</li>\n</ol>"
+  },
+  {
+   "slug": "three-fruit-marmalade",
+   "title": "Three Fruit Marmalade",
+   "cardTitle": "Three Fruit Marmalade",
+   "blurb": "An Australian home cook's milder take on the Dundee tradition, from a kitchen in Killara, Sydney.",
+   "subtitle": "C. Steinberger — Killara",
+   "alt": "Handwritten recipe for Three Fruit Marmalade",
+   "original": "942x1200xCOL_RSH2017_0003_10-THREE-FRUIT-MARMALADE-1.jpg.pagespeed.ic.FIJUjvHpiB.jpg",
+   "renamed": "three-fruit-marmalade.jpg",
+   "image": "/examples/recipe-cards/three-fruit-marmalade.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Marmalade as we know it — bitter orange preserve with shredded peel — is usually traced to Dundee, Scotland, where in the 1790s Janet Keiller is said to have turned a cheap shipment of Seville oranges into the first commercial jars. The name itself is older and originally Portuguese (<em>marmelada</em>, a quince paste), but the Scots are the ones who fixed it to citrus and made it a breakfast staple across the British Empire. By the early 20th century marmalade-making was a household ritual in Britain, Ireland, Australia, and New Zealand during the short winter window when Seville oranges were in season.</p>\n<p>A \"three fruit\" marmalade — grapefruit, lemon, and orange together — is the milder, mid-century variant, popular once year-round citrus became available and the bitter Seville monopoly broke. The address on this card ([street address omitted here], Killara) is a giveaway: Killara is a suburb of Sydney, Australia, and this is almost certainly an Australian home recipe from the mid-twentieth century. The muslin bag of pith and pips is the traditional pectin trick — citrus seeds and white pith are pectin-rich, and tying them up lets you extract the gelling power without leaving anything chewy in the final jar.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>2 grapefruit</li>\n<li>2 lemons</li>\n<li>3 oranges</li>\n<li>6 pints of water</li>\n<li>5 lb sugar</li>\n</ul>\n<h2>Method</h2>\n<ol>\n<li>Wash fruit. Remove rinds with a sharp knife and cut into thin threads.</li>\n<li>Remove white pith from fruit. Reserve. Cut up fruit flesh and place in a large saucepan with the water.</li>\n<li>Place pips, pith, and any membrane into a piece of muslin, tie up, and place in the pan along with the fruit and water.</li>\n<li>Cook till rinds are tender and contents of the saucepan are reduced by half.</li>\n<li>Remove muslin bag, squeeze any liquid back into the pan.</li>\n<li>Add sugar; stir till dissolved. Boil rapidly 10–15 minutes, or till it jells.</li>\n<li>Allow to cool till a skin forms; stir to distribute the peel. Bottle and seal.</li>\n</ol>"
+  },
+  {
+   "slug": "dumplings",
+   "title": "Dumplings",
+   "cardTitle": "Dumplings",
+   "blurb": "Four-ingredient Southern \"slicks\" — rolled and cut flat, dropped into broth, cooked until chewy.",
+   "subtitle": "",
+   "alt": "Handwritten recipe card for Dumplings",
+   "original": "iart-blog-handwrittenrecipes-dumplingsrecipecard.jpg",
+   "renamed": "dumplings.jpg",
+   "image": "/examples/recipe-cards/dumplings.webp",
+   "html": "<h2>About this recipe</h2>\n<p>\"Dumpling\" is a word that covers a huge family of dishes around the world — Chinese jiaozi, Polish pierogi, Italian gnocchi, Jewish kreplach — but these are specifically <em>rolled-and-cut</em> dumplings, the flat noodle-like strips that go into a pot of simmering broth or stew. That style is the signature of the American South and Appalachia, where it's the foundation of chicken and dumplings (sometimes called \"slick dumplings\" or \"slicks\" to distinguish them from the puffy biscuit-drop kind common further north). The technique traveled with Scots-Irish and German settlers in the 18th and 19th centuries and stuck.</p>\n<p>What's striking on this card is how spare it is — four ingredients, no leavening, treated \"as pie crust.\" That's the giveaway that these are slicks rather than biscuit dumplings: no baking powder, just a tight dough rolled thin and cut into ribbons. The last line, \"cook 'til dumplings are tough,\" is delightfully counterintuitive but correct for this style — these are supposed to be chewy and a little dense, soaking up the broth, not light and fluffy.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>1 cup flour</li>\n<li>½ tsp salt</li>\n<li>2 tbsp cooking oil</li>\n<li>½ cup water</li>\n</ul>\n<h2>Directions</h2>\n<ol>\n<li>Mix flour, salt, and oil as for pie crust.</li>\n<li>Add enough water to make a soft dough.</li>\n<li>Roll on a floured board and cut into strips.</li>\n<li>Drop into boiling broth.</li>\n<li>Cook about 30 minutes — until dumplings are tough.</li>\n</ol>"
+  },
+  {
+   "slug": "zuppa-pavese",
+   "title": "Zuppa Pavese",
+   "cardTitle": "Zuppa Pavese",
+   "blurb": "The \"soup of a king\" from Pavia, Lombardy — legend traces it to a 1525 farmhouse and a captive Francis I.",
+   "subtitle": "Pavia Soup — serves 6",
+   "alt": "Handwritten recipe for Zuppa Pavese (Pavia Soup)",
+   "original": "oz72fqz9oo321.jpg",
+   "renamed": "zuppa-pavese.jpg",
+   "image": "/examples/recipe-cards/zuppa-pavese.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Zuppa Pavese comes from Pavia, a small city in Lombardy in northern Italy, and it has one of the best origin legends in Italian cooking. The story — almost certainly embellished — goes that in February 1525, after the Battle of Pavia where King Francis I of France was captured by the army of Charles V, the defeated king was brought to a farmhouse exhausted and hungry. The peasant woman had nothing to feed a king except day-old bread, eggs, broth, and a piece of cheese, so she fried the bread in butter, cracked an egg over it, and poured hot broth on top. Francis is supposed to have called it \"the soup of a king,\" and the dish kept the name of the battle ever since.</p>\n<p>The cleverness of the recipe is in the construction. The toasted bread floats on top, the egg poaches in the heat of the broth as it's poured over (no separate poaching step), and the Parmesan melts into a savory crust. It's a peasant <em>zuppa</em> in the strict sense — Italian cooks distinguish <em>zuppa</em> (broth poured over bread) from <em>minestra</em> (broth with things cooked in it) — and you can see in this handwritten version the survival of an almost 500-year-old technique unchanged: bread, egg, broth, cheese, with the heat doing all the cooking at the table.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>3 tbsp butter</li>\n<li>6 slices firm, coarse-textured bread</li>\n<li>6 cups meat or chicken broth</li>\n<li>Salt</li>\n<li>6 eggs</li>\n<li>Freshly ground pepper</li>\n<li>6 tbsp freshly grated Parmesan cheese</li>\n<li>Parsley and nutmeg for garnish</li>\n</ul>\n<h2>Directions</h2>\n<ol>\n<li>Melt butter in a saucepan and fry the bread slices on both sides until golden brown. Divide among 6 soup bowls. Place bowls in an oven that has been pre-heated to 350°F and turned off.</li>\n<li>Meanwhile, bring broth to a boil, adding salt if necessary.</li>\n<li>Break an egg onto each slice of bread, pour the boiling broth over it, and add pepper to taste.</li>\n<li>Sprinkle with Parmesan cheese. Garnish with parsley and nutmeg.</li>\n</ol>\n<blockquote>\n\"A loaf of bread,\" the Walrus said, \"is what we chiefly need.\"\n<br>— Lewis Carroll (1832–1898)\n</blockquote>"
+  },
+  {
+   "slug": "christmas-fruit-cookies",
+   "title": "Christmas Fruit Cookies",
+   "cardTitle": "Christmas Fruit Cookies",
+   "blurb": "Doris Laiben's cookie-form fruitcake — dates, cherries, and nuts in a barely-there batter.",
+   "subtitle": "From Doris Laiben",
+   "alt": "Handwritten recipe card for Christmas Fruit Cookies",
+   "original": "recipe-christmasfruitcookies.jpg",
+   "renamed": "christmas-fruit-cookies.jpg",
+   "image": "/examples/recipe-cards/christmas-fruit-cookies.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Fruitcake — and its cousin, the fruit cookie — has a long Christmas association in Europe and America. The form descends from medieval and early-modern preserved-fruit cakes (German <em>stollen</em>, Italian <em>panforte</em>, English plum cake), all of which used dried and candied fruit and nuts as a way to make sweets that would keep through winter. In the 19th and early 20th century, the addition of brightly dyed candied cherries — neon red and green — became a uniquely American flourish, made possible by the industrial production of glacé cherries and a Christmas color palette to match.</p>\n<p>What makes this version a <em>cookie</em> rather than a cake is the very short bake time (8 minutes at 325°) and the high fruit-to-batter ratio: a pound of dates, plus nuts and cherries, held together by just a half cup each of flour and butter. The \"dredge in flour\" note next to the fruit is the key technique — coating sticky fruit in flour before folding it in keeps the pieces from clumping or sinking. The recipe is attributed to Doris Laiben, which (along with the printed kitchen-tile border) places it in a mid-twentieth-century American home cookbook tradition, the kind of recipe that circulated between neighbors at church suppers and in community cookbooks.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>1 cup chopped hazelnuts (½ pecan, ½ hazel)</li>\n<li>1 cup walnuts or pecans</li>\n<li>1 lb chopped pitted dates</li>\n<li>¾ cup chopped candied cherries</li>\n<li>¼ cup flour (to dredge fruit/nuts)</li>\n<li>½ cup butter</li>\n<li>1 cup flour</li>\n<li>¾ cup brown sugar</li>\n<li>1 egg</li>\n<li>½ tsp salt</li>\n<li>½ tsp soda</li>\n<li>½ tsp cinnamon</li>\n</ul>\n<h2>Directions</h2>\n<ol>\n<li>Dredge the nuts, dates, and cherries in ¼ cup flour and set aside.</li>\n<li>Cream butter, 1 cup flour, and brown sugar together.</li>\n<li>Add egg, salt, soda, and cinnamon. Mix until smooth.</li>\n<li>Fold in the floured fruit and nuts.</li>\n<li>Bake at 325°F for 8 minutes.</li>\n</ol>"
+  },
+  {
+   "slug": "rhubarb-cookie-squares",
+   "title": "Rhubarb Cookie Squares",
+   "cardTitle": "Rhubarb Cookie Squares",
+   "blurb": "A two-layer Midwestern bar cookie on a Higbee's department-store card — Cleveland, Ohio.",
+   "subtitle": "11 × 7 × 2 pan, baked at 350°",
+   "alt": "Handwritten recipe card for Rhubarb Cookie Squares",
+   "original": "scan0005.jpg",
+   "renamed": "rhubarb-cookie-squares.jpg",
+   "image": "/examples/recipe-cards/rhubarb-cookie-squares.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Rhubarb is an old Asian medicinal plant — its dried root traveled the Silk Road for over a thousand years — but rhubarb as a <em>dessert</em> ingredient is comparatively recent. It only became affordable in Europe in the 19th century, once sugar prices dropped enough to tame its sourness, and it spread across North America as a hardy farm-garden plant that came up reliably in early spring before any other fruit was ready. That's why so many traditional rhubarb recipes — pies, crumbles, jams, and cookie bars like this one — come from the Midwest and the Plains: it was the first sweet thing of the year.</p>\n<p>This is a classic two-layer bar cookie, a Midwestern church-and-potluck genre: a shortbread crust pressed into a pan, partially baked, then topped with a custardy fruit filling and finished in the oven. The \"Higbee's\" stamp on the card is a nice clue — Higbee's was a Cleveland, Ohio department store, beloved into the 1990s (and the toy department where Ralphie ogles the Red Ryder BB gun in <em>A Christmas Story</em>). So this is almost certainly an Ohio kitchen, working off a recipe card the store printed and gave away — a small piece of 20th-century American department-store cooking culture.</p>\n<h2>Ingredients</h2>\n<div class=\"columns\">\n<div>\n<h3>Crust</h3>\n<ul>\n<li>1 cup all-purpose flour</li>\n<li>⅓ cup confectioners' sugar</li>\n<li>⅓ cup butter or margarine</li>\n</ul>\n</div>\n<div>\n<h3>Filling</h3>\n<ul>\n<li>1 cup sugar</li>\n<li>¼ cup all-purpose flour</li>\n<li>2 eggs, lightly beaten</li>\n<li>1 tsp vanilla</li>\n<li>3 cups finely diced fresh or frozen rhubarb</li>\n</ul>\n</div>\n</div>\n<h2>Directions</h2>\n<ol>\n<li>In a bowl, combine flour, powdered sugar, and butter to coarse crumbs.</li>\n<li>Press into the bottom of a greased pan. Bake at 350° for 12 minutes.</li>\n<li>For the filling, combine the first 4 ingredients (sugar, flour, eggs, vanilla).</li>\n<li>Stir in the rhubarb and pour over the warm crust.</li>\n<li>Bake 35–40 minutes more.</li>\n</ol>"
+  },
+  {
+   "slug": "eagle-brand-ice-cream",
+   "title": "Eagle Brand Ice Cream",
+   "cardTitle": "Eagle Brand Ice Cream",
+   "blurb": "A Borden marketing recipe engraved on wood — no eggs, no custard, just condensed milk doing the work.",
+   "subtitle": "From the kitchen of Borden — makes 4 quarts",
+   "alt": "Engraved wooden recipe card for Eagle Brand Ice Cream",
+   "original": "thinkengraved-cutting-board-3-x5-engraved-handwritten-recipe-wood-card-personalized-grandma-s-recipe-card-4x6-or-3x5-recipe-card-41258712924385.webp",
+   "renamed": "eagle-brand-ice-cream.webp",
+   "image": "/examples/recipe-cards/eagle-brand-ice-cream.webp",
+   "html": "<h2>About this recipe</h2>\n<p>Eagle Brand sweetened condensed milk was invented in 1856 by Gail Borden, a Texas land surveyor who became obsessed with food preservation after watching children die of contaminated milk on a transatlantic crossing. His vacuum-evaporation method produced shelf-stable, sugary milk in a can, and it was a game-changer for the Union Army during the Civil War — soldiers got safe milk in their coffee for the first time. After the war, Borden's company spent decades publishing recipe pamphlets to teach home cooks what else condensed milk could do: it turned out to be a near-perfect base for fudge, key lime pie, magic cookie bars, and homemade ice cream, because its high sugar content prevents ice crystals from forming as it freezes.</p>\n<p>That's exactly what's happening here. With no eggs, no custard tempering, and no churning beyond what a hand-crank or electric freezer does, the two cans of Eagle Brand provide both the sweetness <em>and</em> the smooth texture that you'd otherwise need a French-style custard for. The recipe is essentially a Borden marketing recipe — note \"Recipe from the kitchen of: Borden\" right at the top — preserved on a laser-engraved wooden card sold as a kitchen keepsake. So it's a delightful three-layer artifact: a 19th-century industrial product, a mid-20th-century home recipe, and a 21st-century craft tribute to both.</p>\n<h2>Ingredients</h2>\n<ul>\n<li>4 cups half &amp; half</li>\n<li>6 cups milk</li>\n<li>2 cups cold water</li>\n<li>2 cans Eagle Brand sweetened condensed milk</li>\n<li>2 tbsp vanilla</li>\n<li>Optional: 3 cups fresh fruit — berries, cherries, or peaches</li>\n</ul>\n<h2>Directions</h2>\n<ol>\n<li>Mix all ingredients together.</li>\n<li>Pour into an ice cream freezer and freeze.</li>\n<li>If desired, add 3 cups of fresh fruit (berries, cherries, or peaches).</li>\n</ol>"
+  }
+ ]
+}

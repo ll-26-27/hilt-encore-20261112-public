@@ -1,0 +1,459 @@
+/* Scoped copy of the original globals.css: every rule sits under .root so nothing leaks into the site. */
+.root {
+  --bg: #121412;
+  --panel: #1a1c19;
+  --panel-2: #1f2321;
+  --line: #2c2f2b;
+  --text: #ecece6;
+  --muted: #a0a49a;
+  --accent: #ff6b57;
+  --warn: #ff7a59;
+  --live: #6fe08a;
+  --rec: #e5484d;
+  color-scheme: dark;
+}
+.root, .root :global(*) {
+  box-sizing: border-box;
+}
+.root {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 "Inter Variable", Inter, system-ui, sans-serif;
+}
+.root :global(button), .root :global(select), .root :global(input) {
+  font: inherit;
+  color: inherit;
+}
+.root :global(button), .root :global(.load) {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.root :global(button:hover), .root :global(.load:hover) {
+  border-color: #4a524e;
+}
+.root :global(button:focus-visible), .root :global(select:focus-visible), .root :global(input:focus-visible), .root :global(.load:focus-within) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.root :global(button.primary) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a1300;
+  font-weight: 650;
+}
+.root :global(button.big) {
+  font-size: 1.15rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+}
+.root :global(kbd) {
+  font: 600 0.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  color: var(--muted);
+}
+.root :global(.app) {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+.root :global(.top) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 14px;
+}
+.root :global(h1), .root :global(.gc-title) {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+.root :global(.lede) {
+  margin: 2px 0 0;
+  color: var(--muted);
+}
+.root :global(.status) {
+  margin: 0;
+  font-size: 0.9rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.root :global(.status::before) {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: currentColor;
+  vertical-align: 1px;
+}
+.root :global(.status-live) {
+  color: var(--live);
+}
+.root :global(.status-warn) {
+  color: var(--warn);
+}
+.root :global(.stage-wrap) {
+  display: flex;
+  justify-content: center;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.root :global(.stage) {
+  position: relative;
+  aspect-ratio: var(--ar);
+  width: min(100%, calc(64vh * var(--ar)));
+  background: #000;
+}
+.root :global(.stage-wrap:fullscreen) {
+  align-items: center;
+  border-radius: 0;
+}
+.root :global(.stage-wrap:fullscreen .stage) {
+  width: min(100vw, calc(100vh * var(--ar)));
+}
+.root :global(.stage canvas) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.root :global(.stage video.source) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.root :global(.stage canvas.mirrored) {
+  transform: scaleX(-1);
+}
+.root :global(.stage-cover) {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 40%, #1d211f, #000 70%);
+}
+.root :global(.stage-cover p) {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--muted);
+}
+.root :global(.stage-cover p.error) {
+  color: var(--warn);
+}
+.root :global(.controls) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin: 14px 0 22px;
+  padding: 10px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.root :global(.field), .root :global(.check) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+.root :global(.field span) {
+  color: var(--text);
+}
+.root :global(.field select) {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  max-width: 220px;
+}
+.root :global(.field input[type="range"]) {
+  width: 120px;
+  accent-color: var(--accent);
+}
+.root :global(.field output) {
+  min-width: 3ch;
+  font-variant-numeric: tabular-nums;
+}
+.root :global(.check input) {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+.root :global(button:disabled) {
+  opacity: 0.45;
+  cursor: default;
+}
+.root :global(a.button) {
+  display: inline-block;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 11px;
+  color: inherit;
+  text-decoration: none;
+}
+.root :global(a.button:hover) {
+  border-color: #4a524e;
+}
+.root :global(a.button:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.root :global(button.small) {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+.root :global(.rec) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 7.5em;
+  font-variant-numeric: tabular-nums;
+}
+.root :global(.rec-dot) {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--rec);
+}
+.root :global(.rec.on) {
+  background: var(--rec);
+  border-color: var(--rec);
+  color: #fff;
+  font-weight: 650;
+}
+.root :global(.rec.on .rec-dot) {
+  background: #fff;
+  animation: blink 1s steps(2, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+.root :global(.warnings) {
+  margin: -8px 0 18px;
+  color: var(--warn);
+  font-size: 0.9rem;
+}
+.root :global(.warnings p) {
+  margin: 0 0 4px;
+}
+.root :global(.panels) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.root :global(.panel) {
+  padding: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.root :global(.panel h2) {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.root :global(.panel-head) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 14px;
+}
+.root :global(.hint) {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.root :global(.panel-head .hint) {
+  margin: 0;
+}
+.root :global(.look) {
+  display: grid;
+  gap: 6px;
+}
+.root :global(.look) {
+  margin-top: 12px;
+}
+.root :global(.look-row) {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+}
+.root :global(.look-row) {
+  grid-template-columns: 6em minmax(0, 1fr) 6.5em;
+}
+.root :global(.look-row input[type="range"]) {
+  width: 100%;
+  accent-color: var(--c);
+}
+.root :global(.look-row output) {
+  font-variant-numeric: tabular-nums;
+  color: var(--c);
+  text-align: right;
+}
+.root :global(.takes .empty) {
+  margin: 12px 0 2px;
+  color: var(--muted);
+}
+.root :global(.take-list) {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.root :global(.take) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.root :global(.take video) {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 6px;
+}
+.root :global(.take-info) {
+  display: flex;
+  flex-direction: column;
+}
+.root :global(.take-info span) {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.root :global(.take-tools) {
+  display: flex;
+  gap: 6px;
+}
+.root :global(.take-tools button) {
+  padding: 5px 11px;
+}
+.root :global(.foot) {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.root :global(.foot p) {
+  margin: 0;
+}
+@media (max-width: 860px) {
+.root :global(.panels) {
+  grid-template-columns: 1fr;
+}
+}
+@media (max-width: 480px) {
+.root :global(.field input[type="range"]) {
+  width: 96px;
+}
+.root :global(.look-row) {
+  grid-template-columns: 5em minmax(0, 1fr) 5.5em;
+}
+}
+.root :global(.gestures-panel) {
+  margin-bottom: 18px;
+}
+.root :global(.gesture-list) {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 8px;
+}
+.root :global(.gesture-list li) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.root :global(.gesture-icon) {
+  grid-row: 1 / 3;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+.root :global(.gesture-list span:last-child) {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.root :global(.look-row) {
+  grid-template-columns: 8.5em minmax(0, 1fr) 6.5em;
+}
+.root :global(.look-row .wide-select) {
+  grid-column: 2 / -1;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 6px;
+}
+.root :global(.look + .look) {
+  margin-top: 6px;
+}
+.root :global(.you-hint) {
+  margin: 10px 0 8px;
+}
+.root :global(.you-foot) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.root :global(.person-state) {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.root :global(.person-ready) {
+  color: var(--live);
+}
+.root :global(.person-error) {
+  color: var(--warn);
+}
+@media (max-width: 480px) {
+.root :global(.look-row) {
+  grid-template-columns: 6.5em minmax(0, 1fr) 5.5em;
+}
+}
+
+
+/* The site's globals.css also uses .stage, .lede and .overlay (for the slides); undo what they would add here. */
+.root :global(.stage) { top: auto; left: auto; overflow: visible; }
+.root :global(.lede) { max-width: none; font-size: inherit; line-height: inherit; }
+.root :global(.stage .overlay) { z-index: auto; }

@@ -1,0 +1,2358 @@
+{
+ "categories": [
+  "characterization",
+  "plot",
+  "expansion",
+  "cut",
+  "moral-religious",
+  "fate-agency",
+  "framing",
+  "wording",
+  "spelling",
+  "punctuation",
+  "other"
+ ],
+ "totals": {
+  "sentences1818": 3101,
+  "sentences1831": 3332,
+  "sentencesUnchanged": 2127,
+  "changes": 550,
+  "byKind": {
+   "insertion": 18,
+   "punctuation": 216,
+   "substitution": 297,
+   "removal": 19
+  },
+  "bySize": {
+   "large": 51,
+   "trivial": 216,
+   "small": 224,
+   "medium": 59
+  },
+  "wordsRemoved": 6878,
+  "wordsAdded": 12315,
+  "completenessCheck": "passed: every sentence in both editions is either matched exactly or inside exactly one change"
+ },
+ "byRule": 216,
+ "byModel": 334,
+ "failures": 0,
+ "rationalesOver40Words": 42,
+ "byCategory": {
+  "characterization": {
+   "primary": 30,
+   "anyLabel": 94,
+   "words": 1984
+  },
+  "plot": {
+   "primary": 3,
+   "anyLabel": 13,
+   "words": 224
+  },
+  "expansion": {
+   "primary": 43,
+   "anyLabel": 62,
+   "words": 6189
+  },
+  "cut": {
+   "primary": 12,
+   "anyLabel": 28,
+   "words": 197
+  },
+  "moral-religious": {
+   "primary": 9,
+   "anyLabel": 45,
+   "words": 619
+  },
+  "fate-agency": {
+   "primary": 2,
+   "anyLabel": 12,
+   "words": 461
+  },
+  "framing": {
+   "primary": 6,
+   "anyLabel": 9,
+   "words": 2774
+  },
+  "wording": {
+   "primary": 137,
+   "anyLabel": 207,
+   "words": 379
+  },
+  "spelling": {
+   "primary": 91,
+   "anyLabel": 115,
+   "words": 122
+  },
+  "punctuation": {
+   "primary": 216,
+   "anyLabel": 216,
+   "words": 81
+  },
+  "other": {
+   "primary": 1,
+   "anyLabel": 7,
+   "words": 1
+  }
+ },
+ "bySignificance": {
+  "1": 377,
+  "2": 67,
+  "3": 35,
+  "4": 54,
+  "5": 17
+ },
+ "byConfidence": {
+  "high": 433,
+  "medium": 117
+ },
+ "sections": [
+  {
+   "id": "introduction",
+   "label": "Author's Introduction (1831)",
+   "from1818": "(new)",
+   "sectionWords": 2247,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 2263,
+    "wording": 0,
+    "spelling": 0,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "preface",
+   "label": "Preface",
+   "from1818": "Preface",
+   "sectionWords": 571,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 3,
+    "wording": 2,
+    "spelling": 1,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "letter-1",
+   "label": "Letter I",
+   "from1818": "Letter I",
+   "sectionWords": 1199,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 0,
+    "spelling": 4,
+    "punctuation": 3,
+    "other": 0
+   }
+  },
+  {
+   "id": "letter-2",
+   "label": "Letter II",
+   "from1818": "Letter II",
+   "sectionWords": 1310,
+   "wordsChanged": {
+    "characterization": 229,
+    "plot": 0,
+    "expansion": 156,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 6,
+    "spelling": 1,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "letter-3",
+   "label": "Letter III",
+   "from1818": "Letter III",
+   "sectionWords": 300,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 70,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 4,
+    "wording": 2,
+    "spelling": 0,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "letter-4",
+   "label": "Letter IV",
+   "from1818": "Letter IV",
+   "sectionWords": 2727,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 715,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 9,
+    "spelling": 4,
+    "punctuation": 3,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch1",
+   "label": "Ch. I",
+   "from1818": "Vol. I, Ch. I",
+   "sectionWords": 1766,
+   "wordsChanged": {
+    "characterization": 21,
+    "plot": 0,
+    "expansion": 1518,
+    "cut": 0,
+    "moral-religious": 48,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 0,
+    "spelling": 0,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch2",
+   "label": "Ch. II",
+   "from1818": "Vol. I, Ch. I",
+   "sectionWords": 2202,
+   "wordsChanged": {
+    "characterization": 755,
+    "plot": 0,
+    "expansion": 364,
+    "cut": 25,
+    "moral-religious": 0,
+    "fate-agency": 456,
+    "framing": 0,
+    "wording": 0,
+    "spelling": 1,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch3",
+   "label": "Ch. III",
+   "from1818": "Vol. I, Ch. II",
+   "sectionWords": 2672,
+   "wordsChanged": {
+    "characterization": 198,
+    "plot": 0,
+    "expansion": 628,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 2,
+    "spelling": 5,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch4",
+   "label": "Ch. IV",
+   "from1818": "Vol. I, Ch. III",
+   "sectionWords": 2532,
+   "wordsChanged": {
+    "characterization": 69,
+    "plot": 0,
+    "expansion": 44,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 0,
+    "spelling": 11,
+    "punctuation": 7,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch5",
+   "label": "Ch. V",
+   "from1818": "Vol. I, Ch. IV",
+   "sectionWords": 2350,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 13,
+    "spelling": 2,
+    "punctuation": 8,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch6",
+   "label": "Ch. VI",
+   "from1818": "Vol. I, Ch. V",
+   "sectionWords": 2714,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 123,
+    "cut": 18,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 456,
+    "wording": 88,
+    "spelling": 2,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch7",
+   "label": "Ch. VII",
+   "from1818": "Vol. I, Ch. VI",
+   "sectionWords": 3569,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 372,
+    "cut": 94,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 6,
+    "wording": 36,
+    "spelling": 6,
+    "punctuation": 3,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch8",
+   "label": "Ch. VIII",
+   "from1818": "Vol. I, Ch. VII",
+   "sectionWords": 3085,
+   "wordsChanged": {
+    "characterization": 288,
+    "plot": 0,
+    "expansion": 104,
+    "cut": 0,
+    "moral-religious": 284,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 1,
+    "spelling": 4,
+    "punctuation": 3,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch9",
+   "label": "Ch. IX",
+   "from1818": "Vol. II, Ch. I",
+   "sectionWords": 2209,
+   "wordsChanged": {
+    "characterization": 2,
+    "plot": 0,
+    "expansion": 614,
+    "cut": 0,
+    "moral-religious": 54,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 1,
+    "spelling": 0,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch10",
+   "label": "Ch. X",
+   "from1818": "Vol. II, Ch. II",
+   "sectionWords": 2354,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 290,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 10,
+    "spelling": 3,
+    "punctuation": 1,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch11",
+   "label": "Ch. XI",
+   "from1818": "Vol. II, Ch. III",
+   "sectionWords": 2902,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 1,
+    "spelling": 6,
+    "punctuation": 5,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch12",
+   "label": "Ch. XII",
+   "from1818": "Vol. II, Ch. IV",
+   "sectionWords": 2068,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 1,
+    "spelling": 3,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch13",
+   "label": "Ch. XIII",
+   "from1818": "Vol. II, Ch. V",
+   "sectionWords": 2031,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 12,
+    "spelling": 3,
+    "punctuation": 1,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch14",
+   "label": "Ch. XIV",
+   "from1818": "Vol. II, Ch. VI",
+   "sectionWords": 1854,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 2,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 17,
+    "spelling": 0,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch15",
+   "label": "Ch. XV",
+   "from1818": "Vol. II, Ch. VII",
+   "sectionWords": 3006,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 12,
+    "spelling": 11,
+    "punctuation": 11,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch16",
+   "label": "Ch. XVI",
+   "from1818": "Vol. II, Ch. VIII",
+   "sectionWords": 3196,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 146,
+    "expansion": 0,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 4,
+    "spelling": 11,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch17",
+   "label": "Ch. XVII",
+   "from1818": "Vol. II, Ch. IX",
+   "sectionWords": 1915,
+   "wordsChanged": {
+    "characterization": 273,
+    "plot": 0,
+    "expansion": 11,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 4,
+    "spelling": 3,
+    "punctuation": 3,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch18",
+   "label": "Ch. XVIII",
+   "from1818": "Vol. III, Ch. I",
+   "sectionWords": 2838,
+   "wordsChanged": {
+    "characterization": 35,
+    "plot": 0,
+    "expansion": 572,
+    "cut": 16,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 6,
+    "spelling": 3,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch19",
+   "label": "Ch. XIX",
+   "from1818": "Vol. III, Ch. II",
+   "sectionWords": 2609,
+   "wordsChanged": {
+    "characterization": 65,
+    "plot": 0,
+    "expansion": 2,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 3,
+    "spelling": 3,
+    "punctuation": 1,
+    "other": 1
+   }
+  },
+  {
+   "id": "ch20",
+   "label": "Ch. XX",
+   "from1818": "Vol. III, Ch. III",
+   "sectionWords": 3518,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 119,
+    "cut": 1,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 10,
+    "spelling": 4,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch21",
+   "label": "Ch. XXI",
+   "from1818": "Vol. III, Ch. IV",
+   "sectionWords": 3738,
+   "wordsChanged": {
+    "characterization": 11,
+    "plot": 18,
+    "expansion": 253,
+    "cut": 29,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 11,
+    "spelling": 6,
+    "punctuation": 1,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch22",
+   "label": "Ch. XXII",
+   "from1818": "Vol. III, Ch. V",
+   "sectionWords": 3417,
+   "wordsChanged": {
+    "characterization": 19,
+    "plot": 60,
+    "expansion": 147,
+    "cut": 0,
+    "moral-religious": 188,
+    "fate-agency": 0,
+    "framing": 42,
+    "wording": 13,
+    "spelling": 9,
+    "punctuation": 2,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch23",
+   "label": "Ch. XXIII",
+   "from1818": "Vol. III, Ch. VI",
+   "sectionWords": 2590,
+   "wordsChanged": {
+    "characterization": 19,
+    "plot": 0,
+    "expansion": 81,
+    "cut": 0,
+    "moral-religious": 0,
+    "fate-agency": 0,
+    "framing": 0,
+    "wording": 35,
+    "spelling": 2,
+    "punctuation": 0,
+    "other": 0
+   }
+  },
+  {
+   "id": "ch24",
+   "label": "Ch. XXIV",
+   "from1818": "Vol. III, Ch. VII",
+   "sectionWords": 8227,
+   "wordsChanged": {
+    "characterization": 0,
+    "plot": 0,
+    "expansion": 6,
+    "cut": 12,
+    "moral-religious": 45,
+    "fate-agency": 5,
+    "framing": 0,
+    "wording": 80,
+    "spelling": 14,
+    "punctuation": 19,
+    "other": 0
+   }
+  }
+ ],
+ "check": {
+  "cheapModel": "anthropic/claude-haiku-5.5",
+  "checkModel": "anthropic/claude-sonnet-5.5",
+  "sampleSize": 100,
+  "population": 334,
+  "seed": 1831,
+  "sameCategoryPct": 78,
+  "overlappingPct": 96,
+  "significanceWithin1Pct": 98,
+  "significanceExactPct": 66,
+  "byConfidence": {
+   "high": {
+    "n": 66,
+    "agree": 58
+   },
+   "medium": {
+    "n": 34,
+    "agree": 20
+   }
+  },
+  "bySize": {
+   "small": {
+    "n": 70,
+    "agree": 59
+   },
+   "large": {
+    "n": 16,
+    "agree": 8
+   },
+   "medium": {
+    "n": 14,
+    "agree": 11
+   }
+  },
+  "disagreements": {
+   "spelling → wording": 3,
+   "expansion → characterization": 2,
+   "moral-religious → wording": 2,
+   "expansion → wording": 2,
+   "characterization → wording": 2,
+   "wording → spelling": 2,
+   "characterization → expansion": 1,
+   "wording → cut": 1,
+   "expansion → fate-agency": 1,
+   "wording → characterization": 1,
+   "moral-religious → plot": 1,
+   "wording → fate-agency": 1,
+   "characterization → plot": 1,
+   "expansion → plot": 1,
+   "moral-religious → characterization": 1
+  }
+ },
+ "hand": {
+  "reader": "Claude Opus 5.5, the agent that built this pipeline, on 2026-11-03. This is NOT a human scholar's reading. It is a third opinion, and a scholar using this pipeline should redo this step with their own eyes, on their own sample.",
+  "n": 25,
+  "agreeCheapPct": 88,
+  "agreeStrongPct": 92
+ },
+ "known": [
+  {
+   "key": "introduction",
+   "title": "The new Author's Introduction (the ghost-story contest at Geneva, 1816)",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0001",
+   "sources": [
+    "intro"
+   ]
+  },
+  {
+   "key": "elizabeth",
+   "title": "Elizabeth's origins: Victor's cousin in 1818, an adopted foundling (daughter of a Milanese nobleman) in 1831",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0051",
+   "sources": [
+    "mellor",
+    "wikiLavenza"
+   ]
+  },
+  {
+   "key": "elizabeth-1818",
+   "title": "The 1818 side of the same change: Elizabeth as the daughter of Victor's father's sister",
+   "side": 1818,
+   "caught": true,
+   "changeId": "c0051",
+   "sources": [
+    "mellor"
+   ]
+  },
+  {
+   "key": "pretty-present",
+   "title": "Elizabeth as \"a pretty present for my Victor\"",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0051",
+   "sources": [
+    "mellor"
+   ]
+  },
+  {
+   "key": "destiny-potent",
+   "title": "\"Destiny was too potent, and her immutable laws had decreed my utter and terrible destruction\"",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0058",
+   "sources": [
+    "mellor"
+   ]
+  },
+  {
+   "key": "angel-destruction",
+   "title": "Chance as \"the Angel of Destruction\" that leads Victor to Krempe",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0066",
+   "sources": [
+    "mellor"
+   ]
+  },
+  {
+   "key": "words-of-fate",
+   "title": "Waldman's lecture as \"the words of the fate, enounced to destroy me\"",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0074",
+   "sources": [
+    "mellor"
+   ]
+  },
+  {
+   "key": "believed-destined",
+   "title": "\"I felt as if I were destined\" becomes \"I believed myself destined\"",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0508",
+   "sources": [
+    "curran"
+   ]
+  },
+  {
+   "key": "galvanism",
+   "title": "Lightning explained by a visiting natural philosopher's theory of electricity and galvanism, not by Victor's father",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0058",
+   "sources": [
+    "texts"
+   ]
+  },
+  {
+   "key": "walton-price",
+   "title": "Walton: \"One man's life or death were but a small price to pay for the acquirement of the knowledge which I sought\"",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0041",
+   "sources": [
+    "texts"
+   ]
+  },
+  {
+   "key": "justine-barn",
+   "title": "The creature finds Justine asleep in a barn and plants the portrait on her",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0317",
+   "sources": [
+    "texts"
+   ]
+  },
+  {
+   "key": "villa-lavenza",
+   "title": "Elizabeth's restored inheritance and the Villa Lavenza on Lake Como",
+   "side": 1831,
+   "caught": true,
+   "changeId": "c0445",
+   "sources": [
+    "texts"
+   ]
+  }
+ ],
+ "knownSources": {
+  "mellor": "Anne K. Mellor, \"Revising Frankenstein,\" ch. 9 of Mary Shelley: Her Life, Her Fiction, Her Monsters (New York: Routledge, 1988); argues the 1831 text makes Victor the pawn of a destiny beyond his control. Online at https://knarf.english.upenn.edu/Articles/mellor9.html (refused automated access on 2026-11-03; the claim summarized here was confirmed against the texts by this step, not against Mellor's page).",
+  "curran": "Stuart Curran, ed., Frankenstein; or, The Modern Prometheus, Romantic Circles Electronic Editions (2009), annotation at https://romantic-circles.org/editions/frankenstein/1065.html: in 1831 \"I believed myself destined\" is substituted for \"I felt as if I were destined\", and Victor \"has consistently appealed to a ruling destiny\" already in 1818.",
+  "intro": "Mary Shelley, Introduction to the 1831 edition (in inputs/pg42324.txt): the revisions \"are principally those of style. I have changed no portion of the story, nor introduced any new ideas or circumstances.\"",
+  "wikiLavenza": "Wikipedia, \"Elizabeth Lavenza,\" https://en.wikipedia.org/wiki/Elizabeth_Lavenza (consulted 2026-11-03; a tertiary source that cites no scholarship for the claim, listed so students can see the difference).",
+  "texts": "The two editions themselves (inputs/pg41445.txt and inputs/pg42324.txt). Commonly noted in teaching editions; no scholarly source was checked in the time available."
+ },
+ "shelleyClaim": {
+  "claim": "these changes occur almost exclusively in the beginning of the first volume",
+  "method": "Words changed (the larger of words added and words removed) in every non-punctuation change, excluding the new Introduction. \"Beginning of the first volume\" = the four letters and Vol. I, Chs. I–II of 1818.",
+  "wordsChangedTotal": 10687,
+  "beginningOfVol1": 5221,
+  "beginningOfVol1Pct": 48.9,
+  "allOfVol1Pct": 67.8,
+  "vol2and3Pct": 32.2
+ },
+ "fateWords": {
+  "pattern": "/\\b(destin\\w*|fate|fated|fatal\\w*|doom\\w*|predestin\\w*)\\b/gi",
+  "count1818": 53,
+  "count1831": 55,
+  "words1818": 72369,
+  "words1831": 75469
+ },
+ "sig5": [
+  "c0001",
+  "c0041",
+  "c0051",
+  "c0052",
+  "c0055",
+  "c0058",
+  "c0066",
+  "c0068",
+  "c0074",
+  "c0113",
+  "c0182",
+  "c0188",
+  "c0198",
+  "c0199",
+  "c0317",
+  "c0334",
+  "c0344"
+ ],
+ "changes": {
+  "c0058": {
+   "id": "c0058",
+   "where1818": "Vol. I, Ch. I",
+   "where1831": "Ch. II",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 456,
+   "wordsAdded": 356,
+   "segments": [
+    [
+     "-",
+     "The catastrophe of this tree excited my extreme astonishment; and I eagerly inquired of my father the nature and origin of thunder and lightning. He replied, \"Electricity;\" describing at the same time the various effects of that power. He constructed a small electrical machine, and exhibited a few experiments; he made also a kite, with a wire and string, which drew down that fluid from the clouds. This last stroke completed the overthrow of Cornelius Agrippa, Albertus Magnus, and Paracelsus, who had so long …"
+    ],
+    [
+     "+",
+     "Before this I was not unacquainted with the more obvious laws of electricity. On this occasion a man of great research in natural philosophy was with us, and, excited by this catastrophe, he entered on the explanation of a theory which he had formed on the subject of electricity and galvanism, which was at once new and astonishing to me. All that he said threw greatly into the shade Cornelius Agrippa, Albertus Magnus, and Paracelsus, the lords of my imagination; but by some fatality the overthrow of these men …"
+    ]
+   ],
+   "category": "fate-agency",
+   "secondary": [
+    "cut",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Whole-chapter replacement: the 1818 scientific and domestic material is cut and replaced with 'Destiny was too potent, and her immutable laws had decreed my utter and terrible destruction' and a 'guardian angel', casting the change of study as predestined rather than chosen.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0182": {
+   "id": "c0182",
+   "where1818": "Vol. I, Ch. VII",
+   "where1831": "Ch. VIII",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 288,
+   "wordsAdded": 129,
+   "segments": [
+    [
+     "-",
+     "But do not mourn, my dear girl; I will every where proclaim your innocence, and force belief. Yet you must die; you, my playfellow, my companion, my more than sister. I never can survive so horrible a misfortune.\" \"Dear, sweet Elizabeth, do not weep. You ought to raise me with thoughts of a better life, and elevate me from the petty cares of this world of injustice and strife. Do not you, excellent friend, drive me to despair.\" \"I will try to comfort you; but this, I fear, is an evil too deep and poignant to admit …"
+    ],
+    [
+     "+",
+     "But do not mourn, dear girl. Do not fear. I will proclaim, I will prove your innocence. I will melt the stony hearts of your enemies by my tears and prayers. You shall not die!—You, my play-fellow, my companion, my sister, perish on the scaffold! No! no! I never could survive so horrible a misfortune.\" Justine shook her head mournfully. \"I do now not fear to die,\" she said; \"that pang is past. God raises my weakness, and gives me courage to endure the worst. I leave a sad and bitter world; and if you remember me, …"
+    ]
+   ],
+   "category": "characterization",
+   "secondary": [
+    "moral-religious",
+    "fate-agency"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Justine's 1818 despair ('This ... is despair, and not resignation') becomes resigned submission to Heaven's will ('I am resigned to the fate awaiting me'); she is remade from a rebuker of Elizabeth into a patient, pious victim, and Elizabeth's 'you shall not die' replaces the 1818 'Yet you must die'.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0074": {
+   "id": "c0074",
+   "where1818": "Vol. I, Ch. II",
+   "where1831": "Ch. III",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 18,
+   "wordsAdded": 197,
+   "segments": [
+    [
+     "-",
+     "I departed highly pleased with the professor and his lecture, and paid him a visit the same evening."
+    ],
+    [
+     "+",
+     "Such were the professor's words—rather let me say such the words of fate, enounced to destroy me. As he went on, I felt as if my soul were grappling with a palpable enemy; one by one the various keys were touched which formed the mechanism of my being: chord after chord was sounded, and soon my mind was filled with one thought, one conception, one purpose. So much has been done, exclaimed the soul of Frankenstein,—more, far more, will I achieve: treading in the steps already marked, I will pioneer a new way, …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "fate-agency",
+    "moral-religious",
+    "characterization"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Replaces a single plain sentence with a long passage: 'words of fate, enounced to destroy me', the soul's insurrection and turmoil, and Frankenstein's ambition. It reframes the lecture as fated and damning and deepens his inner life, a major revision scholars discuss.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0055": {
+   "id": "c0055",
+   "where1818": "Vol. I, Ch. I",
+   "where1831": "Ch. II",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 184,
+   "wordsAdded": 364,
+   "segments": [
+    [
+     "-",
+     "I read and studied the wild fancies of these writers with delight; they appeared to me treasures known to few beside myself; and although I often wished to communicate these secret stores of knowledge to my father, yet his indefinite censure of my favourite Agrippa always withheld me. I disclosed my discoveries to Elizabeth, therefore, under a promise of strict secrecy; but she did not interest herself in the subject, and I was left by her to pursue my studies alone. It may appear very strange, that a disciple of …"
+    ],
+    [
+     "+",
+     "I read and studied the wild fancies of these writers with delight; they appeared to me treasures known to few beside myself. I have described myself as always having been embued with a fervent longing to penetrate the secrets of nature. In spite of the intense labour and wonderful discoveries of modern philosophers, I always came from my studies discontented and unsatisfied. Sir Isaac Newton is said to have avowed that he felt like a child picking up shells beside the great and unexplored ocean of truth. Those of …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "characterization",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Large 1831 insertion adds Newton's shell image, the 'child's blindness' and rejection of 'my father' as scientific, and a self-deprecating 'rashly and ignorantly I had repined'. Shifts Victor's self-presentation and removes Elizabeth and the father's censure, reframing his ambition as guided by new preceptors.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0052": {
+   "id": "c0052",
+   "where1818": "Vol. I, Ch. I",
+   "where1831": "Ch. II",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 442,
+   "wordsAdded": 613,
+   "segments": [
+    [
+     "-",
+     "I remember, when he was nine years old, he wrote a fairy tale, which was the delight and amazement of all his companions. His favourite study consisted in books of chivalry and romance; and when very young, I can remember, that we used to act plays composed by him out of these favourite books, the principal characters of which were Orlando, Robin Hood, Amadis, and St. George. No youth could have passed more happily than mine. My parents were indulgent, and my companions amiable. Our studies were never forced; and …"
+    ],
+    [
+     "+",
+     "He loved enterprise, hardship, and even danger, for its own sake. He was deeply read in books of chivalry and romance. He composed heroic songs, and began to write many a tale of enchantment and knightly adventure. He tried to make us act plays, and to enter into masquerades, in which the characters were drawn from the heroes of Roncesvalles, of the Round Table of King Arthur, and the chivalrous train who shed their blood to redeem the holy sepulchre from the hands of the infidels. No human being could have passed …"
+    ]
+   ],
+   "category": "characterization",
+   "secondary": [
+    "expansion",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Replaces the 1818 childhood account with a much longer passage that recasts Elizabeth as a 'saintly soul' and 'living spirit of love' and makes Clerval's ideals of 'beneficence' central. Adds moral and religious framing throughout.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0113": {
+   "id": "c0113",
+   "where1818": "Vol. I, Ch. V",
+   "where1831": "Ch. VI",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 456,
+   "wordsAdded": 442,
+   "segments": [
+    [
+     "-",
+     "\"To V. FRANKENSTEIN. \"MY DEAR COUSIN, \"I cannot describe to you the uneasiness we have all felt concerning your health. We cannot help imagining that your friend Clerval conceals the extent of your disorder: for it is now several months since we have seen your hand-writing; and all this time you have been obliged to dictate your letters to Henry. Surely, Victor, you must have been exceedingly ill; and this makes us all very wretched, as much so nearly as after the death of your dear mother. My uncle was almost …"
+    ],
+    [
+     "+",
+     "It was from my own Elizabeth:— \"My dearest Cousin, \"You have been ill, very ill, and even the constant letters of dear kind Henry are not sufficient to reassure me on your account. You are forbidden to write—to hold a pen; yet one word from you, dear Victor, is necessary to calm our apprehensions. For a long time I have thought that each post would bring this line, and my persuasions have restrained my uncle from undertaking a journey to Ingolstadt. I have prevented his encountering the inconveniences and perhaps …"
+    ]
+   ],
+   "category": "framing",
+   "secondary": [
+    "cut",
+    "plot"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "The 1818 Clerval-delivered letter from Elizabeth's cousin-voice is wholly replaced by a new letter from Elizabeth herself, with new details (Victor forbidden to write, the nurse, Ernest's military wish). Letter attribution and frame change dominate; the replacement reshapes the domestic and family narrative.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0508": {
+   "id": "c0508",
+   "where1818": "Vol. III, Ch. VII",
+   "where1831": "Ch. XXIV",
+   "kind": "substitution",
+   "size": "medium",
+   "rewrite": false,
+   "wordsRemoved": 5,
+   "wordsAdded": 2,
+   "segments": [
+    [
+     "=",
+     "\" When younger, \" said he, \" I"
+    ],
+    [
+     "-",
+     "felt as if I were"
+    ],
+    [
+     "+",
+     "believed myself"
+    ],
+    [
+     "=",
+     "destined for some great enterprise."
+    ]
+   ],
+   "category": "fate-agency",
+   "secondary": [
+    "characterization"
+   ],
+   "significance": 4,
+   "confidence": "high",
+   "rationale": "\"I felt as if I were destined\" becomes \"I believed myself destined\": the sense of destiny is shifted from a vague feeling to a conviction held by Victor, and the phrasing reads as more self-deceived. The destined-ness remains, but its epistemic status changes.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0066": {
+   "id": "c0066",
+   "where1818": "Vol. I, Ch. II",
+   "where1831": "Ch. III",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": false,
+   "wordsRemoved": 22,
+   "wordsAdded": 60,
+   "segments": [
+    [
+     "=",
+     "The next morning I delivered my letters of introduction, and paid a visit to some of the principal professors"
+    ],
+    [
+     "+",
+     ". Chance—or rather the evil influence"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "-",
+     "and among others"
+    ],
+    [
+     "+",
+     "the Angel of Destruction, which asserted omnipotent sway over me from the moment I turned my reluctant steps from my father's door—led me first"
+    ],
+    [
+     "=",
+     "to"
+    ],
+    [
+     "-",
+     "M"
+    ],
+    [
+     "+",
+     "Mr"
+    ],
+    [
+     "=",
+     ". Krempe, professor of natural philosophy. He"
+    ],
+    [
+     "-",
+     "received me with politeness"
+    ],
+    [
+     "+",
+     "was an uncouth man"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "-",
+     "and"
+    ],
+    [
+     "+",
+     "but deeply embued in the secrets of his science. He"
+    ],
+    [
+     "=",
+     "asked me several questions concerning my progress in the different branches of science appertaining to natural philosophy. I"
+    ],
+    [
+     "-",
+     "mentioned, it is true, with fear"
+    ],
+    [
+     "+",
+     "replied carelessly;"
+    ],
+    [
+     "=",
+     "and"
+    ],
+    [
+     "-",
+     "trembling"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "+",
+     "partly in contempt, mentioned"
+    ],
+    [
+     "=",
+     "the"
+    ],
+    [
+     "-",
+     "only"
+    ],
+    [
+     "+",
+     "names of my alchymists as the principal"
+    ],
+    [
+     "=",
+     "authors I had"
+    ],
+    [
+     "-",
+     "ever read upon those subjects"
+    ],
+    [
+     "+",
+     "studied"
+    ],
+    [
+     "=",
+     "."
+    ]
+   ],
+   "category": "characterization",
+   "secondary": [
+    "fate-agency",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Adds the 'Angel of Destruction' and 'evil influence' framing for Chance-led meeting, and recasts Krempe as uncouth yet learned and Victor as contemptuous, replacing 'with fear and trembling' humility. Major reshaping of Victor's self-presentation and fate.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0199": {
+   "id": "c0199",
+   "where1818": "Vol. II, Ch. I",
+   "where1831": "Ch. IX",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": false,
+   "wordsRemoved": 112,
+   "wordsAdded": 154,
+   "segments": [
+    [
+     "-",
+     "We"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "passed the bridge of"
+    ],
+    [
+     "-",
+     "Pelissier"
+    ],
+    [
+     "+",
+     "Pélissier"
+    ],
+    [
+     "=",
+     ", where the ravine, which the river forms, opened before"
+    ],
+    [
+     "-",
+     "us"
+    ],
+    [
+     "+",
+     "me"
+    ],
+    [
+     "=",
+     ", and"
+    ],
+    [
+     "-",
+     "we"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "began to ascend the mountain that overhangs it. Soon after"
+    ],
+    [
+     "-",
+     "we"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "entered the valley of Chamounix. This valley is more wonderful and sublime, but not so beautiful and picturesque"
+    ],
+    [
+     "+",
+     ","
+    ],
+    [
+     "=",
+     "as that of Servox, through which"
+    ],
+    [
+     "-",
+     "we"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "had just passed. The high and snowy mountains were its immediate boundaries; but"
+    ],
+    [
+     "-",
+     "we"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "saw no more ruined castles and fertile fields. Immense glaciers approached the road;"
+    ],
+    [
+     "-",
+     "we"
+    ],
+    [
+     "+",
+     "I"
+    ],
+    [
+     "=",
+     "heard the rumbling thunder of the falling avalanche, and marked the smoke of its passage. Mont"
+    ],
+    [
+     "-",
+     "Blânc"
+    ],
+    [
+     "+",
+     "Blanc"
+    ],
+    [
+     "=",
+     ", the supreme and magnificent Mont"
+    ],
+    [
+     "-",
+     "Blânc"
+    ],
+    [
+     "+",
+     "Blanc"
+    ],
+    [
+     "=",
+     ", raised itself from the surrounding aiguilles, and its tremendous"
+    ],
+    [
+     "-",
+     "dome"
+    ],
+    [
+     "+",
+     "dôme"
+    ],
+    [
+     "=",
+     "overlooked the valley."
+    ],
+    [
+     "-",
+     "During"
+    ],
+    [
+     "+",
+     "A tingling long-lost sense of pleasure often came across me during"
+    ],
+    [
+     "=",
+     "this journey"
+    ],
+    [
+     "+",
+     ". Some turn in the road"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "-",
+     "I sometimes joined Elizabeth"
+    ],
+    [
+     "+",
+     "some new object suddenly perceived and recognised"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "+",
+     "reminded me of days gone by,"
+    ],
+    [
+     "=",
+     "and"
+    ],
+    [
+     "-",
+     "exerted myself to point out to her"
+    ],
+    [
+     "+",
+     "were associated with"
+    ],
+    [
+     "=",
+     "the"
+    ],
+    [
+     "-",
+     "various beauties"
+    ],
+    [
+     "+",
+     "light-hearted gaiety"
+    ],
+    [
+     "=",
+     "of"
+    ],
+    [
+     "-",
+     "the scene"
+    ],
+    [
+     "+",
+     "boyhood"
+    ],
+    [
+     "=",
+     "."
+    ],
+    [
+     "+",
+     "The very winds whispered in soothing accents, and maternal nature bade me weep no more. Then again the kindly influence ceased to act—"
+    ],
+    [
+     "=",
+     "I"
+    ],
+    [
+     "-",
+     "often suffered my mule"
+    ],
+    [
+     "+",
+     "found myself fettered again"
+    ],
+    [
+     "=",
+     "to"
+    ],
+    [
+     "-",
+     "lag behind"
+    ],
+    [
+     "+",
+     "grief"
+    ],
+    [
+     "=",
+     ", and"
+    ],
+    [
+     "-",
+     "indulged"
+    ],
+    [
+     "+",
+     "indulging"
+    ],
+    [
+     "=",
+     "in"
+    ],
+    [
+     "+",
+     "all"
+    ],
+    [
+     "=",
+     "the misery of reflection."
+    ],
+    [
+     "-",
+     "At other times"
+    ],
+    [
+     "+",
+     "Then"
+    ],
+    [
+     "=",
+     "I spurred on"
+    ],
+    [
+     "-",
+     "the animal before"
+    ],
+    [
+     "=",
+     "my"
+    ],
+    [
+     "-",
+     "companions"
+    ],
+    [
+     "+",
+     "animal"
+    ],
+    [
+     "=",
+     ","
+    ],
+    [
+     "-",
+     "that I might"
+    ],
+    [
+     "+",
+     "striving so to"
+    ],
+    [
+     "=",
+     "forget"
+    ],
+    [
+     "-",
+     "them,"
+    ],
+    [
+     "=",
+     "the world,"
+    ],
+    [
+     "+",
+     "my fears,"
+    ],
+    [
+     "=",
+     "and, more than all, myself"
+    ],
+    [
+     "-",
+     ". When at"
+    ],
+    [
+     "+",
+     "—or, in"
+    ],
+    [
+     "=",
+     "a"
+    ],
+    [
+     "-",
+     "distance"
+    ],
+    [
+     "+",
+     "more desperate fashion"
+    ],
+    [
+     "=",
+     ", I alighted, and threw myself on the grass, weighed down by horror and despair. At"
+    ],
+    [
+     "-",
+     "eight in the evening"
+    ],
+    [
+     "+",
+     "length"
+    ],
+    [
+     "=",
+     "I arrived at"
+    ],
+    [
+     "+",
+     "the village of"
+    ],
+    [
+     "=",
+     "Chamounix."
+    ],
+    [
+     "-",
+     "My father and Elizabeth were very much fatigued; Ernest, who accompanied us, was delighted, and in high spirits: the only circumstance that detracted from his pleasure was the south wind, and the rain it seemed"
+    ],
+    [
+     "+",
+     "Exhaustion succeeded"
+    ],
+    [
+     "=",
+     "to"
+    ],
+    [
+     "-",
+     "promise for"
+    ],
+    [
+     "=",
+     "the"
+    ],
+    [
+     "-",
+     "next day. We retired early to our apartments, but not to sleep; at least"
+    ],
+    [
+     "+",
+     "extreme fatigue both of body and of mind which"
+    ],
+    [
+     "=",
+     "I"
+    ],
+    [
+     "-",
+     "did not"
+    ],
+    [
+     "+",
+     "had endured"
+    ],
+    [
+     "=",
+     "."
+    ],
+    [
+     "+",
+     "For a short space of time"
+    ],
+    [
+     "=",
+     "I remained"
+    ],
+    [
+     "-",
+     "many hours"
+    ],
+    [
+     "=",
+     "at the window, watching the pallid"
+    ],
+    [
+     "-",
+     "lightning"
+    ],
+    [
+     "+",
+     "lightnings"
+    ],
+    [
+     "=",
+     "that played above Mont"
+    ],
+    [
+     "-",
+     "Blânc"
+    ],
+    [
+     "+",
+     "Blanc"
+    ],
+    [
+     "=",
+     ", and listening to the rushing of the Arve, which"
+    ],
+    [
+     "-",
+     "ran below"
+    ],
+    [
+     "+",
+     "pursued its noisy way beneath. The same lulling sounds acted as a lullaby to"
+    ],
+    [
+     "=",
+     "my"
+    ],
+    [
+     "-",
+     "window"
+    ],
+    [
+     "+",
+     "too keen sensations: when I placed my head upon my pillow, sleep crept over me; I felt it as it came, and blest the giver of oblivion"
+    ],
+    [
+     "=",
+     "."
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "characterization",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Large rewrite of the Chamounix passage: the 1831 text adds a 'long-lost sense of pleasure,' nostalgia for boyhood, 'maternal nature' and 'the giver of oblivion,' and cuts the 1818 'misery' and Elizabeth/Ernest details, reshaping Victor's emotional state and tone.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0344": {
+   "id": "c0344",
+   "where1818": "Vol. III, Ch. I",
+   "where1831": "Ch. XVIII",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 249,
+   "wordsAdded": 314,
+   "segments": [
+    [
+     "-",
+     "I expressed a wish to visit England; but, concealing the true reasons of this request, I clothed my desires under the guise of wishing to travel and see the world before I sat down for life within the walls of my native town. I urged my entreaty with earnestness, and my father was easily induced to comply; for a more indulgent and less dictatorial parent did not exist upon earth. Our plan was soon arranged. I should travel to Strasburgh, where Clerval would join me. Some short time would be spent in the towns of …"
+    ],
+    [
+     "+",
+     "I expressed a wish to visit England; but, concealing the true reasons of this request, I clothed my desires under a guise which excited no suspicion, while I urged my desire with an earnestness that easily induced my father to comply. After so long a period of an absorbing melancholy, that resembled madness in its intensity and effects, he was glad to find that I was capable of taking pleasure in the idea of such a journey, and he hoped that change of scene and varied amusement would, before my return, have …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "plot",
+    "characterization",
+    "fate-agency"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Wholesale rewrite: 1831 drops the 1818 travel itinerary and the father's pleasure speech, adds the father's prior arranging of Clerental's companionship, the narrator's 'absorbing melancholy' and foe-haunting, and the 'detested toils' and 'miserable slavery' framing, reshaping Victor's motives and agency.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0334": {
+   "id": "c0334",
+   "where1818": "Vol. II, Ch. IX",
+   "where1831": "Ch. XVII",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 245,
+   "wordsAdded": 159,
+   "segments": [
+    [
+     "-",
+     "Morning dawned before I arrived at the village of Chamounix; but my presence, so haggard and strange, hardly calmed the fears of my family, who had waited the whole night in anxious expectation of my return. The following day we returned to Geneva. The intention of my father in coming had been to divert my mind, and to restore me to my lost tranquillity; but the medicine had been fatal. And, unable to account for the excess of misery I appeared to suffer, he hastened to return home, hoping the quiet and monotony …"
+    ],
+    [
+     "+",
+     "Morning dawned before I arrived at the village of Chamounix; I took no rest, but returned immediately to Geneva. Even in my own heart I could give no expression to my sensations—they weighed on me with a mountain's weight, and their excess destroyed my agony beneath them. Thus I returned home, and entering the house, presented myself to the family. My haggard and wild appearance awoke intense alarm; but I answered no question, scarcely did I speak. I felt as if I were placed under a ban—as if I had no right to …"
+    ]
+   ],
+   "category": "characterization",
+   "secondary": [
+    "plot",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "medium",
+   "rationale": "The whole passage is rewritten. The 1818 father's journey, Elizabeth's affection and the Dante cowl of guilt give way to Victor's 1831 resolve to 'dedicate myself to my most abhorred task' to 'save them', which recasts his motives and his relation to family.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0445": {
+   "id": "c0445",
+   "where1818": "Vol. III, Ch. V",
+   "where1831": "Ch. XXII",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 52,
+   "wordsAdded": 60,
+   "segments": [
+    [
+     "-",
+     "A house was purchased for us near Cologny, by which we should enjoy the pleasures of the country, and yet be so near Geneva as to see my father every day; who would still reside within the walls, for the benefit of Ernest, that he might follow his studies at the schools."
+    ],
+    [
+     "+",
+     "Through my father's exertions, a part of the inheritance of Elizabeth had been restored to her by the Austrian government. A small possession on the shores of Como belonged to her. It was agreed that, immediately after our union, we should proceed to Villa Lavenza, and spend our first days of happiness beside the beautiful lake near which it stood."
+    ]
+   ],
+   "category": "plot",
+   "secondary": [
+    "characterization"
+   ],
+   "significance": 4,
+   "confidence": "high",
+   "rationale": "The 1818 house near Cologny, close to Geneva and Ernest's schooling, is replaced by Elizabeth's inheritance restored by the Austrian government, a villa on Como. This changes the couple's residence and Elizabeth's background.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0068": {
+   "id": "c0068",
+   "where1818": "Vol. I, Ch. II",
+   "where1831": "Ch. III",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": false,
+   "wordsRemoved": 18,
+   "wordsAdded": 115,
+   "segments": [
+    [
+     "=",
+     "I little expected"
+    ],
+    [
+     "+",
+     ","
+    ],
+    [
+     "=",
+     "in this enlightened and scientific age"
+    ],
+    [
+     "+",
+     ","
+    ],
+    [
+     "=",
+     "to find a disciple of Albertus Magnus and Paracelsus. My dear"
+    ],
+    [
+     "-",
+     "Sir"
+    ],
+    [
+     "+",
+     "sir"
+    ],
+    [
+     "=",
+     ", you must begin your studies entirely anew. \" So saying, he stept aside, and wrote down a list of several books treating of natural philosophy, which he desired me to procure"
+    ],
+    [
+     "-",
+     ","
+    ],
+    [
+     "+",
+     ";"
+    ],
+    [
+     "=",
+     "and dismissed me, after mentioning that in the beginning of the following week he intended to commence a … relations, and that M. Waldman, a fellow-professor, would lecture upon chemistry the alternate days that he"
+    ],
+    [
+     "-",
+     "missed"
+    ],
+    [
+     "+",
+     "omitted"
+    ],
+    [
+     "=",
+     ". I returned home, not disappointed, for I"
+    ],
+    [
+     "+",
+     "have said that I"
+    ],
+    [
+     "=",
+     "had long considered those authors useless whom the professor"
+    ],
+    [
+     "-",
+     "had so strongly"
+    ],
+    [
+     "=",
+     "reprobated; but I"
+    ],
+    [
+     "-",
+     "did"
+    ],
+    [
+     "+",
+     "returned,"
+    ],
+    [
+     "=",
+     "not"
+    ],
+    [
+     "-",
+     "feel much"
+    ],
+    [
+     "+",
+     "at all the more"
+    ],
+    [
+     "=",
+     "inclined to"
+    ],
+    [
+     "-",
+     "study the books which I procured at his recommendation"
+    ],
+    [
+     "+",
+     "recur to these studies in any shape"
+    ],
+    [
+     "=",
+     ". M. Krempe was a little squat man, with a gruff voice and"
+    ],
+    [
+     "+",
+     "a"
+    ],
+    [
+     "=",
+     "repulsive countenance; the teacher, therefore, did not prepossess me in favour of his"
+    ],
+    [
+     "-",
+     "doctrine"
+    ],
+    [
+     "+",
+     "pursuits"
+    ],
+    [
+     "=",
+     "."
+    ],
+    [
+     "+",
+     "In rather a too philosophical and connected a strain, perhaps, I have given an account of the conclusions I had come to concerning them in my early years. As a child, I had not been content with the results promised by the modern professors of natural science. With a confusion of ideas only to be accounted for by my extreme youth, and my want of a guide on such matters, I had retrod the steps of knowledge along the paths of time, and exchanged the discoveries of recent enquirers for the dreams of forgotten …"
+    ]
+   ],
+   "category": "characterization",
+   "secondary": [
+    "expansion",
+    "framing"
+   ],
+   "significance": 5,
+   "confidence": "medium",
+   "rationale": "The 1831 addition of 'In rather a too philosophical and connected a strain' and 'I had retrod the steps of knowledge' has the narrator retrospectively judge his youthful alchemy as confusion, reshaping how Victor presents himself. The 'I have said' also reworks the earlier text.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0317": {
+   "id": "c0317",
+   "where1818": "Vol. II, Ch. VIII",
+   "where1831": "Ch. XVI",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": false,
+   "wordsRemoved": 14,
+   "wordsAdded": 146,
+   "segments": [
+    [
+     "=",
+     "\" While I was overcome by these feelings, I left the spot where I had committed the murder, and"
+    ],
+    [
+     "-",
+     "was"
+    ],
+    [
+     "=",
+     "seeking a more secluded hiding-place,"
+    ],
+    [
+     "-",
+     "when"
+    ],
+    [
+     "=",
+     "I"
+    ],
+    [
+     "-",
+     "perceived"
+    ],
+    [
+     "+",
+     "entered"
+    ],
+    [
+     "=",
+     "a"
+    ],
+    [
+     "-",
+     "woman passing near"
+    ],
+    [
+     "+",
+     "barn which had appeared to"
+    ],
+    [
+     "=",
+     "me"
+    ],
+    [
+     "+",
+     "to be empty"
+    ],
+    [
+     "=",
+     "."
+    ],
+    [
+     "-",
+     "She"
+    ],
+    [
+     "+",
+     "A woman"
+    ],
+    [
+     "=",
+     "was"
+    ],
+    [
+     "+",
+     "sleeping on some straw; she was"
+    ],
+    [
+     "=",
+     "young"
+    ],
+    [
+     "-",
+     ","
+    ],
+    [
+     "+",
+     ":"
+    ],
+    [
+     "=",
+     "not indeed so beautiful as her whose portrait I held"
+    ],
+    [
+     "-",
+     ","
+    ],
+    [
+     "+",
+     ";"
+    ],
+    [
+     "=",
+     "but of an agreeable aspect, and blooming in the loveliness of youth and health. Here, I thought, is one of those whose"
+    ],
+    [
+     "+",
+     "joy-imparting"
+    ],
+    [
+     "=",
+     "smiles are bestowed on all but me"
+    ],
+    [
+     "+",
+     ". And then I bent over her, and whispered 'Awake, fairest, thy lover is near—he who would give his life but to obtain one look of affection from thine eyes: my beloved, awake! ' \" The sleeper stirred"
+    ],
+    [
+     "=",
+     ";"
+    ],
+    [
+     "+",
+     "a thrill of terror ran through me. Should"
+    ],
+    [
+     "=",
+     "she"
+    ],
+    [
+     "-",
+     "shall"
+    ],
+    [
+     "+",
+     "indeed awake, and see me, and curse me, and denounce the murderer? Thus would she assuredly act, if her darkened eyes opened, and she beheld me. The thought was madness; it stirred the fiend within me—"
+    ],
+    [
+     "=",
+     "not"
+    ],
+    [
+     "-",
+     "escape"
+    ],
+    [
+     "+",
+     "I, but she shall suffer"
+    ],
+    [
+     "=",
+     ":"
+    ],
+    [
+     "-",
+     "thanks"
+    ],
+    [
+     "+",
+     "the murder I have committed because I am for ever robbed of all that she could give me, she shall atone. The crime had its source in her: be hers the punishment! Thanks"
+    ],
+    [
+     "=",
+     "to the lessons of Felix"
+    ],
+    [
+     "-",
+     ","
+    ],
+    [
+     "=",
+     "and the sanguinary laws of man, I"
+    ],
+    [
+     "-",
+     "have"
+    ],
+    [
+     "+",
+     "had"
+    ],
+    [
+     "=",
+     "learned"
+    ],
+    [
+     "-",
+     "how"
+    ],
+    [
+     "+",
+     "now"
+    ],
+    [
+     "=",
+     "to work mischief. I"
+    ],
+    [
+     "-",
+     "approached"
+    ],
+    [
+     "+",
+     "bent over"
+    ],
+    [
+     "=",
+     "her"
+    ],
+    [
+     "-",
+     "unperceived"
+    ],
+    [
+     "=",
+     ", and placed the portrait securely in one of the folds of her dress."
+    ],
+    [
+     "+",
+     "She moved again, and I fled."
+    ]
+   ],
+   "category": "plot",
+   "secondary": [
+    "characterization",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Major rewrite: the 1818 woman is merely passing; in 1831 the creature enters a barn, whispers to a sleeping woman, and blames her ('she shall atone... be hers the punishment!'), shifting motive and guilt. Scholars would discuss this at length.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0001": {
+   "id": "c0001",
+   "where1818": "(not in 1818)",
+   "where1831": "Author's Introduction (1831)",
+   "kind": "insertion",
+   "size": "large",
+   "rewrite": false,
+   "wordsRemoved": 0,
+   "wordsAdded": 2263,
+   "segments": [],
+   "category": "framing",
+   "secondary": [
+    "expansion"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Entirely new 1831 Author's Introduction, a paratextual frame that recounts the ghost-story origin and explicitly claims the revisions were stylistic only, shaping how readers interpret the whole novel.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0188": {
+   "id": "c0188",
+   "where1818": "Vol. I, Ch. VII",
+   "where1831": "Ch. VIII",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 126,
+   "wordsAdded": 281,
+   "segments": [
+    [
+     "-",
+     "As we returned, Elizabeth said, \"You know not, my dear Victor, how much I am relieved, now that I trust in the innocence of this unfortunate girl. I never could again have known peace, if I had been deceived in my reliance on her. For the moment that I did believe her guilty, I felt an anguish that I could not have long sustained. Now my heart is lightened. The innocent suffers; but she whom I thought amiable and good has not betrayed the trust I reposed in her, and I am consoled.\" Amiable cousin! such were your …"
+    ],
+    [
+     "+",
+     "And on the morrow Justine died. Elizabeth's heart-rending eloquence failed to move the judges from their settled conviction in the criminality of the saintly sufferer. My passionate and indignant appeals were lost upon them. And when I received their cold answers, and heard the harsh unfeeling reasoning of these men, my purposed avowal died away on my lips. Thus I might proclaim myself a madman, but not revoke the sentence passed upon my wretched victim. She perished on the scaffold as a murderess! From the …"
+    ]
+   ],
+   "category": "moral-religious",
+   "secondary": [
+    "fate-agency",
+    "plot"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Replaces Elizabeth's trust speech with Victor's self-accusation: \"my thrice-accursed hands\", \"my unhallowed arts\", guilt for Justine's execution. Adds \"inexorable fate\" and \"prophetic soul\", and reports her death on the scaffold.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0041": {
+   "id": "c0041",
+   "where1818": "Letter IV",
+   "where1831": "Letter IV",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 254,
+   "wordsAdded": 429,
+   "segments": [
+    [
+     "-",
+     "Yet, although unhappy, he is not so utterly occupied by his own misery, but that he interests himself deeply in the employments of others. He has asked me many questions concerning my design; and I have related my little history frankly to him. He appeared pleased with the confidence, and suggested several alterations in my plan, which I shall find exceedingly useful. There is no pedantry in his manner; but all he does appears to spring solely from the interest he instinctively takes in the welfare of those who …"
+    ],
+    [
+     "+",
+     "Yet, although unhappy, he is not so utterly occupied by his own misery, but that he interests himself deeply in the projects of others. He has frequently conversed with me on mine, which I have communicated to him without disguise. He entered attentively into all my arguments in favour of my eventual success, and into every minute detail of the measures I had taken to secure it. I was easily led by the sympathy which he evinced, to use the language of my heart; to give utterance to the burning ardour of my soul; …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "characterization",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "medium",
+   "rationale": "Replaces the brief 1818 passage with a far longer 1831 scene: Victor confesses readiness to sacrifice 'my every hope' and says 'One man's life or death were but a small price to pay', and Walton weeps and warns 'Do you share my madness?'. This reshapes Victor's ambition and guilt.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0198": {
+   "id": "c0198",
+   "where1818": "Vol. II, Ch. I",
+   "where1831": "Ch. IX",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 366,
+   "wordsAdded": 456,
+   "segments": [
+    [
+     "-",
+     "Be calm, my dear Victor; I would sacrifice my life to your peace. We surely shall be happy: quiet in our native country, and not mingling in the world, what can disturb our tranquillity?\" She shed tears as she said this, distrusting the very solace that she gave; but at the same time she smiled, that she might chase away the fiend that lurked in my heart. My father, who saw in the unhappiness that was painted in my face only an exaggeration of that sorrow which I might naturally feel, thought that an amusement …"
+    ],
+    [
+     "+",
+     "Dear Victor, banish these dark passions. Remember the friends around you, who centre all their hopes in you. Have we lost the power of rendering you happy? Ah! while we love—while we are true to each other, here in this land of peace and beauty, your native country, we may reap every tranquil blessing,—what can disturb our peace?\" And could not such words from her whom I fondly prized before every other gift of fortune, suffice to chase away the fiend that lurked in my heart? Even as she spoke I drew near to her, …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "moral-religious",
+    "characterization"
+   ],
+   "significance": 5,
+   "confidence": "high",
+   "rationale": "Replaces Elizabeth's 1818 speech and the travel-setting with a long rewritten passage: Victor's despair, the wounded deer, 'a power mighty as Omnipotence', and Victor's 'wreck' self-description. The added religious and moral framing reshapes how Victor's grief and the sublime read.",
+   "by": "anthropic/claude-haiku-5.5"
+  },
+  "c0051": {
+   "id": "c0051",
+   "where1818": "Vol. I, Ch. I",
+   "where1831": "Ch. I",
+   "kind": "substitution",
+   "size": "large",
+   "rewrite": true,
+   "wordsRemoved": 663,
+   "wordsAdded": 1518,
+   "segments": [
+    [
+     "-",
+     "When my father became a husband and a parent, he found his time so occupied by the duties of his new situation, that he relinquished many of his public employments, and devoted himself to the education of his children. Of these I was the eldest, and the destined successor to all his labours and utility. No creature could have more tender parents than mine. My improvement and health were their constant care, especially as I remained for several years their only child. But before I continue my narrative, I must …"
+    ],
+    [
+     "+",
+     "There was a considerable difference between the ages of my parents, but this circumstance seemed to unite them only closer in bonds of devoted affection. There was a sense of justice in my father's upright mind, which rendered it necessary that he should approve highly to love strongly. Perhaps during former years he had suffered from the late-discovered unworthiness of one beloved, and so was disposed to set a greater value on tried worth. There was a show of gratitude and worship in his attachment to my mother, …"
+    ]
+   ],
+   "category": "expansion",
+   "secondary": [
+    "characterization",
+    "moral-religious"
+   ],
+   "significance": 5,
+   "confidence": "medium",
+   "rationale": "Wholesale replacement of the 1818 opening: the Elizabeth-as-destined-wife backstory is cut, and the 1831 text substitutes a vastly expanded account of parents' devotion, Elizabeth's adoption as a gift, and Providence. Scholars treat this as a major revision of the novel's opening.",
+   "by": "anthropic/claude-haiku-5.5"
+  }
+ }
+}
