@@ -23,7 +23,8 @@ Options:
   --language <code>   Language of the audio, ISO-639-1 (e.g. en, es). Improves accuracy.
   --prompt <text>     Spelling hints: names, jargon, the previous passage.
   --timestamps        Put a [mm:ss] time before each segment in the Markdown.
-  --model <id>        Default whisper-1 (the model HUIT documents for speech to text).
+  --model <id>        Default whisper-1, the only one that works here (Nov 12): HUIT forces
+                      verbose_json, which gpt-4o-transcribe and gpt-transcribe refuse (HTTP 400).
   --out <path>        Write the Markdown here instead (the JSON goes beside it).
   --force             Replace existing transcript files.
   --dry-run           Print the request (key masked) and send nothing.
