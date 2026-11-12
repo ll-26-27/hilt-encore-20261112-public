@@ -34,7 +34,7 @@ export default function MadeLive({ fallback }: { fallback?: React.ReactNode }) {
       <div className="made-log">
         <p className="eyebrow">This site, commit by commit, this morning</p>
         <ol>
-          {(made?.commits ?? []).slice(0, 9).map((c) => (
+          {(made?.commits ?? []).slice(0, 7).map((c) => (
             <li key={c.hash}><time>{time(c.time)}</time> {c.subject}</li>
           ))}
         </ol>
