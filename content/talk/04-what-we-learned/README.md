@@ -13,4 +13,6 @@ In TDM 155AI this term, the class has a context pack, so sessions can be organic
 
 Students do almost constant oral reflection on what they're doing. When they code with Claude Code, every step is in the git history and the chat: a complete record they can turn in. In the past you had to condense the process into a product for evaluation; it's not clear we always need to. Where the summative artifact matters, the capstone or the academic essay, keep it. But the oral exam is how you make sure you learned, and also how you learn. The gap between formative and summative starts to close.
 
+Students can create their own interface for organizing their ideas. That is what writing can be in the future.
+
 We've built more than ever. Have we learned more than ever?
