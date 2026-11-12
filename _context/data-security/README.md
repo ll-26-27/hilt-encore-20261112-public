@@ -58,7 +58,7 @@ That page's list of approved tools at HMS (read): the Harvard AI Sandbox, Claude
 
 Each spec's terms of use add: "All existing, University-wide policies regarding data usage have been reviewed and MUST be followed," linking to the Generative AI Guidelines and the Information Security Policy (https://policy.security.harvard.edu/).
 
-**One exception inside a gateway.** The Bedrock spec says one model, Claude Fable 5 (`global.anthropic.claude-fable-5`), runs in "provider data share mode," which "allows Amazon Bedrock to retain your inference data and share it with the model provider," and that "Fable 5 is the only model in this API for which the provider-data-share option is enabled" (HUIT spec, September 8). The spec does not say how this affects the Level 3 approval for that model. Until HUIT says otherwise, **we don't send confidential data to Fable 5**, even through the gateway.
+**One exception inside a gateway.** The Bedrock spec says one model, Claude Fable 5 (`global.anthropic.claude-fable-5`), runs in "provider data share mode," which "allows Amazon Bedrock to retain your inference data and share it with the model provider," and that "Fable 5 is the only model in this API for which the provider-data-share option is enabled" (HUIT spec, September 8). The spec does not say how this affects the Level 3 approval for that model. On November 12 the gateway also listed Fable 5.1 and 5.2, which the September spec doesn't mention. Until HUIT says otherwise, **we treat every Fable model as provider data share mode and don't send confidential data to any of them**, even through the gateway.
 
 ## 3. What this means for this kit
 

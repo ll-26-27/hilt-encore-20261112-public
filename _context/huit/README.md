@@ -28,8 +28,8 @@ The key goes in a **request header, never the URL**: HUIT blocks requests that p
 - **Base URL:** `https://go.apis.huit.harvard.edu/ais-openai-direct/v2` (the examples use the `go.` host; the spec's server list gives `https://apis.huit.harvard.edu/ais-openai-direct/v2`).
 - **Key header:** `api-key: <your key>`
 - **Endpoints**, the same shape as OpenAI's own API: `/responses`, `/chat/completions`, `/completions`, `/conversations`, `/embeddings`, `/images/generations`, `/audio/transcriptions`, `/files`, `/batches`, `/vector_stores`, plus `/apigee/quota`. HUIT doesn't republish OpenAI's full spec and points to OpenAI's API reference for parameters.
-- **Models:** "All newly released OpenAI models will be available as they become publicly released" (v2). Examples in the spec name `gpt-5` and `gpt-5.3-codex`.
-- **Transcription** (`POST /audio/transcriptions`, form data): model `whisper-1`; **25 MB file limit** ("divide your audio into smaller files" for longer recordings); HUIT always sets `response_format` to `verbose_json`, whatever you ask for, so transcripts come back with segments and timings.
+- **Models:** "All newly released OpenAI models will be available as they become publicly released" (v2). Examples in the spec name `gpt-5` and `gpt-5.3-codex`. What the gateway listed on November 12 is in "What the live gateways show".
+- **Transcription** (`POST /audio/transcriptions`, form data): model `whisper-1`; **25 MB file limit** ("divide your audio into smaller files" for longer recordings); HUIT always sets `response_format` to `verbose_json`, whatever you ask for, so transcripts come back with segments and timings. **Use `whisper-1` only**: the newer transcription models the gateway lists fail through it (see "What the live gateways show").
 - **Streaming:** supported in v2 (`"stream": true`).
 - **Developer tools:** v2 supports Codex CLI; the spec has setup notes for IDEs and client tools.
 - **v1 is gone.** "v1 will remain available only through 9/30/26; beginning 10/1/26, only the v2 endpoint will be supported." Budget limits applied to v1 and v2 separately.
@@ -39,7 +39,7 @@ The key goes in a **request header, never the URL**: HUIT blocks requests that p
 - **Base URL:** `https://apis.huit.harvard.edu/ais-google-gemini`, then Google's own API version and path: `/v1beta/models/<model>:generateContent` (the version Google's newest models appear under), `/v1/…` (stable), `:streamGenerateContent` for streaming, `:predict` for embeddings.
 - **Key header:** `api-key: <your key>`
 - **What it does:** "text generation, image generation, embeddings, and other AI capabilities"; streaming supported.
-- **Models:** the spec's examples name `gemini-2.0-flash` and `gemini-3-pro-preview`. **List the current ones** with `GET /v1beta1/publishers/google/models` (only `v1beta1` works for listing).
+- **Models:** the spec's examples name `gemini-2.0-flash` and `gemini-3-pro-preview`. **List the current ones** with `GET /v1beta1/publishers/google/models` (only `v1beta1` works for listing). What it listed on November 12 is in "What the live gateways show".
 - **Service level:** "There is no advertised API availability or response time Service Level Agreement (SLA) for the Gemini API at this time."
 
 ### AWS Bedrock (v2)
@@ -47,9 +47,9 @@ The key goes in a **request header, never the URL**: HUIT blocks requests that p
 - **Base URL:** `https://apis.huit.harvard.edu/ais-bedrock-llm/v2`
 - **Key header:** `x-api-key: <your key>` (note: different from the other two)
 - **Endpoints:** `/model/<modelId>/invoke`, `/invoke-with-response-stream`, `/converse`, `/converse-stream`; `/foundation-models` and `/inference-profiles` to list what's offered; `/apigee/quota` (at `https://apis.huit.harvard.edu/ais-bedrock-llm/apigee/quota`).
-- **Model IDs:** most current models use a cross-region prefix, `us.` (stays in the US) or `global.` (the largest pool, highest quotas): for example `us.anthropic.claude-sonnet-4-6`. Request and response formats differ by model family.
+- **Model IDs:** most current models use a cross-region prefix, `us.` (stays in the US) or `global.` (the largest pool, highest quotas): for example `us.anthropic.claude-sonnet-4-6`. Request and response formats differ by model family. What it listed on November 12 is in "What the live gateways show".
 - **Claude Code:** the spec says v2 works with Claude Code, Cline, and boto3, and gives the environment variables for pointing Claude Code at the gateway.
-- **Claude Fable 5** (`global.anthropic.claude-fable-5`) is the one model that runs in "provider data share mode" (Bedrock may retain your inference data and share it with Anthropic); prompts on some risky topics fall back to Claude Opus 4.8; and it costs more. See [`../data-security/`](../data-security/) before using it.
+- **Claude Fable 5** (`global.anthropic.claude-fable-5`) is the one model that runs in "provider data share mode" (Bedrock may retain your inference data and share it with Anthropic); prompts on some risky topics fall back to Claude Opus 4.8; and it costs more. The gateway now also lists Fable 5.1 and 5.2; the September spec names only Fable 5, and **we treat every Fable model as provider data share mode until HUIT says otherwise** (the kit's scripts warn on any Fable model ID). See [`../data-security/`](../data-security/) before using one.
 
 ## Limits and costs, in brief
 
@@ -57,8 +57,28 @@ The key goes in a **request header, never the URL**: HUIT blocks requests that p
 - Rate limits: the specs list "Rate limit / quota exceeded" responses but **no numbers**. Not found.
 - File limits: 25 MB for OpenAI transcription. Not found for the others.
 
+## What the live gateways show (November 12, 2026)
+
+Checked on November 12, 2026 with the kit's own key, through each gateway's free model-list endpoint, plus small tests of a few models. **Tested** means we sent a tiny, made-up request and it worked (or failed, as noted); **listed** means the model appears on the gateway's list and we have not tried it. A listed model is not a promise it works through HUIT.
+
+| gateway | model | status |
+| --- | --- | --- |
+| OpenAI Direct | `whisper-1` | **tested**, transcription works as documented |
+| OpenAI Direct | `gpt-4o-transcribe`, `gpt-transcribe` | **tested, fail**: HUIT rewrites `response_format` to `verbose_json`, and these models answer HTTP 400 ("response_format verbose_json is not compatible with model …"). Use `whisper-1`. |
+| OpenAI Direct | `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize` | listed; expected to fail the same way |
+| OpenAI Direct | `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2.5-*`, `gpt-image-2.6-*` | listed |
+| OpenAI Direct | `text-embedding-3-small`, `text-embedding-3-large` | listed |
+| Gemini | `gemini-3.5-flash` | **tested**: text, images, and PDF in |
+| Gemini | `gemini-3.1-flash-image` | **tested**: image generation |
+| Gemini | `gemini-3.5-transcribe`, `gemini-embedding-2`, text-to-speech models | listed |
+| Bedrock | `claude-sonnet-5-5`, `claude-haiku-5-5` (`us.` and `global.` profiles) | **tested** |
+| Bedrock | `claude-opus-5-5` | listed |
+| Bedrock | `claude-fable-5`, `claude-fable-5-1`, `claude-fable-5-2` | listed; the September spec names only Fable 5 for provider data share mode; **we treat all three as data-share until HUIT says otherwise**. Not for confidential data. |
+
+In all, Bedrock listed 33 Claude inference profiles. Each script's own test record is in [`../../ll-utilities/README.md`](../../ll-utilities/README.md).
+
 ## What may have changed since September 8, 2026
 
-- **Confirmed by our own test (November 12, 2026):** OpenAI Direct v2 transcription works as documented: `whisper-1`, `verbose_json` forced. See [`../../ll-utilities/README.md`](../../ll-utilities/README.md) for every script's test record.
-- **Expected but not checked:** OpenAI Direct v1 should now be off (the spec said so for October 1). Newer models on all three gateways. The spec versions above may have moved on.
-- **Not checked:** the live portal pages (they need HarvardKey; a browser check is pending), any change to the Level 3 approval, rate limits, and any new transcription model (for example OpenAI's newer speech-to-text models) on OpenAI Direct.
+- **Newer models on all three gateways**, and newer OpenAI transcription models that don't work through HUIT: see the table above.
+- **Expected but not checked:** OpenAI Direct v1 should now be off (the spec said so for October 1). The spec versions above may have moved on.
+- **Not checked:** the live portal pages (they need HarvardKey; a browser check is pending), any change to the Level 3 approval, rate limits, whether Fable 5.1 and 5.2 run in provider data share mode, and whether `gemini-3.5-transcribe` works through the gateway.
