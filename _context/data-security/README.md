@@ -54,11 +54,11 @@ That page's list of approved tools at HMS (read): the Harvard AI Sandbox, Claude
 **HUIT's AI API gateways describe themselves this way.** Each of the three gateway specs opens with the same sentence:
 
 > "THIS IS A PAY-AS-YOU-GO API, APPROVED FOR USE WITH LEVEL 3 CONFIDENTIAL DATA, WHICH REQUIRES A HUIT BILLING ID FOR HARVARD-INTERNAL BILLING."
-> HUIT API Portal: AI Services, OpenAI Direct (spec 2.0.40), Gemini (1.0.0), and AWS Bedrock (2.0.0) (HUIT spec, exported September 8, 2026; the live portal needs HarvardKey).
+> HUIT API Portal: AI Services, OpenAI Direct (spec 2.0.40), Gemini (1.0.0), and AWS Bedrock (2.0.0) (HUIT spec, exported September 8, 2026, and unchanged in the November 12, 2026 export, in the Harvard API Portal).
 
 Each spec's terms of use add: "All existing, University-wide policies regarding data usage have been reviewed and MUST be followed," linking to the Generative AI Guidelines and the Information Security Policy (https://policy.security.harvard.edu/).
 
-**One exception inside a gateway.** The Bedrock spec says one model, Claude Fable 5 (`global.anthropic.claude-fable-5`), runs in "provider data share mode," which "allows Amazon Bedrock to retain your inference data and share it with the model provider," and that "Fable 5 is the only model in this API for which the provider-data-share option is enabled" (HUIT spec, September 8). The spec does not say how this affects the Level 3 approval for that model. On November 12 the gateway also listed Fable 5.1 and 5.2, which the September spec doesn't mention. Until HUIT says otherwise, **we treat every Fable model as provider data share mode and don't send confidential data to any of them**, even through the gateway.
+**One exception inside a gateway.** The Bedrock spec says one model, Claude Fable 5 (`global.anthropic.claude-fable-5`), runs in "provider data share mode," which "allows Amazon Bedrock to retain your inference data and share it with the model provider," and that "Fable 5 is the only model in this API for which the provider-data-share option is enabled" (HUIT spec, September 8). The spec does not say how this affects the Level 3 approval for that model. On November 12 the gateway also listed Fable 5.1 and 5.2, which neither the September nor the November 12 spec mentions. Until HUIT says otherwise, **we treat every Fable model as provider data share mode and don't send confidential data to any of them**, even through the gateway.
 
 ## 3. What this means for this kit
 
@@ -77,4 +77,4 @@ HUIT's guidelines, as excerpted, draw the line at Level 2: **"Level 2 and above 
 
 - The current text of https://huit.harvard.edu/ai/guidelines, https://huit.harvard.edu/ai/tools, https://privsec.harvard.edu/classify-risk, and https://privsec.harvard.edu/data-classification-table (all refuse automated requests). A check in a browser is pending.
 - Whether fal or OpenRouter has been assessed by Harvard for any level: not found.
-- Whether the HUIT gateways' Level 3 approval has changed since the September 8 specs: not checked. See [`../huit/`](../huit/).
+- The HUIT gateways' Level 3 statement is **unchanged** in the November 12, 2026 export of all three specs (checked). See [`../huit/`](../huit/).

@@ -1,6 +1,6 @@
 ---
 title: HUIT's AI API gateways
-status: draft, 2026-11-12. Written from HUIT's API specs as exported from the Harvard API Portal on September 8, 2026, plus the kit's own live tests. A check of the live portal (which needs HarvardKey) is pending; see "What may have changed".
+status: draft, 2026-11-12. Written from HUIT's API specs as exported from the Harvard API Portal on September 8, 2026, checked against the November 12, 2026 export (in the Harvard API Portal) and the kit's own live tests; see "What changed".
 ---
 
 # HUIT's AI API gateways
@@ -9,7 +9,9 @@ Harvard University Information Technology (HUIT) runs gateways that pass your re
 
 **What HUIT says about data.** Each gateway's documentation opens: "THIS IS A PAY-AS-YOU-GO API, APPROVED FOR USE WITH LEVEL 3 CONFIDENTIAL DATA, WHICH REQUIRES A HUIT BILLING ID FOR HARVARD-INTERNAL BILLING." What the levels mean, and the one exception (Claude Fable 5 on Bedrock), are in [`../data-security/`](../data-security/).
 
-**How current this is.** Everything below, unless marked otherwise, is from HUIT's specs as exported on **September 8, 2026**: OpenAI Direct 2.0.40, Gemini 1.0.0, AWS Bedrock 2.0.0. Model lists in particular move faster than this file. Each gateway has an endpoint that lists what it offers today; use it.
+**How current this is.** This page was written from HUIT's specs as exported on **September 8, 2026** and checked against the **November 12, 2026** export: OpenAI Direct 2.0.42 (was 2.0.40), Gemini 1.0.0, AWS Bedrock 2.0.0. Differences are under "What changed" at the bottom. Model lists in particular move faster than this file. Each gateway has an endpoint that lists what it offers today; use it.
+
+**Building a script?** The route-by-route reference, from HUIT's specs as exported November 12, 2026 and marked with what this kit has tested, is in [`reference/`](reference/); HUIT's full specs are in the Harvard API Portal, https://portal.apis.huit.harvard.edu (sign in with HarvardKey).
 
 ## Getting a key (all three gateways)
 
@@ -26,18 +28,18 @@ The key goes in a **request header, never the URL**: HUIT blocks requests that p
 ### OpenAI Direct (v2)
 
 - **Base URL:** `https://go.apis.huit.harvard.edu/ais-openai-direct/v2` (the examples use the `go.` host; the spec's server list gives `https://apis.huit.harvard.edu/ais-openai-direct/v2`).
-- **Key header:** `api-key: <your key>`
+- **Key header:** `api-key: <your key>` (HUIT's spec names it `X-Api-Key`; `api-key` is what its examples use, and it works, tested November 12)
 - **Endpoints**, the same shape as OpenAI's own API: `/responses`, `/chat/completions`, `/completions`, `/conversations`, `/embeddings`, `/images/generations`, `/audio/transcriptions`, `/files`, `/batches`, `/vector_stores`, plus `/apigee/quota`. HUIT doesn't republish OpenAI's full spec and points to OpenAI's API reference for parameters.
 - **Models:** "All newly released OpenAI models will be available as they become publicly released" (v2). Examples in the spec name `gpt-5` and `gpt-5.3-codex`. What the gateway listed on November 12 is in "What the live gateways show".
 - **Transcription** (`POST /audio/transcriptions`, form data): model `whisper-1`; **25 MB file limit** ("divide your audio into smaller files" for longer recordings); HUIT always sets `response_format` to `verbose_json`, whatever you ask for, so transcripts come back with segments and timings. **Use `whisper-1` only**: the newer transcription models the gateway lists fail through it (see "What the live gateways show").
 - **Streaming:** supported in v2 (`"stream": true`).
 - **Developer tools:** v2 supports Codex CLI; the spec has setup notes for IDEs and client tools.
-- **v1 is gone.** "v1 will remain available only through 9/30/26; beginning 10/1/26, only the v2 endpoint will be supported." Budget limits applied to v1 and v2 separately.
+- **v1 is gone.** The November 12 spec: "v1 of this API (ais-openai-direct/v1) was retired on 10/1/26 and is no longer available; requests to it now return HTTP 410 Gone." Use v2.
 
 ### Gemini
 
 - **Base URL:** `https://apis.huit.harvard.edu/ais-google-gemini`, then Google's own API version and path: `/v1beta/models/<model>:generateContent` (the version Google's newest models appear under), `/v1/…` (stable), `:streamGenerateContent` for streaming, `:predict` for embeddings.
-- **Key header:** `api-key: <your key>`
+- **Key header:** `api-key: <your key>` (the spec names it `X-Api-Key`; `api-key` works, tested November 12)
 - **What it does:** "text generation, image generation, embeddings, and other AI capabilities"; streaming supported.
 - **Models:** the spec's examples name `gemini-2.0-flash` and `gemini-3-pro-preview`. **List the current ones** with `GET /v1beta1/publishers/google/models` (only `v1beta1` works for listing). What it listed on November 12 is in "What the live gateways show".
 - **Service level:** "There is no advertised API availability or response time Service Level Agreement (SLA) for the Gemini API at this time."
@@ -77,8 +79,14 @@ Checked on November 12, 2026 with the kit's own key, through each gateway's free
 
 In all, Bedrock listed 33 Claude inference profiles. Each script's own test record is in [`../../ll-utilities/README.md`](../../ll-utilities/README.md).
 
-## What may have changed since September 8, 2026
+## What changed between the September 8 and November 12 specs
 
+Compared on November 12, 2026, against HUIT's specs as exported from the Harvard API Portal that day:
+
+- **OpenAI Direct 2.0.40 → 2.0.42.** v1 is retired: requests to it "now return HTTP 410 Gone." The v1-to-v2 migration notice is replaced by that sentence. Transcription is still documented for `whisper-1` only, with the 25 MB limit.
+- **Gemini 1.0.0 and Bedrock 2.0.0:** version numbers unchanged.
+- **Unchanged on all three:** the opening statement, "APPROVED FOR USE WITH LEVEL 3 CONFIDENTIAL DATA," and the billing-number requirement.
+- **Fable:** the Bedrock spec still says "Fable 5 is the only model in this API for which the provider-data-share option is enabled" and doesn't mention Fable 5.1 or 5.2, which the gateway now lists. The kit still treats every Fable model as data-share (see the table above).
+- **Key header:** the specs' security schemes name `X-Api-Key` for Gemini and OpenAI Direct, while their examples use `api-key`; both gateways accept `api-key` (tested November 12). Bedrock uses `x-api-key`.
 - **Newer models on all three gateways**, and newer OpenAI transcription models that don't work through HUIT: see the table above.
-- **Expected but not checked:** OpenAI Direct v1 should now be off (the spec said so for October 1). The spec versions above may have moved on.
-- **Not checked:** the live portal pages (they need HarvardKey; a browser check is pending), any change to the Level 3 approval, rate limits, whether Fable 5.1 and 5.2 run in provider data share mode, and whether `gemini-3.5-transcribe` works through the gateway.
+- **Not checked:** rate limits (the specs give none), whether Fable 5.1 and 5.2 run in provider data share mode, and whether `gemini-3.5-transcribe` works through the gateway.
