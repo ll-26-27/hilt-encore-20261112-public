@@ -1,6 +1,7 @@
 ---
 title: What you make with Claude is a recipe
 layout: bullets
+present: false
 ---
 
 - Ingredients, things you do with them, a finished dish

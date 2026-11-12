@@ -1,6 +1,7 @@
 ---
 title: Recipes we made
 layout: bullets
+present: false
 ---
 
 - [permission pending: case A]

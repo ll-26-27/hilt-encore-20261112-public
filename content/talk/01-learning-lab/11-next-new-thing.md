@@ -1,6 +1,7 @@
 ---
 title: The next new thing
 layout: bullets
+present: false
 ---
 
 - We've always had to learn the next new thing

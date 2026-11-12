@@ -1,6 +1,7 @@
 ---
 title: A day in the Learning Lab studio
 layout: bullets
+present: false
 ---
 
 - A little lifting and building

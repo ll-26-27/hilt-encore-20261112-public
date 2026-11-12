@@ -1,6 +1,7 @@
 ---
 title: Is it worth learning?
 layout: bullets
+present: false
 ---
 
 - A year learning Final Cut paid off for life

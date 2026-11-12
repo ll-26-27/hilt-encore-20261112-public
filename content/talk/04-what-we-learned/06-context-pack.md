@@ -1,6 +1,7 @@
 ---
 title: The context pack
 layout: bullets
+present: false
 ---
 
 - Every class session can be organic

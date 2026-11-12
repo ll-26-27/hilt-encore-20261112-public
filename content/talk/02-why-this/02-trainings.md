@@ -1,6 +1,7 @@
 ---
 title: Trainings over time
 layout: bullets
+present: false
 ---
 
 - Department visits: one hour, pitched to everyone at once

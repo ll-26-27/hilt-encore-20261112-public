@@ -1,6 +1,7 @@
 ---
 title: Teaching with AI, ourselves
 layout: bullets
+present: false
 ---
 
 - Every day: the transcript of the session

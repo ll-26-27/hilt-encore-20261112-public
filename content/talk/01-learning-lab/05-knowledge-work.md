@@ -1,6 +1,7 @@
 ---
 title: Knowledge work and data
 layout: bullets
+present: false
 ---
 
 - We track everything: the video, the projects, the students who work here

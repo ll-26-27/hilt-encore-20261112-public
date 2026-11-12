@@ -1,6 +1,7 @@
 ---
 title: The oral exam
 layout: bullets
+present: false
 ---
 
 - Constant oral reflection on what you're making

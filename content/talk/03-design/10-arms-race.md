@@ -1,6 +1,7 @@
 ---
 title: An arms race
 layout: bullets
+present: false
 ---
 
 - Anthropic uses AI to build the app, so it changes faster than ever

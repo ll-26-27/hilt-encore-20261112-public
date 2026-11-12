@@ -1,6 +1,7 @@
 ---
 title: What we make
 layout: bullets
+present: false
 ---
 
 - Some research

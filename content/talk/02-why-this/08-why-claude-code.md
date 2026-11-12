@@ -1,6 +1,7 @@
 ---
 title: Why Claude Code
 layout: bullets
+present: false
 ---
 
 - A game changer for everyone who's used it

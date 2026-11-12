@@ -1,6 +1,7 @@
 ---
 title: The disposable app
 layout: bullets
+present: false
 ---
 
 - Just in time, built for one person, one project

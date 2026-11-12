@@ -1,6 +1,7 @@
 ---
 title: Alignment with learning objectives
 layout: bullets
+present: false
 ---
 
 - We read the professor's own work, not just the syllabus

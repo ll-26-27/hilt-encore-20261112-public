@@ -1,6 +1,7 @@
 ---
 title: But it takes steering
 layout: bullets
+present: false
 ---
 
 - Skill with the tool
