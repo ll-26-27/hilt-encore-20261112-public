@@ -15,6 +15,6 @@ A skill is a folder with a `SKILL.md` that tells Claude how to do one kind of ta
 
 | skill | what it does | calls |
 | --- | --- | --- |
-| `origin-story` | turns a story you tell it (how you, a project, or a team began) into a four- or eight-panel comic, with an optional interview for more detail, and builds a local page to read it | an image model (the skill says which; external ones follow the data rule) |
+| `origin-story` | turns a story you tell it (how you, a project, or a team began) into a four- or eight-panel comic, with an optional short interview for more detail, and builds a local page to read it (in `_media/comics/`, which is not committed) | HUIT's Gemini gateway by default; fal only if you ask, and only for public or made-up material |
 
 More to come; this list is updated as skills are added.
