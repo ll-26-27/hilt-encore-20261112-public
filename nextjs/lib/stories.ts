@@ -134,3 +134,62 @@ export async function saveBoard(columns: Record<string, unknown>) {
   await writeFile(/* turbopackIgnore: true */ path.join(dir, "order.json"), JSON.stringify({ columns: clean }, null, 2) + "\n");
   return getBoard();
 }
+
+// The board is Marlon's planning on his own laptop: cards are served and saved only for a request to localhost, and
+// never on Vercel.
+export function isLocalHost(host: string | null) {
+  const name = (host ?? "").replace(/:\d+$/, "");
+  return !process.env.VERCEL && ["localhost", "127.0.0.1", "::1", "[::1]"].includes(name);
+}
+
+// The network view (/stories/network): the same cards as nodes, with positions and labelled links between them, kept
+// in network.json beside the cards: { "positions": { id: { x, y } }, "links": [{ id, source, target, label }] }.
+export type Link = { id: string; source: string; target: string; label: string };
+export type Network = { positions: Record<string, { x: number; y: number }>; links: Link[] };
+
+function cleanNetwork(input: unknown, known: Set<string>): Network {
+  const raw = (input ?? {}) as { positions?: Record<string, unknown>; links?: unknown[] };
+  const positions: Network["positions"] = {};
+  for (const [id, p] of Object.entries(raw.positions ?? {})) {
+    const { x, y } = (p ?? {}) as { x?: unknown; y?: unknown };
+    if (known.has(id) && Number.isFinite(x) && Number.isFinite(y)) positions[id] = { x: Math.round(x as number), y: Math.round(y as number) };
+  }
+  const links: Link[] = [];
+  const seen = new Set<string>();
+  for (const l of raw.links ?? []) {
+    const { source, target, label } = (l ?? {}) as Partial<Link>;
+    if (typeof source !== "string" || typeof target !== "string" || !known.has(source) || !known.has(target) || source === target) continue;
+    const id = `${source}->${target}`;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    links.push({ id, source, target, label: typeof label === "string" ? label.slice(0, 60).trim() : "" });
+  }
+  return { positions, links };
+}
+
+export async function getNetwork(): Promise<Network> {
+  const dir = await storiesDir();
+  const board = await getBoard();
+  const known = new Set(board.cards.map((c) => c.id));
+  try {
+    return cleanNetwork(JSON.parse(await readFile(/* turbopackIgnore: true */ path.join(dir, "network.json"), "utf8")), known);
+  } catch {
+    return { positions: {}, links: [] };
+  }
+}
+
+export async function saveNetwork(input: unknown) {
+  const dir = await storiesDir();
+  if (!dir) throw new Error("STORIES_DIR is not set");
+  const board = await getBoard();
+  const network = cleanNetwork(input, new Set(board.cards.map((c) => c.id)));
+  await writeFile(/* turbopackIgnore: true */ path.join(dir, "network.json"), JSON.stringify(network, null, 2) + "\n");
+  return network;
+}
+
+// A demo that opens a private, local-only page (the story views). Its button shows only where those pages work.
+export const isLocalOnlyDemo = (href: string) => /^\/stories(?:[/?#]|$)/.test(href);
+
+export async function localViewsAvailable(host: string | null) {
+  return isLocalHost(host) && Boolean(await storiesDir());
+}

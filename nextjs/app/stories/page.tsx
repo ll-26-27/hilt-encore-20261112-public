@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { getParts } from "@/lib/content";
-import { getBoard } from "@/lib/stories";
+import { getBoard, isLocalHost } from "@/lib/stories";
 import StoryBoard from "./StoryBoard";
 
 export const dynamic = "force-dynamic";
@@ -10,8 +10,7 @@ export const metadata: Metadata = { title: "Story cards", robots: { index: false
 // Marlon's planning board: one card per micro-story, dragged between the parts of the talk and printed as index cards.
 // The cards come from the private repo through STORIES_DIR, and only on localhost; anywhere else the page is empty.
 export default async function StoriesPage() {
-  const host = ((await headers()).get("host") ?? "").split(":")[0];
-  const local = !process.env.VERCEL && ["localhost", "127.0.0.1", "::1", "[::1]"].includes(host);
+  const local = isLocalHost((await headers()).get("host"));
   const [board, parts] = await Promise.all([local ? getBoard() : null, getParts()]);
   const labels: Record<string, string> = { unplaced: "Unplaced" };
   for (const part of parts) if (part.number <= 5) labels[String(part.number)] = part.number === 0 ? "Open" : part.title;

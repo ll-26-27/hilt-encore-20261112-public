@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Markdown from "@/app/components/Markdown";
 import { getHome, getParts, resolveSrc, withoutH1, type Home, type Part, type Slide } from "@/lib/content";
 import { displayUrl, qrSvg } from "@/lib/qr";
+import { isLocalOnlyDemo, localViewsAvailable } from "@/lib/stories";
+import { headers } from "next/headers";
 import Countdown from "./Countdown";
 import Deck, { type Frame } from "./Deck";
 import MadeLive from "./MadeLive";
@@ -58,7 +60,7 @@ function columns(content: string) {
   return { lead: parts[0].trim(), cols };
 }
 
-function SlideBody({ slide, svg, url }: { slide: Slide; svg: string; url: string }) {
+function SlideBody({ slide, svg, url, local = false }: { slide: Slide; svg: string; url: string; local?: boolean }) {
   const body = withoutH1(slide.content).trim();
   const words = body ? <div className="slide-words"><Markdown content={body} dir={slide.dir} /></div> : null;
   const heading = <h2 className="slide-title">{slide.title}</h2>;
@@ -96,7 +98,7 @@ function SlideBody({ slide, svg, url }: { slide: Slide; svg: string; url: string
           <p className="eyebrow">Live</p>
           {heading}
           {words}
-          {slide.demo ? (
+          {slide.demo && isLocalOnlyDemo(slide.demo) && !local ? null : slide.demo ? (
             <a className="demo-button" href={slide.demo} target="_blank" rel="noreferrer">
               Open ↗ <span>{slide.demo.replace(/^https?:\/\//, "")}</span>
             </a>
@@ -150,6 +152,8 @@ export default async function PresentPage() {
   const [home, parts] = await Promise.all([getHome(), getParts()]);
   const svg = await qrSvg(home.url);
   const url = displayUrl(home.url);
+  // Local-only demos (the story views) get their button only on the laptop where they work; elsewhere the slide is words.
+  const local = await localViewsAvailable((await headers()).get("host"));
   const frames: Frame[] = [];
 
   for (const part of parts) {
@@ -159,7 +163,7 @@ export default async function PresentPage() {
     // Slides marked present: false stay on the part's page but aren't shown in the talk.
     const shown = part.slides.filter((slide) => slide.present);
     for (const slide of shown) {
-      frames.push({ ...base, key: slide.id, title: slide.title, layout: slide.layout, who: slide.who, steps: slide.steps, body: <SlideBody slide={slide} svg={svg} url={url} /> });
+      frames.push({ ...base, key: slide.id, title: slide.title, layout: slide.layout, who: slide.who, steps: slide.steps, body: <SlideBody slide={slide} svg={svg} url={url} local={local} /> });
     }
     if (isClose(part) && !shown.some((s) => s.layout === "qr")) {
       frames.push({ ...base, key: "take-home", title: "Take it home", layout: "qr", body: <SlideBody slide={{ ...part, id: "take-home", title: "Take it home", layout: "qr", who: "", image: "", demo: "", cite: "", site: true, present: true, steps: 1, content: "Repos, tools, and examples from today, on the site's take-home page." }} svg={svg} url={url} /> });

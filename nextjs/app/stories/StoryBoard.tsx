@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import type { Board, Card, Column } from "@/lib/stories";
 
@@ -83,6 +84,7 @@ export default function StoryBoard({ initial, labels }: { initial: Board; labels
           <h1>Micro-stories</h1>
         </div>
         <div className="stories-actions">
+          <Link className="stories-link" href="/stories/network">Network view →</Link>
           <span className="stories-status">{status || `${cards.size} cards · ${total} min placed`}</span>
           <button type="button" onClick={() => print("all")}>Print all</button>
         </div>

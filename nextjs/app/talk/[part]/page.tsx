@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Placeholder, SiteFooter, SiteHeader } from "@/app/components/Chrome";
 import Markdown from "@/app/components/Markdown";
 import { getPart, getParts, resolveSrc, withoutH1 } from "@/lib/content";
+import { isLocalOnlyDemo } from "@/lib/stories";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +46,7 @@ export default async function PartPage({ params }: { params: Promise<{ part: str
               )}
               <Markdown content={withoutH1(slide.content)} dir={slide.dir} />
               {slide.cite && <p className="cite">— {slide.cite}</p>}
-              {slide.demo && <p><a href={slide.demo} target="_blank" rel="noreferrer">Open the demo ↗</a></p>}
+              {slide.demo && !isLocalOnlyDemo(slide.demo) && <p><a href={slide.demo} target="_blank" rel="noreferrer">Open the demo ↗</a></p>}
             </section>
           ))}
         </div>
