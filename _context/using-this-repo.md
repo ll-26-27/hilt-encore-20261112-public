@@ -23,7 +23,7 @@ You can use most of this kit without any keys: read the context, ask Claude abou
 To make real calls, you need keys of your own:
 
 - **HUIT AI API keys** reach OpenAI, Google Gemini, and Anthropic (through Amazon Bedrock) through Harvard's gateways. How a Harvard person gets one, and what each gateway is approved for, is in [`huit/`](huit/).
-- **External keys** (fal for image generation, OpenRouter for many models) come from those companies' own sites. **Never send Level 3 data to them.** See [`data-security/`](data-security/).
+- **External keys** (fal for image generation, OpenRouter for many models) come from those companies' own sites. **They are not Harvard-approved: send them only public (Level 1) material, never confidential data.** See [`data-security/`](data-security/).
 
 Then copy `.env.example` to `.env` and fill in the keys you have. `.env` is gitignored, so it stays on your computer. Don't paste keys into the chat.
 

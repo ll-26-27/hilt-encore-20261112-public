@@ -13,7 +13,7 @@ A context folder is the move we keep coming back to this year. Our students shar
 
 ## Before you send anything to a model
 
-- [`data-security/`](data-security/): Harvard's data security levels in plain words, with sources, and what they mean for this kit. **The kit's rule: external tools must never receive Level 3 data.**
+- [`data-security/`](data-security/): Harvard's data security levels in plain words, with sources, and what they mean for this kit. **The kit's rule: external tools get only public (Level 1) material, never confidential data; use the HUIT APIs for anything sensitive.**
 - [`huit/`](huit/): HUIT's AI API gateways (OpenAI, Gemini, Bedrock): what each offers, which data each is approved for, and how a Harvard person gets a key.
 
 ## Add your own

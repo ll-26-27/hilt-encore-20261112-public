@@ -10,14 +10,14 @@ The person at the keyboard is probably a member of Harvard's teaching and learni
 2. [`_context/using-this-repo.md`](_context/using-this-repo.md): setup, keys, and first things to try.
 3. [`_context/data-security/`](_context/data-security/): Harvard's data security levels and what they mean for this kit. **Read it before sending anything to a model.**
 
-## The data rule: never send Level 3 data to an external tool
+## The data rule: external tools get public material only
 
-> **External tools must never receive Level 3 data.**
+> **External tools (fal, OpenRouter) are not Harvard-approved: send them only public (Level 1) material, never confidential data. Use the HUIT APIs for anything sensitive.**
 
-Harvard classifies data by level (see [`_context/data-security/`](_context/data-security/)). Level 3 is confidential information, such as student records, non-public research data, and personal information about identifiable people.
+Harvard classifies data in levels, from Level 1 (public) up through Level 2 and higher for confidential information, such as student records, non-public research data, and personal information about identifiable people. HUIT's guidance is that confidential data (Level 2 and above) goes only into generative AI tools that have been assessed and approved for it. The levels, the sources, and what they mean for this kit are in [`_context/data-security/`](_context/data-security/).
 
-- **HUIT's AI API gateways** (`ll-utilities/huit/`) are the route for anything sensitive. HUIT's own documentation for each gateway says which data levels it is approved for; [`_context/huit/`](_context/huit/) records what it says.
-- **External tools** (`ll-utilities/external/`: fal, OpenRouter, and anything else that is not a HUIT gateway) **must never receive Level 3 data.** Use them only with made-up, public, or otherwise non-sensitive material. Every external script says so in its `--help` and prints a warning before it sends.
+- **HUIT's AI API gateways** (`ll-utilities/huit/`) are the route for anything sensitive, within the levels each is approved for; [`_context/huit/`](_context/huit/) records what HUIT says about each.
+- **External tools** (`ll-utilities/external/`: fal, OpenRouter, and anything else that is not a HUIT gateway) get **only public or made-up material.** Every external script says so in its `--help` and prints a warning before it sends.
 - **Before any call, ask what the input is.** If you cannot tell whether a file or a prompt contains confidential material (student work, names with grades, unpublished research, health or financial details), stop and ask the person. Do not guess, and do not send it to an external tool to find out.
 - Claude Code itself sends what you read to the model provider the person's Claude account uses. Harvard's guidance on which Claude accounts are approved for which levels is in [`_context/data-security/`](_context/data-security/); point the person there rather than stating it from memory.
 
