@@ -3,7 +3,7 @@ title: GENED 1196, a practice run
 order: 19
 index: Draw a concept, a case, and a theory. Follow Elisa's demonstration from the cards to an oral argument.
 source: https://gened1196-quizzer-interface.vercel.app
-image: /examples/gened1196/elisa-tabletop.png
+image: /examples/gened1196/elisa-tabletop-color.jpg
 ---
 
 ## What this is
