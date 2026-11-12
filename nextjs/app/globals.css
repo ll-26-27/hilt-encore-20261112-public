@@ -286,13 +286,16 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .net-help { max-width: 90vw; color: var(--muted); }
 
 @media print {
-  @page { size: letter; margin: 0.5in; }
+  /* No page margins: with a dark color-scheme Chrome paints the margin area dark. The sheet carries the half inch. */
+  @page { size: letter; margin: 0; }
+  :root { color-scheme: light; }
   html, body { background: #fff !important; color: #111 !important; }
   .skip-link, .stories > :not(.print-sheet) { display: none !important; }
   .stories { padding: 0; min-height: 0; }
-  .print-sheet { display: flex; flex-direction: column; align-items: center; gap: 0.25in; }
+  .print-sheet { display: flex; flex-direction: column; align-items: center; gap: 0.25in; padding: 0.5in 0; background: #fff; }
   .print-card { width: 5in; height: 3in; padding: 0.22in 0.28in 0.2in; border: 1px dashed #999; border-left: 0.14in solid var(--kind, #999); background: #fff; color: #111; overflow: hidden; display: flex; flex-direction: column; break-inside: avoid; page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .print-card:nth-child(3n) { break-after: page; page-break-after: always; }
+  .print-card:nth-child(3n) { break-after: page; page-break-after: always; margin-bottom: 0.5in; }
+  .print-card:nth-child(3n + 1):not(:first-child) { margin-top: 0.5in; }
   .print-card .story-kind { color: #111; font-size: 9pt; }
   .print-card .story-part { margin-left: auto; color: #555; font-size: 9pt; }
   .print-card .story-show { margin-left: 8px; font-size: 8pt; }
