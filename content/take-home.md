@@ -5,7 +5,7 @@ subtitle: Our best public repos, the workshop materials, tools to try, and where
 
 ## Open this repository in Claude Code
 
-[Open this repository](https://github.com/ll-26-27/hilt-encore-20261112-public) in Claude Code. Beside the talk, it holds a kit: a context folder about the Learning Lab and this talk for your agent to read (and a model for your own), small readable scripts that call Harvard's HUIT AI APIs (transcription and image generation, tested today), and skills to try. Start with [CLAUDE.md](https://github.com/ll-26-27/hilt-encore-20261112-public/blob/main/CLAUDE.md).
+[Open this repository](https://github.com/ll-26-27/hilt-encore-20261112-public) in Claude Code. Beside the talk, it holds a kit: a context folder about the Learning Lab and this talk for your agent to read (and a model for your own), and small readable scripts that call Harvard's HUIT AI APIs (transcription and image generation, tested today). Start with [CLAUDE.md](https://github.com/ll-26-27/hilt-encore-20261112-public/blob/main/CLAUDE.md).
 
 CLAUDE.md also sets the data rule: external tools get public material only.
 
