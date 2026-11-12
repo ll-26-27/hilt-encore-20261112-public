@@ -176,3 +176,12 @@ test('gemini refuses file types it cannot send', () => {
   const result = run('gemini.mjs', ['--file', doc, 'hi', '--dry-run'])
   assert.equal(result.status, 1)
 })
+
+// gpt-image.mjs -------------------------------------------------------------
+
+test('gpt-image --dry-run builds an OpenAI Direct /images/generations request', () => {
+  const req = dryRun('gpt-image.mjs', ['--prompt', 'a teapot', '--quality', 'low', '--size', '1536x1024', '--out', join(tmp, 'teapot.png')])
+  assert.equal(req.url, 'https://apis.huit.harvard.edu/ais-openai-direct/v2/images/generations')
+  assert.equal(req.headers['api-key'], `[hidden, ${FAKE.length} characters]`)
+  assert.deepEqual(req.body, { model: 'gpt-image-1-mini', prompt: 'a teapot', n: 1, size: '1536x1024', quality: 'low' })
+})

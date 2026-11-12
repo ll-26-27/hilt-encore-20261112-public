@@ -72,3 +72,12 @@ printf 'Made-up handout\n\nClaim one: tea improves meetings.\nClaim two: biscuit
 cupsfilter /tmp/ll-test/handout.txt > /tmp/ll-test/handout.pdf
 node ll-utilities/huit/gemini.mjs --file /tmp/ll-test/handout.pdf "List the three claims, one line each."
 ```
+
+## gpt-image.mjs
+
+```
+node ll-utilities/huit/gpt-image.mjs --prompt "a small flat illustration of a teapot with a graduation cap" --quality low --out /tmp/ll-test/teapot.png
+open /tmp/ll-test/teapot.png
+```
+
+Expect a 1024×1024 PNG and a `.json` beside it with token usage.
