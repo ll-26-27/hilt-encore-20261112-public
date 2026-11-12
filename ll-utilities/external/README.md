@@ -45,7 +45,7 @@ node ll-utilities/external/fal-models.mjs --grep flux
 
 ## Notes
 
-- If `FAL_API_KEY` isn't already set, the script reads `.env` at the repo root itself, so `--env-file` is optional.
+- If `FAL_API_KEY` isn't already set, the script reads `.env` at the repo root itself (through `../lib/env.mjs`), so `--env-file` is optional.
 - Reference images go to fal inside the request. The same rule applies to them: public or made-up only.
 - A job that takes longer than five minutes stops with its job ID. Nothing is resubmitted automatically.
 - No video generation or batch runs here yet.

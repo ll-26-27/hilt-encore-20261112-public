@@ -18,6 +18,7 @@ import { parseArgs } from 'node:util'
 import { readFile, writeFile, mkdir, stat, access } from 'node:fs/promises'
 import { basename, extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { env, mask, fail as failWith } from '../lib/env.mjs'
 import { EXTERNAL_HELP, warn } from './warning.mjs'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
@@ -50,21 +51,11 @@ Cost is billed to the key's fal account; check the model's page on fal.ai for it
 const IMAGE_TYPES = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' }
 const MAX_REF_BYTES = 10 * 1024 * 1024
 
-function fail(message) {
-  console.error(`fal-image: ${message}`)
-  process.exit(1)
-}
-
-function mask(key) {
-  return key ? `[hidden, ${key.length} characters]` : '[NOT SET]'
-}
+const fail = message => failWith('fal-image', message)
 
 async function exists(path) {
   return access(path).then(() => true, () => false)
 }
-
-// Use the environment if the key is already there (node --env-file), otherwise read .env at the repo root.
-if (!process.env.FAL_API_KEY && await exists(join(ROOT, '.env'))) process.loadEnvFile(join(ROOT, '.env'))
 
 let args
 try {
@@ -114,7 +105,7 @@ const body = { prompt, num_images: n }
 if (opt.aspect) body.aspect_ratio = opt.aspect
 if (refs.length) body.image_urls = refs.map(r => r.url)
 
-const key = process.env.FAL_API_KEY
+const key = env('FAL_API_KEY')
 const url = `https://queue.fal.run/${model}`
 const stamp = new Date().toISOString().replace(/[:.]/g, '-')
 const out = resolve(opt.out || join(ROOT, '_media', 'fal', `${stamp}-${model.split('/').pop()}`))
