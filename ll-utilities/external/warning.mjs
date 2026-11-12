@@ -1,0 +1,16 @@
+// warning.mjs: the data warning every external script shows, kept in one place.
+//
+// "External" means anything that is not a HUIT gateway: fal, OpenRouter, and the rest.
+// Every external script puts EXTERNAL_HELP in its --help and calls warn() before it sends anything.
+// WARNING is interim wording, pending the Learning Lab's decision on where Harvard draws the line
+// (see ll-utilities/README.md, the data rule); changing it here changes every script.
+
+export const WARNING = 'External tools (fal, OpenRouter) are not Harvard-approved: send them only public (Level 1) material, never confidential data. Use the HUIT APIs for anything sensitive.'
+
+export const EXTERNAL_HELP = `!! EXTERNAL SERVICE, OUTSIDE HARVARD !!
+${WARNING}
+HUIT scripts: ll-utilities/huit/. The data rule: ll-utilities/README.md`
+
+export function warn(service, what) {
+  console.error(`\n!! EXTERNAL: sending ${what} to ${service}, outside Harvard (not a HUIT gateway).\n!! ${WARNING}\n`)
+}

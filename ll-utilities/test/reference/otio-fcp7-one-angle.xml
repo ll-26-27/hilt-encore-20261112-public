@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<xmeml version="4">
+    <project>
+        <name>ref</name>
+        <children>
+            <sequence id="sequence-1">
+                <name>ref</name>
+                <duration>308</duration>
+                <rate>
+                    <timebase>30</timebase>
+                    <ntsc>FALSE</ntsc>
+                </rate>
+                <media>
+                    <video>
+                        <format/>
+                        <track>
+                            <clipitem frameBlend="FALSE" id="clipitem-1">
+                                <file id="file-1">
+                                    <pathurl>file:///FIXTURE/workshop.mov</pathurl>
+                                    <name>workshop.mov</name>
+                                    <rate>
+                                        <timebase>30</timebase>
+                                        <ntsc>FALSE</ntsc>
+                                    </rate>
+                                    <duration>431</duration>
+                                    <timecode>
+                                        <rate>
+                                            <timebase>30</timebase>
+                                            <ntsc>FALSE</ntsc>
+                                        </rate>
+                                        <string>10:00:00:00</string>
+                                        <frame>1080000</frame>
+                                        <displayformat>NDF</displayformat>
+                                    </timecode>
+                                    <media>
+                                        <video/>
+                                        <audio/>
+                                    </media>
+                                </file>
+                                <name>one</name>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <duration>100</duration>
+                                <start>0</start>
+                                <end>100</end>
+                                <in>58</in>
+                                <out>158</out>
+                            </clipitem>
+                            <clipitem frameBlend="FALSE" id="clipitem-2">
+                                <file id="file-1"/>
+                                <name>two</name>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <duration>123</duration>
+                                <start>100</start>
+                                <end>223</end>
+                                <in>200</in>
+                                <out>323</out>
+                            </clipitem>
+                            <clipitem frameBlend="FALSE" id="clipitem-3">
+                                <file id="file-1"/>
+                                <name>three</name>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <rate>
+                                    <timebase>30</timebase>
+                                    <ntsc>FALSE</ntsc>
+                                </rate>
+                                <duration>85</duration>
+                                <start>223</start>
+                                <end>308</end>
+                                <in>330</in>
+                                <out>415</out>
+                            </clipitem>
+                        </track>
+                    </video>
+                    <audio>
+                        <track>
+                            <clipitem id="clipitem-1"/>
+                            <clipitem id="clipitem-2"/>
+                            <clipitem id="clipitem-3"/>
+                        </track>
+                    </audio>
+                </media>
+            </sequence>
+        </children>
+    </project>
+</xmeml>
