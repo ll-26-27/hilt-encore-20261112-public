@@ -9,7 +9,7 @@ A context folder is the move we keep coming back to this year. Our students shar
 1. [`using-this-repo.md`](using-this-repo.md): how to open this repo in Claude Code, set up keys (or not), and what to try first.
 2. [`learning-lab.md`](learning-lab.md): who the Learning Lab is and how we work.
 3. [`the-talk.md`](the-talk.md): the talk in brief, and what we're still wondering.
-4. [`tools-and-skills.md`](tools-and-skills.md): what the scripts in `ll-utilities/` and the skills in `.agents/skills/` are for.
+4. [`tools-and-skills.md`](tools-and-skills.md): what the scripts in `ll-utilities/` are for, and how to make a skill of your own.
 
 ## Before you send anything to a model
 

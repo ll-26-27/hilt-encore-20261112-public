@@ -36,7 +36,7 @@ Paste any of these into Claude Code:
 - "Help me start a context folder for my own course in `_context/my-course/`. Ask me five questions first."
 - "Show me what `ll-utilities/huit/transcribe.mjs` would send, with `--dry-run`, for a short audio file you make with the Mac's `say` command."
 - "Run the site in `nextjs/` and open it."
-- "What are the skills in `.agents/skills/` for? Pick one and walk me through it."
+- "Make me a skill from something I do often. Ask me what it is first."
 
 ## Make it yours
 

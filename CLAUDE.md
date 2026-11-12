@@ -31,7 +31,6 @@ Harvard classifies data in levels, from Level 1 (public) up through Level 2 and 
 | `ll-utilities/external/` | scripts for external tools (fal image generation) | non-sensitive work only |
 | `ll-utilities/lib/` | small shared helpers the scripts use | |
 | `ll-utilities/README.md` | every script, the API it calls, and when it was last tested | check here before running one |
-| `.agents/skills/<name>/` | skills (each a `SKILL.md` plus any scripts), linked from `.claude/skills/<name>` so Claude Code finds them | |
 | `.env.example` | the names of the keys the scripts read | copy to `.env` |
 | `nextjs/`, `content/` | the talk's website and its words | see `README.md`; not part of the kit |
 
@@ -54,11 +53,11 @@ Nothing in the kit needs a key to be read, and every script has a `--dry-run` th
 
 ## Skills
 
-Skills live in `.agents/skills/<name>/SKILL.md`, and each is linked from `.claude/skills/<name>` so Claude Code finds it. A skill that calls an external tool follows the data rule above. The list of skills, and what each is for, is in [`_context/tools-and-skills.md`](_context/tools-and-skills.md).
+A skill is a folder with a `SKILL.md` that tells you how to do one kind of task, plus any scripts it uses. If the person asks for one, make it in `.agents/skills/<name>/SKILL.md` and link it from `.claude/skills/<name>` (`ln -s ../../.agents/skills/<name> .claude/skills/<name>`) so Claude Code finds it. A skill that calls an external tool follows the data rule above.
 
 ## Working with the person at the keyboard
 
-- This is their copy. They can change anything here: the context, the scripts, the skills. Help them make it theirs, for example by adding a folder of their own context to `_context/` (made-up or public material first).
+- This is their copy. They can change anything here: the context, the scripts, skills of their own. Help them make it theirs, for example by adding a folder of their own context to `_context/` (made-up or public material first).
 - Keep their words, source material, and your own proposals distinct, and say which is which.
 - The talk's website (`nextjs/`, `content/`) is the Learning Lab's account of the talk. Don't change it unless they ask.
 - Write "the Learning Lab," not "the Lab."

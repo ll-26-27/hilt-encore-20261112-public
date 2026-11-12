@@ -23,4 +23,4 @@ The full list, with what we learned, is in `content/wondering.md`.
 
 ## Where this kit fits
 
-The talk ends part 4 on the idea that everyone can make their own interface for organizing their ideas, and closes with the take-home. This kit is the take-home you can open: a context folder like the ones our students share with each other, a few scripts that call Harvard's approved AI gateways, and skills to try. Ask your agent to read this folder, then to help you start a context folder of your own.
+The talk ends part 4 on the idea that everyone can make their own interface for organizing their ideas, and closes with the take-home. This kit is the take-home you can open: a context folder like the ones our students share with each other, and a few scripts that call Harvard's approved AI gateways. Ask your agent to read this folder, then to help you start a context folder of your own.

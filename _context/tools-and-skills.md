@@ -15,16 +15,6 @@ Each script makes one kind of call to one AI service, and is short enough to rea
 
 Why scripts and not an app? Because a script is something you and your agent can both read, run, and change. Once a call works as a script, Claude can use it inside anything you build: a skill, a web page, a pipeline for a whole folder.
 
-## `.agents/skills/`: skills
+## Skills: make your own
 
-A skill is a folder with a `SKILL.md` that tells Claude how to do one kind of task, plus any scripts it uses. Claude Code finds them through the links in `.claude/skills/`. Ask "what skills do you have?" or name one.
-
-| skill | what it does | calls |
-| --- | --- | --- |
-| `my-context` | starts a context folder of your own in `_context/`, through a short interview one question at a time: a README a collaborator or an agent reads first, a file per course or project, and your open questions, with your words kept apart from Claude's summary. Say "start my context folder" | nothing beyond Claude itself |
-| `class-reflection` | helps you reflect on a class you just taught: transcribes your spoken debrief (or a class recording you're allowed to use), then writes eight to twelve questions grounded in the transcript and any notes, lesson plan, or research you add. Names no students. For anything confidential it runs entirely through HUIT, and Claude never opens the transcript. Say "help me reflect on today's class" | `huit/transcribe.mjs`, then Claude Code or `huit/claude.mjs` |
-| `reflect-aloud` | turns a voice memo (on a class, a meeting, a week) into a short note: your words, quoted and timestamped; a draft of what Claude heard, kept apart; the threads; one next step. Same HUIT-only route as class-reflection for anything confidential. Say "turn this voice memo into a note" | `huit/transcribe.mjs`, then Claude Code or `huit/claude.mjs` |
-| `recipe-card` | turns one thing you did with AI (a prompt, a workflow, a fix) into a recipe: the goal, the ingredients (files, script, model, data route, cost), the steps with exact commands, what went wrong, what to try next; saved in your context folder, with a printable one-page card | nothing by default; `huit/gemini-image.mjs` for an optional illustration |
-| `origin-story` | turns a story you tell it (how you, a project, or a team began) into a four- or eight-panel comic, with an optional short interview for more detail, and builds a local page to read it (in `_media/comics/`, which is not committed) | HUIT's Gemini gateway by default; fal only if you ask, and only for public or made-up material |
-
-Ask Claude to make a skill of your own from something you do often; it goes in `.agents/skills/<name>/`, linked from `.claude/skills/<name>`.
+A skill is a folder with a `SKILL.md` that tells Claude how to do one kind of task, plus any scripts it uses. Ask Claude to make one from something you do often: it goes in `.agents/skills/<name>/`, linked from `.claude/skills/<name>` so Claude Code finds it. A skill can call the scripts in `ll-utilities/`; one that calls an external tool follows the data rule in `CLAUDE.md`.
