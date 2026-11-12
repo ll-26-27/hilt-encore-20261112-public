@@ -4,10 +4,17 @@ The Learning Lab at the Derek Bok Center for Teaching and Learning, at the 2026 
 
 This is the talk as a website, for participants to follow along and come back to: the slides for the day, plus the repos, tools, and examples we mention.
 
+Open this repository in Claude Code. Beside the talk, it holds a kit: a context folder about the Learning Lab and this talk for your agent to read (and a model for your own), small readable scripts that call Harvard's HUIT AI APIs (transcription and image generation, tested today), and skills to try. Start with CLAUDE.md, which also sets the data rule: external tools get public material only.
+
 | path | what |
 | --- | --- |
 | `nextjs/` | the site (Next.js, App Router, TypeScript) |
 | `content/` | the words and links the site shows, in Markdown; its `README.md` is the contract for how they're laid out |
+| `CLAUDE.md`, `AGENTS.md` | where your agent starts: what this repo is, and the data rule |
+| `_context/` | the context folder: the Learning Lab, this talk, the tools and skills, HUIT's AI services, data security |
+| `ll-utilities/` | small readable scripts that call HUIT's AI APIs (transcription, image generation) and, kept apart in `external/`, outside services for public material only |
+| `.agents/skills/`, `.claude/` | skills to try, linked so Claude Code finds them |
+| `.env.example` | the names of the keys the scripts read; put your own in a gitignored `.env` |
 
 Everything in this repo is public.
 
