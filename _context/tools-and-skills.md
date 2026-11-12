@@ -20,6 +20,7 @@ A skill is a folder with a `SKILL.md` that tells Claude how to do one kind of ta
 
 | skill | what it does | calls |
 | --- | --- | --- |
+| `my-context` | starts a context folder of your own in `_context/`, through a short interview one question at a time: a README a collaborator or an agent reads first, a file per course or project, and your open questions, with your words kept apart from Claude's summary. Say "start my context folder" | nothing beyond Claude itself |
 | `origin-story` | turns a story you tell it (how you, a project, or a team began) into a four- or eight-panel comic, with an optional short interview for more detail, and builds a local page to read it (in `_media/comics/`, which is not committed) | HUIT's Gemini gateway by default; fal only if you ask, and only for public or made-up material |
 
 More to come; this list is updated as skills are added.
