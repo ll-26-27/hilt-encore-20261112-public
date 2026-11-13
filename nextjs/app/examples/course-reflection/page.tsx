@@ -2,7 +2,7 @@ import ExampleFrame from "../ExampleFrame";
 import Calendar from "./Calendar";
 import styles from "./reflection.module.css";
 export const metadata = { title: "Course reflection" };
-export default function Page() { return <ExampleFrame slug="course-reflection">
+export default function Page() { return <ExampleFrame slug="course-reflection" showHero={false}>
   <Calendar />
   <div className={styles.workflow}>
     <div><h3>Inputs: keep the traces</h3><p>Session transcriptions, our handwritten notes, revised plans and the materials we actually made. Each captures a different part of the teaching.</p></div>
